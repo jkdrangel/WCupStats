@@ -16,12 +16,12 @@ import static org.junit.Assert.*;
  * 
  * @version 1.0
  */
-public class TeamTest {
+public class TimeTest {
     
-    Team team;
-    Goal goal;
-    Person coach;
-    Person player;
+    Time team;
+    Gol goal;
+    Pessoa coach;
+    Pessoa player;
     char group;
     int era;
     int rank;
@@ -33,7 +33,7 @@ public class TeamTest {
         group = 'A';
         era = 1994;
         int i= 1;
-        team = new Team(group, era, rank, coach);
+        team = new Time(group, era, rank, coach);
     }
 
     public void tearDown() {
@@ -47,8 +47,8 @@ public class TeamTest {
      */
     public void testAddPlayers() {
         System.out.println("addPlayers");
-        Person player = null;
-        Team instance = null;
+        Pessoa player = null;
+        Time instance = null;
         instance.addPlayers(player);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -59,8 +59,8 @@ public class TeamTest {
      */
     public void testAddGoals() {
         System.out.println("addGoals");
-        Goal goal = null;
-        Team instance = null;
+        Gol goal = null;
+        Time instance = null;
         instance.addGoals(goal);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

@@ -16,7 +16,7 @@ package model;
  * @see 
  * @see 
  */
-public class Game {
+public class Jogo {
  
     
     /**
@@ -24,7 +24,7 @@ public class Game {
      * 
      * @param 
      */
-    public Game() {
+    public Jogo() {
         
     }
 }

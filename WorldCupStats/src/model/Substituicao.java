@@ -15,14 +15,14 @@ package model;
  * @see 
  * @see 
  */
-public class Substitution {
+public class Substituicao {
     
     /**
      * Construtor da classe.
      * 
      * @param 
      */
-    public Substitution() {
+    public Substituicao() {
         
     }
 }

@@ -18,7 +18,7 @@ import java.util.List;
  * @see
  * @see
  */
-public class Team {
+public class Time {
 
     /**
      * Grupo da selecao em uma determinada copa.
@@ -35,15 +35,15 @@ public class Team {
     /**
      * Tecnico da selecao em um era de copa.
      */
-    private final Person coach;
+    private final Pessoa coach;
     /**
      * Selecao de jogadores para uma copa.
      */
-    private List<Person> players;
+    private List<Pessoa> players;
     /**
      * Gols feitos pela selecao em uma copa.
      */
-    private List<Goal> goals;
+    private List<Gol> goals;
 
     /**
      * Construtor da classe.
@@ -53,15 +53,15 @@ public class Team {
      * @param rank
      * @param coach
      */
-    public Team(char group, int era, int rank, Person coach) {
+    public Time(char group, int era, int rank, Pessoa coach) {
 
         this.group = group;
         this.era = era;
         this.rank = rank;
         this.coach = coach;
 
-        players = new ArrayList<Person>();
-        goals = new ArrayList<Goal>();
+        players = new ArrayList<Pessoa>();
+        goals = new ArrayList<Gol>();
     }
 
     /**
@@ -88,35 +88,35 @@ public class Team {
     /**
      * @return the coach
      */
-    public Person getCoach() {
+    public Pessoa getCoach() {
         return coach;
     }
 
     /**
      * @return the players
      */
-    public List<Person> getPlayers() {
+    public List<Pessoa> getPlayers() {
         return players;
     }
 
     /**
      * @param player the players to insert
      */
-    public void addPlayers(Person player) {
+    public void addPlayers(Pessoa player) {
         players.add(player);
     }
 
     /**
      * @return the goals
      */
-    public List<Goal> getGoals() {
+    public List<Gol> getGoals() {
         return goals;
     }
 
     /**
      * @param goal the goals to insert
      */
-    public void addGoals(Goal goal) {
+    public void addGoals(Gol goal) {
         goals.add(goal);
     }
 
@@ -125,14 +125,14 @@ public class Team {
      *
      * @return
      */
-    public Goal fastestGoal() {
+    public Gol fastestGoal() {
 
-        Goal goalFaster = null;
+        Gol goalFaster = null;
         if (! goals.isEmpty()) {
             goalFaster = goals.get(0);
             float time = goalFaster.getTime();
 
-            for (Goal goal : goals) {
+            for (Gol goal : goals) {
                 if (time < goal.getTime()) {
                     goalFaster = goal;
                     time = goal.getTime();

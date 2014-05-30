@@ -16,14 +16,14 @@ package model;
  * @see 
  * @see 
  */
-public class Goal {
+public class Gol {
     
     /**
      * Construtor da classe.
      * 
      * @param 
      */
-    public Goal() {
+    public Gol() {
         
     }
 }

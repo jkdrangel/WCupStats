@@ -14,7 +14,7 @@ package model;
  * @see 
  * @see 
  */
-public abstract class Person {
+public abstract class Pessoa {
     
     /**
      * Nome da pessoa. 
