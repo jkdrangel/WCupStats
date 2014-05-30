@@ -47,7 +47,7 @@ public class Team {
      * Construtor da classe.
      * 
      * @param group
-     * @param ano
+     * @param era
      * @param rank 
      * @param coach 
      */
