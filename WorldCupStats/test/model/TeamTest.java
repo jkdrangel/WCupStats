@@ -7,7 +7,9 @@
 package model;
 
 import java.util.List;
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * 
@@ -15,24 +17,31 @@ import junit.framework.TestCase;
  * 
  * @version 1.0
  */
-public class TeamTest extends TestCase {
+public class TeamTest {
     
-    Team brazil;
+    Team team;
     Goal goal;
     Person coach;
     Person player;
+    char group;
+    int era;
+    String rank;
     
-    @Override
-    protected void setUp() {
+    @Before
+    public void setUp() {
         
+        coach = new Coach("Luiz Gonzaga");
+        group = 'A';
+        era = 1994;
+        rank = "Primeiro";
+        team = new Team(group, era, rank, coach);
     }
+
+    public void tearDown() {
+       
+    }
+
     
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
-    }
-
-
 
     /**
      * Test of addPlayers method, of class Team.
@@ -42,19 +51,6 @@ public class TeamTest extends TestCase {
         Person player = null;
         Team instance = null;
         instance.addPlayers(player);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getGoals method, of class Team.
-     */
-    public void testGetGoals() {
-        System.out.println("getGoals");
-        Team instance = null;
-        List<Goal> expResult = null;
-        List<Goal> result = instance.getGoals();
-        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
