@@ -6,7 +6,6 @@
 
 package model;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -33,7 +32,7 @@ public class TeamTest {
         coach = new Coach("Luiz Gonzaga");
         group = 'A';
         era = 1994;
-        int = 1;
+        int i= 1;
         team = new Team(group, era, rank, coach);
     }
 
