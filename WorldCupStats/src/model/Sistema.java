@@ -12,6 +12,6 @@ package model;
  */
 class Sistema {
 
-   
+   private int ID;
     
 }
