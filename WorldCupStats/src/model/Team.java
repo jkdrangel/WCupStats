@@ -30,7 +30,7 @@ public class Team {
      */ private final int era; 
     /**
      * Classificacao do time em uma determinada copa.
-     */ private final String rank;
+     */ private final int rank;
      /**
       * Tecnico da selecao em um era de copa.
      */private final Person coach;
@@ -51,7 +51,7 @@ public class Team {
      * @param rank 
      * @param coach 
      */
-    public Team(char group, int era, String rank, Person coach) {
+    public Team(char group, int era, int rank, Person coach) {
         
         this.group = group;
         this.era = era;
@@ -79,7 +79,7 @@ public class Team {
     /**
      * @return the rank
      */
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
 
@@ -117,6 +117,8 @@ public class Team {
     public void addGoals(Goal goal) {
         goals.add(goal);
     }
+    
+    
     
     
 }

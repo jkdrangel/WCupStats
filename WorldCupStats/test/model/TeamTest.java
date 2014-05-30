@@ -25,7 +25,7 @@ public class TeamTest {
     Person player;
     char group;
     int era;
-    String rank;
+    int rank;
     
     @Before
     public void setUp() {
@@ -33,7 +33,7 @@ public class TeamTest {
         coach = new Coach("Luiz Gonzaga");
         group = 'A';
         era = 1994;
-        rank = "Primeiro";
+        int = 1;
         team = new Team(group, era, rank, coach);
     }
 
