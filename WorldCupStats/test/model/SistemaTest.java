@@ -6,16 +6,18 @@
 
 package model;
 
+import java.util.Date;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author lsantana
  */
 public class SistemaTest {
+    Sistema sistema =new Sistema();
     
     public SistemaTest() {
     }
@@ -28,9 +30,55 @@ public class SistemaTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void cadastrarPaisTest() {
+    sistema.cadastrarPais("Brazil", "America do sul");
+    }
+    
+    @Test
+    public void cadastrarJogadorTest() {
+        Date nascimento;
+    sistema.cadastrarJogador("Neymar", nascimento, 10, "ATACANTE");
+    }
+    
+    @Test
+    public void cadastrarTecnicoTest() {
+       Date nascimento;
+       sistema.cadastrarTecnico("Felipao", nascimento);
+    }
+    
+    @Test
+    public void cadastrarSelecaoTest() {
+    sistema.cadastrarSelecao("A", 2014, 32);
+    }
+    
+    @Test
+    public void cadastrarCopaTest() {
+    sistema.cadastrarCopa(2014);
+    }
+    
+    @Test
+    public void listarPaisesTest() {
+    
+    }
+    
+    @Test
+    public void listarJogadoresTest() {
+    
+    }
+    
+    @Test
+    public void listarTecnicosTest() {
+    
+    }
+    
+    @Test
+    public void listarSelecoesTest() {
+    
+    }
+    
+    @Test
+    public void listarCopasTest() {
+    
+    }
 }
