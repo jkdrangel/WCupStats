@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  */
 public class TimeTest {
     
-    Time team;
-    Gol goal;
-    Pessoa coach;
-    Pessoa player;
-    char group;
-    int era;
+    Time time;
+    Gol gol;
+    Pessoa tecnico;
+    Pessoa jogadores;
+    char grupo;
+    int ano;
     int rank;
     
     @Before
     public void setUp() {
         
-        coach = new Coach("Luiz Gonzaga");
-        group = 'A';
-        era = 1994;
-        int i= 1;
-        team = new Time(group, era, rank, coach);
+        tecnico = new Tecnico("Luiz Gonzaga");
+        grupo = 'A';
+        ano = 1994;
+        rank = 1;
+        time = new Time(grupo, ano, rank, tecnico);
     }
 
     public void tearDown() {

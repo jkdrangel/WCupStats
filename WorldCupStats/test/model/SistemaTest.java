@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.util.Date;
@@ -17,68 +16,69 @@ import org.junit.Test;
  * @author lsantana
  */
 public class SistemaTest {
-    Sistema sistema =new Sistema();
-    
+
+    Sistema sistema = new Sistema();
+
     public SistemaTest() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
     public void cadastrarPaisTest() {
-    sistema.cadastrarPais("Brazil", "America do sul");
+        sistema.cadastrarPais("Brazil", "America do sul");
     }
-    
+
     @Test
     public void cadastrarJogadorTest() {
         Date nascimento;
-    sistema.cadastrarJogador("Neymar", nascimento, 10, "ATACANTE");
+        sistema.cadastrarJogador("Neymar", nascimento, 10, "ATACANTE");
     }
-    
+
     @Test
     public void cadastrarTecnicoTest() {
-       Date nascimento;
-       sistema.cadastrarTecnico("Felipao", nascimento);
+        Date nascimento;
+        sistema.cadastrarTecnico("Felipao", nascimento);
     }
-    
+
     @Test
     public void cadastrarSelecaoTest() {
-    sistema.cadastrarSelecao("A", 2014, 32);
+        sistema.cadastrarSelecao("A", 2014, 32);
     }
-    
+
     @Test
     public void cadastrarCopaTest() {
-    sistema.cadastrarCopa(2014);
+        sistema.cadastrarCopa(2014);
     }
-    
+
     @Test
     public void listarPaisesTest() {
-    
+
     }
-    
+
     @Test
     public void listarJogadoresTest() {
-    
+
     }
-    
+
     @Test
     public void listarTecnicosTest() {
-    
+
     }
-    
+
     @Test
     public void listarSelecoesTest() {
-    
+
     }
-    
+
     @Test
     public void listarCopasTest() {
-    
+
     }
 }
