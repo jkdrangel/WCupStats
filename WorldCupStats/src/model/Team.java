@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Classe que representa a selecao de um pais em um determinado
- * ano de copa.
+ era de copa.
  * 
  * @author D.L.O.L
  * 
@@ -27,12 +27,12 @@ public class Team {
     */ private final char group; 
     /**
      * Ano em que o time esteve na copa (ID);
-     */ private final int ano; 
+     */ private final int era; 
     /**
      * Classificacao do time em uma determinada copa.
      */ private final String rank;
      /**
-      * Tecnico da selecao em um ano de copa.
+      * Tecnico da selecao em um era de copa.
      */private final Person coach;
      /**
       * Selecao de jogadores para uma copa.
@@ -51,10 +51,10 @@ public class Team {
      * @param rank 
      * @param coach 
      */
-    public Team(char group, int ano, String rank, Person coach) {
+    public Team(char group, int era, String rank, Person coach) {
         
         this.group = group;
-        this.ano = ano;
+        this.era = era;
         this.rank = rank;
         this.coach = coach;
         
@@ -70,10 +70,10 @@ public class Team {
     }
 
     /**
-     * @return the ano
+     * @return the era
      */
-    public int getAno() {
-        return ano;
+    public int getEra() {
+        return era;
     }
 
     /**
