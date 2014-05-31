@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 /**
@@ -17,31 +16,30 @@ package model;
  */
 public enum FuncaoJogador {
 
-    GOLEIRO("Goleiro"), 
+    GOLEIRO("Goleiro"),
     LATERAL("Lateral"),
     ZAGUEIRO("Zagueiro"),
-    VOLANTE("Volante"), 
-    MEIO_DE_CAMPO("Meio de Campo"), 
+    VOLANTE("Volante"),
+    MEIO_DE_CAMPO("Meio de Campo"),
     ATACANTE("Atacante");
-    
 
     /**
      * Funcao do jogador.
      */
     private final String funcao;
-            
+
     /**
      * Construtor do Enum.
-     * 
-     * @param funcao 
+     *
+     * @param funcao
      */
     private FuncaoJogador(String funcao) {
         this.funcao = funcao;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public String getFuncao() {
         return funcao;

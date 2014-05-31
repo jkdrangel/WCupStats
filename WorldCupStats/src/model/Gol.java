@@ -19,17 +19,26 @@ package model;
 public class Gol {
     
     /**
-     * Tempo em que o gol foi feito
+     * Tempo em que o gol foi feito.
     */ private final double tempo;
-            
+    /**
+     * Time que fez o gol.
+    */ private final Time time;
+    
     /**
      * Construtor da classe.
      * 
+     * @param time
      * @param tempo
      */
-    public Gol(double tempo) {
+    public Gol(Time time, double tempo) {
         
+        this.time = time;
         this.tempo = tempo;
+    }
+    
+    public Time getTime() {
+        return time;
     }
     
     public double getTempo() {

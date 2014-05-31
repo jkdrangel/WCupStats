@@ -7,13 +7,18 @@
 package model;
 
 /**
+ * Classe que representa um pais.
  *
- * @author lsantana
+ * @author D.L.O.L
+ *
+ * @version 1.0
+ *
+ * @see Time
  */
 public class Pais {
     
-    private String nome;
-    private String continente;
+    private final String nome;
+    private final String continente;
     private int ID;
 
     public Pais(String nome, String continente) {
@@ -25,16 +30,8 @@ public class Pais {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getContinente() {
         return continente;
-    }
-
-    public void setContinente(String continente) {
-        this.continente = continente;
     }
 
     public int getID() {

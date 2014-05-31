@@ -15,17 +15,18 @@ import java.util.List;
  *
  * @version 1.0
  *
- * @see
- * @see
+ * @see Pessoa
+ * @see Goal
+ * @see Pais
  */
 public class Time {
 
     /**
      * Grupo da selecao em uma determinada copa.
-     */
+     */ 
     private final char grupo;
     /**
-     * Ano em que o time esteve na copa (ID);
+     * Ano em que o time esteve na copa (ID).
      */
     private final int ano;
     /**
@@ -44,6 +45,10 @@ public class Time {
      * Gols feitos pela selecao em uma copa.
      */
     private List<Gol> gols;
+    /**
+     * Pais ao qual o time representa.
+    */ 
+    private final Pais pais;
 
     /**
      * Construtor da classe.
@@ -52,18 +57,29 @@ public class Time {
      * @param ano
      * @param rank
      * @param tecnico
+     * @param pais
      */
-    public Time(char grupo, int ano, int rank, Pessoa tecnico) {
+    public Time(char grupo, int ano, int rank, Pessoa tecnico, Pais pais) {
 
         this.grupo = grupo;
         this.ano = ano;
         this.rank = rank;
         this.tecnico = tecnico;
+        this.pais = pais;
 
         jogadores = new ArrayList<Pessoa>();
         gols = new ArrayList<Gol>();
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Seleção do(a) "+pais.getNome()+" de "+this.getAno();
+    }
+    
     /**
      * @return the grupo
      */
@@ -121,6 +137,13 @@ public class Time {
     }
 
     /**
+     * @return the pais
+     */
+    public Pais getPais() {
+        return pais;
+    }
+
+    /**
      * Recupano o Gol mais rápido da selecao em uma copa.
      *
      * @return
@@ -128,11 +151,11 @@ public class Time {
     public Gol golRapido() {
 
         Gol maisRapido = null;
-        if (! gols.isEmpty()) {
-            maisRapido = gols.get(0);
+        if (! this.getGols().isEmpty()) {
+            maisRapido = this.getGols().get(0);
             double tempo = maisRapido.getTempo();
 
-            for (Gol goal : gols) {
+            for (Gol goal : this.getGols()) {
                 if (tempo > goal.getTempo()) {
                     maisRapido = goal;
                     tempo = goal.getTempo();

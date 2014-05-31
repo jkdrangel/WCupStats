@@ -18,11 +18,58 @@ package model;
 public class Substituicao {
     
     /**
+     * Time que fez a substituicao.
+    */ private final Time time;
+    /** Jogador que entra em jogo.
+    */ private final Jogador qEntra;
+    /** Jogador substituido (que sai do jogo).
+    */ private final Jogador qSai;
+    /** Tempo em que a substituicao foi realizada.
+    */ private final double tempo;
+    
+    
+    
+    /**
      * Construtor da classe.
-     * 
-     * @param 
+     *
+     * @param time 
+     * @param qEntra 
+     * @param qSai 
+     * @param tempo 
      */
-    public Substituicao() {
+    public Substituicao(Time time, Jogador qEntra, Jogador qSai, double tempo) {
         
+        this.time = time;
+        this.qEntra = qEntra;
+        this.qSai = qSai; 
+        this.tempo = tempo;
+    }
+
+    /**
+     * @return the time
+     */
+    public Time getTime() {
+        return time;
+    }
+
+    /**
+     * @return the qEntra
+     */
+    public Jogador getqEntra() {
+        return qEntra;
+    }
+
+    /**
+     * @return the qSai
+     */
+    public Jogador getqSai() {
+        return qSai;
+    }
+
+    /**
+     * @return the tempo
+     */
+    public double getTempo() {
+        return tempo;
     }
 }

@@ -11,18 +11,24 @@ package model;
  * 
  * @author D.L.O.L
  * 
- * @see 
- * @see 
+ * @see Tecnico
+ * @see Jogador
+ * @see Pais
  */
 public abstract class Pessoa {
     
     /**
      * Nome da pessoa. 
-    */ private String name;
+    */ 
+    private String name;
     /**
      * Data de aniversario da pessoa.
-     */ private String dateBirth;
-
+     */ 
+    private String dateBirth;
+    /**
+     * Pais que ele representa.
+     */ 
+     private Pais pais;
      
     /**
      * @return the name
@@ -50,6 +56,20 @@ public abstract class Pessoa {
      */
     public void setDateBirth(String dateBirth) {
         this.dateBirth = dateBirth;
+    }
+
+    /**
+     * @return the pais
+     */
+    public Pais getPais() {
+        return pais;
+    }
+
+    /**
+     * @param pais the pais to set
+     */
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
     
 }

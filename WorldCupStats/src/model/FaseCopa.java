@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 /**
@@ -17,32 +16,31 @@ package model;
  * @see
  */
 public enum FaseCopa {
-    
+
     OITAVAS("Oitavas de Final"),
-    QUARTAS("Quartas de Final"), 
-    SEMI("Semifinal"), 
+    QUARTAS("Quartas de Final"),
+    SEMI("Semifinal"),
     FINAL("Final");
-    
 
     /**
      * Fase na copa.
      */
     private final String fase;
-            
+
     /**
      * Construtor do Enum.
-     * 
-     * @param funcao 
+     *
+     * @param funcao
      */
     private FaseCopa(String fase) {
         this.fase = fase;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public String getFase() {
         return fase;
     }
-    }
+}

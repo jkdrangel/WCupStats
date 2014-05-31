@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 public class TimeTest {
 
     Time time;
+    Pais pais;
     Gol gol;
     Pessoa tecnico;
     Pessoa jogadores;
@@ -28,11 +29,12 @@ public class TimeTest {
     @Before
     public void setUp() {
 
+        pais = new Pais("Sertao", "Nordeste");
         tecnico = new Tecnico("Luiz Gonzaga");
         grupo = 'A';
         ano = 1994;
         rank = 1;
-        time = new Time(grupo, ano, rank, tecnico);
+        time = new Time(grupo, ano, rank, tecnico, pais);
     }
 
     public void tearDown() {
@@ -44,9 +46,9 @@ public class TimeTest {
 
         assertTrue( 0 == time.getGols().size() );
         
-        Gol gol1 = new Gol(15.0);
-        Gol gol2 = new Gol(3.0);
-        Gol gol3 = new Gol(5.0);
+        Gol gol1 = new Gol(time, 15.0);
+        Gol gol2 = new Gol(time, 3.0);
+        Gol gol3 = new Gol(time, 5.0);
         time.addGoals(gol1);
         
         assertTrue( 1 == time.getGols().size() );
@@ -66,20 +68,20 @@ public class TimeTest {
         Gol rapido = time.golRapido();
         assertNull("Se não fez gol não tem o rapido", rapido);
 
-        Gol gol1 = new Gol(15.0);
+        Gol gol1 = new Gol(time, 15.0);
         time.addGoals(gol1);
         rapido = time.golRapido();
         assertSame(gol1, rapido);
         assertTrue((15.0 == rapido.getTempo()));
 
-        Gol gol2 = new Gol(3.0);
+        Gol gol2 = new Gol(time, 3.0);
         time.addGoals(gol2);
         rapido = time.golRapido();
         assertSame(gol2, rapido);
 
         assertTrue((3.0 == rapido.getTempo()));
 
-        Gol gol3 = new Gol(5.0);
+        Gol gol3 = new Gol(time, 5.0);
         time.addGoals(gol3);
         rapido = time.golRapido();
         assertSame(gol2, rapido);
