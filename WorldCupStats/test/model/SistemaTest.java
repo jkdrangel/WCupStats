@@ -38,7 +38,7 @@ public class SistemaTest {
 
     @Test
     public void cadastrarCopaTest() {
-        sistema.cadastrarCopa(2014);
+        sistema.cadastrarCopa(new Date(2014,0,0));
     }
 
     @Test

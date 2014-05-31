@@ -19,6 +19,8 @@ import static org.junit.Assert.*;
  */
 public class PaisTest {
     
+    Pais p=new Pais("Brasil","America");
+    
     public PaisTest() {
     }
     
@@ -30,9 +32,12 @@ public class PaisTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void cadastrarSelecao() {
+    p.cadastrarSelecao("A",2014);
+    
+    }
+    
+    
+    
 }
