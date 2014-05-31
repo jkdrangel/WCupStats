@@ -130,10 +130,10 @@ public class Time {
         Gol maisRapido = null;
         if (! gols.isEmpty()) {
             maisRapido = gols.get(0);
-            float tempo = maisRapido.getTempo();
+            double tempo = maisRapido.getTempo();
 
             for (Gol goal : gols) {
-                if (tempo < goal.getTempo()) {
+                if (tempo > goal.getTempo()) {
                     maisRapido = goal;
                     tempo = goal.getTempo();
                 }

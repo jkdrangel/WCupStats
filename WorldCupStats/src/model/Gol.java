@@ -20,19 +20,19 @@ public class Gol {
     
     /**
      * Tempo em que o gol foi feito
-    */ private final float tempo;
+    */ private final double tempo;
             
     /**
      * Construtor da classe.
      * 
      * @param tempo
      */
-    public Gol(float tempo) {
+    public Gol(double tempo) {
         
         this.tempo = tempo;
     }
     
-    public float getTempo() {
+    public double getTempo() {
         return tempo;
     }
 }
