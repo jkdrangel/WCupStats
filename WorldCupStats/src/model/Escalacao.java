@@ -8,31 +8,16 @@
 
 package model;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
- *
- * @author lsantana
+ * Classe que representa os gols da selecao de um pais em uma copa.
+ * 
+ * @author D.L.O.L
+ * 
+ * @version 1.0
+ * 
+ * @see 
+ * @see 
  */
-public class CopaTest {
+public class Escalacao {
     
-    public CopaTest() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-   
-    @Test
-    public void hello() {
-    
-    }
 }
