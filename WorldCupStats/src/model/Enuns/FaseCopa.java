@@ -5,6 +5,8 @@
  */
 package model.Enuns;
 
+import model.Jogo;
+
 /**
  * Fases de uma copa.
  *
@@ -12,8 +14,7 @@ package model.Enuns;
  *
  * @version 1.0
  *
- * @see
- * @see
+ * @see Jogo
  */
 public enum FaseCopa {
 
