@@ -33,7 +33,7 @@ public enum FuncaoJogador {
      *
      * @param funcao
      */
-    private FuncaoJogador(String funcao) {
+    FuncaoJogador(String funcao) {
         this.funcao = funcao;
     }
 
