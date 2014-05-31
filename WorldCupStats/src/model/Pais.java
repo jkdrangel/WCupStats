@@ -18,6 +18,10 @@ package model;
  * @see Time
  */
 public class Pais {
+
+    void cadastrarSelecao(String a, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private final String nome;
     private final String continente;

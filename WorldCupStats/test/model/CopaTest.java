@@ -8,17 +8,18 @@
 
 package model;
 
+import java.util.Date;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author lsantana
  */
 public class CopaTest {
-    
+    Copa c=new Copa(new Date(2014,0,0));
     public CopaTest() {
     }
     
@@ -30,9 +31,4 @@ public class CopaTest {
     public void tearDown() {
     }
 
-   
-    @Test
-    public void hello() {
-    
-    }
 }

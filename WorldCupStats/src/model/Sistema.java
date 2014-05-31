@@ -8,21 +8,30 @@
 
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+
 /**
  *
  * @author lsantana
  */
 class Sistema {
 
-   private int ID;
+    private int ID;
+    ArrayList<Pais> paises= new ArrayList<Pais>();
+    ArrayList<Copa> copas=new ArrayList<Copa>();
+
+    Sistema() {
+    }
 
     void cadastrarPais(String brazil, String america_do_sul) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    paises.add(new Pais(brazil, america_do_sul));
     }
 
-    void cadastrarCopa(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    void cadastrarCopa(Date ano) {
+    copas.add(new Copa(i));
+            }
 
     void listarPaises() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

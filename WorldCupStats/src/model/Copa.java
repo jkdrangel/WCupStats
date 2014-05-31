@@ -43,6 +43,10 @@ public class Copa {
     public String toString() {
         return "Copa{" + "data=" + data + '}';
     }
+
+    void cadastrarSelecao(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
