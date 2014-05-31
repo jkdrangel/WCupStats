@@ -16,7 +16,8 @@ package model.Enuns;
  * @see
  */
 public enum FaseCopa {
-
+    
+    GRUPOS("Fase de Grupos"),
     OITAVAS("Oitavas de Final"),
     QUARTAS("Quartas de Final"),
     SEMI("Semifinal"),

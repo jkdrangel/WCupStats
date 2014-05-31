@@ -35,23 +35,6 @@ public class SistemaTest {
         sistema.cadastrarPais("Brazil", "America do sul");
     }
 
-    @Test
-    public void cadastrarJogadorTest() {
-        Date nascimento;
-        sistema.cadastrarJogador("Neymar", nascimento, 10, "AT");
-    }
-
-    @Test
-    public void cadastrarTecnicoTest() {
-        Date nascimento;
-        sistema.cadastrarTecnico("Felipao", nascimento);
-    }
-
-    @Test
-    public void cadastrarSelecaoTest() {
-        Tecnico tec = sistema.getTecnico().get("Felipao");
-        sistema.cadastrarSelecao('A', 2014, 32, tec);
-    }
 
     @Test
     public void cadastrarCopaTest() {
@@ -60,26 +43,11 @@ public class SistemaTest {
 
     @Test
     public void listarPaisesTest() {
-
-    }
-
-    @Test
-    public void listarJogadoresTest() {
-
-    }
-
-    @Test
-    public void listarTecnicosTest() {
-
-    }
-
-    @Test
-    public void listarSelecoesTest() {
-
+        sistema.listarPaises();
     }
 
     @Test
     public void listarCopasTest() {
-
+        sistema.listarCopas();
     }
 }
