@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.util.Date;
@@ -16,16 +15,18 @@ import java.util.Date;
  * @version 1.0
  *
  */
-class Pessoa{
+abstract class Pessoa {
+
     private String nome;
     private Date dataDeNascimento;
-    
+
     /**
      * Metodo construtor que exigira o nome da pessoa e sua data de nascimento
+     *
      * @param nome
-     * @param dataDeNascimento 
+     * @param dataDeNascimento
      */
-    public Pessoa(String nome, Date dataDeNascimento){
+    public Pessoa(String nome, Date dataDeNascimento) {
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
     }
@@ -44,18 +45,5 @@ class Pessoa{
 
     public void setDataDeNascimento(Date dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
-    }
-
-    /**
-     * Metodo que verifica se a instancia da classe colocada como atributo é a mesma
-     * que a classe que chama esse método
-     * @param p
-     * @return 
-     */
-    public boolean equals(Pessoa p){
-        if(p.getNome().equals(this.nome) && p.getDataDeNascimento().equals(this.dataDeNascimento)){
-            return true;
-        }
-        return false;
     }
 }

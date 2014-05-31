@@ -25,4 +25,24 @@ public class Tecnico extends Pessoa{
     public Tecnico(String nome, Date dataDeNascimento) {
         super(nome, dataDeNascimento);
     }
+    
+        /**
+     * Metodo que verifica se a instancia da classe colocada como atributo é a
+     * mesma que a classe que chama esse método
+     *
+     * @param p
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        Tecnico t;
+        if (o instanceof Tecnico) {
+            t = (Tecnico) o;
+            if (t.getNome().equals(super.getNome()) 
+                && t.getDataDeNascimento().equals(super.getDataDeNascimento())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
