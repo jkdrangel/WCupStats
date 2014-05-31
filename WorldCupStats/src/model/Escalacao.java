@@ -9,11 +9,15 @@
 package model;
 
 /**
- *
- * @author lsantana
+ * Classe que representa os gols da selecao de um pais em uma copa.
+ * 
+ * @author D.L.O.L
+ * 
+ * @version 1.0
+ * 
+ * @see 
+ * @see 
  */
-class Sistema {
-
-   private int ID;
+public class Escalacao {
     
 }

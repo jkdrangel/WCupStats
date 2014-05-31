@@ -10,10 +10,8 @@ package model;
 
 /**
  *
- * @author lsantana
+ * @author di3go
  */
-class Sistema {
-
-   private int ID;
+public class Selecao {
     
 }
