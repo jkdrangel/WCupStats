@@ -12,8 +12,7 @@ package model;
  */
 public class Tecnico extends Pessoa{
     
-    public Tecnico(String nome) {
+    public Tecnico() {
         
-        super.setName(nome);
     }
 }
