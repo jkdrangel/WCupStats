@@ -19,11 +19,20 @@ package model;
 public class Gol {
     
     /**
+     * Tempo em que o gol foi feito
+    */ private final float tempo;
+            
+    /**
      * Construtor da classe.
      * 
-     * @param 
+     * @param tempo
      */
-    public Gol() {
+    public Gol(float tempo) {
         
+        this.tempo = tempo;
+    }
+    
+    public float getTempo() {
+        return tempo;
     }
 }

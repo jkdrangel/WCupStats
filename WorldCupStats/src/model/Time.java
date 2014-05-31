@@ -48,10 +48,10 @@ public class Time {
     /**
      * Construtor da classe.
      *
-     * @param group
-     * @param era
+     * @param grupo
+     * @param ano
      * @param rank
-     * @param coach
+     * @param tecnico
      */
     public Time(char grupo, int ano, int rank, Pessoa tecnico) {
 
@@ -135,7 +135,7 @@ public class Time {
             for (Gol goal : gols) {
                 if (tempo < goal.getTempo()) {
                     maisRapido = goal;
-                    tempo = goal.gettempo();
+                    tempo = goal.getTempo();
                 }
             }
         }

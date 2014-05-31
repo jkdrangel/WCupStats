@@ -38,7 +38,7 @@ public class SistemaTest {
     @Test
     public void cadastrarJogadorTest() {
         Date nascimento;
-        sistema.cadastrarJogador("Neymar", nascimento, 10, "ATACANTE");
+        sistema.cadastrarJogador("Neymar", nascimento, 10, "AT");
     }
 
     @Test
@@ -49,7 +49,8 @@ public class SistemaTest {
 
     @Test
     public void cadastrarSelecaoTest() {
-        sistema.cadastrarSelecao("A", 2014, 32);
+        Tecnico tec = sistema.getTecnico().get("Felipao");
+        sistema.cadastrarSelecao('A', 2014, 32, tec);
     }
 
     @Test
