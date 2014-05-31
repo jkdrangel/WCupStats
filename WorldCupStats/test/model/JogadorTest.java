@@ -8,6 +8,7 @@
 
 package model;
 
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,30 +21,13 @@ import static org.junit.Assert.*;
  * @author Vinícius
  */
 public class JogadorTest {
-    
-    public JogadorTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+    private Jogador j1, j2, j3;
+    private Date d1, d2, d3;
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        d1 = new Date();
+        j1 = new Jogador("Carlos Alberto", , 11, "Volante");
     }
     
 }

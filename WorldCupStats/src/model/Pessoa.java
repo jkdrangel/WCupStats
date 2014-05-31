@@ -16,7 +16,7 @@ import java.util.Date;
  * @version 1.0
  *
  */
-class Pessoa {
+class Pessoa{
     private String nome;
     private Date dataDeNascimento;
     
@@ -45,7 +45,17 @@ class Pessoa {
     public void setDataDeNascimento(Date dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
-    
-    
-    
+
+    /**
+     * Metodo que verifica se a instancia da classe colocada como atributo é a mesma
+     * que a classe que chama esse método
+     * @param p
+     * @return 
+     */
+    public boolean equals(Pessoa p){
+        if(p.getNome().equals(this.nome) && p.getDataDeNascimento().equals(this.dataDeNascimento)){
+            return true;
+        }
+        return false;
+    }
 }

@@ -24,7 +24,7 @@ import model.Enuns.FuncaoJogador;
  */
 public class Jogador extends Pessoa{
     private int numero;
-    FuncaoJogador funcao;
+    private FuncaoJogador funcao;
     
     public Jogador(String nome, Date dataDeNascimento, int numero, String funcao) throws FuncaoJogadorNaoEncontradaException{
         super(nome, dataDeNascimento);
@@ -33,22 +33,22 @@ public class Jogador extends Pessoa{
     }
 
     private void atribuiPosicao(String funcao) throws FuncaoJogadorNaoEncontradaException {
-        if(funcao.equals(FuncaoJogador.ATACANTE.getFuncao())){
+        if(funcao.equalsIgnoreCase(FuncaoJogador.ATACANTE.getFuncao())){
             this.funcao = FuncaoJogador.ATACANTE;
         }
-        else if(funcao.equals(FuncaoJogador.GOLEIRO.getFuncao())){
+        else if(funcao.equalsIgnoreCase(FuncaoJogador.GOLEIRO.getFuncao())){
             this.funcao = FuncaoJogador.GOLEIRO;
         }
-        else if(funcao.equals(FuncaoJogador.LATERAL.getFuncao())){
+        else if(funcao.equalsIgnoreCase(FuncaoJogador.LATERAL.getFuncao())){
             this.funcao = FuncaoJogador.LATERAL;
         }
-        else if(funcao.equals(FuncaoJogador.MEIO_DE_CAMPO.getFuncao())){
+        else if(funcao.equalsIgnoreCase(FuncaoJogador.MEIO_DE_CAMPO.getFuncao())){
             this.funcao = FuncaoJogador.MEIO_DE_CAMPO;
         }
-        else if(funcao.equals(FuncaoJogador.VOLANTE.getFuncao())){
+        else if(funcao.equalsIgnoreCase(FuncaoJogador.VOLANTE.getFuncao())){
             this.funcao = FuncaoJogador.VOLANTE;
         }
-        else if(funcao.equals(FuncaoJogador.ZAGUEIRO.getFuncao())){
+        else if(funcao.equalsIgnoreCase(FuncaoJogador.ZAGUEIRO.getFuncao())){
             this.funcao = FuncaoJogador.ZAGUEIRO;
         }
         else{
@@ -66,5 +66,20 @@ public class Jogador extends Pessoa{
     
     public void setNumero(int n){
         this.numero = n;
+    }
+    
+    /**
+     * Retorna verdadeiro se as instancia de jogadores comparada forem iguais
+     * @param j
+     * @return 
+     */
+    public boolean equals(Jogador j){
+        if(j.getNumero() == this.numero && j.getFuncao().equals(this.funcao.getFuncao())
+                && j.getNome().equalsIgnoreCase(super.getNome()) 
+                && j.getDataDeNascimento().equals(super.getDataDeNascimento())){
+            return true;
+        }
+        
+        return false;
     }
 }
