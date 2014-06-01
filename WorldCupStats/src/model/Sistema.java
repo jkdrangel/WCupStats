@@ -5,12 +5,10 @@
  * codigo foi desenvolvido pelos integrantes desta equipe: Diego Leite,
  * Lucas Santana, Oto Antonio e Lucas Vinicius.
  */
-
 package model;
 
 import java.util.ArrayList;
 import java.util.Date;
-
 
 /**
  *
@@ -19,20 +17,20 @@ import java.util.Date;
 class Sistema {
 
     private int ID;
-    ArrayList<Pais> paises= new ArrayList<Pais>();
-    ArrayList<Copa> copas=new ArrayList<Copa>();
+    ArrayList<Pais> paises = new ArrayList<Pais>();
+    ArrayList<Copa> copas = new ArrayList<Copa>();
 
     Sistema() {
     }
 
     void cadastrarPais(String brazil, String america_do_sul) {
-    paises.add(new Pais(brazil, america_do_sul));
+        paises.add(new Pais(brazil, america_do_sul));
     }
 
     void cadastrarCopa(Date ano) {
-    copas.add(new Copa(i));
-            }
-
+    //    copas.add(new Copa(i));
+    }
+    
     void listarPaises() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -40,5 +38,5 @@ class Sistema {
     void listarCopas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

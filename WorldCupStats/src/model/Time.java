@@ -9,6 +9,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -170,10 +171,10 @@ public class Time {
         Gol maisRapido = null;
         if (! this.getGols().isEmpty()) {
             maisRapido = this.getGols().get(0);
-            double tempo = maisRapido.getTempo();
+            Date tempo = maisRapido.getTempo();
 
             for (Gol goal : this.getGols()) {
-                if (tempo > goal.getTempo()) {
+                if (tempo.getSeconds() > goal.getTempo().getSeconds()) {
                     maisRapido = goal;
                     tempo = goal.getTempo();
                 }

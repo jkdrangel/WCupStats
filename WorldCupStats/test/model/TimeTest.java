@@ -47,11 +47,19 @@ public class TimeTest {
 
         assertTrue(0 == time.getGols().size());
 
-        Gol gol1 = new Gol(null, null, time);
-        Gol gol2 = new Gol(null, null, time);
-        Gol gol3 = new Gol(null, null, time);
+        boolean foiContra = true;
+        Jogador jogador = null;
+        Jogo jogo = null;
+        
+        Date tempo1= new Date(15000);
+        Date tempo2 = new Date(3000);
+        Date tempo3 = new Date(5000);
+        
+        Gol gol1 = new Gol(jogo, jogador, time, tempo1, foiContra);
+        Gol gol2 = new Gol(jogo, jogador, time, tempo2, foiContra);
+        Gol gol3 = new Gol(jogo, jogador, time, tempo3, foiContra);
+        
         time.addGoals(gol1);
-
         assertTrue(1 == time.getGols().size());
         assertSame(gol1, time.getGols().get(0));
 
@@ -69,24 +77,31 @@ public class TimeTest {
         Gol rapido = time.golRapido();
         assertNull("Se não fez gol não tem o rapido", rapido);
 
-        Gol gol1 = new Gol(null, null, time,);
+        boolean foiContra = true;
+        Jogador jogador = null;
+        Jogo jogo = null;
+        
+        Date tempo1 = new Date(15000);
+        Date tempo2 = new Date(3000);
+        Date tempo3 = new Date(5000);
+        
+        Gol gol1 = new Gol(jogo, jogador, time, tempo1, foiContra);
         time.addGoals(gol1);
         rapido = time.golRapido();
         assertSame(gol1, rapido);
-        assertTrue((15.0 == rapido.getTempo()));
+        assertTrue( 15000 == rapido.getTempo().getTime() );
 
-        Gol gol2 = new Gol(null, null, time,);
+        Gol gol2 = new Gol(jogo, jogador, time, tempo2, foiContra);
         time.addGoals(gol2);
         rapido = time.golRapido();
         assertSame(gol2, rapido);
+        assertTrue( 3000 == rapido.getTempo().getTime() );
 
-        assertTrue((3.0 == rapido.getTempo()));
-
-        Gol gol3 = new Gol(null, null, time,);
+        Gol gol3 = new Gol(jogo, jogador, time, tempo3, foiContra);
         time.addGoals(gol3);
         rapido = time.golRapido();
         assertSame(gol2, rapido);
-        assertTrue((3.0 == rapido.getTempo()));
+        assertTrue( 3000 == rapido.getTempo().getTime() );
     }
 
     @Test
