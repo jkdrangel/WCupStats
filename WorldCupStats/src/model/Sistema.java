@@ -8,8 +8,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -28,8 +30,8 @@ class Sistema {
         paises.add(new Pais(brazil, america_do_sul));
     }
 
-    void cadastrarCopa(Date ano) {
-    copas.add(new Copa(ano, null));
+    void cadastrarCopa(Date ano, Pais sede) {
+    copas.add(new Copa(ano, sede));
     }
     
     public Iterator<Pais> listarPaises() {
@@ -44,8 +46,17 @@ class Sistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void eDoBrasil() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Pais> eDoBrasil() {
+    ArrayList <Pais> cinco;
+    cinco= (ArrayList<Pais>) paises.clone();
+    Collections.sort((List)cinco);
+    if(cinco.isEmpty()){
+    return null;
+    }
+    else if(cinco.size()<=5){
+    return cinco;
+    }
+    return (ArrayList<Pais>) cinco.subList(0, 4);
     }
 
     void toDentro() {

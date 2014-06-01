@@ -45,11 +45,11 @@ public class SistemaTest {
 
     @Test
     public void cadastrarCopaTest() {
-        sistema.cadastrarCopa(new Date(2014,0,0));
+        sistema.cadastrarCopa(new Date(2014,0,0), new Pais("Brazil", "America do sul"));
         assertFalse(sistema.copas.isEmpty());
         assertTrue(sistema.copas.size()==1);
         
-        sistema.cadastrarCopa(new Date(2010,0,0));
+        sistema.cadastrarCopa(new Date(2010,0,0), new Pais("Africa do Sul", "Africa"));
         assertFalse(sistema.copas.size()==1);
         assertTrue(sistema.copas.size()==2);
     }
@@ -64,6 +64,12 @@ public class SistemaTest {
     public void listarCopasTest() {
         Iterator it=sistema.listarCopas();
         assertFalse(it.hasNext());
+        
+        sistema.cadastrarCopa(new Date(2014,0,0), new Pais("Brazil", "America do sul"));
+        sistema.cadastrarCopa(new Date(2010,0,0), new Pais("Africa do Sul", "Africa"));
+        assertTrue(it.hasNext());
+        assertEquals(new Date(2014,0,0), ((Copa)it.next()).getData());
+        
     }
     
     @Test
