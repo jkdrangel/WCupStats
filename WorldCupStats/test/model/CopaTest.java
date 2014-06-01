@@ -19,7 +19,7 @@ import org.junit.Test;
  * @author lsantana
  */
 public class CopaTest {
-    Copa c=new Copa(new Date(2014,0,0));
+    Copa c=new Copa(new Date(2014,0,0), new Pais("Brasil","America do sul"));
     public CopaTest() {
     }
     
@@ -30,5 +30,30 @@ public class CopaTest {
     @After
     public void tearDown() {
     }
-
+    
+    @Test
+    public void listarJogos(){
+    c.listarJogos();   
+    }
+    
+    @Test
+    public void consultarQtdMediaGols(){
+    c.consultarQtdMediaGols();
+    }
+    
+    @Test
+    public void listarJogosEmpatados(){
+    c.listarJogosEmpatados();
+    }
+    
+    @Test
+    public void consultarClassificacao(){
+    c.consultarClassificacao();
+    }
+    
+    @Test
+    public void consultarMediaIdade(){
+    c.consultarMediaIdade();
+    }
+    
 }

@@ -8,6 +8,9 @@
 
 package model;
 
+import java.util.ArrayList;
+import model.Enuns.FaseCopa;
+
 /**
  * Classe que representa um pais.
  *
@@ -18,9 +21,11 @@ package model;
  * @see Time
  */
 public class Pais {
-
-    void cadastrarSelecao(String a, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    ArrayList<Time> selecoes=new ArrayList<Time>();
+    
+    public void cadastrarSelecao(String a, int i) {
+    selecoes.add(new Time(FaseCopa.GRUPOS.getFase().charAt(0), 0, 0, null, this, null));
     }
     
     private final String nome;
@@ -51,5 +56,9 @@ public class Pais {
     @Override
     public String toString() {
         return "Pais{" + "nome=" + nome + '}';
+    }
+
+    void consultarQtdJogos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

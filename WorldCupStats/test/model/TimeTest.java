@@ -36,7 +36,7 @@ public class TimeTest {
         Date dataQualqer = new Date();
         pais = new Pais("Sertao", "Nordeste");
         tecnico = new Tecnico("Luiz Gonzaga",dataQualqer);
-        copa = new Copa(dataQualqer);
+        copa = new Copa(dataQualqer,null);
         grupo = 'A';
         ano = 1994;
         rank = 1;

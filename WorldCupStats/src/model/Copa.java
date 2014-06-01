@@ -8,6 +8,7 @@
 
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,9 +19,12 @@ public class Copa {
     
     private Date data;
     private int ID;
-
-    public Copa(Date data) {
+    private final Pais paisSede;
+    private final ArrayList<Time> timesParticipantes= new ArrayList<Time>(); 
+    
+    public Copa(Date data, Pais sede) {
         this.data = data;
+        paisSede=sede;
     }
 
     public Date getData() {
@@ -31,6 +35,10 @@ public class Copa {
         this.data = data;
     }
 
+    public Pais getPaisSede() {
+        return paisSede;
+    }
+    
     public int getID() {
         return ID;
     }
@@ -45,6 +53,26 @@ public class Copa {
     }
 
     void cadastrarSelecao(String a) {
+    
+    }
+
+    void listarJogos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void consultarQtdMediaGols() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void listarJogosEmpatados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void consultarClassificacao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void consultarMediaIdade() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -38,6 +38,10 @@ public class PaisTest {
     
     }
     
+    @Test
+    public void consultarQtdJogos() {
+    p.consultarQtdJogos();
+    }
     
     
 }
