@@ -5,7 +5,6 @@
  * codigo foi desenvolvido pelos integrantes desta equipe: Diego Leite,
  * Lucas Santana, Oto Antonio e Lucas Vinicius.
  */
-
 package model;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class Time {
 
     /**
      * Grupo da selecao em uma determinada copa.
-     */ 
+     */
     private final char grupo;
     /**
      * Ano em que o time esteve na copa (ID).
@@ -40,8 +39,8 @@ public class Time {
     /**
      * Tecnico da selecao em um ano de copa.
      */
-    private final Pessoa tecnico
-;    /**
+    private final Pessoa tecnico;
+    /**
      * Selecao de jogadores para uma copa.
      */
     private List<Pessoa> jogadores;
@@ -51,13 +50,12 @@ public class Time {
     private List<Gol> gols;
     /**
      * Pais ao qual o time representa.
-    */ 
+     */
     private final Pais pais;
     /**
      * Copa em que esta selecao participou.
-    */
+     */
     private final Copa copa;
-    
 
     /**
      * Construtor da classe.
@@ -77,7 +75,7 @@ public class Time {
         this.tecnico = tecnico;
         this.pais = pais;
         this.copa = copa;
-        
+
         jogadores = new ArrayList<Pessoa>();
         gols = new ArrayList<Gol>();
     }
@@ -88,9 +86,24 @@ public class Time {
      */
     @Override
     public String toString() {
-        return "Seleção do(a) "+pais.getNome()+" de "+this.getAno();
+        return "" + pais.getNome();
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        Time oo;
+        if (o instanceof Time) {
+            oo = (Time) o;
+            if (this.toString().equals(oo.toString()) && this.getAno() == oo.getAno() 
+                                                      && this.getPais() == oo.getPais()
+                                                      && this.getTecnico().equals(oo.getTecnico())
+                                                      && this.getGrupo() == oo.getGrupo() ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * @return the grupo
      */
@@ -169,7 +182,7 @@ public class Time {
     public Gol golRapido() {
 
         Gol maisRapido = null;
-        if (! this.getGols().isEmpty()) {
+        if (!this.getGols().isEmpty()) {
             maisRapido = this.getGols().get(0);
             Date tempo = maisRapido.getTempo();
 
@@ -180,7 +193,7 @@ public class Time {
                 }
             }
         }
-        
+
         return maisRapido;
     }
 

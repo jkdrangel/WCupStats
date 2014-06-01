@@ -7,6 +7,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import model.Enuns.FaseCopa;
@@ -59,6 +60,14 @@ public class Jogo {
      * Lista de substituicoes no jogo.
      */
     private List<Substituicao> substis;
+    /**
+     * Gols do time A no jogo.
+    */
+    private List<Gol> golsTimeA;
+    /**
+     * Gols do time B no jogo.
+     */
+    private List<Gol> golsTimeB;
 
      // Construtor da classe.
     public Jogo(FaseCopa FASE, Date data, String local, Copa copa, Time timeA,
@@ -72,6 +81,10 @@ public class Jogo {
         this.timeB = timeB;
         this.escalacaoA = escalacaoA;
         this.escalacaoB = escalacaoB;
+        
+        substis = new ArrayList<Substituicao>();
+        golsTimeA = new ArrayList<Gol>();
+        golsTimeB = new ArrayList<Gol>();
     }
 
     /**
@@ -142,5 +155,56 @@ public class Jogo {
      */
     public void addSubstis(Substituicao substis) {
         this.substis.add(substis);
+    }
+    
+    /**
+     * 
+     * @param gol 
+     * @param foiGolDoTimeA 
+     */
+    public void addGol(Gol gol, boolean foiGolDoTimeA) {
+        
+        if(foiGolDoTimeA) {
+            this.golsTimeA.add(gol);
+        } else  {
+            this.golsTimeB.add(gol);
+        }
+    }
+    
+    public String placarJogo() {
+        
+        String a = timeA.toString();
+        int gA = golsTimeA.size();
+        String b = timeB.toString();
+        int gB = golsTimeB.size();
+        
+        return a+" "+gA+"x"+gB+" "+b;
+    }
+    
+    public boolean timeParticipouJogo(Time timeC) {
+        
+       return ( timeA.equals(timeC) || timeB.equals(timeC) );
+    }
+    
+    public boolean vitoriaIncontestavel() {
+        
+        int diff = (golsTimeA.size() > golsTimeB.size())? golsTimeA.size() - golsTimeB.size() 
+                                                                           :
+                                                          golsTimeB.size() - golsTimeA.size();
+        return (diff >= 3);
+    }
+    
+    public int diferencaGols() {
+        
+        int diff = (golsTimeA.size() > golsTimeB.size())? golsTimeA.size() - golsTimeB.size() 
+                                                                           :
+                                                          golsTimeB.size() - golsTimeA.size();
+        
+        return diff;
+    }
+    
+    public boolean empatou() {
+        
+        return ( golsTimeA.size() == golsTimeB.size() );
     }
 }
