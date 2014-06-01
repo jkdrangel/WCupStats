@@ -5,7 +5,9 @@
  */
 package model;
 
+import exceptions.FuncaoJogadorNaoEncontradaException;
 import java.util.Date;
+import model.Enuns.FuncaoJogador;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -113,7 +115,12 @@ public class TimeTest {
 
     @Test
     public void testVerificarJogadores() {
-        assertNull("Esperando informações dos jogadores", time);
+        
+        Date dataQualquer = new Date();
+        FuncaoJogador posicaoJ;
+        
+       // Jogador jogador1 = new Jogador("Biru Biro", dataQualquer, 10, posicaoJ.MEIO_DE_CAMPO)
+        
     }
 
     @Test
