@@ -5,7 +5,6 @@
  */
 package model;
 
-import exceptions.FuncaoJogadorNaoEncontradaException;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
 import org.junit.Before;
