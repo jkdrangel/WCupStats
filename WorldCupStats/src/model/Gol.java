@@ -24,7 +24,7 @@ import java.util.Date;
 public class Gol {
     private int ID;
     private final Jogo jogo;
-    private final Jogador jogador;
+    private final Pessoa jogador;
     private final Time selecao;
     private final Date tempo;
     private final boolean foiContra;
@@ -38,7 +38,7 @@ public class Gol {
      * @param tempo
      * @param foiContra
      */
-    public Gol(Jogo jogo, Jogador jogador, Time selecao, Date tempo, boolean foiContra) {
+    public Gol(Jogo jogo, Pessoa jogador, Time selecao, Date tempo, boolean foiContra) {
         this.jogo = jogo;
         this.jogador = jogador;
         this.selecao = selecao;
@@ -66,7 +66,7 @@ public class Gol {
      * Getter para o Jogador da classe.
      * @return, Retorna o Jogador que fez o Gol.
      */
-    public Jogador getJogador(){
+    public Pessoa getJogador(){
         return this.jogador;
     }
     

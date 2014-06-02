@@ -182,12 +182,12 @@ public class Time {
     public Gol golRapido() {
 
         Gol maisRapido = null;
-        if (!this.getGols().isEmpty()) {
-            maisRapido = this.getGols().get(0);
+        if (!this.gols.isEmpty()) {
+            maisRapido = this.gols.get(0);
             Date tempo = maisRapido.getTempo();
 
-            for (Gol goal : this.getGols()) {
-                if (tempo.getSeconds() > goal.getTempo().getSeconds()) {
+            for (Gol goal : this.getGols()) {                
+                if (tempo.getTime() > goal.getTempo().getTime()) {
                     maisRapido = goal;
                     tempo = goal.getTempo();
                 }
