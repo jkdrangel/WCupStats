@@ -69,10 +69,21 @@ public class Jogo {
      */
     private List<Gol> golsTimeB;
 
-    // Construtor da classe.
+    
+    /**
+     * Construtor da classe.
+     * 
+     * @param FASE
+     * @param data
+     * @param local
+     * @param copa
+     * @param timeA
+     * @param timeB
+     * @param escalacaoA
+     * @param escalacaoB 
+     */
     public Jogo(FaseCopa FASE, Date data, String local, Copa copa, Time timeA,
-            Time timeB, Escalacao escalacaoA,
-            Escalacao escalacaoB) {
+            Time timeB, Escalacao escalacaoA, Escalacao escalacaoB) {
         this.FASE = FASE;
         this.data = data;
         this.local = local;
@@ -241,10 +252,25 @@ public class Jogo {
 
     public Time vencedor() {
 
+        Time vencedor = null;
+        
         if (!empatou()) {
-
+            int gols[] = this.golsLiquidos();
+            vencedor = (gols[0] > gols[1])? timeA : timeB;
         }
 
-        return null;
+        return vencedor;
+    }
+    
+      public Time Derrotado() {
+
+        Time derrotado = null;
+        
+        if (!empatou()) {
+            int gols[] = this.golsLiquidos();
+            derrotado = (gols[0] > gols[1])? timeB : timeA;
+        }
+
+        return derrotado;
     }
 }
