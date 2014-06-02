@@ -9,25 +9,32 @@ import java.util.Date;
 import model.Enuns.FuncaoJogador;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 
 /**
- *
+ * Testes para verificar funcionalidades da classe Time (= Selecao).
+ * 
  * @author D.L.O.L
  *
  * @version 1.0
+ * 
+ * @see Time
  */
 public class TimeTest {
 
     private Time time;
     private Copa copa;
     private Pais pais;
-    private Gol gol;
     private Pessoa tecnico;
     private char grupo;
     private int ano;
     private int rank;
-
+    
+    // Contem 6 Testes.
     @Before
     public void setUp() {
 
