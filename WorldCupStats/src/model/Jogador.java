@@ -7,7 +7,6 @@
  */
 package model;
 
-import exceptions.FuncaoJogadorNaoEncontradaException;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
 
@@ -26,28 +25,10 @@ public class Jogador extends Pessoa {
     private int numero;
     private FuncaoJogador funcao;
 
-    public Jogador(String nome, Date dataDeNascimento, int numero, String funcao) throws FuncaoJogadorNaoEncontradaException {
+    public Jogador(String nome, Date dataDeNascimento, int numero, FuncaoJogador funcao){
         super(nome, dataDeNascimento);
         this.numero = numero;
-        this.atribuiPosicao(funcao);
-    }
-
-    private void atribuiPosicao(String funcao) throws FuncaoJogadorNaoEncontradaException {
-        if (funcao.equalsIgnoreCase(FuncaoJogador.ATACANTE.getFuncao())) {
-            this.funcao = FuncaoJogador.ATACANTE;
-        } else if (funcao.equalsIgnoreCase(FuncaoJogador.GOLEIRO.getFuncao())) {
-            this.funcao = FuncaoJogador.GOLEIRO;
-        } else if (funcao.equalsIgnoreCase(FuncaoJogador.LATERAL.getFuncao())) {
-            this.funcao = FuncaoJogador.LATERAL;
-        } else if (funcao.equalsIgnoreCase(FuncaoJogador.MEIO_DE_CAMPO.getFuncao())) {
-            this.funcao = FuncaoJogador.MEIO_DE_CAMPO;
-        } else if (funcao.equalsIgnoreCase(FuncaoJogador.VOLANTE.getFuncao())) {
-            this.funcao = FuncaoJogador.VOLANTE;
-        } else if (funcao.equalsIgnoreCase(FuncaoJogador.ZAGUEIRO.getFuncao())) {
-            this.funcao = FuncaoJogador.ZAGUEIRO;
-        } else {
-            throw new FuncaoJogadorNaoEncontradaException("A posicao inserida é inválida");
-        }
+        this.funcao = funcao;
     }
 
     public int getNumero() {
