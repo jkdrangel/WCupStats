@@ -62,17 +62,17 @@ public class Jogo {
     private List<Substituicao> substis;
     /**
      * Gols do time A no jogo.
-    */
+     */
     private List<Gol> golsTimeA;
     /**
      * Gols do time B no jogo.
      */
     private List<Gol> golsTimeB;
 
-     // Construtor da classe.
+    // Construtor da classe.
     public Jogo(FaseCopa FASE, Date data, String local, Copa copa, Time timeA,
-                                          Time timeB, Escalacao escalacaoA,
-                                          Escalacao escalacaoB) {
+            Time timeB, Escalacao escalacaoA,
+            Escalacao escalacaoB) {
         this.FASE = FASE;
         this.data = data;
         this.local = local;
@@ -81,7 +81,7 @@ public class Jogo {
         this.timeB = timeB;
         this.escalacaoA = escalacaoA;
         this.escalacaoB = escalacaoB;
-        
+
         substis = new ArrayList<Substituicao>();
         golsTimeA = new ArrayList<Gol>();
         golsTimeB = new ArrayList<Gol>();
@@ -156,55 +156,95 @@ public class Jogo {
     public void addSubstis(Substituicao substis) {
         this.substis.add(substis);
     }
-    
+
     /**
-     * 
-     * @param gol 
-     * @param foiGolDoTimeA 
+     *
+     * @param gol
      */
-    public void addGol(Gol gol, boolean foiGolDoTimeA) {
-        
-        if(foiGolDoTimeA) {
-            this.golsTimeA.add(gol);
-        } else  {
-            this.golsTimeB.add(gol);
-        }
+    public void addGolTimeA(Gol gol) {
+
+        this.golsTimeA.add(gol);
     }
-    
+
+    /**
+     *
+     * @param gol
+     */
+    public void addGolTimeB(Gol gol) {
+
+        this.golsTimeB.add(gol);
+    }
+
+    private int[] golsLiquidos() {
+
+        int gols[] = new int[2];
+        gols[0] = golsTimeA.size();
+        gols[1] = golsTimeB.size();
+
+        for (Gol golA : golsTimeA) {
+            if (golA.isFoiContra()) { 
+                gols[0]--; // Diminui um gol no placar do Time A
+                gols[1]++; // Aumenta um gol no placar do Time B
+            }
+        }
+        for (Gol golB : golsTimeB) {
+            if (golB.isFoiContra()) {
+                gols[0]++; // Aumenta um gol no placar do Time A
+                gols[1]--; // Diminui um gol no placar do Time B
+            }
+        }
+
+        return gols;
+    }
+
     public String placarJogo() {
+
+        int gols[] = this.golsLiquidos();
         
         String a = timeA.toString();
-        int gA = golsTimeA.size();
+        int gA = gols[0];
         String b = timeB.toString();
-        int gB = golsTimeB.size();
-        
-        return a+" "+gA+"x"+gB+" "+b;
+        int gB = gols[1];
+
+        return a + " " + gA + "x" + gB + " " + b;
     }
-    
+
     public boolean timeParticipouJogo(Time timeC) {
-        
-       return ( timeA.equals(timeC) || timeB.equals(timeC) );
+
+        return (timeA.equals(timeC) || timeB.equals(timeC));
     }
-    
+
     public boolean vitoriaIncontestavel() {
+
+        int diff = this.diferencaGols();
         
-        int diff = (golsTimeA.size() > golsTimeB.size())? golsTimeA.size() - golsTimeB.size() 
-                                                                           :
-                                                          golsTimeB.size() - golsTimeA.size();
         return (diff >= 3);
     }
-    
+
     public int diferencaGols() {
+
+        int gols[] = this.golsLiquidos();
         
-        int diff = (golsTimeA.size() > golsTimeB.size())? golsTimeA.size() - golsTimeB.size() 
-                                                                           :
-                                                          golsTimeB.size() - golsTimeA.size();
-        
+        int golLiquidoTimeA = gols[0];
+        int golLiquidoTimeB = gols[1];
+
+        int diff = (golLiquidoTimeA > golLiquidoTimeB) ? golLiquidoTimeA - golLiquidoTimeB
+                                                                         : 
+                                                         golLiquidoTimeB - golLiquidoTimeA;
         return diff;
     }
-    
+
     public boolean empatou() {
-        
-        return ( golsTimeA.size() == golsTimeB.size() );
+
+        return ( 0 == this.diferencaGols() );
+    }
+
+    public Time vencedor() {
+
+        if (!empatou()) {
+
+        }
+
+        return null;
     }
 }

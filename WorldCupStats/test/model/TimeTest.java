@@ -152,7 +152,7 @@ public class TimeTest {
 
     @Test
     public void testEquals() {
-        Time outro = new Time(grupo, ano, rank, tecnico, pais, copa); // Mesma declaracao para o time.
-        assertTrue((time.equals(outro)));
+        Time mesmoTime = new Time(grupo, ano, rank, tecnico, pais, copa); // Mesma declaracao para o time.
+        assertTrue((time.equals(mesmoTime)));
     }
 }

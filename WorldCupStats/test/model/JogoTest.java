@@ -3,248 +3,224 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.util.Date;
 import java.util.List;
+import model.Enuns.FaseCopa;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
+ * Testes para verificar funcionalidades da classe Jogo.
  *
- * @author marc
+ * @author D.L.O.L
+ *
+ * @version 1.0
+ *
+ * @see Jogo
  */
 public class JogoTest {
-    
-    
+
+    private Jogo jogo;
+    private Copa copa;
+    private Time brazil;
+    private Time alemanha;
+    private Escalacao doBrazil;
+    private Escalacao daAlemanha;
+    private Tecnico tecnico;
+    private Pais Brasil;
+    private Pais Alemanha;
+
     @Before
     public void setUp() {
+        tecnico = new Tecnico("Alguem", new Date(10));
+        Brasil = new Pais("Brasil", "America do Sul");
+        Alemanha = new Pais("Alemanha", "Asia");
+
+        brazil = new Time('J', 2014, 2, tecnico, Brasil, copa);
+        alemanha = new Time('H', 2014, 3, tecnico, Alemanha, copa);
+
+        doBrazil = null;
+        daAlemanha = null;
+
+        jogo = new Jogo(FaseCopa.SEMI, new Date(), "Fonte Nova - Salvador", copa, brazil, alemanha, doBrazil, daAlemanha);
     }
 
-    /**
-     * Test of getFASE method, of class Jogo.
-     */
     @Test
-    public void testGetFASE() {
-        System.out.println("getFASE");
-        Jogo instance = null;
-        String expResult = "";
-        String result = instance.getFASE();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testFASE() {
+        assertTrue(false);
     }
 
-    /**
-     * Test of getData method, of class Jogo.
-     */
-    @Test
-    public void testGetData() {
-        System.out.println("getData");
-        Jogo instance = null;
-        Date expResult = null;
-        Date result = instance.getData();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLocal method, of class Jogo.
-     */
-    @Test
-    public void testGetLocal() {
-        System.out.println("getLocal");
-        Jogo instance = null;
-        String expResult = "";
-        String result = instance.getLocal();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCopa method, of class Jogo.
-     */
-    @Test
-    public void testGetCopa() {
-        System.out.println("getCopa");
-        Jogo instance = null;
-        Copa expResult = null;
-        Copa result = instance.getCopa();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTimeA method, of class Jogo.
-     */
-    @Test
-    public void testGetTimeA() {
-        System.out.println("getTimeA");
-        Jogo instance = null;
-        Time expResult = null;
-        Time result = instance.getTimeA();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTimeB method, of class Jogo.
-     */
-    @Test
-    public void testGetTimeB() {
-        System.out.println("getTimeB");
-        Jogo instance = null;
-        Time expResult = null;
-        Time result = instance.getTimeB();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getEscalacaoA method, of class Jogo.
-     */
     @Test
     public void testGetEscalacaoA() {
-        System.out.println("getEscalacaoA");
-        Jogo instance = null;
-        Escalacao expResult = null;
-        Escalacao result = instance.getEscalacaoA();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(false);
     }
 
-    /**
-     * Test of getEscalacaoB method, of class Jogo.
-     */
     @Test
     public void testGetEscalacaoB() {
-        System.out.println("getEscalacaoB");
-        Jogo instance = null;
-        Escalacao expResult = null;
-        Escalacao result = instance.getEscalacaoB();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(false);
     }
 
-    /**
-     * Test of getSubstis method, of class Jogo.
-     */
     @Test
     public void testGetSubstis() {
-        System.out.println("getSubstis");
-        Jogo instance = null;
-        List<Substituicao> expResult = null;
-        List<Substituicao> result = instance.getSubstis();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(false);
     }
 
-    /**
-     * Test of addSubstis method, of class Jogo.
-     */
     @Test
     public void testAddSubstis() {
-        System.out.println("addSubstis");
-        Substituicao substis = null;
-        Jogo instance = null;
-        instance.addSubstis(substis);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(false);
     }
 
-    /**
-     * Test of addGol method, of class Jogo.
-     */
     @Test
     public void testAddGol() {
-        System.out.println("addGol");
-        Gol gol = null;
-        boolean foiGolDoTimeA = false;
-        Jogo instance = null;
-        instance.addGol(gol, foiGolDoTimeA);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(false);
     }
 
-    /**
-     * Test of placarJogo method, of class Jogo.
-     */
     @Test
     public void testPlacarJogo() {
-        System.out.println("placarJogo");
-        Jogo instance = null;
-        String expResult = "";
-        String result = instance.placarJogo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        Date tempo1 = new Date(180000); // 3 minutos
+        Date tempo2 = new Date(300000); // 5 minutos
+        Date tempo3 = new Date(900000); // 15 minutos
+        Date tempo4 = new Date(2400000); // 40 minutos
+        Date tempo5 = new Date(5400000); // 90 minutos
+        Date tempo6 = new Date(5580000); // 93 minutos
+        Date tempo7 = new Date(5700000); // 95 minutos
+
+        Gol golBR1 = new Gol(jogo, null, brazil, tempo1, false);
+        Gol golBR2 = new Gol(jogo, null, brazil, tempo2, true);
+        Gol golBR3 = new Gol(jogo, null, brazil, tempo3, false);
+        Gol golBR4 = new Gol(jogo, null, brazil, tempo4, false);
+        Gol golAL1 = new Gol(jogo, null, brazil, tempo5, false);
+        Gol golAL2 = new Gol(jogo, null, brazil, tempo6, true);
+        Gol golAL3 = new Gol(jogo, null, brazil, tempo7, true);
+
+        jogo.addGolTimeA(golBR1);
+        jogo.addGolTimeA(golBR2);
+        jogo.addGolTimeA(golBR3);
+        jogo.addGolTimeA(golBR4);
+        jogo.addGolTimeB(golAL1);
+        jogo.addGolTimeB(golAL2);
+        jogo.addGolTimeB(golAL3);
+
+        String respEsperada = "Brasil 5x2 Alemanha";
+        String placar = jogo.placarJogo();
+
+        assertEquals(respEsperada, placar);
     }
 
-    /**
-     * Test of timeParticipouJogo method, of class Jogo.
-     */
     @Test
     public void testTimeParticipouJogo() {
-        System.out.println("timeParticipouJogo");
-        Time timeC = null;
-        Jogo instance = null;
-        boolean expResult = false;
-        boolean result = instance.timeParticipouJogo(timeC);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        Time italia = new Time('B', 2014, 25, tecnico, new Pais("Italia", "Europa"), copa);
+        assertEquals(false, jogo.timeParticipouJogo(italia));
+
+        Time mesmoBrazil = new Time('J', 2014, 2, tecnico, Brasil, copa);
+        assertEquals(true, jogo.timeParticipouJogo(mesmoBrazil));
+
+        Time mesmaAlemanha = new Time('H', 2014, 3, tecnico, Alemanha, copa);
+        assertEquals(true, jogo.timeParticipouJogo(mesmaAlemanha));
+
+        Time outroBrazil = new Time('J', 2002, 2, tecnico, Brasil, copa);
+        assertEquals(false, jogo.timeParticipouJogo(outroBrazil));
+
+        Time outraAlemanha = new Time('H', 2002, 3, tecnico, Alemanha, copa);
+        assertEquals(false, jogo.timeParticipouJogo(outraAlemanha));
     }
 
-    /**
-     * Test of vitoriaIncontestavel method, of class Jogo.
-     */
     @Test
     public void testVitoriaIncontestavel() {
-        System.out.println("vitoriaIncontestavel");
-        Jogo instance = null;
-        boolean expResult = false;
-        boolean result = instance.vitoriaIncontestavel();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        Date tempo1 = new Date(180000); // 3 minutos
+        Date tempo2 = new Date(300000); // 5 minutos
+        Date tempo3 = new Date(900000); // 15 minutos
+        Date tempo4 = new Date(2400000); // 40 minutos
+        Date tempo5 = new Date(5400000); // 90 minutos
+        Date tempo6 = new Date(5580000); // 93 minutos
+        Date tempo7 = new Date(5700000); // 95 minutos
+
+        Gol golBR1 = new Gol(jogo, null, brazil, tempo1, false);
+        Gol golBR2 = new Gol(jogo, null, brazil, tempo2, true);
+        Gol golBR3 = new Gol(jogo, null, brazil, tempo3, false);
+        Gol golBR4 = new Gol(jogo, null, brazil, tempo4, false);
+        Gol golAL1 = new Gol(jogo, null, brazil, tempo5, false);
+        Gol golAL2 = new Gol(jogo, null, brazil, tempo6, true);
+        Gol golAL3 = new Gol(jogo, null, brazil, tempo7, true);
+
+        jogo.addGolTimeA(golBR1);
+        jogo.addGolTimeA(golBR2);
+        jogo.addGolTimeA(golBR3);
+        jogo.addGolTimeA(golBR4);
+        jogo.addGolTimeB(golAL1);
+        jogo.addGolTimeB(golAL2);
+        jogo.addGolTimeB(golAL3);
+
+        assertEquals(true, jogo.vitoriaIncontestavel());
     }
 
-    /**
-     * Test of diferencaGols method, of class Jogo.
-     */
     @Test
     public void testDiferencaGols() {
-        System.out.println("diferencaGols");
-        Jogo instance = null;
-        int expResult = 0;
-        int result = instance.diferencaGols();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        Date tempo1 = new Date(180000); // 3 minutos
+        Date tempo2 = new Date(300000); // 5 minutos
+        Date tempo3 = new Date(900000); // 15 minutos
+        Date tempo4 = new Date(2400000); // 40 minutos
+        Date tempo5 = new Date(5400000); // 90 minutos
+        Date tempo6 = new Date(5580000); // 93 minutos
+        Date tempo7 = new Date(5700000); // 95 minutos
+
+        Gol golBR1 = new Gol(jogo, null, brazil, tempo1, false);
+        Gol golBR2 = new Gol(jogo, null, brazil, tempo2, true);
+        Gol golBR3 = new Gol(jogo, null, brazil, tempo3, false);
+        Gol golBR4 = new Gol(jogo, null, brazil, tempo4, false);
+        Gol golAL1 = new Gol(jogo, null, brazil, tempo5, false);
+        Gol golAL2 = new Gol(jogo, null, brazil, tempo6, true);
+        Gol golAL3 = new Gol(jogo, null, brazil, tempo7, true);
+
+        jogo.addGolTimeA(golBR1);
+        jogo.addGolTimeA(golBR2);
+        jogo.addGolTimeA(golBR3);
+        jogo.addGolTimeA(golBR4);
+        jogo.addGolTimeB(golAL1);
+        jogo.addGolTimeB(golAL2);
+        jogo.addGolTimeB(golAL3);
+
+        assertEquals(3, jogo.diferencaGols());
     }
 
-    /**
-     * Test of empatou method, of class Jogo.
-     */
     @Test
     public void testEmpatou() {
-        System.out.println("empatou");
-        Jogo instance = null;
-        boolean expResult = false;
-        boolean result = instance.empatou();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        Date tempo = new Date();
+
+        Gol golBR1 = new Gol(jogo, null, brazil, tempo, false);
+        Gol golBR2 = new Gol(jogo, null, brazil, tempo, true);
+        Gol golAL1 = new Gol(jogo, null, brazil, tempo, true);
+        Gol golAL2 = new Gol(jogo, null, brazil, tempo, true);
+
+        jogo.addGolTimeA(golBR1);
+        jogo.addGolTimeA(golBR2);
+        jogo.addGolTimeB(golAL1);
+        jogo.addGolTimeB(golAL2);
+
+        assertEquals(false, jogo.empatou()); // Brasil 3x1 Alemanha.
+
+        Gol golAL3 = new Gol(jogo, null, brazil, tempo, false);
+        Gol golAL4 = new Gol(jogo, null, brazil, tempo, false);
+        jogo.addGolTimeB(golAL3);
+        jogo.addGolTimeB(golAL4);
+
+        assertEquals(true, jogo.empatou()); // Brasil 3x3 Alemanha.
     }
-    
+
+    @Test
+    public void testVencedor() {
+        assertTrue(false);
+    }
 }
