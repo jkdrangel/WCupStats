@@ -7,14 +7,14 @@
     <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/wcupstats?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">adminCiRTagI</property>
     <property name="hibernate.connection.password">FDGx3lJP3v_h</property>
-    <mapping resource="model/Enunsd/Selecao.hbm.xml"/>
-    <mapping resource="model/Enunsd/Gol.hbm.xml"/>
-    <mapping resource="model/Enunsd/Jogador.hbm.xml"/>
-    <mapping resource="model/Enunsd/Tecnico.hbm.xml"/>
-    <mapping resource="model/Enunsd/Substituicao.hbm.xml"/>
-    <mapping resource="model/Enunsd/Escalacao.hbm.xml"/>
-    <mapping resource="model/Enunsd/Jogo.hbm.xml"/>
-    <mapping resource="model/Enunsd/Pais.hbm.xml"/>
-    <mapping resource="model/Enunsd/Copa.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Selecao.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Gol.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Jogador.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Tecnico.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Substituicao.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Escalacao.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Jogo.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Pais.hbm.xml"/>
+    <mapping resource="model/Enunsd/NAOMEXER/Copa.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

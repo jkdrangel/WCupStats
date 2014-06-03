@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="wcupstats" name="model.Enunsd.NAOMEXER.Selecao" table="Selecao">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.Enunsd.NAOMEXER.Copa" fetch="select" name="copa">
+      <column name="ID_COPA" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Enunsd.NAOMEXER.Pais" fetch="select" name="pais">
+      <column name="ID_PAIS" not-null="true"/>
+    </many-to-one>
+    <property name="grupo" type="string">
+      <column length="20" name="grupo" not-null="true"/>
+    </property>
+    <property name="ano" type="date">
+      <column length="10" name="ano" not-null="true"/>
+    </property>
+    <property name="posicao" type="int">
+      <column name="posicao" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="tecnicos" table="Tecnico">
+      <key>
+        <column name="ID_SELECAO" not-null="true"/>
+      </key>
+      <one-to-many class="model.Enunsd.NAOMEXER.Tecnico"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="substituicaos" table="Substituicao">
+      <key>
+        <column name="ID_SELECAO" not-null="true"/>
+      </key>
+      <one-to-many class="model.Enunsd.NAOMEXER.Substituicao"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="gols" table="Gol">
+      <key>
+        <column name="ID_SELECAO" not-null="true"/>
+      </key>
+      <one-to-many class="model.Enunsd.NAOMEXER.Gol"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="copas" table="Copa">
+      <key>
+        <column name="ID_SELECAO" not-null="true"/>
+      </key>
+      <one-to-many class="model.Enunsd.NAOMEXER.Copa"/>
+    </set>
+  </class>
+</hibernate-mapping>

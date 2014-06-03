@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="wcupstats" name="model.Enunsd.NAOMEXER.Tecnico" table="Tecnico">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.Enunsd.NAOMEXER.Selecao" fetch="select" name="selecao">
+      <column name="ID_SELECAO" not-null="true"/>
+    </many-to-one>
+    <property name="nome" type="string">
+      <column length="50" name="nome" not-null="true"/>
+    </property>
+    <property name="dataNascimento" type="date">
+      <column length="10" name="data_nascimento" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,4 +1,4 @@
-package model.Enunsd;
+package model.Enunsd.NAOMEXER;
 // Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0
 
 

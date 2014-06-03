@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="wcupstats" name="model.Enunsd.NAOMEXER.Gol" table="Gol">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.Enunsd.NAOMEXER.Jogador" fetch="select" name="jogador">
+      <column name="ID_JOGADOR" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Enunsd.NAOMEXER.Selecao" fetch="select" name="selecao">
+      <column name="ID_SELECAO" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Enunsd.NAOMEXER.Jogo" fetch="select" name="jogo">
+      <column name="ID_JOGO" not-null="true"/>
+    </many-to-one>
+    <property name="tempo" type="date">
+      <column length="10" name="tempo" not-null="true"/>
+    </property>
+    <property name="foiContra" type="boolean">
+      <column name="foiContra" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
