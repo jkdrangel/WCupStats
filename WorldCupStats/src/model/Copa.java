@@ -10,6 +10,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -20,7 +21,8 @@ public class Copa {
     private Date data;
     private int ID;
     private final Pais paisSede;
-    private final ArrayList<Time> timesParticipantes= new ArrayList<Time>(); 
+    private final ArrayList<Time> timesParticipantes= new ArrayList<Time>();
+    private final ArrayList<Jogo> jogos= new ArrayList<Jogo>();
     
     public Copa(Date data, Pais sede) {
         this.data = data;
@@ -56,8 +58,8 @@ public class Copa {
     
     }
 
-    void listarJogos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Iterator<Jogo> listarJogos() {
+    return jogos.iterator();
     }
 
     void consultarQtdMediaGols() {

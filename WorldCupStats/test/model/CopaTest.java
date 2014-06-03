@@ -9,6 +9,7 @@
 package model;
 
 import java.util.Date;
+import java.util.Iterator;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -33,7 +34,9 @@ public class CopaTest {
     
     @Test
     public void listarJogos(){
-    c.listarJogos();   
+        Iterator<Jogo> it=c.listarJogos();   
+        assertFalse(it.hasNext());
+        assertTrue(it.hasNext());
     }
     
     @Test
