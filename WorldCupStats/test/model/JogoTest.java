@@ -87,7 +87,7 @@ public class JogoTest {
 
     @Test
     public void testVerificarEscalacaoB() {
-        
+
         List<Pessoa> al = jogo.getEscalacaoB().getJogador();
 
         assertTrue(3 == al.size());
@@ -98,7 +98,31 @@ public class JogoTest {
 
     @Test
     public void testVerificarSubstistituicoes() {
-        assertTrue(false);
+
+        assertTrue("Não houve substituições", 0 == jogo.getSubstituicao().size() );
+        
+        Pessoa subsBrasil = new Jogador("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
+        List<Pessoa> br = jogo.getEscalacaoA().getJogador();     
+        Substituicao saiCabore = new Substituicao(brazil, subsBrasil, br.get(0), new Date(300000));
+        jogo.addSubstituicao(saiCabore);
+        
+        assertTrue( 1 == jogo.getSubstituicao().size() );
+        assertEquals("Caboré", jogo.getSubstituicao().get(0).getqSai().getNome());
+        assertEquals(subsBrasil, jogo.getSubstituicao().get(0).getqEntra());
+        assertTrue( 5 == jogo.getSubstituicao().get(0).getTempo().getMinutes() );
+        
+        Pessoa subsAlemanha = new Jogador("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);
+        List<Pessoa> al = jogo.getEscalacaoB().getJogador();
+        Substituicao saiAsnhkci = new Substituicao(brazil, subsAlemanha, al.get(0), new Date(360000));
+        jogo.addSubstituicao(saiAsnhkci);
+        
+        assertTrue( 2 == jogo.getSubstituicao().size() );
+        assertEquals("Caboré", jogo.getSubstituicao().get(0).getqSai().getNome());
+        assertEquals(subsBrasil, jogo.getSubstituicao().get(0).getqEntra());
+        assertTrue( 5 == jogo.getSubstituicao().get(0).getTempo().getMinutes() );
+        assertEquals("Asnhkci", jogo.getSubstituicao().get(1).getqSai().getNome());
+        assertEquals(subsAlemanha, jogo.getSubstituicao().get(1).getqEntra());
+        assertTrue( 6 == jogo.getSubstituicao().get(1).getTempo().getMinutes() );
     }
 
     @Test

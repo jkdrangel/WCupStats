@@ -31,15 +31,15 @@ class Sistema {
     }
 
     void cadastrarCopa(Date ano, Pais sede) {
-    copas.add(new Copa(ano, sede));
+        copas.add(new Copa(ano, sede));
     }
-    
+
     public Iterator<Pais> listarPaises() {
-    return paises.iterator();
+        return paises.iterator();
     }
 
     public Iterator<Copa> listarCopas() {
-    return copas.iterator();
+        return copas.iterator();
     }
 
     void eMarmelada() {
@@ -47,16 +47,15 @@ class Sistema {
     }
 
     public ArrayList<Pais> eDoBrasil() {
-    ArrayList <Pais> cinco;
-    cinco= (ArrayList<Pais>) paises.clone();
-    Collections.sort((List)cinco);
-    if(cinco.isEmpty()){
-    return null;
-    }
-    else if(cinco.size()<=5){
-    return cinco;
-    }
-    return (ArrayList<Pais>) cinco.subList(0, 4);
+        ArrayList<Pais> cinco;
+        cinco = (ArrayList<Pais>) paises.clone();
+        Collections.sort((List) cinco);
+        if (cinco.isEmpty()) {
+            return null;
+        } else if (cinco.size() <= 5) {
+            return cinco;
+        }
+        return (ArrayList<Pais>) cinco.subList(0, 4);
     }
 
     void toDentro() {

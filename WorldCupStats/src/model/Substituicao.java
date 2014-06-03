@@ -8,26 +8,32 @@
 
 package model;
 
+import java.util.Date;
+
 /**
  * Classe que representa uma substituicao, de uma determinada
  * selecao, realizada em um jogo.
  * 
  * @author D.L.O.L
  * 
- * @see 
- * @see 
+ * @see Time
+ * @see Jogador
  */
 public class Substituicao {
     
     /**
      * Time que fez a substituicao.
-    */ private final Time time;
+    */
+    private final Time time;
     /** Jogador que entra em jogo.
-    */ private final Jogador qEntra;
+    */ 
+    private final Pessoa qEntra;
     /** Jogador substituido (que sai do jogo).
-    */ private final Jogador qSai;
+    */
+    private final Pessoa qSai;
     /** Tempo em que a substituicao foi realizada.
-    */ private final double tempo;
+    */
+    private final Date tempo;
     
     
     
@@ -39,14 +45,21 @@ public class Substituicao {
      * @param qSai 
      * @param tempo 
      */
-    public Substituicao(Time time, Jogador qEntra, Jogador qSai, double tempo) {
+    public Substituicao(Time time, Pessoa qEntra, Pessoa qSai, Date tempo) {
         
         this.time = time;
-        this.qEntra = qEntra;
+        this.qEntra = qEntra; // Não a necessidade de testar se o jogador que entra esta no time.
         this.qSai = qSai; 
         this.tempo = tempo;
     }
 
+    @Override
+    public String toString() {
+        return time.toString()+"; Sai: "+qSai.getNome()+"; Entra: "+qEntra.getNome();
+    }
+
+    
+    
     /**
      * @return the time
      */
@@ -57,21 +70,21 @@ public class Substituicao {
     /**
      * @return the qEntra
      */
-    public Jogador getqEntra() {
+    public Pessoa getqEntra() {
         return qEntra;
     }
 
     /**
      * @return the qSai
      */
-    public Jogador getqSai() {
+    public Pessoa getqSai() {
         return qSai;
     }
 
     /**
      * @return the tempo
      */
-    public double getTempo() {
+    public Date getTempo() {
         return tempo;
     }
 }

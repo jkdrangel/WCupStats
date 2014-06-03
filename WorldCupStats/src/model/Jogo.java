@@ -157,14 +157,14 @@ public class Jogo {
     /**
      * @return the substis
      */
-    public List<Substituicao> getSubstis() {
+    public List<Substituicao> getSubstituicao() {
         return substis;
     }
 
     /**
      * @param substis the substis to set
      */
-    public void addSubstis(Substituicao substis) {
+    public void addSubstituicao(Substituicao substis) {
         this.substis.add(substis);
     }
 
@@ -186,7 +186,11 @@ public class Jogo {
         this.golsTimeB.add(gol);
     }
 
-    private int[] golsLiquidos() {
+    /**
+     *
+     * @return
+     */
+    public int[] golsLiquidos() {
 
         int gols[] = new int[2];
         gols[0] = golsTimeA.size();
@@ -234,6 +238,8 @@ public class Jogo {
 
     public int diferencaGols() {
 
+        System.out.println("OS GOLS CONTRA SÃO COMPUTADOS PARA QUAL TIME ???");
+        
         int gols[] = this.golsLiquidos();
         
         int golLiquidoTimeA = gols[0];
