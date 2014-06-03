@@ -5,7 +5,6 @@
  * codigo foi desenvolvido pelos integrantes desta equipe: Diego Leite,
  * Lucas Santana, Oto Antonio e Lucas Vinicius.
  */
-
 package model;
 
 import java.util.ArrayList;
@@ -17,16 +16,16 @@ import java.util.Iterator;
  * @author lsantana
  */
 public class Copa {
-    
+
     private Date data;
     private int ID;
     private final Pais paisSede;
-    private final ArrayList<Time> timesParticipantes= new ArrayList<Time>();
-    private final ArrayList<Jogo> jogos= new ArrayList<Jogo>();
-    
+    private final ArrayList<Time> timesParticipantes = new ArrayList<Time>();
+    private final ArrayList<Jogo> jogos = new ArrayList<Jogo>();
+
     public Copa(Date data, Pais sede) {
         this.data = data;
-        paisSede=sede;
+        paisSede = sede;
     }
 
     public Date getData() {
@@ -40,7 +39,7 @@ public class Copa {
     public Pais getPaisSede() {
         return paisSede;
     }
-    
+
     public int getID() {
         return ID;
     }
@@ -55,15 +54,22 @@ public class Copa {
     }
 
     void cadastrarSelecao(String a) {
-    
+
     }
 
     Iterator<Jogo> listarJogos() {
-    return jogos.iterator();
+        return jogos.iterator();
     }
 
-    void consultarQtdMediaGols() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    int consultarQtdMediaGols() {
+        int media = 0;
+        for (Jogo jogo : jogos) {
+            media += jogo.golsLiquidos().length;
+        }
+        if (!jogos.isEmpty()) {
+            return media / jogos.size();
+        }
+        return 0;
     }
 
     void listarJogosEmpatados() {
@@ -77,6 +83,5 @@ public class Copa {
     void consultarMediaIdade() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }
