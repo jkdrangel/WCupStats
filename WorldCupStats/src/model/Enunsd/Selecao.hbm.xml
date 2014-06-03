@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Enunsd.Selecao" table="Selecao" catalog="wcupstats">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="copa" class="model.Enunsd.Copa" fetch="select">
+            <column name="ID_COPA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pais" class="model.Enunsd.Pais" fetch="select">
+            <column name="ID_PAIS" not-null="true" />
+        </many-to-one>
+        <property name="grupo" type="string">
+            <column name="grupo" length="20" not-null="true" />
+        </property>
+        <property name="ano" type="date">
+            <column name="ano" length="10" not-null="true" />
+        </property>
+        <property name="posicao" type="int">
+            <column name="posicao" not-null="true" />
+        </property>
+        <set name="tecnicos" table="Tecnico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SELECAO" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Tecnico" />
+        </set>
+        <set name="substituicaos" table="Substituicao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SELECAO" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Substituicao" />
+        </set>
+        <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SELECAO" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Gol" />
+        </set>
+        <set name="copas" table="Copa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SELECAO" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Copa" />
+        </set>
+    </class>
+</hibernate-mapping>

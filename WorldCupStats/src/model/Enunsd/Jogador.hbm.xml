@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Enunsd.Jogador" table="Jogador" catalog="wcupstats">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="dataNascimento" type="date">
+            <column name="data_nascimento" length="10" not-null="true" />
+        </property>
+        <property name="nome" type="string">
+            <column name="nome" length="50" not-null="true" />
+        </property>
+        <property name="numero" type="int">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="posicao" type="string">
+            <column name="posicao" length="13" not-null="true" />
+        </property>
+        <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_JOGADOR" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Gol" />
+        </set>
+    </class>
+</hibernate-mapping>

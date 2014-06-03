@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/06/2014 10:36:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Enunsd.Copa" table="Copa" catalog="wcupstats">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="selecao" class="model.Enunsd.Selecao" fetch="select">
+            <column name="ID_SELECAO" not-null="true" />
+        </many-to-one>
+        <property name="ano" type="date">
+            <column name="ano" length="10" not-null="true" />
+        </property>
+        <set name="selecaos" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_COPA" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Selecao" />
+        </set>
+        <set name="jogos" table="Jogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_COPA" not-null="true" />
+            </key>
+            <one-to-many class="model.Enunsd.Jogo" />
+        </set>
+    </class>
+</hibernate-mapping>
