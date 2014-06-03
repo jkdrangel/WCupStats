@@ -92,8 +92,17 @@ public class Copa {
      return (ArrayList<Time>)timesParticipantes;
     }
 
-    void consultarMediaIdade() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    float consultarMediaIdade() {
+        float media=0;
+    for(Time time : timesParticipantes){
+        for(Pessoa j: time.getJogadores()){
+        int i=j.getDataDeNascimento().getYear();
+        media+=2014-i;
+    }
+        media+=media/(time.getJogadores().size());
+    }
+    media=media/(timesParticipantes.size());
+    return media;
     }
 
 }
