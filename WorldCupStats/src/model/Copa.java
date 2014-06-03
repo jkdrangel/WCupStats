@@ -8,6 +8,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -72,12 +74,22 @@ public class Copa {
         return 0;
     }
 
-    void listarJogosEmpatados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Iterator<Jogo> listarJogosEmpatados() {
+    ArrayList<Jogo> empatados=new ArrayList<Jogo>();
+    for(Jogo jogo : jogos){    
+    if(jogo.empatou()){
+        empatados.add(jogo);
+        }
+    }
+    return empatados.iterator();
     }
 
-    void consultarClassificacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    ArrayList<Time> consultarClassificacao() {
+    if(timesParticipantes.isEmpty()){
+        return null; 
+    }
+    //Collections.sort(timesParticipantes.subList(0, timesParticipantes.size()));
+     return (ArrayList<Time>)timesParticipantes;
     }
 
     void consultarMediaIdade() {
