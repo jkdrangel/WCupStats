@@ -18,22 +18,22 @@ import model.Enuns.FaseCopa;
  *
  * @version 1.0
  *
- * @see Time
+ * @see TimeDAO
  */
-public class Pais implements Comparable<Pais>{
+public class PaisDAO implements Comparable<PaisDAO>{
     
-    ArrayList<Time> selecoes=new ArrayList<Time>();
+    ArrayList<TimeDAO> selecoes=new ArrayList<TimeDAO>();
     private int titulos;
     
     public void cadastrarSelecao(String a, int i) {
-    selecoes.add(new Time(FaseCopa.GRUPOS.getFase().charAt(0), 0, 0, null, this, null));
+    selecoes.add(new TimeDAO(FaseCopa.GRUPOS.getFase().charAt(0), 0, 0, null, this, null));
     }
     
     private final String nome;
     private final String continente;
     private int ID;
 
-    public Pais(String nome, String continente) {
+    public PaisDAO(String nome, String continente) {
         this.nome = nome;
         this.continente = continente;
     }
@@ -87,12 +87,12 @@ public class Pais implements Comparable<Pais>{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pais other = (Pais) obj;
+        final PaisDAO other = (PaisDAO) obj;
         
         return this.titulos == other.titulos;
     }
 
-    public int compareTo(Pais o) {
+    public int compareTo(PaisDAO o) {
     if(this.equals(o)){
     return 0;
     }

@@ -1,5 +1,5 @@
 /*
- * Classe desenvolvida como componente integrante do projeto: Sistema
+ * Classe desenvolvida como componente integrante do projeto: SistemaDAO
  * de estatisticas de Copas do Mundo (WCupStats), que trata-se de um
  * trabalho proposto pela disciplina de Padroes e Frameworks. Todo este
  * codigo foi desenvolvido pelos integrantes desta equipe: Diego Leite,
@@ -17,29 +17,28 @@ import java.util.List;
  *
  * @author lsantana
  */
-class Sistema {
+class SistemaDAO {
 
     private int ID;
-    ArrayList<Pais> paises = new ArrayList<Pais>();
-    ArrayList<Copa> copas = new ArrayList<Copa>();
+    ArrayList<PaisDAO> paises = new ArrayList<PaisDAO>();
+    ArrayList<CopaDAO> copas = new ArrayList<CopaDAO>();
 
-    Sistema() {
+    SistemaDAO() {
     }
 
     void cadastrarPais(String brazil, String america_do_sul) {
-        paises.add(new Pais(brazil, america_do_sul));
+        paises.add(new PaisDAO(brazil, america_do_sul));
     }
 
-    void cadastrarCopa(Date ano, Pais sede) {
-
-        copas.add(new Copa(ano, sede));
+    void cadastrarCopa(Date ano, PaisDAO sede) {
+        
     }
 
-    public Iterator<Pais> listarPaises() {
+    public Iterator<PaisDAO> listarPaises() {
         return paises.iterator();
     }
 
-    public Iterator<Copa> listarCopas() {
+    public Iterator<CopaDAO> listarCopas() {
         return copas.iterator();
     }
 
@@ -47,16 +46,16 @@ class Sistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ArrayList<Pais> eDoBrasil() {
-        ArrayList<Pais> cinco;
-        cinco = (ArrayList<Pais>) paises.clone();
+    public ArrayList<PaisDAO> eDoBrasil() {
+        ArrayList<PaisDAO> cinco;
+        cinco = (ArrayList<PaisDAO>) paises.clone();
         Collections.sort((List) cinco);
         if (cinco.isEmpty()) {
             return null;
         } else if (cinco.size() <= 5) {
             return cinco;
         }
-        return (ArrayList<Pais>) cinco.subList(0, 4);
+        return (ArrayList<PaisDAO>) cinco.subList(0, 4);
     }
 
     void toDentro() {

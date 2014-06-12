@@ -8,8 +8,8 @@
 
 package model.CRUD;
 
-import model.CRUD.Jogo;
-import model.CRUD.Pais;
+import model.CRUD.JogoDAO;
+import model.CRUD.PaisDAO;
 import java.util.Date;
 import java.util.Iterator;
 import org.junit.After;
@@ -22,7 +22,7 @@ import org.junit.Test;
  * @author lsantana
  */
 public class CopaTest {
- Copa c =new Copa(new Date(2014,0,0), new Pais("Brasil","America do sul"));
+ CopaDAO c =new CopaDAO(new Date(2014,0,0), new PaisDAO("Brasil","America do sul"));
 
  public CopaTest() {
     }
@@ -37,7 +37,7 @@ public class CopaTest {
     
     @Test
     public void listarJogos(){
-        Iterator<Jogo> it=c.listarJogos();   
+        Iterator<JogoDAO> it=c.listarJogos();   
         assertFalse(it.hasNext());
         assertTrue(it.hasNext());
     }

@@ -5,12 +5,12 @@
  */
 package model.CRUD;
 
-import model.CRUD.Pessoa;
-import model.CRUD.Substituicao;
-import model.CRUD.Time;
-import model.CRUD.Tecnico;
-import model.CRUD.Pais;
-import model.CRUD.Jogador;
+import model.CRUD.PessoaDAO;
+import model.CRUD.SubstituicaoDAO;
+import model.CRUD.TimeDAO;
+import model.CRUD.TecnicoDAO;
+import model.CRUD.PaisDAO;
+import model.CRUD.JogadorDAO;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
 import org.junit.Before;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Testes para verificar funcionalidades da classe Substituicao.
+ * Testes para verificar funcionalidades da classe SubstituicaoDAO.
  *
  * @author D.L.O.L
  *
@@ -29,27 +29,27 @@ import static org.junit.Assert.assertTrue;
  */
 public class SubstituicaoTest {
 
-    private Copa copa;
-    private Tecnico tecnico;
-    private Pais Brasil;
-    private Time brazil;
-    private Pessoa fma;
-    private Pessoa fmabh;
-    private Substituicao substituicao;
+    private CopaDAO copa;
+    private TecnicoDAO tecnico;
+    private PaisDAO Brasil;
+    private TimeDAO brazil;
+    private PessoaDAO fma;
+    private PessoaDAO fmabh;
+    private SubstituicaoDAO substituicao;
 
     @Before
     public void setUp() {
-        tecnico = new Tecnico("Alguem", new Date());
-        Brasil = new Pais("Brasil", "America do Sul");
-        brazil = new Time('J', 2014, 2, tecnico, Brasil, copa);
+        tecnico = new TecnicoDAO("Alguem", new Date());
+        Brasil = new PaisDAO("Brasil", "America do Sul");
+        brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
 
-        fma = new Jogador("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
-        fmabh = new Jogador("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);
-        substituicao = new Substituicao(brazil, fmabh, fma, new Date(360000));
+        fma = new JogadorDAO("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
+        fmabh = new JogadorDAO("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);
+        substituicao = new SubstituicaoDAO(brazil, fmabh, fma, new Date(360000));
     }
 
     /**
-     * Test of getqSai method, of class Substituicao.
+     * Test of getqSai method, of class SubstituicaoDAO.
      */
     @Test
     public void testSubstitucao() {

@@ -11,26 +11,26 @@ package model.CRUD;
 import java.util.List;
 
 /**
- * Classe que representa a Escalacao de uma Selecao durante um Jogo.
+ * Classe que representa a EscalacaoDAO de uma Selecao durante um JogoDAO.
  * 
  * @author D.L.O.L
  * 
  * @version 1.0
  * 
- * @see Jogo
+ * @see JogoDAO
  * @see Jogadores
  */
-public class Escalacao {
+public class EscalacaoDAO {
     private int ID;
-    private Jogo jogo;
-    private List<Pessoa> jogadores;
+    private JogoDAO jogo;
+    private List<PessoaDAO> jogadores;
     
     /**
      * Construtor da classe.
-     * @param jogo, Jogo em que os jogadores foram Escalados.
-     * @param jogadores, Jogadores que foram Escalados para o Jogo.
+     * @param jogo, JogoDAO em que os jogadores foram Escalados.
+     * @param jogadores, Jogadores que foram Escalados para o JogoDAO.
      */
-    public Escalacao(Jogo jogo, List<Pessoa> jogadores){
+    public EscalacaoDAO(JogoDAO jogo, List<PessoaDAO> jogadores){
         this.jogo = jogo;
         this.jogadores = jogadores;
     }
@@ -52,18 +52,18 @@ public class Escalacao {
     }
     
     /**
-     * Getter para o Jogo da classe.
+     * Getter para o JogoDAO da classe.
      * @return, Retorna o jogo em que o Gol foi feito.
      */
-    public Jogo getJogo(){
+    public JogoDAO getJogo(){
         return this.jogo;
     }
     
     /**
-     * Setter para o Jogo da classe.
-     * @param jogo, Jogo em que o Gol foi feito.
+     * Setter para o JogoDAO da classe.
+     * @param jogo, JogoDAO em que o Gol foi feito.
      */
-    public void setJogo(Jogo jogo){
+    public void setJogo(JogoDAO jogo){
         this.jogo = jogo;
     }
     
@@ -71,7 +71,7 @@ public class Escalacao {
      * Getter para os Jogadores da classe.
      * @return, Retorna o Jogador que fez o Gol.
      */
-    public List<Pessoa> getJogador(){
+    public List<PessoaDAO> getJogador(){
         return this.jogadores;
     }
 }

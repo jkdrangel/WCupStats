@@ -5,15 +5,15 @@
  */
 package model.CRUD;
 
-import model.CRUD.Pessoa;
-import model.CRUD.Escalacao;
-import model.CRUD.Gol;
-import model.CRUD.Substituicao;
-import model.CRUD.Jogo;
-import model.CRUD.Time;
-import model.CRUD.Tecnico;
-import model.CRUD.Pais;
-import model.CRUD.Jogador;
+import model.CRUD.PessoaDAO;
+import model.CRUD.EscalacaoDAO;
+import model.CRUD.GolDAO;
+import model.CRUD.SubstituicaoDAO;
+import model.CRUD.JogoDAO;
+import model.CRUD.TimeDAO;
+import model.CRUD.TecnicoDAO;
+import model.CRUD.PaisDAO;
+import model.CRUD.JogadorDAO;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,55 +27,55 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Testes para verificar funcionalidades da classe Jogo.
+ * Testes para verificar funcionalidades da classe JogoDAO.
  *
  * @author D.L.O.L
  *
  * @version 1.0
  *
- * @see Jogo
+ * @see JogoDAO
  */
 public class JogoTest {
 
-    private Jogo jogo;
-    private Copa copa;
-    private Time brazil;
-    private Time alemanha;
-    private Escalacao doBrazil;
-    private Escalacao daAlemanha;
-    private Tecnico tecnico;
-    private Pais Brasil;
-    private Pais Alemanha;
+    private JogoDAO jogo;
+    private CopaDAO copa;
+    private TimeDAO brazil;
+    private TimeDAO alemanha;
+    private EscalacaoDAO doBrazil;
+    private EscalacaoDAO daAlemanha;
+    private TecnicoDAO tecnico;
+    private PaisDAO Brasil;
+    private PaisDAO Alemanha;
 
     @Before
     public void setUp() {
-        tecnico = new Tecnico("Alguem", new Date());
-        Brasil = new Pais("Brasil", "America do Sul");
-        Alemanha = new Pais("Alemanha", "Asia");
+        tecnico = new TecnicoDAO("Alguem", new Date());
+        Brasil = new PaisDAO("Brasil", "America do Sul");
+        Alemanha = new PaisDAO("Alemanha", "Asia");
 
-        brazil = new Time('J', 2014, 2, tecnico, Brasil, copa);
-        alemanha = new Time('H', 2014, 3, tecnico, Alemanha, copa);
+        brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
+        alemanha = new TimeDAO('H', 2014, 3, tecnico, Alemanha, copa);
 
-        List<Pessoa> br = new ArrayList<Pessoa>();
-        Pessoa jogador1 = new Jogador("Caboré", new Date(10), 99, FuncaoJogador.GOLEIRO);
-        Pessoa jogador2 = new Jogador("Biru Biro", new Date(10), 10, FuncaoJogador.MEIO_DE_CAMPO);
-        Pessoa jogador3 = new Jogador("Não vou colocar os 23 não", new Date(10), 23, FuncaoJogador.ATACANTE);
+        List<PessoaDAO> br = new ArrayList<PessoaDAO>();
+        PessoaDAO jogador1 = new JogadorDAO("Caboré", new Date(10), 99, FuncaoJogador.GOLEIRO);
+        PessoaDAO jogador2 = new JogadorDAO("Biru Biro", new Date(10), 10, FuncaoJogador.MEIO_DE_CAMPO);
+        PessoaDAO jogador3 = new JogadorDAO("Não vou colocar os 23 não", new Date(10), 23, FuncaoJogador.ATACANTE);
         br.add(jogador1);
         br.add(jogador2);
         br.add(jogador3);
 
-        List<Pessoa> al = new ArrayList<Pessoa>();
-        jogador1 = new Jogador("Asnhkci", new Date(10), 05, FuncaoJogador.GOLEIRO);
-        jogador2 = new Jogador("Biknov Biroko", new Date(10), 01, FuncaoJogador.MEIO_DE_CAMPO);
-        jogador3 = new Jogador("Nain Nain Nain Nain", new Date(10), 11, FuncaoJogador.ATACANTE);
+        List<PessoaDAO> al = new ArrayList<PessoaDAO>();
+        jogador1 = new JogadorDAO("Asnhkci", new Date(10), 05, FuncaoJogador.GOLEIRO);
+        jogador2 = new JogadorDAO("Biknov Biroko", new Date(10), 01, FuncaoJogador.MEIO_DE_CAMPO);
+        jogador3 = new JogadorDAO("Nain Nain Nain Nain", new Date(10), 11, FuncaoJogador.ATACANTE);
         al.add(jogador1);
         al.add(jogador2);
         al.add(jogador3);
 
-        doBrazil = new Escalacao(jogo, br);
-        daAlemanha = new Escalacao(jogo, al);
+        doBrazil = new EscalacaoDAO(jogo, br);
+        daAlemanha = new EscalacaoDAO(jogo, al);
 
-        jogo = new Jogo(FaseCopa.SEMI, new Date(), "Fonte Nova - Salvador", copa, brazil, alemanha, doBrazil, daAlemanha);
+        jogo = new JogoDAO(FaseCopa.SEMI, new Date(), "Fonte Nova - Salvador", copa, brazil, alemanha, doBrazil, daAlemanha);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class JogoTest {
     @Test
     public void testVerificarEscalacaoA() {
 
-        List<Pessoa> br = jogo.getEscalacaoA().getJogador();
+        List<PessoaDAO> br = jogo.getEscalacaoA().getJogador();
 
         assertTrue(3 == br.size());
         assertSame("Caboré", br.get(00).getNome());
@@ -97,7 +97,7 @@ public class JogoTest {
     @Test
     public void testVerificarEscalacaoB() {
 
-        List<Pessoa> al = jogo.getEscalacaoB().getJogador();
+        List<PessoaDAO> al = jogo.getEscalacaoB().getJogador();
 
         assertTrue(3 == al.size());
         assertSame("Asnhkci", al.get(00).getNome());
@@ -110,9 +110,9 @@ public class JogoTest {
 
         assertTrue("Não houve substituições", 0 == jogo.getSubstituicao().size() );
         
-        Pessoa subsBrasil = new Jogador("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
-        List<Pessoa> br = jogo.getEscalacaoA().getJogador();     
-        Substituicao saiCabore = new Substituicao(brazil, subsBrasil, br.get(0), new Date(300000));
+        PessoaDAO subsBrasil = new JogadorDAO("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
+        List<PessoaDAO> br = jogo.getEscalacaoA().getJogador();     
+        SubstituicaoDAO saiCabore = new SubstituicaoDAO(brazil, subsBrasil, br.get(0), new Date(300000));
         jogo.addSubstituicao(saiCabore);
         
         assertTrue( 1 == jogo.getSubstituicao().size() );
@@ -120,9 +120,9 @@ public class JogoTest {
         assertEquals(subsBrasil, jogo.getSubstituicao().get(0).getqEntra());
         assertTrue( 5 == jogo.getSubstituicao().get(0).getTempo().getMinutes() );
         
-        Pessoa subsAlemanha = new Jogador("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);
-        List<Pessoa> al = jogo.getEscalacaoB().getJogador();
-        Substituicao saiAsnhkci = new Substituicao(brazil, subsAlemanha, al.get(0), new Date(360000));
+        PessoaDAO subsAlemanha = new JogadorDAO("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);
+        List<PessoaDAO> al = jogo.getEscalacaoB().getJogador();
+        SubstituicaoDAO saiAsnhkci = new SubstituicaoDAO(brazil, subsAlemanha, al.get(0), new Date(360000));
         jogo.addSubstituicao(saiAsnhkci);
         
         assertTrue( 2 == jogo.getSubstituicao().size() );
@@ -139,13 +139,13 @@ public class JogoTest {
 
         Date tempo = new Date(180000);
 
-        Gol golBR1 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golBR2 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golBR3 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golBR4 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golAL1 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golAL2 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golAL3 = new Gol(jogo, null, brazil, tempo, true);
+        GolDAO golBR1 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golBR2 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golBR3 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golBR4 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golAL1 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golAL2 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golAL3 = new GolDAO(jogo, null, brazil, tempo, true);
 
         jogo.addGolTimeA(golBR1);
         jogo.addGolTimeA(golBR2);
@@ -164,19 +164,19 @@ public class JogoTest {
     @Test
     public void testTimeParticipouJogo() {
 
-        Time italia = new Time('B', 2014, 25, tecnico, new Pais("Italia", "Europa"), copa);
+        TimeDAO italia = new TimeDAO('B', 2014, 25, tecnico, new PaisDAO("Italia", "Europa"), copa);
         assertEquals(false, jogo.timeParticipouJogo(italia));
 
-        Time mesmoBrazil = new Time('J', 2014, 2, tecnico, Brasil, copa);
+        TimeDAO mesmoBrazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
         assertEquals(true, jogo.timeParticipouJogo(mesmoBrazil));
 
-        Time mesmaAlemanha = new Time('H', 2014, 3, tecnico, Alemanha, copa);
+        TimeDAO mesmaAlemanha = new TimeDAO('H', 2014, 3, tecnico, Alemanha, copa);
         assertEquals(true, jogo.timeParticipouJogo(mesmaAlemanha));
 
-        Time outroBrazil = new Time('J', 2002, 2, tecnico, Brasil, copa);
+        TimeDAO outroBrazil = new TimeDAO('J', 2002, 2, tecnico, Brasil, copa);
         assertEquals(false, jogo.timeParticipouJogo(outroBrazil));
 
-        Time outraAlemanha = new Time('H', 2002, 3, tecnico, Alemanha, copa);
+        TimeDAO outraAlemanha = new TimeDAO('H', 2002, 3, tecnico, Alemanha, copa);
         assertEquals(false, jogo.timeParticipouJogo(outraAlemanha));
     }
 
@@ -185,13 +185,13 @@ public class JogoTest {
 
         Date tempo = new Date(180000);
 
-        Gol golBR1 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golBR2 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golBR3 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golBR4 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golAL1 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golAL2 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golAL3 = new Gol(jogo, null, brazil, tempo, true);
+        GolDAO golBR1 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golBR2 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golBR3 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golBR4 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golAL1 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golAL2 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golAL3 = new GolDAO(jogo, null, brazil, tempo, true);
 
         jogo.addGolTimeA(golBR1);
         jogo.addGolTimeA(golBR2);
@@ -215,13 +215,13 @@ public class JogoTest {
         Date tempo6 = new Date(5580000); // 93 minutos
         Date tempo7 = new Date(5700000); // 95 minutos
 
-        Gol golBR1 = new Gol(jogo, null, brazil, tempo1, false);
-        Gol golBR2 = new Gol(jogo, null, brazil, tempo2, true);
-        Gol golBR3 = new Gol(jogo, null, brazil, tempo3, false);
-        Gol golBR4 = new Gol(jogo, null, brazil, tempo4, false);
-        Gol golAL1 = new Gol(jogo, null, brazil, tempo5, false);
-        Gol golAL2 = new Gol(jogo, null, brazil, tempo6, true);
-        Gol golAL3 = new Gol(jogo, null, brazil, tempo7, true);
+        GolDAO golBR1 = new GolDAO(jogo, null, brazil, tempo1, false);
+        GolDAO golBR2 = new GolDAO(jogo, null, brazil, tempo2, true);
+        GolDAO golBR3 = new GolDAO(jogo, null, brazil, tempo3, false);
+        GolDAO golBR4 = new GolDAO(jogo, null, brazil, tempo4, false);
+        GolDAO golAL1 = new GolDAO(jogo, null, brazil, tempo5, false);
+        GolDAO golAL2 = new GolDAO(jogo, null, brazil, tempo6, true);
+        GolDAO golAL3 = new GolDAO(jogo, null, brazil, tempo7, true);
 
         jogo.addGolTimeA(golBR1);
         jogo.addGolTimeA(golBR2);
@@ -239,10 +239,10 @@ public class JogoTest {
 
         Date tempo = new Date();
 
-        Gol golBR1 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golBR2 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golAL1 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golAL2 = new Gol(jogo, null, brazil, tempo, true);
+        GolDAO golBR1 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golBR2 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golAL1 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golAL2 = new GolDAO(jogo, null, brazil, tempo, true);
 
         jogo.addGolTimeA(golBR1);
         jogo.addGolTimeA(golBR2);
@@ -251,8 +251,8 @@ public class JogoTest {
 
         assertEquals(false, jogo.empatou()); // Brasil 3x1 Alemanha.
 
-        Gol golAL3 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golAL4 = new Gol(jogo, null, brazil, tempo, false);
+        GolDAO golAL3 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golAL4 = new GolDAO(jogo, null, brazil, tempo, false);
         jogo.addGolTimeB(golAL3);
         jogo.addGolTimeB(golAL4);
 
@@ -264,10 +264,10 @@ public class JogoTest {
 
         Date tempo = new Date();
 
-        Gol golBR1 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golBR2 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golAL1 = new Gol(jogo, null, brazil, tempo, true);
-        Gol golAL2 = new Gol(jogo, null, brazil, tempo, true);
+        GolDAO golBR1 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golBR2 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golAL1 = new GolDAO(jogo, null, brazil, tempo, true);
+        GolDAO golAL2 = new GolDAO(jogo, null, brazil, tempo, true);
 
         jogo.addGolTimeA(golBR1);
         jogo.addGolTimeA(golBR2);
@@ -277,8 +277,8 @@ public class JogoTest {
         assertEquals(brazil, jogo.vencedor()); // Brasil 3x1 Alemanha.
         assertEquals(alemanha, jogo.Derrotado());
 
-        Gol golAL3 = new Gol(jogo, null, brazil, tempo, false);
-        Gol golAL4 = new Gol(jogo, null, brazil, tempo, false);
+        GolDAO golAL3 = new GolDAO(jogo, null, brazil, tempo, false);
+        GolDAO golAL4 = new GolDAO(jogo, null, brazil, tempo, false);
         jogo.addGolTimeB(golAL3);
         jogo.addGolTimeB(golAL4);
 

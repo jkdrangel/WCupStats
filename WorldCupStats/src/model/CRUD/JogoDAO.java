@@ -22,7 +22,7 @@ import model.Enuns.FaseCopa;
  * @see
  * @see
  */
-public class Jogo {
+public class JogoDAO {
 
     /**
      * fase do jogo na copa.
@@ -39,35 +39,35 @@ public class Jogo {
     /**
      * CopaDAO que houve este jogo.
      */
-    private Copa copa;
+    private CopaDAO copa;
     /**
-     * Time A.
+     * TimeDAO A.
      */
-    private final Time timeA;
+    private final TimeDAO timeA;
     /**
-     * Time B.
+ TimeDAO* Time B.
      */
-    private final Time timeB;
+    private final TimeDAO timeB;
     /**
-     * Escalacao do time A.
+     * EscalacaoDAO do time A.
      */
-    private final Escalacao escalacaoA;
+    private final EscalacaoDAO escalacaoA;
     /**
-     * Escalacao do time B.
+ EscalacaoDAOalacao do time B.
      */
-    private final Escalacao escalacaoB;
+    private final EscalacaoDAO escalacaoB;
     /**
      * Lista de substituicoes no jogo.
      */
-    private List<Substituicao> substis;
+    private List<SubstituicaoDAO> substis;
     /**
      * Gols do time A no jogo.
      */
-    private List<Gol> golsTimeA;
+    private List<GolDAO> golsTimeA;
     /**
      * Gols do time B no jogo.
      */
-    private List<Gol> golsTimeB;
+    private List <GolDAO> golsTimeB;
 
     
     /**
@@ -82,8 +82,8 @@ public class Jogo {
      * @param escalacaoA
      * @param escalacaoB 
      */
-    public Jogo(FaseCopa FASE, Date data, String local, Copa copa, Time timeA,
-            Time timeB, Escalacao escalacaoA, Escalacao escalacaoB) {
+    public JogoDAO(FaseCopa FASE, Date data, String local, CopaDAO copa, TimeDAO timeA,
+            TimeDAO timeB, EscalacaoDAO escalacaoA, EscalacaoDAO escalacaoB) {
         this.FASE = FASE;
         this.data = data;
         this.local = local;
@@ -93,9 +93,9 @@ public class Jogo {
         this.escalacaoA = escalacaoA;
         this.escalacaoB = escalacaoB;
 
-        substis = new ArrayList<Substituicao>();
-        golsTimeA = new ArrayList<Gol>();
-        golsTimeB = new ArrayList<Gol>();
+        substis = new ArrayList<SubstituicaoDAO>();
+        golsTimeA = new ArrayList<GolDAO>();
+        golsTimeB = new ArrayList<GolDAO>();
     }
 
     /**
@@ -122,49 +122,45 @@ public class Jogo {
     /**
      * @return the copa
      */
-  public Copa getCopa() {
+  public CopaDAO getCopa() {
         return copa;
     }
 
     /**
      * @return the timeA
-     */
-    public Time getTimeA() {
+     */ public TimeDAO getTimeA() {
         return timeA;
     }
 
     /**
      * @return the timeB
-     */
-    public Time getTimeB() {
+    TimeDAO    public Time getTimeB() {
         return timeB;
     }
 
     /**
      * @return the escalacaoA
-     */
-    public Escalacao getEscalacaoA() {
+     */public EscalacaoDAO getEscalacaoA() {
         return escalacaoA;
     }
 
     /**
      * @return the escalacaoB
-     */
-    public Escalacao getEscalacaoB() {
+    EscalacaoDAOublic Escalacao getEscalacaoB() {
         return escalacaoB;
     }
 
     /**
      * @return the substis
      */
-    public List<Substituicao> getSubstituicao() {
+    public List<SubstituicaoDAO> getSubstituicao() {
         return substis;
     }
 
     /**
      * @param substis the substis to set
      */
-    public void addSubstituicao(Substituicao substis) {
+    public void addSubstituicaoDAO (SubstituicaoDAO substis) {
         this.substis.add(substis);
     }
 
@@ -172,7 +168,7 @@ public class Jogo {
      *
      * @param gol
      */
-    public void addGolTimeA(Gol gol) {
+    public void addGolTimeA(GolDAO gol) {
 
         this.golsTimeA.add(gol);
     }
@@ -181,7 +177,7 @@ public class Jogo {
      *
      * @param gol
      */
-    public void addGolTimeB(Gol gol) {
+    public void addGolTimeB(GolDAO gol) {
 
         this.golsTimeB.add(gol);
     }
@@ -196,16 +192,16 @@ public class Jogo {
         gols[0] = golsTimeA.size();
         gols[1] = golsTimeB.size();
 
-        for (Gol golA : golsTimeA) {
+        for (GolDAO golA : golsTimeA) {
             if (golA.isFoiContra()) { 
-                gols[0]--; // Diminui um gol no placar do Time A
-                gols[1]++; // Aumenta um gol no placar do Time B
+                gols[0]--; // Diminui umTimeDAO no placar do Time A
+                gols[1]++; // AumentaTimeDAOgol no placar do Time B
             }
-        }
-        for (Gol golB : golsTimeB) {
+   }
+        for (GolDAO golB : golsTimeB) {
             if (golB.isFoiContra()) {
-                gols[0]++; // Aumenta um gol no placar do Time A
-                gols[1]--; // Diminui um gol no placar do Time B
+                gols[0]++; // AumeTimeDAOum gol no placar do Time A
+                gols[1]--; // DTimeDAOui um gol no placar do Time B
             }
         }
 
@@ -224,7 +220,7 @@ public class Jogo {
         return a + " " + gA + "x" + gB + " " + b;
     }
 
-    public boolean timeParticipouJogo(Time timeC) {
+    public boolean timeParticipouJogo(TimeDAO timeC) {
 
         return (timeA.equals(timeC) || timeB.equals(timeC));
     }
@@ -256,9 +252,9 @@ public class Jogo {
         return ( 0 == this.diferencaGols() );
     }
 
-    public Time vencedor() {
+  public TimeDAO vencedor() {
 
-        Time vencedor = null;
+        TimeDAO vencedor = null;
         
         if (!empatou()) {
             int gols[] = this.golsLiquidos();
@@ -267,10 +263,9 @@ public class Jogo {
 
         return vencedor;
     }
-    
-      public Time Derrotado() {
+    public TimeDAO Derrotado() {
 
-        Time derrotado = null;
+        TimeDAO derrotado = null;
         
         if (!empatou()) {
             int gols[] = this.golsLiquidos();

@@ -16,21 +16,21 @@ import java.util.Date;
  * 
  * @author D.L.O.L
  * 
- * @see Time
+ * @see TimeDAO
  * @see Jogador
  */
-public class Substituicao {
+public class SubstituicaoDAO {
     
     /**
-     * Time que fez a substituicao.
+     * TimeDAO que fez a substituicao.
     */
-    private final Time time;
+    private final TimeDAO time;
     /** Jogador que entra em jogo.
     */ 
-    private final Pessoa qEntra;
+    private final PessoaDAO qEntra;
     /** Jogador substituido (que sai do jogo).
     */
-    private final Pessoa qSai;
+    private final PessoaDAO qSai;
     /** Tempo em que a substituicao foi realizada.
     */
     private final Date tempo;
@@ -45,7 +45,7 @@ public class Substituicao {
      * @param qSai 
      * @param tempo 
      */
-    public Substituicao(Time time, Pessoa qEntra, Pessoa qSai, Date tempo) {
+    public SubstituicaoDAO(TimeDAO time, PessoaDAO qEntra, PessoaDAO qSai, Date tempo) {
         
         this.time = time;
         this.qEntra = qEntra; // Não a necessidade de testar se o jogador que entra esta no time.
@@ -63,21 +63,21 @@ public class Substituicao {
     /**
      * @return the time
      */
-    public Time getTime() {
+    public TimeDAO getTime() {
         return time;
     }
 
     /**
      * @return the qEntra
      */
-    public Pessoa getqEntra() {
+    public PessoaDAO getqEntra() {
         return qEntra;
     }
 
     /**
      * @return the qSai
      */
-    public Pessoa getqSai() {
+    public PessoaDAO getqSai() {
         return qSai;
     }
 

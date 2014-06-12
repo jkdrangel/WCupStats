@@ -5,7 +5,7 @@
  */
 package model.Enuns;
 
-import model.CRUD.Jogo;
+import model.CRUD.JogoDAO;
 
 /**
  * Fases de uma copa.
@@ -14,7 +14,7 @@ import model.CRUD.Jogo;
  *
  * @version 1.0
  *
- * @see Jogo
+ * @see JogoDAO
  */
 public enum FaseCopa {
     

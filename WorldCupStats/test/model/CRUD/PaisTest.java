@@ -8,7 +8,7 @@
 
 package model.CRUD;
 
-import model.CRUD.Pais;
+import model.CRUD.PaisDAO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class PaisTest {
     
-    Pais p=new Pais("Brasil","America");
+ PaisDAOais PaisDAOw Pais("Brasil","America");
     
     public PaisTest() {
     }

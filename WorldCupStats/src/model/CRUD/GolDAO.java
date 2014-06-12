@@ -11,34 +11,34 @@ package model.CRUD;
 import java.util.Date;
 
 /**
- * Classe que representa um Gol feito por um Jogador durante uma partida.
+ * Classe que representa um GolDAO feito por um Jogador durante uma partida.
  *
  * @author D.L.O.L
  *
  * @version 1.0
  *
- * @see Jogo
+ * @see JogoDAO
  * @see Jogador
  * @see Selecao
  */
-public class Gol {
+public class GolDAO {
     private int ID;
-    private final Jogo jogo;
-    private final Pessoa jogador;
-    private final Time selecao;
+    private final JogoDAO jogo;
+    private final PessoaDAO jogador;
+    private final TimeDAO selecao;
     private final Date tempo;
     private final boolean foiContra;
     
     
     /**
      * Construtor da classe.
-     * @param jogo, Jogo em que o Gol foi feito.
+     * @param jogo, JogoDAO em que o Gol foi feito.
      * @param jogador, Jogador que fez o Gol.
      * @param selecao, Selecao que tem o Jogador que fez o Gol.
      * @param tempo
      * @param foiContra
      */
-    public Gol(Jogo jogo, Pessoa jogador, Time selecao, Date tempo, boolean foiContra) {
+    public GolDAO(JogoDAO jogo, PessoaDAO jogador, TimeDAO selecao, Date tempo, boolean foiContra) {
         this.jogo = jogo;
         this.jogador = jogador;
         this.selecao = selecao;
@@ -55,26 +55,26 @@ public class Gol {
     }
     
     /**
-     * Getter para o Jogo da classe.
-     * @return, Retorna o jogo em que o Gol foi feito.
+     * Getter para o JogoDAO da classe.
+     * @return, Retorna o jogo em que o GolDAO foi feito.
      */
-    public Jogo getJogo(){
+    public JogoDAO getJogo(){
         return this.jogo;
     }
     
     /**
      * Getter para o Jogador da classe.
-     * @return, Retorna o Jogador que fez o Gol.
+     * @return, Retorna o Jogador que fez o GolDAO.
      */
-    public Pessoa getJogador(){
+    public PessoaDAO getJogador(){
         return this.jogador;
     }
     
     /**
      * Getter para o Selecao da classe.
-     * @return, Retorna a Selecao que possui o Jogador que fez o Gol.
+     * @return, Retorna a Selecao que possui o Jogador que fez o GolDAO.
      */
-    public Time getSelecao(){
+    public TimeDAO getSelecao(){
         return this.selecao;
     }
 

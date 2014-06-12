@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @version 1.0
  *
- * @see Pessoa
+ * @see PessoaDAO
  * @see Goal
- * @see Pais
+ * @see PaisDAO
  */
-public class Time {
+public class TimeDAO {
 
     /**
      * Grupo da selecao em uma determinada copa.
@@ -39,23 +39,23 @@ public class Time {
     /**
      * Tecnico da selecao em um ano de copa.
      */
-    private final Pessoa tecnico;
+    private final PessoaDAO tecnico;
     /**
      * Selecao de jogadores para uma copa.
      */
-    private List<Pessoa> jogadores;
+    private List<PessoaDAO> jogadores;
     /**
      * Gols feitos pela selecao em uma copa.
      */
-    private List<Gol> gols;
+    private List<GolDAO> gols;
     /**
-     * Pais ao qual o time representa.
+    PaisDAOais ao qual o time representa.
      */
-    private final Pais pais;
+    private PaisDAO pais;
     /**
      * CopaDAO em que esta selecao participou.
      */
-    private Copa copa;
+    private CopaDAO copa;
 
     /**
      * Construtor da classe.
@@ -67,7 +67,7 @@ public class Time {
      * @param pais
      * @param copa
      */
-    public Time(char grupo, int ano, int rank, Pessoa tecnico, Pais pais, Copa copa) {
+    public TimeDAO(char grupo, int ano, int rank, PessoaDAO tecnico, PaisDAO pais, CopaDAO copa) {
 
         this.grupo = grupo;
         this.ano = ano;
@@ -76,8 +76,8 @@ public class Time {
         this.pais = pais;
         this.copa = copa;
 
-        jogadores = new ArrayList<Pessoa>();
-        gols = new ArrayList<Gol>();
+        jogadores = new ArrayList<PessoaDAO>();
+        gols = new ArrayList<GolDAO>();
     }
 
     /**
@@ -91,10 +91,10 @@ public class Time {
 
     @Override
     public boolean equals(Object o) {
-        Time oo;
-        if (o instanceof Time) {
-            oo = (Time) o;
-            if (this.toString().equals(oo.toString()) && this.getAno() == oo.getAno() 
+  TimeDAO  oo;
+        if (o instanceof TimeDAO) {
+       oo = (TimeDAO) o;
+            if (this.toString().equals(o.toString()) && this.getAno() == oo.getAno() 
                                                       && this.getPais() == oo.getPais()
                                                       && this.getTecnico().equals(oo.getTecnico())
                                                       && this.getGrupo() == oo.getGrupo() ) {
@@ -126,67 +126,65 @@ public class Time {
     }
 
     /**
-     * @return the tecnico
-     */
-    public Pessoa getTecnico() {
+     * @return
+     **/
+    public PessoaDAO getTecnico() {
         return tecnico;
     }
 
     /**
      * @return the jogadores
-     */
-    public List<Pessoa> getJogadores() {
+     **/
+    public List<PessoaDAO> getJogadores() {
         return jogadores;
     }
 
     /**
      * @param player the jogadores to insert
      */
-    public void addPlayers(Pessoa player) {
+    public void addPlayers(PessoaDAO player) {
         jogadores.add(player);
     }
 
     /**
      * @return the gols
      */
-    public List<Gol> getGols() {
+    public List<GolDAO> getGols() {
         return gols;
     }
 
     /**
      * @param goal the gols to insert
      */
-    public void addGoals(Gol goal) {
+    public void Goals(GolDAO goal) {
         gols.add(goal);
     }
 
     /**
      * @return the pais
-     */
-    public Pais getPais() {
+     */ public PaisDAO getPais() {
         return pais;
     }
 
     /**
      * @return the copa
      */
-  public Copa getCopa() {
+    public CopaDAO getCopa() {
         return copa;
     }
 
     /**
-     * Recupano o Gol mais rápido da selecao em uma copa.
+     *cupano o Gol mais rápido da selecao em uma copa.
      *
      * @return
-     */
-    public Gol golRapido() {
+    **/
+    public GolDAO golRapido() {
 
-        Gol maisRapido = null;
+        GolDAO maisRapido = null;
         if (!this.gols.isEmpty()) {
             maisRapido = this.gols.get(0);
             Date tempo = maisRapido.getTempo();
-
-            for (Gol goal : this.getGols()) {                
+            for (GolDAO goal : this.getGols()) {                
                 if (tempo.getTime() > goal.getTempo().getTime()) {
                     maisRapido = goal;
                     tempo = goal.getTempo();

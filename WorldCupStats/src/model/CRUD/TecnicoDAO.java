@@ -12,17 +12,17 @@ import java.util.Date;
 
 /**
  * Classe que representa os tecnicos das selecoes de cada pais nas diversas copas.
- ** A classe possui atributos em comum com Pessoa e por isso extende dela
+ ** A classe possui atributos em comum com PessoaDAO e por isso extende dela
  * 
  * @author D.L.O.L
  *
  * @version 1.0
  *
- * @see Pessoa
+ * @see PessoaDAO
  */
-public class Tecnico extends Pessoa{
+public class TecnicoDAO extends PessoaDAO{
     
-    public Tecnico(String nome, Date dataDeNascimento) {
+    public TecnicoDAO(String nome, Date dataDeNascimento) {
         super(nome, dataDeNascimento);
     }
     
@@ -35,14 +35,20 @@ public class Tecnico extends Pessoa{
      */
     @Override
     public boolean equals(Object o) {
-        Tecnico t;
-        if (o instanceof Tecnico) {
-            t = (Tecnico) o;
+       TecnicoDAO t;
+        if (o instanceof TecnicoDAO) {
+      t = (TecnicoDAO) o;
             if (t.getNome().equals(super.getNome()) 
                 && t.getDataDeNascimento().equals(super.getDataDeNascimento())) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
     }
 }

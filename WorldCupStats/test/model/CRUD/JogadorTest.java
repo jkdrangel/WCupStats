@@ -8,7 +8,7 @@
 
 package model.CRUD;
 
-import model.CRUD.Jogador;
+import model.CRUD.JogadorDAO;
 import java.util.Calendar;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
@@ -24,7 +24,7 @@ import org.junit.Test;
  * @author Vinícius
  */
 public class JogadorTest {
-    private Jogador j1, j2, j3;
+    privaJogadorDAOdor j1, j2, j3;
     private Date d1, d2, d3;
     private FuncaoJogador funcao;
 
@@ -33,14 +33,13 @@ public class JogadorTest {
         d1 = new Date(1984, 9, 1);
         d2 = new Date(1974, 12, 5);
         d3 = new Date(1978, 11, 9);
-        j1 = new Jogador("Carlos Alberto", d1, 11, funcao.VOLANTE);
-        j2 = new Jogador("Alberto", d2, 1, funcao.ATACANTE);
-        j3 = new Jogador("Joao", d3, 15, funcao.LATERAL);
+        j1 JogadorDAOogador("Carlos Alberto", d1, 11, funcao.VOLANTE);
+        JogadorDAOw Jogador("Alberto", d2, 1, funcao.ATACANTE);
+     JogadorDAO new Jogador("Joao", d3, 15, funcao.LATERAL);
     }
     
     @Test
-    public void testJogadorIgual() {
-        Jogador j4 = new Jogador("Carlos Alberto", d1, 11, funcao.VOLANTE);
+    public void testJogadorIguJogadorDAO       JogadorDAOr j4 = new Jogador("Carlos Alberto", d1, 11, funcao.VOLANTE);
         assertEquals(j4, j1);
     }
     

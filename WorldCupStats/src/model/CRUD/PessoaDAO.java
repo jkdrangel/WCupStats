@@ -15,7 +15,7 @@ import java.util.Date;
  * @version 1.0
  *
  */
-abstract class Pessoa {
+abstract class PessoaDAO {
 
     private String nome;
     private Date dataDeNascimento;
@@ -26,7 +26,7 @@ abstract class Pessoa {
      * @param nome
      * @param dataDeNascimento
      */
-    public Pessoa(String nome, Date dataDeNascimento) {
+    public PessoaDAO(String nome, Date dataDeNascimento) {
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
     }
