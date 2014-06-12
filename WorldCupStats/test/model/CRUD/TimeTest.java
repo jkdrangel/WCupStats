@@ -11,7 +11,6 @@ import model.CRUD.Jogo;
 import model.CRUD.Time;
 import model.CRUD.Pais;
 import model.CRUD.Tecnico;
-import model.CRUD.Copa;
 import model.CRUD.Jogador;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
@@ -49,7 +48,7 @@ public class TimeTest {
         Date dataQualqer = new Date();
         pais = new Pais("Sertao", "Nordeste");
         tecnico = new Tecnico("Luiz Gonzaga", dataQualqer);
-        copa = new Copa(dataQualqer, null);
+        copa= new Copa(dataQualqer, null);
         grupo = 'A';
         ano = 1994;
         rank = 1;

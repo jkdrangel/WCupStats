@@ -119,6 +119,48 @@ public class Selecao  implements java.io.Serializable {
         this.copas = copas;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + this.id;
+        hash = 67 * hash + (this.copa != null ? this.copa.hashCode() : 0);
+        hash = 67 * hash + (this.pais != null ? this.pais.hashCode() : 0);
+        hash = 67 * hash + (this.grupo != null ? this.grupo.hashCode() : 0);
+        hash = 67 * hash + (this.ano != null ? this.ano.hashCode() : 0);
+        hash = 67 * hash + this.posicao;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Selecao other = (Selecao) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.copa != other.copa && (this.copa == null || !this.copa.equals(other.copa))) {
+            return false;
+        }
+        if (this.pais != other.pais && (this.pais == null || !this.pais.equals(other.pais))) {
+            return false;
+        }
+        if ((this.grupo == null) ? (other.grupo != null) : !this.grupo.equals(other.grupo)) {
+            return false;
+        }
+        if (this.ano != other.ano && (this.ano == null || !this.ano.equals(other.ano))) {
+            return false;
+        }
+        if (this.posicao != other.posicao) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

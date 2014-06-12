@@ -91,6 +91,52 @@ public class Jogo  implements java.io.Serializable {
         this.substituicaos = substituicaos;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + (this.copa != null ? this.copa.hashCode() : 0);
+        hash = 97 * hash + (this.data != null ? this.data.hashCode() : 0);
+        hash = 97 * hash + (this.local != null ? this.local.hashCode() : 0);
+        hash = 97 * hash + (this.fase != null ? this.fase.hashCode() : 0);
+        hash = 97 * hash + (this.gols != null ? this.gols.hashCode() : 0);
+        hash = 97 * hash + (this.substituicaos != null ? this.substituicaos.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Jogo other = (Jogo) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.copa != other.copa && (this.copa == null || !this.copa.equals(other.copa))) {
+            return false;
+        }
+        if (this.data != other.data && (this.data == null || !this.data.equals(other.data))) {
+            return false;
+        }
+        if ((this.local == null) ? (other.local != null) : !this.local.equals(other.local)) {
+            return false;
+        }
+        if ((this.fase == null) ? (other.fase != null) : !this.fase.equals(other.fase)) {
+            return false;
+        }
+        if (this.gols != other.gols && (this.gols == null || !this.gols.equals(other.gols))) {
+            return false;
+        }
+        if (this.substituicaos != other.substituicaos && (this.substituicaos == null || !this.substituicaos.equals(other.substituicaos))) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

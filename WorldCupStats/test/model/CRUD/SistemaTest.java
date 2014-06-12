@@ -7,7 +7,6 @@ package model.CRUD;
 
 import model.CRUD.Sistema;
 import model.CRUD.Pais;
-import model.CRUD.Copa;
 import java.util.Date;
 import java.util.Iterator;
 import org.junit.After;

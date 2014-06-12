@@ -54,6 +54,40 @@ public class Tecnico  implements java.io.Serializable {
         this.dataNascimento = dataNascimento;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 31 * hash + this.id;
+        hash = 31 * hash + (this.selecao != null ? this.selecao.hashCode() : 0);
+        hash = 31 * hash + (this.nome != null ? this.nome.hashCode() : 0);
+        hash = 31 * hash + (this.dataNascimento != null ? this.dataNascimento.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tecnico other = (Tecnico) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.selecao != other.selecao && (this.selecao == null || !this.selecao.equals(other.selecao))) {
+            return false;
+        }
+        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if (this.dataNascimento != other.dataNascimento && (this.dataNascimento == null || !this.dataNascimento.equals(other.dataNascimento))) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

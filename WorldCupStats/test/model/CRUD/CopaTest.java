@@ -10,7 +10,6 @@ package model.CRUD;
 
 import model.CRUD.Jogo;
 import model.CRUD.Pais;
-import model.CRUD.Copa;
 import java.util.Date;
 import java.util.Iterator;
 import org.junit.After;
@@ -23,8 +22,9 @@ import org.junit.Test;
  * @author lsantana
  */
 public class CopaTest {
-    Copa c=new Copa(new Date(2014,0,0), new Pais("Brasil","America do sul"));
-    public CopaTest() {
+ Copa c =new Copa(new Date(2014,0,0), new Pais("Brasil","America do sul"));
+
+ public CopaTest() {
     }
     
     @Before

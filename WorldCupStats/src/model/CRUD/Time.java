@@ -53,9 +53,9 @@ public class Time {
      */
     private final Pais pais;
     /**
-     * Copa em que esta selecao participou.
+     * CopaDAO em que esta selecao participou.
      */
-    private final Copa copa;
+    private Copa copa;
 
     /**
      * Construtor da classe.
@@ -170,7 +170,7 @@ public class Time {
     /**
      * @return the copa
      */
-    public Copa getCopa() {
+  public Copa getCopa() {
         return copa;
     }
 

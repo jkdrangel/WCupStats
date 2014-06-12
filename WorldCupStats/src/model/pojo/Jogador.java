@@ -82,6 +82,48 @@ public class Jogador  implements java.io.Serializable {
         this.gols = gols;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + (this.dataNascimento != null ? this.dataNascimento.hashCode() : 0);
+        hash = 37 * hash + (this.nome != null ? this.nome.hashCode() : 0);
+        hash = 37 * hash + this.numero;
+        hash = 37 * hash + (this.posicao != null ? this.posicao.hashCode() : 0);
+        hash = 37 * hash + (this.gols != null ? this.gols.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Jogador other = (Jogador) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.dataNascimento != other.dataNascimento && (this.dataNascimento == null || !this.dataNascimento.equals(other.dataNascimento))) {
+            return false;
+        }
+        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if (this.numero != other.numero) {
+            return false;
+        }
+        if ((this.posicao == null) ? (other.posicao != null) : !this.posicao.equals(other.posicao)) {
+            return false;
+        }
+        if (this.gols != other.gols && (this.gols == null || !this.gols.equals(other.gols))) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

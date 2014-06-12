@@ -13,7 +13,6 @@ import model.CRUD.Jogo;
 import model.CRUD.Time;
 import model.CRUD.Tecnico;
 import model.CRUD.Pais;
-import model.CRUD.Copa;
 import model.CRUD.Jogador;
 import java.util.ArrayList;
 import java.util.Date;

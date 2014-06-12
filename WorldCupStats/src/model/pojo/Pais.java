@@ -70,6 +70,44 @@ public class Pais  implements java.io.Serializable {
         this.copas = copas;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.id;
+        hash = 89 * hash + (this.nome != null ? this.nome.hashCode() : 0);
+        hash = 89 * hash + (this.continente != null ? this.continente.hashCode() : 0);
+        hash = 89 * hash + (this.selecaos != null ? this.selecaos.hashCode() : 0);
+        hash = 89 * hash + (this.copas != null ? this.copas.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pais other = (Pais) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if ((this.continente == null) ? (other.continente != null) : !this.continente.equals(other.continente)) {
+            return false;
+        }
+        if (this.selecaos != other.selecaos && (this.selecaos == null || !this.selecaos.equals(other.selecaos))) {
+            return false;
+        }
+        if (this.copas != other.copas && (this.copas == null || !this.copas.equals(other.copas))) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

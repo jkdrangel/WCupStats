@@ -31,6 +31,7 @@ class Sistema {
     }
 
     void cadastrarCopa(Date ano, Pais sede) {
+
         copas.add(new Copa(ano, sede));
     }
 

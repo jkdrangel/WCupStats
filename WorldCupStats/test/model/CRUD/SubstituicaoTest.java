@@ -10,7 +10,6 @@ import model.CRUD.Substituicao;
 import model.CRUD.Time;
 import model.CRUD.Tecnico;
 import model.CRUD.Pais;
-import model.CRUD.Copa;
 import model.CRUD.Jogador;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;

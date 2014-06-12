@@ -54,6 +54,40 @@ public class Substituicao  implements java.io.Serializable {
         this.tempo = tempo;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.id;
+        hash = 79 * hash + (this.selecao != null ? this.selecao.hashCode() : 0);
+        hash = 79 * hash + (this.jogo != null ? this.jogo.hashCode() : 0);
+        hash = 79 * hash + (this.tempo != null ? this.tempo.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Substituicao other = (Substituicao) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.selecao != other.selecao && (this.selecao == null || !this.selecao.equals(other.selecao))) {
+            return false;
+        }
+        if (this.jogo != other.jogo && (this.jogo == null || !this.jogo.equals(other.jogo))) {
+            return false;
+        }
+        if (this.tempo != other.tempo && (this.tempo == null || !this.tempo.equals(other.tempo))) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

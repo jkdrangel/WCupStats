@@ -37,9 +37,9 @@ public class Jogo {
      */
     private final String local;
     /**
-     * Copa que houve este jogo.
+     * CopaDAO que houve este jogo.
      */
-    private final Copa copa;
+    private Copa copa;
     /**
      * Time A.
      */
@@ -122,7 +122,7 @@ public class Jogo {
     /**
      * @return the copa
      */
-    public Copa getCopa() {
+  public Copa getCopa() {
         return copa;
     }
 
