@@ -5,7 +5,7 @@
  */
 package model.Enuns;
 
-import model.Jogo;
+import model.CRUD.Jogo;
 
 /**
  * Fases de uma copa.
