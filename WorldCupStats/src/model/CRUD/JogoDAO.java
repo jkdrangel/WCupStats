@@ -146,7 +146,9 @@ public class JogoDAO {
 
     /**
      * @return the escalacaoB
-    EscalacaoDAOublic Escalacao getEscalacaoB() {
+     */
+     
+    public EscalacaoDAO getEscalacaoB() {
         return escalacaoB;
     }
 
@@ -160,7 +162,7 @@ public class JogoDAO {
     /**
      * @param substis the substis to set
      */
-    public void addSubstituicaoDAO (SubstituicaoDAO substis) {
+    public void addSubstituicao (SubstituicaoDAO substis) {
         this.substis.add(substis);
     }
 

@@ -156,7 +156,7 @@ public class TimeDAO {
     /**
      * @param goal the gols to insert
      */
-    public void Goals(GolDAO goal) {
+    public void addGoals(GolDAO goal) {
         gols.add(goal);
     }
 

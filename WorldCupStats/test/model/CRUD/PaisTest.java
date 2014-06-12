@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class PaisTest {
     
- PaisDAOais PaisDAOw Pais("Brasil","America");
+ PaisDAO p= new PaisDAO("Brasil","America");
     
     public PaisTest() {
     }

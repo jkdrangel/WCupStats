@@ -8,7 +8,9 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
+import java.util.Date;
 import java.util.List;
+import model.pojo.Copa;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -24,7 +26,7 @@ public class CopaDAO {
 	Session sessao = null;
 	Transaction transacao = null;
 	
-	public void adicionar(CopaDAO copa) {
+	public void adicionar(Copa copa) {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 					
@@ -43,7 +45,7 @@ public class CopaDAO {
 	}
 	
 	
-	public void atualizar(CopaDAO copa) {
+	public void atualizar(Copa copa) {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 					
@@ -61,7 +63,7 @@ public class CopaDAO {
 		}
 	}
 	
-	public void remover(CopaDAO copa) {
+	public void remover(Copa copa) {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 					
@@ -125,16 +127,16 @@ public class CopaDAO {
 	}
 	
 	
-	public CopaDAO buscar(String nome) {
-		CopaDAO copa = null;
+	public Copa buscar(Date ano) {
+		Copa copa = null;
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 
-			Query consulta = sessao.createQuery("from Copa where nome = :parametro");
-			consulta.setString("parametro", nome);
+			Query consulta = sessao.createQuery("from Copa where ano = :parametro");
+			consulta.setDate("parametro", ano);
 
 			transacao = sessao.beginTransaction();
-			copa = (CopaDAO) consulta.uniqueResult();
+			copa = (Copa) consulta.uniqueResult();
 			transacao.commit();
 			return copa;
 			
@@ -149,7 +151,4 @@ public class CopaDAO {
 		}
 		return copa;
 	}
-
-
-
 }

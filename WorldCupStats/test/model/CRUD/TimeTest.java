@@ -33,10 +33,10 @@ import static org.junit.Assert.assertNull;
  */
 public class TimeTest {
 
-   TimeDAOvate Time time;
+   private TimeDAO time;
     private CopaDAO copa;
-    privaPaisDAOais pais;
-    privaPessoaDAOsoa tecnico;
+    private PaisDAO pais;
+    private PessoaDAO tecnico;
     private char grupo;
     private int ano;
     private int rank;
@@ -46,13 +46,13 @@ public class TimeTest {
     public void setUp() {
 
         Date dataQualqer = new Date();
-        pais PaisDAOw Pais("Sertao", "Nordeste");
-        tecnico = nTecnicoDAOico("Luiz Gonzaga", dataQualqer);
-        copa= nCopaDAOopa(dataQualqer, null);
+        PaisDAO pais =new PaisDAO("Sertao", "Nordeste");
+        tecnico = new TecnicoDAO("Luiz Gonzaga", dataQualqer);
+        copa= new CopaDAO();
         grupo = 'A';
         ano = 1994;
         rank = 1;
-       TimeDAOe = new Time(grupo, ano, rank, tecnico, pais, copa);
+       time = new TimeDAO(grupo, ano, rank, tecnico, pais, copa);
     }
 
     @Test
@@ -61,13 +61,14 @@ public class TimeTest {
         assertTrue("Sem gols ainda", 0 == time.getGols().size());
 
         boolean foiContra = true;
-  PessoaDAOPessoa jogador = null;
-     JogoDAOogo jogo = null;
+    PessoaDAO jogador = null;
+     JogoDAO jogo = null;
 
         Date tempo = new Date();
 
-     GolDAOGol gol1 GolDAOew Gol(jogo, jogador, time, tempo, foiContra);GolDAO      GolGolDAOl2 = new Gol(jogo, jogador, time, tempo, foiCoGolDAOa);
-     GolDAOGol gol3 = new Gol(jogo, jogador, time, tempo, foiContra);
+     GolDAO gol1 =new GolDAO(jogo, jogador, time, tempo, foiContra);
+     GolDAO gol2 = new GolDAO(jogo, jogador, time, tempo, foiContra);
+     GolDAO gol3 = new GolDAO(jogo, jogador, time, tempo, foiContra);
 
         time.addGoals(gol1);
         assertTrue(1 == time.getGols().size());
@@ -87,28 +88,29 @@ public class TimeTest {
 
     @Test
     public void testGolMaGolDAOapido() {
-        Gol rapido = time.golRapido();
+        GolDAO rapido = time.golRapido();
         assertNull("Se não fez gol não tem o rapido", rapido);
 
-        boolean foiContra = true;PessoaDAO   Pessoa jogador = null;
-  JogoDAO  Jogo jogo = null;
+        boolean foiContra = true;
+        PessoaDAO jogador = null;
+        JogoDAO jogo = null;
 
         Date tempo1 = new Date(900000); // 15 minutos
         Date tempo2 = new Date(180000); // 3 minutos
-        Date tempo3 = new Date(300000)GolDAO/ 5 minutGolDAO
-        Gol gol1 = new Gol(jogo, jogador, time, tempo1, foiContra);
+        Date tempo3 = new Date(300000);// 5 minutos
+        GolDAO gol1 = new GolDAO(jogo, jogador, time, tempo1, foiContra);
         time.addGoals(gol1);
         rapido = time.golRapido();
         assertSame(gol1, rapido);
-        assertTrue(15 == rapido.getTeGolDAO().getMinGolDAOs());
+        assertTrue(15 == rapido.getTempo().getMinutes());
 
-        Gol gol2 = new Gol(jogo, jogador, time, tempo2, foiContra);
+        GolDAO gol2 = new GolDAO(jogo, jogador, time, tempo2, foiContra);
         time.addGoals(gol2);
         rapido = time.golRapido();
         assertSame(gol2, rapido);
-        assertTrue(3 == rapidoGolDAOtTempo().GolDAOMinutes());
+        assertTrue(3 == rapido.getTempo().getMinutes());
 
-        Gol gol3 = new Gol(jogo, jogador, time, tempo3, foiContra);
+        GolDAO gol3 = new GolDAO(jogo, jogador, time, tempo3, foiContra);
         time.addGoals(gol3);
         rapido = time.golRapido();
         assertSame(gol2, rapido);
@@ -125,9 +127,10 @@ public class TimeTest {
     @Test
     public void testVerificarJogadores() {
 
-        Date dataQualquer = new Date(PessoaDAO      Pessoa jogador1 = nJogadorDAOdor("Caboré", dataQualquer, 99, FuncaoJogador.GOLPessoaDAO
-        Pessoa jogador2 JogadorDAOogador("Biru Biro", dataQualquer, 10, FuncaoJogador.MEIO_DPessoaDAOO);
-        Pessoa jogadoJogadorDAOw Jogador("Não vou colocar os 23 não", dataQualquer, 23, FuncaoJogador.ATACANTE);
+        Date dataQualquer = new Date();
+        PessoaDAO jogador1 = new JogadorDAO("Caboré", dataQualquer, 99, FuncaoJogador.GOLEIRO);
+        PessoaDAO jogador2 =new JogadorDAO("Biru Biro", dataQualquer, 10, FuncaoJogador.MEIO_DE_CAMPO);
+        PessoaDAO jogador3= new JogadorDAO("Não vou colocar os 23 não", dataQualquer, 23, FuncaoJogador.ATACANTE);
 
         assertTrue("Não tem jogadores ainda", (0 == time.getJogadores().size()));
 
@@ -153,8 +156,8 @@ public class TimeTest {
     }
 
     @Test
-    public void testEquaTimeDAO {
-        TimTimeDAOsmoTime = new Time(grupo, ano, rank, tecnico, pais, copa); // Mesma declaracao para o time.
+    public void testEqualsTime() {
+        TimeDAO mesmoTime = new TimeDAO(grupo, ano, rank, tecnico, pais, copa); // Mesma declaracao para o time.
         assertTrue((time.equals(mesmoTime)));
     }
 }
