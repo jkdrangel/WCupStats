@@ -103,15 +103,15 @@ public class CopaDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CopaDAO> listar() {
-		List<CopaDAO> resultado = null;
+	public List<Copa> listar() {
+		List<Copa> resultado = null;
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 
 			Query consulta = sessao.createQuery("from Copa");
 
 			transacao = sessao.beginTransaction();
-			resultado = (List<CopaDAO>) consulta.list();
+			resultado = (List<Copa>) consulta.list();
 			transacao.commit();
 			return resultado;
 		} catch (HibernateException e) {

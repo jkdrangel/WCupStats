@@ -8,8 +8,17 @@
 
 package model.CRUD;
 
+import Util.HibernateUtil;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import model.Enuns.FaseCopa;
+import model.pojo.Copa;
+import model.pojo.Pais;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Classe que representa um pais.
@@ -20,87 +29,136 @@ import model.Enuns.FaseCopa;
  *
  * @see TimeDAO
  */
-public class PaisDAO implements Comparable<PaisDAO>{
-    
-    ArrayList<TimeDAO> selecoes=new ArrayList<TimeDAO>();
-    private int titulos;
-    
-    public void cadastrarSelecao(String a, int i) {
-    selecoes.add(new TimeDAO(FaseCopa.GRUPOS.getFase().charAt(0), 0, 0, null, this, null));
-    }
-    
-    private final String nome;
-    private final String continente;
-    private int ID;
+public class PaisDAO{
+   
+  
+	Session sessao = null;
+	Transaction transacao = null;
+	
+	public void adicionar(Pais pais) {
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+					
+			transacao = sessao.beginTransaction();
+			sessao.save(pais);
+			transacao.commit();
+		} catch (HibernateException e) {
+			System.err.println("Nao foi possivel inserir o objeto. Erro: " + e.getMessage());
+		} finally {
+			try {
+				sessao.close();
+			} catch (Throwable e) {
+				System.err.println("Erro ao fechar operacao de insercao. Mensagem: " + e.getMessage());				
+			}
+		}
+	}
+	
+	
+	public void atualizar(Pais pais) {
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+					
+			transacao = sessao.beginTransaction();
+			sessao.update(pais);
+			transacao.commit();
+		} catch (HibernateException e) {
+			System.err.println("Nao foi possivel atualizar o objeto. Erro: " + e.getMessage());
+		} finally {
+			try {
+				sessao.close();
+			} catch (Throwable e) {
+				System.err.println("Erro ao fechar operacao de atualizacao. Mensagem: " + e.getMessage());				
+			}
+		}
+	}
+	
+	public void remover(Pais pais) {
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+					
+			transacao = sessao.beginTransaction();
+			sessao.delete(pais);
+			transacao.commit();
+		} catch (HibernateException e) {
+			System.err.println("Nao foi possivel excluir o objeto. Erro: " + e.getMessage());
+		} finally {
+			try {
+				sessao.close();
+			} catch (Throwable e) {
+				System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());				
+			}
+		}
+	}
+	
+	
+	public void removerTodos() {
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
 
-    public PaisDAO(String nome, String continente) {
-        this.nome = nome;
-        this.continente = continente;
-    }
+			Query consulta = sessao.createQuery("delete from Pais");
 
-    public String getNome() {
-        return nome;
-    }
+			transacao = sessao.beginTransaction();
+			consulta.executeUpdate();
+			transacao.commit();
+		} catch (HibernateException e) {
+			System.err.println("Nao foi possivel excluir os objetos. Erro: " + e.getMessage());
+		} finally {
+			try {
+				sessao.close();
+			} catch (Throwable e) {
+				System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());				
+			}
+		}
+	}
 
-    public String getContinente() {
-        return continente;
-    }
+	@SuppressWarnings("unchecked")
+	public List<Pais> listar() {
+		List<Pais> resultado = null;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
 
-    public int getID() {
-        return ID;
-    }
+			Query consulta = sessao.createQuery("from Pais");
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+			transacao = sessao.beginTransaction();
+			resultado = (List<Pais>) consulta.list();
+			transacao.commit();
+			return resultado;
+		} catch (HibernateException e) {
+			System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+			throw new HibernateException(e);
+		} finally {
+			try {
+				sessao.close();
+			} catch (Throwable e) {
+				System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());				
+			}
+		}
+	}
+	
+	
+	public Pais buscar(String nome) {
+		Pais pais = null;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
 
-    @Override
-    public String toString() {
-        return "Pais{" + "nome=" + nome + '}';
-    }
+			Query consulta = sessao.createQuery("from Pais where nome = :parametro");
+			consulta.setString("parametro", nome);
 
-    void consultarQtdJogos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getTitulos() {
-        return titulos;
-    }
-
-    public void setTitulos(int titulos) {
-        this.titulos = titulos;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + this.titulos;
-        hash = 79 * hash + this.ID;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PaisDAO other = (PaisDAO) obj;
-        
-        return this.titulos == other.titulos;
-    }
-
-    public int compareTo(PaisDAO o) {
-    if(this.equals(o)){
-    return 0;
-    }
-    else if(this.getTitulos()>o.getTitulos()){
-    return 1;
-    }
-        
-    return -1;
-    }
+			transacao = sessao.beginTransaction();
+			pais = (Pais) consulta.uniqueResult();
+			transacao.commit();
+			return pais;
+			
+		} catch (HibernateException e) {
+			System.err.println("Nao foi possivel buscar o objeto. Erro: " + e.getMessage());
+		} finally {
+			try {
+				sessao.close();
+			} catch (Throwable e) {
+				System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());				
+			}
+		}
+		return pais;
+	}
     
 }

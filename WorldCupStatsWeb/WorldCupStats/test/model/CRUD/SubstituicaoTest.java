@@ -5,12 +5,6 @@
  */
 package model.CRUD;
 
-import model.CRUD.PessoaDAO;
-import model.CRUD.SubstituicaoDAO;
-import model.CRUD.TimeDAO;
-import model.CRUD.TecnicoDAO;
-import model.CRUD.PaisDAO;
-import model.CRUD.JogadorDAO;
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
 import org.junit.Before;
@@ -40,8 +34,8 @@ public class SubstituicaoTest {
     @Before
     public void setUp() {
         tecnico = new TecnicoDAO("Alguem", new Date());
-        Brasil = new PaisDAO("Brasil", "America do Sul");
-        brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
+        //Brasil = new PaisDAO("Brasil", "America do Sul");
+        //brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
 
         fma = new JogadorDAO("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
         fmabh = new JogadorDAO("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);

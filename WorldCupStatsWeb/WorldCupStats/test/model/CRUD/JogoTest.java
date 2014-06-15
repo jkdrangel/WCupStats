@@ -5,26 +5,21 @@
  */
 package model.CRUD;
 
-import model.CRUD.PessoaDAO;
-import model.CRUD.EscalacaoDAO;
-import model.CRUD.GolDAO;
-import model.CRUD.SubstituicaoDAO;
-import model.CRUD.JogoDAO;
-import model.CRUD.TimeDAO;
-import model.CRUD.TecnicoDAO;
-import model.CRUD.PaisDAO;
-import model.CRUD.JogadorDAO;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import model.Enuns.FaseCopa;
 import model.Enuns.FuncaoJogador;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.assertSame;
+import model.pojo.Pais;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Testes para verificar funcionalidades da classe JogoDAO.
@@ -44,15 +39,19 @@ public class JogoTest {
     private EscalacaoDAO doBrazil;
     private EscalacaoDAO daAlemanha;
     private TecnicoDAO tecnico;
-    private PaisDAO Brasil;
-    private PaisDAO Alemanha;
+    private Pais Brasil;
+    private Pais Alemanha;
 
     @Before
     public void setUp() {
         tecnico = new TecnicoDAO("Alguem", new Date());
-        Brasil = new PaisDAO("Brasil", "America do Sul");
-        Alemanha = new PaisDAO("Alemanha", "Asia");
-
+        Brasil = new Pais();
+        Brasil.setNome("Brasil");
+        Brasil.setContinente("America do Sul");
+        Alemanha = new Pais();
+        Alemanha.setNome("Alemanha");
+        Alemanha.setContinente("Asia");
+                
         brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
         alemanha = new TimeDAO('H', 2014, 3, tecnico, Alemanha, copa);
 
@@ -164,7 +163,7 @@ public class JogoTest {
     @Test
     public void testTimeParticipouJogo() {
 
-        TimeDAO italia = new TimeDAO('B', 2014, 25, tecnico, new PaisDAO("Italia", "Europa"), copa);
+        TimeDAO italia = new TimeDAO('B', 2014, 25, tecnico, new Pais(), copa);
         assertEquals(false, jogo.timeParticipouJogo(italia));
 
         TimeDAO mesmoBrazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);

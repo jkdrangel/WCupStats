@@ -9,10 +9,11 @@
 package model.CRUD;
 
 import model.CRUD.PaisDAO;
+import model.pojo.Pais;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -20,7 +21,7 @@ import static org.junit.Assert.*;
  */
 public class PaisTest {
     
- PaisDAO p= new PaisDAO("Brasil","America");
+ Pais p= new Pais();
     
     public PaisTest() {
     }
@@ -35,13 +36,13 @@ public class PaisTest {
 
     @Test
     public void cadastrarSelecao() {
-    p.cadastrarSelecao("A",2014);
+   // p.cadastrarSelecao("A",2014);
     
     }
     
     @Test
     public void consultarQtdJogos() {
-    p.consultarQtdJogos();
+    //p.consultarQtdJogos();
     }
     
     

@@ -10,9 +10,6 @@ package model.CRUD;
 
 import java.util.Date;
 import java.util.Iterator;
-import model.CRUD.JogoDAO;
-import model.CRUD.PaisDAO;
-import model.pojo.Copa;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;

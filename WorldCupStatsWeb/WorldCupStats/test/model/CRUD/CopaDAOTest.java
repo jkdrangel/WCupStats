@@ -86,7 +86,7 @@ public class CopaDAOTest {
         System.out.println("listar");
         CopaDAO instance = new CopaDAO();
         List<CopaDAO> expResult = null;
-        List<CopaDAO> result = instance.listar();
+        List<Copa> result = instance.listar();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }

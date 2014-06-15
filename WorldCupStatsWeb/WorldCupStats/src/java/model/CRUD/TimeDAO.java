@@ -10,6 +10,7 @@ package model.CRUD;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import model.pojo.Pais;
 
 /**
  * Classe que representa a selecao de um pais em um determinado ano de copa.
@@ -51,7 +52,7 @@ public class TimeDAO {
     /**
     PaisDAOais ao qual o time representa.
      */
-    private PaisDAO pais;
+    private Pais pais;
     /**
      * CopaDAO em que esta selecao participou.
      */
@@ -67,7 +68,7 @@ public class TimeDAO {
      * @param pais
      * @param copa
      */
-    public TimeDAO(char grupo, int ano, int rank, PessoaDAO tecnico, PaisDAO pais, CopaDAO copa) {
+    public TimeDAO(char grupo, int ano, int rank, PessoaDAO tecnico, Pais pais, CopaDAO copa) {
 
         this.grupo = grupo;
         this.ano = ano;
@@ -162,7 +163,7 @@ public class TimeDAO {
 
     /**
      * @return the pais
-     */ public PaisDAO getPais() {
+     */ public Pais getPais() {
         return pais;
     }
 

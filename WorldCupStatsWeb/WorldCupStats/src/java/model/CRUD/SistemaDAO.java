@@ -27,7 +27,7 @@ class SistemaDAO {
     }
 
     void cadastrarPais(String brazil, String america_do_sul) {
-        paises.add(new PaisDAO(brazil, america_do_sul));
+        paises.add(new PaisDAO());
     }
 
     void cadastrarCopa(Date ano, PaisDAO sede) {

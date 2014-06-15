@@ -5,8 +5,6 @@
  */
 package model.CRUD;
 
-import model.CRUD.SistemaDAO;
-import model.CRUD.PaisDAO;
 import java.util.Date;
 import java.util.Iterator;
 import org.junit.After;
@@ -47,11 +45,11 @@ public class SistemaTest {
 
     @Test
     public void cadastrarCopaTest() {
-        sistema.cadastrarCopa(new Date(2014,0,0), new PaisDAO("Brazil", "America do sul"));
+        //sistema.cadastrarCopa(new Date(2014,0,0), new PaisDAO("Brazil", "America do sul"));
         assertFalse(sistema.copas.isEmpty());
         assertTrue(sistema.copas.size()==1);
         
-        sistema.cadastrarCopa(new Date(2010,0,0), new PaisDAO("Africa do Sul", "Africa"));
+        //sistema.cadastrarCopa(new Date(2010,0,0), new PaisDAO("Africa do Sul", "Africa"));
         assertFalse(sistema.copas.size()==1);
         assertTrue(sistema.copas.size()==2);
     }
@@ -67,8 +65,8 @@ public class SistemaTest {
         Iterator it=sistema.listarCopas();
         assertFalse(it.hasNext());
         
-        sistema.cadastrarCopa(new Date(2014,0,0), new PaisDAO("Brazil", "America do sul"));
-        sistema.cadastrarCopa(new Date(2010,0,0), new PaisDAO("Africa do Sul", "Africa"));
+      //  sistema.cadastrarCopa(new Date(2014,0,0), new PaisDAO("Brazil", "America do sul"));
+       // sistema.cadastrarCopa(new Date(2010,0,0), new PaisDAO("Africa do Sul", "Africa"));
         assertTrue(it.hasNext());
         //assertEquals(new Date(2014,0,0), ((CopaDAO)it.next()).getData());
         

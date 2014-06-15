@@ -6,10 +6,11 @@
 
 package model.CRUD;
 
+import model.pojo.Pais;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -37,7 +38,7 @@ public class PaisDAOTest {
         String a = "";
         int i = 0;
         PaisDAO instance = null;
-        instance.cadastrarSelecao(a, i);
+        //instance.cadastrarSelecao();
         fail("The test case is a prototype.");
     }
 
@@ -47,7 +48,7 @@ public class PaisDAOTest {
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        PaisDAO instance = null;
+        Pais instance = null;
         String expResult = "";
         String result = instance.getNome();
         assertEquals(expResult, result);
@@ -60,7 +61,7 @@ public class PaisDAOTest {
     @Test
     public void testGetContinente() {
         System.out.println("getContinente");
-        PaisDAO instance = null;
+        Pais instance = null;
         String expResult = "";
         String result = instance.getContinente();
         assertEquals(expResult, result);
@@ -73,10 +74,10 @@ public class PaisDAOTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-        PaisDAO instance = null;
+        Pais instance = null;
         int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
+        //int result = instance.getID();
+        //assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -87,8 +88,8 @@ public class PaisDAOTest {
     public void testSetID() {
         System.out.println("setID");
         int ID = 0;
-        PaisDAO instance = null;
-        instance.setID(ID);
+        Pais instance = null;
+        //instance.setID(ID);
         fail("The test case is a prototype.");
     }
 
@@ -111,8 +112,8 @@ public class PaisDAOTest {
     @Test
     public void testConsultarQtdJogos() {
         System.out.println("consultarQtdJogos");
-        PaisDAO instance = null;
-        instance.consultarQtdJogos();
+        Pais instance = null;
+        //instance.consultarQtdJogos();
         fail("The test case is a prototype.");
     }
 
@@ -122,10 +123,10 @@ public class PaisDAOTest {
     @Test
     public void testGetTitulos() {
         System.out.println("getTitulos");
-        PaisDAO instance = null;
+        Pais instance = null;
         int expResult = 0;
-        int result = instance.getTitulos();
-        assertEquals(expResult, result);
+        //int result = instance.getTitulos();
+        //assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -136,8 +137,8 @@ public class PaisDAOTest {
     public void testSetTitulos() {
         System.out.println("setTitulos");
         int titulos = 0;
-        PaisDAO instance = null;
-        instance.setTitulos(titulos);
+        Pais instance = null;
+       // instance.setTitulos(titulos);
         fail("The test case is a prototype.");
     }
 
@@ -177,8 +178,8 @@ public class PaisDAOTest {
         PaisDAO o = null;
         PaisDAO instance = null;
         int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
+        //int result = instance.compareTo(o);
+        //assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
     

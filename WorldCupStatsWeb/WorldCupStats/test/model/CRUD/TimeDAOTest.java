@@ -166,8 +166,8 @@ public class TimeDAOTest {
         System.out.println("getPais");
         TimeDAO instance = null;
         PaisDAO expResult = null;
-        PaisDAO result = instance.getPais();
-        assertEquals(expResult, result);
+       // PaisDAO result = instance.getPais();
+        //assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
