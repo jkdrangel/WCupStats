@@ -39,7 +39,7 @@ public class SistemaDAOTest {
         System.out.println("cadastrarPais");
         String brazil = "";
         String america_do_sul = "";
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.cadastrarPais(brazil, america_do_sul);
         fail("The test case is a prototype.");
     }
@@ -52,7 +52,7 @@ public class SistemaDAOTest {
         System.out.println("cadastrarCopa");
         Date ano = null;
         PaisDAO sede = null;
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.cadastrarCopa(ano, sede);
         fail("The test case is a prototype.");
     }
@@ -63,7 +63,7 @@ public class SistemaDAOTest {
     @Test
     public void testListarPaises() {
         System.out.println("listarPaises");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         Iterator<PaisDAO> expResult = null;
         Iterator<PaisDAO> result = instance.listarPaises();
         assertEquals(expResult, result);
@@ -76,7 +76,7 @@ public class SistemaDAOTest {
     @Test
     public void testListarCopas() {
         System.out.println("listarCopas");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         Iterator<CopaDAO> expResult = null;
         Iterator<CopaDAO> result = instance.listarCopas();
         assertEquals(expResult, result);
@@ -89,7 +89,7 @@ public class SistemaDAOTest {
     @Test
     public void testEMarmelada() {
         System.out.println("eMarmelada");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.eMarmelada();
         fail("The test case is a prototype.");
     }
@@ -100,7 +100,7 @@ public class SistemaDAOTest {
     @Test
     public void testEDoBrasil() {
         System.out.println("eDoBrasil");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         ArrayList<PaisDAO> expResult = null;
         ArrayList<PaisDAO> result = instance.eDoBrasil();
         assertEquals(expResult, result);
@@ -113,7 +113,7 @@ public class SistemaDAOTest {
     @Test
     public void testToDentro() {
         System.out.println("toDentro");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.toDentro();
         fail("The test case is a prototype.");
     }
@@ -124,7 +124,7 @@ public class SistemaDAOTest {
     @Test
     public void testArrozDeCopa() {
         System.out.println("arrozDeCopa");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.arrozDeCopa();
         fail("The test case is a prototype.");
     }
@@ -135,7 +135,7 @@ public class SistemaDAOTest {
     @Test
     public void testSempreVice() {
         System.out.println("sempreVice");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.sempreVice();
         fail("The test case is a prototype.");
     }
@@ -146,7 +146,7 @@ public class SistemaDAOTest {
     @Test
     public void testFregues() {
         System.out.println("fregues");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.fregues();
         fail("The test case is a prototype.");
     }
@@ -157,7 +157,7 @@ public class SistemaDAOTest {
     @Test
     public void testTimeRuim() {
         System.out.println("timeRuim");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.timeRuim();
         fail("The test case is a prototype.");
     }
@@ -168,7 +168,7 @@ public class SistemaDAOTest {
     @Test
     public void testTimeBom() {
         System.out.println("timeBom");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.timeBom();
         fail("The test case is a prototype.");
     }
@@ -179,7 +179,7 @@ public class SistemaDAOTest {
     @Test
     public void testInvictos() {
         System.out.println("invictos");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.invictos();
         fail("The test case is a prototype.");
     }
@@ -190,7 +190,7 @@ public class SistemaDAOTest {
     @Test
     public void testPerdeuGanhou() {
         System.out.println("perdeuGanhou");
-        SistemaDAO instance = new SistemaDAO();
+        Sistema instance = new Sistema();
         instance.perdeuGanhou();
         fail("The test case is a prototype.");
     }

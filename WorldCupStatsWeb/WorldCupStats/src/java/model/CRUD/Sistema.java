@@ -12,81 +12,77 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import model.pojo.Copa;
+import model.pojo.Pais;
+import model.pojo.Selecao;
 
 /**
  *
  * @author lsantana
  */
-class SistemaDAO {
+public class Sistema {
 
-    private int ID;
-    ArrayList<PaisDAO> paises = new ArrayList<PaisDAO>();
-    ArrayList<CopaDAO> copas = new ArrayList<CopaDAO>();
+    PaisDAO pais= new PaisDAO();
+    CopaDAO copa = new CopaDAO();
 
-    SistemaDAO() {
+    public Sistema() {
     }
 
-    void cadastrarPais(String brazil, String america_do_sul) {
-        paises.add(new PaisDAO());
+    public Pais cadastrarPais(String nome, String continente) {
+       Pais p = new Pais();
+        p.setContinente(continente);
+        p.setNome(nome);
+        pais.adicionar(p);
+        return p;
     }
 
-    void cadastrarCopa(Date ano, PaisDAO sede) {
+    public Copa cadastrarCopa(Date ano, Pais sede, Selecao selecao) {
+        Copa c = new Copa();
+        c.setAno(ano);
+        c.setPais(sede);
+        c.setSelecao(selecao);
+        copa.adicionar(c);
+        return c;
+    }
+
+    
+    public void eMarmelada() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void eDoBrasil() {
         
     }
 
-    public Iterator<PaisDAO> listarPaises() {
-        return paises.iterator();
-    }
-
-    public Iterator<CopaDAO> listarCopas() {
-        return copas.iterator();
-    }
-
-    void eMarmelada() {
+    public void toDentro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ArrayList<PaisDAO> eDoBrasil() {
-        ArrayList<PaisDAO> cinco;
-        cinco = (ArrayList<PaisDAO>) paises.clone();
-        Collections.sort((List) cinco);
-        if (cinco.isEmpty()) {
-            return null;
-        } else if (cinco.size() <= 5) {
-            return cinco;
-        }
-        return (ArrayList<PaisDAO>) cinco.subList(0, 4);
-    }
-
-    void toDentro() {
+    public void arrozDeCopa() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void arrozDeCopa() {
+    public void sempreVice() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void sempreVice() {
+    public void fregues() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void fregues() {
+    public void timeRuim() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void timeRuim() {
+    public void timeBom() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void timeBom() {
+    public void invictos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void invictos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void perdeuGanhou() {
+    public void perdeuGanhou() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

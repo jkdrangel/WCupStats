@@ -18,7 +18,7 @@ import org.junit.Test;
  */
 public class SistemaTest {
 
-    SistemaDAO sistema = new SistemaDAO();
+    Sistema sistema = new Sistema();
 
     public SistemaTest() {
     }

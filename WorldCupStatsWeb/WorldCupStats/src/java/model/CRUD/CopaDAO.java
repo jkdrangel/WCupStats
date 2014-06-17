@@ -38,7 +38,7 @@ public class CopaDAO {
 		} finally {
 			try {
 				sessao.close();
-			} catch (Throwable e) {
+			} catch (HibernateException e) {
 				System.err.println("Erro ao fechar operacao de insercao. Mensagem: " + e.getMessage());				
 			}
 		}
@@ -57,7 +57,7 @@ public class CopaDAO {
 		} finally {
 			try {
 				sessao.close();
-			} catch (Throwable e) {
+			} catch (HibernateException e) {
 				System.err.println("Erro ao fechar operacao de atualizacao. Mensagem: " + e.getMessage());				
 			}
 		}
@@ -75,7 +75,7 @@ public class CopaDAO {
 		} finally {
 			try {
 				sessao.close();
-			} catch (Throwable e) {
+			} catch (HibernateException e) {
 				System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());				
 			}
 		}
@@ -96,7 +96,7 @@ public class CopaDAO {
 		} finally {
 			try {
 				sessao.close();
-			} catch (Throwable e) {
+			} catch (HibernateException e) {
 				System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());				
 			}
 		}
@@ -120,7 +120,7 @@ public class CopaDAO {
 		} finally {
 			try {
 				sessao.close();
-			} catch (Throwable e) {
+			} catch (HibernateException e) {
 				System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());				
 			}
 		}
@@ -145,7 +145,7 @@ public class CopaDAO {
 		} finally {
 			try {
 				sessao.close();
-			} catch (Throwable e) {
+			} catch (HibernateException e) {
 				System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());				
 			}
 		}
