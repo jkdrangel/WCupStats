@@ -7,12 +7,16 @@ package model.CRUD;
 
 import java.util.Date;
 import model.Enuns.FuncaoJogador;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertSame;
+import model.pojo.Pais;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 
 /**
@@ -28,7 +32,7 @@ public class TimeTest {
 
    private TimeDAO time;
     private CopaDAO copa;
-    private PaisDAO pais;
+    private Pais pais;
     private PessoaDAO tecnico;
     private char grupo;
     private int ano;
@@ -39,7 +43,9 @@ public class TimeTest {
     public void setUp() {
 
         Date dataQualqer = new Date();
-        PaisDAO pais =new PaisDAO("Sertao", "Nordeste");
+        pais =new Pais();
+        pais.setContinente("Nordeste");
+        pais.setNome("Sertao");
         tecnico = new TecnicoDAO("Luiz Gonzaga", dataQualqer);
         copa= new CopaDAO();
         grupo = 'A';

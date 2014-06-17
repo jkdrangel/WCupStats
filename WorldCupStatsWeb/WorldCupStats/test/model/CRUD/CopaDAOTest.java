@@ -3,106 +3,103 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.CRUD;
 
 import java.util.Date;
 import java.util.List;
 import model.pojo.Copa;
+import model.pojo.Pais;
+import model.pojo.Selecao;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author lsantana
  */
 public class CopaDAOTest {
-    
-    public CopaDAOTest() {
-    }
-    
+
+    CopaDAO copaDAO;
+    Copa copa, copa1, copa2;
+    Pais brasil, africa, coreia;
+    Selecao selecao;
+
     @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public void setUp() throws Exception {
+        copaDAO = new CopaDAO();
+
+        copa = new Copa();
+        copa.setAno(new Date(2014,0,0));
+        copa.setPais(brasil);
+        copa.setSelecao(selecao);
+
+        copa1 = new Copa();
+        copa1.setAno(new Date(2010,0,0));
+        copa1.setPais(africa);
+        copa1.setSelecao(selecao);
+
+        copa2 = new Copa();
+        copa2.setAno(new Date(2002,0,0));
+        copa2.setPais(coreia);
+        copa2.setSelecao(selecao);
+
+        copaDAO.removerTodos();
+
     }
 
-    /**
-     * Test of adicionar method, of class CopaDAO.
-     */
     @Test
     public void testAdicionar() {
-        System.out.println("adicionar");
-        Copa copa = null;
-        CopaDAO instance = new CopaDAO();
-        instance.adicionar(copa);
-        fail("The test case is a prototype.");
+        copaDAO.adicionar(copa);
+        List<Copa> copas = copaDAO.listar();
+        assertEquals(copa, copas.get(0));
     }
 
-    /**
-     * Test of atualizar method, of class CopaDAO.
-     */
     @Test
     public void testAtualizar() {
-        System.out.println("atualizar");
-        Copa copa = null;
-        CopaDAO instance = new CopaDAO();
-        instance.atualizar(copa);
-        fail("The test case is a prototype.");
+        copaDAO.adicionar(copa);
+        copa.setAno(new Date(2013,0,0));
+        copaDAO.atualizar(copa);
+        List<Copa> copas = copaDAO.listar();
+        assertEquals(copa, copas.get(0));
     }
 
-    /**
-     * Test of remover method, of class CopaDAO.
-     */
     @Test
     public void testRemover() {
-        System.out.println("remover");
-        Copa copa = null;
-        CopaDAO instance = new CopaDAO();
-        instance.remover(copa);
-        fail("The test case is a prototype.");
+        copaDAO.adicionar(copa);
+        copaDAO.remover(copa);
+        List<Copa> copas = copaDAO.listar();
+        assertTrue(copas.isEmpty());
     }
 
-    /**
-     * Test of removerTodos method, of class CopaDAO.
-     */
     @Test
     public void testRemoverTodos() {
-        System.out.println("removerTodos");
-        CopaDAO instance = new CopaDAO();
-        instance.removerTodos();
-        fail("The test case is a prototype.");
+        copaDAO.removerTodos();
+        List<Copa> copas = copaDAO.listar();
+        assertTrue(copas.isEmpty());
     }
 
-    /**
-     * Test of listar method, of class CopaDAO.
-     */
     @Test
-    public void testListar() {
-        System.out.println("listar");
-        CopaDAO instance = new CopaDAO();
-        List<CopaDAO> expResult = null;
-        List<Copa> result = instance.listar();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void listar() {
+        copaDAO.adicionar(copa);
+        copaDAO.adicionar(copa1);
+        copaDAO.adicionar(copa2);
+
+        List<Copa> copas = copaDAO.listar();
+        assertFalse(copas.isEmpty());
+        assertEquals(copa, copas.get(0));
+        assertEquals(copa1, copas.get(1));
+        assertEquals(copa2, copas.get(2));
     }
 
-    /**
-     * Test of buscar method, of class CopaDAO.
-     */
     @Test
-    public void testBuscar() {
-        System.out.println("buscar");
-        Date ano = null;
-        CopaDAO instance = new CopaDAO();
-        Copa expResult = null;
-        Copa result = instance.buscar(ano);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void buscar() {
+        copaDAO.adicionar(copa);
+        copaDAO.adicionar(copa1);
+        copaDAO.adicionar(copa2);
+
+        Copa resultadoBusca = copaDAO.buscar(copa1.getAno());
+        assertEquals(copa1, resultadoBusca);
     }
-    
 }

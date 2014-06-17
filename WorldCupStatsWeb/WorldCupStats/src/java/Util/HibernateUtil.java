@@ -7,6 +7,7 @@ package Util;
  */
 
 
+import org.hibernate.HibernateException;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
@@ -15,22 +16,21 @@ import org.hibernate.SessionFactory;
  * @author lsantana
  */
 public class HibernateUtil {
+private static final SessionFactory sessionFactory = buildSessionFactory();
 
-    private static final SessionFactory sessionFactory;
-    
-    static {
-        try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-    
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
+	private static SessionFactory buildSessionFactory() {
+		try {
+			AnnotationConfiguration cfg = new AnnotationConfiguration();
+			cfg.configure("hibernate.cfg.xml");
+			return cfg.buildSessionFactory();
+		} catch (HibernateException e) {
+			System.out.println("Criacao do objeto SessionFactory falhou." + e);
+			throw new ExceptionInInitializerError(e);
+		}
+	}
+	
+	public static SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
 }   

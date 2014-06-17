@@ -6,10 +6,12 @@
 package Controller;
 
 import java.util.Date;
+import java.util.List;
 import model.CRUD.CopaDAO;
 import model.CRUD.PaisDAO;
 import model.CRUD.Sistema;
 import model.pojo.Copa;
+import model.pojo.Jogo;
 import model.pojo.Pais;
 import model.pojo.Selecao;
 
@@ -30,7 +32,23 @@ public class Controller {
         
     }
 
-     public void listarPaises (){
-         
+     public List<Pais> listarPaises (){
+         return sistema.listarPaises();
+     }
+     
+     public List<Copa> listarCopas(){
+     return sistema.listarCopas();
+     } 
+     
+     public List<Pais> listarPaisesCopa(Copa copa){
+     return sistema.listarPaisesCopa(copa);
+     }
+     
+     public List<Jogo> listarJogosCopa(Copa copa){
+     return sistema.listarJogosCopa(copa);
+     }
+     
+     public int qtdJogosPais(Pais pais){
+     return sistema.qtdJogosPais(pais);
      }
 }
