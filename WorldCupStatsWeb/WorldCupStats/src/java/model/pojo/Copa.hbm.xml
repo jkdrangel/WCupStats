@@ -9,10 +9,10 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="selecao" class="model.pojo.Selecao" fetch="select">
-            <column name="ID_SELECAO" not-null="true" />
+            <column name="ID_SELECAO" not-null="false" />
         </many-to-one>
         <many-to-one name="pais" class="model.pojo.Pais" fetch="select">
-            <column name="ID_SEDE" not-null="true" />
+            <column name="ID_SEDE" not-null="false" />
         </many-to-one>
         <property name="ano" type="date">
             <column name="ano" length="10" not-null="true" />
