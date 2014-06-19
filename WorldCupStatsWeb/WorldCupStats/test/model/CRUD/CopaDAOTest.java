@@ -7,10 +7,13 @@ package model.CRUD;
 
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.EntityManager;
 import model.pojo.Copa;
 import model.pojo.Pais;
 import model.pojo.Selecao;
+import org.hibernate.ejb.EntityManagerImpl;
 import org.junit.After;
+import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +30,12 @@ public class CopaDAOTest {
     Pais brasil, africa, coreia;
     Selecao selecao;
 
+    @AfterClass
+    public void tearDownClass(){
+     //entityManager.createNativeQuery("ALTER TABLE student AUTO_INCREMENT = 1");
+     //EntityManager.executeUpdate(); 
+    }
+    
     @Before
     public void setUp() throws Exception {
         copaDAO = new CopaDAO();
