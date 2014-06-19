@@ -90,7 +90,6 @@ public class Jogador  implements java.io.Serializable {
         hash = 37 * hash + (this.nome != null ? this.nome.hashCode() : 0);
         hash = 37 * hash + this.numero;
         hash = 37 * hash + (this.posicao != null ? this.posicao.hashCode() : 0);
-        hash = 37 * hash + (this.gols != null ? this.gols.hashCode() : 0);
         return hash;
     }
 
@@ -116,9 +115,6 @@ public class Jogador  implements java.io.Serializable {
             return false;
         }
         if ((this.posicao == null) ? (other.posicao != null) : !this.posicao.equals(other.posicao)) {
-            return false;
-        }
-        if (this.gols != other.gols && (this.gols == null || !this.gols.equals(other.gols))) {
             return false;
         }
         return true;

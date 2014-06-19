@@ -99,8 +99,6 @@ public class Jogo  implements java.io.Serializable {
         hash = 97 * hash + (this.data != null ? this.data.hashCode() : 0);
         hash = 97 * hash + (this.local != null ? this.local.hashCode() : 0);
         hash = 97 * hash + (this.fase != null ? this.fase.hashCode() : 0);
-        hash = 97 * hash + (this.gols != null ? this.gols.hashCode() : 0);
-        hash = 97 * hash + (this.substituicaos != null ? this.substituicaos.hashCode() : 0);
         return hash;
     }
 
@@ -126,12 +124,6 @@ public class Jogo  implements java.io.Serializable {
             return false;
         }
         if ((this.fase == null) ? (other.fase != null) : !this.fase.equals(other.fase)) {
-            return false;
-        }
-        if (this.gols != other.gols && (this.gols == null || !this.gols.equals(other.gols))) {
-            return false;
-        }
-        if (this.substituicaos != other.substituicaos && (this.substituicaos == null || !this.substituicaos.equals(other.substituicaos))) {
             return false;
         }
         return true;

@@ -76,8 +76,6 @@ public class Pais  implements java.io.Serializable {
         hash = 89 * hash + this.id;
         hash = 89 * hash + (this.nome != null ? this.nome.hashCode() : 0);
         hash = 89 * hash + (this.continente != null ? this.continente.hashCode() : 0);
-        hash = 89 * hash + (this.selecaos != null ? this.selecaos.hashCode() : 0);
-        hash = 89 * hash + (this.copas != null ? this.copas.hashCode() : 0);
         return hash;
     }
 

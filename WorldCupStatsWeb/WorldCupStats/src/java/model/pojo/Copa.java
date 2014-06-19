@@ -88,8 +88,6 @@ public class Copa implements java.io.Serializable {
         hash = 37 * hash + (this.selecao != null ? this.selecao.hashCode() : 0);
         hash = 37 * hash + (this.pais != null ? this.pais.hashCode() : 0);
         hash = 37 * hash + (this.ano != null ? this.ano.hashCode() : 0);
-        hash = 37 * hash + (this.selecaos != null ? this.selecaos.hashCode() : 0);
-        hash = 37 * hash + (this.jogos != null ? this.jogos.hashCode() : 0);
         return hash;
     }
 
@@ -112,12 +110,6 @@ public class Copa implements java.io.Serializable {
             return false;
         }
         if (this.ano != other.ano && (this.ano == null || !this.ano.equals(other.ano))) {
-            return false;
-        }
-        if (this.selecaos != other.selecaos && (this.selecaos == null || !this.selecaos.equals(other.selecaos))) {
-            return false;
-        }
-        if (this.jogos != other.jogos && (this.jogos == null || !this.jogos.equals(other.jogos))) {
             return false;
         }
         return true;

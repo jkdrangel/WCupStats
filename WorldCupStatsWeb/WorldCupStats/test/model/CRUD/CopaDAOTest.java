@@ -33,6 +33,13 @@ public class CopaDAOTest {
         brasil = new Pais();
         africa = new Pais();
         coreia = new Pais();
+        brasil.setNome("Brasil");
+        africa.setNome("Africa");
+        coreia.setNome("coreia");
+        brasil.setContinente("america");
+        africa.setContinente("africa");
+        coreia.setContinente("asia");
+        
         paisdao.adicionar(brasil);
         paisdao.adicionar(africa);
         paisdao.adicionar(coreia);
