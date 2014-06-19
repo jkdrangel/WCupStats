@@ -5,10 +5,9 @@
  */
 package model.CRUD;
 
-import java.util.Date;
-import java.util.Iterator;
+import junit.framework.Assert;
+import model.pojo.Pais;
 import org.junit.After;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,8 +32,8 @@ public class SistemaTest {
 
     @Test
     public void cadastrarPaisTest() {
-        sistema.cadastrarPais("Brazil", "America do sul");
-        
+        Pais brasil= sistema.cadastrarPais("Brazil", "America do sul");
+        Assert.assertNotNull(brasil);
     }
 
 

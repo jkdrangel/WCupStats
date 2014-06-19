@@ -8,8 +8,7 @@
     <property name="hibernate.connection.username">adminCiRTagI</property>
     <property name="hibernate.connection.password">FDGx3lJP3v_h</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.hbm2ddl.auto">create-drop</property>
-    <mapping class="model.pojo.Copa"/>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping resource="model/pojo/Jogador.hbm.xml"/>
     <mapping resource="model/pojo/Tecnico.hbm.xml"/>
     <mapping resource="model/pojo/Jogo.hbm.xml"/>

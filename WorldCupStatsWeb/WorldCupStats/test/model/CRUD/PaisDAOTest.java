@@ -6,7 +6,11 @@
 
 package model.CRUD;
 
+import java.sql.Date;
+import java.util.List;
+import model.pojo.Copa;
 import model.pojo.Pais;
+import model.pojo.Selecao;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -18,169 +22,84 @@ import org.junit.Test;
  */
 public class PaisDAOTest {
     
-    public PaisDAOTest() {
-    }
-    
+    PaisDAO paisdao;
+    Pais brasil, africa, coreia;
+    Selecao selecao;
+
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        paisdao = new PaisDAO();
+       
+        brasil = new Pais();
+        brasil.setNome("brasil");
+        brasil.setContinente("America");
+        africa =new Pais();
+        africa.setNome("africa");
+        africa.setContinente("africa");
+        coreia = new Pais();
+        coreia.setNome("coreia");
+        coreia.setContinente("asia");
+
+        paisdao.removerTodos();
+       
     }
-    
-    @After
+     @After
     public void tearDown() {
+    paisdao.removerTodos();
     }
 
-    /**
-     * Test of cadastrarSelecao method, of class PaisDAO.
-     */
+
     @Test
-    public void testCadastrarSelecao() {
-        System.out.println("cadastrarSelecao");
-        String a = "";
-        int i = 0;
-        PaisDAO instance = null;
-        //instance.cadastrarSelecao();
-        fail("The test case is a prototype.");
+    public void testAdicionar() {
+        paisdao.adicionar(brasil);
+        List<Pais> paises = paisdao.listar();
+        assertEquals(brasil, paises.get(0));
     }
 
-    /**
-     * Test of getNome method, of class PaisDAO.
-     */
     @Test
-    public void testGetNome() {
-        System.out.println("getNome");
-        Pais instance = null;
-        String expResult = "";
-        String result = instance.getNome();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testAtualizar() {
+        paisdao.adicionar(brasil);
+        brasil.setContinente("America do sul");
+        paisdao.atualizar(brasil);
+        List<Pais> paises = paisdao.listar();
+        assertEquals(brasil, paises.get(0));
     }
 
-    /**
-     * Test of getContinente method, of class PaisDAO.
-     */
     @Test
-    public void testGetContinente() {
-        System.out.println("getContinente");
-        Pais instance = null;
-        String expResult = "";
-        String result = instance.getContinente();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testRemover() {
+        paisdao.adicionar(brasil);
+        paisdao.remover(brasil);
+        List<Pais> paises = paisdao.listar();
+        assertTrue(paises.isEmpty());
     }
 
-    /**
-     * Test of getID method, of class PaisDAO.
-     */
     @Test
-    public void testGetID() {
-        System.out.println("getID");
-        Pais instance = null;
-        int expResult = 0;
-        //int result = instance.getID();
-        //assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testRemoverTodos() {
+        paisdao.removerTodos();
+        List<Pais> paises = paisdao.listar();
+        assertTrue(paises.isEmpty());
     }
 
-    /**
-     * Test of setID method, of class PaisDAO.
-     */
     @Test
-    public void testSetID() {
-        System.out.println("setID");
-        int ID = 0;
-        Pais instance = null;
-        //instance.setID(ID);
-        fail("The test case is a prototype.");
+    public void listar() {
+        paisdao.adicionar(brasil);
+        paisdao.adicionar(africa);
+        paisdao.adicionar(coreia);
+
+        List<Pais> paises = paisdao.listar();
+        assertFalse(paises.isEmpty());
+        assertEquals(brasil, paises.get(0));
+        assertEquals(africa, paises.get(1));
+        assertEquals(coreia, paises.get(2));
     }
 
-    /**
-     * Test of toString method, of class PaisDAO.
-     */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        PaisDAO instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
+    public void buscar() {
+        paisdao.adicionar(brasil);
+        paisdao.adicionar(africa);
+        paisdao.adicionar(coreia);
 
-    /**
-     * Test of consultarQtdJogos method, of class PaisDAO.
-     */
-    @Test
-    public void testConsultarQtdJogos() {
-        System.out.println("consultarQtdJogos");
-        Pais instance = null;
-        //instance.consultarQtdJogos();
-        fail("The test case is a prototype.");
+        Pais resultadoBusca = paisdao.buscar(africa.getNome());
+        assertEquals(africa, resultadoBusca);
     }
-
-    /**
-     * Test of getTitulos method, of class PaisDAO.
-     */
-    @Test
-    public void testGetTitulos() {
-        System.out.println("getTitulos");
-        Pais instance = null;
-        int expResult = 0;
-        //int result = instance.getTitulos();
-        //assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTitulos method, of class PaisDAO.
-     */
-    @Test
-    public void testSetTitulos() {
-        System.out.println("setTitulos");
-        int titulos = 0;
-        Pais instance = null;
-       // instance.setTitulos(titulos);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of hashCode method, of class PaisDAO.
-     */
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-        PaisDAO instance = null;
-        int expResult = 0;
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of equals method, of class PaisDAO.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object obj = null;
-        PaisDAO instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of compareTo method, of class PaisDAO.
-     */
-    @Test
-    public void testCompareTo() {
-        System.out.println("compareTo");
-        PaisDAO o = null;
-        PaisDAO instance = null;
-        int expResult = 0;
-        //int result = instance.compareTo(o);
-        //assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-    
 }

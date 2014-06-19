@@ -4,6 +4,7 @@ package model.pojo;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -84,10 +85,9 @@ public class Copa implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + this.id;
-        hash = 37 * hash + (this.selecao != null ? this.selecao.hashCode() : 0);
-        hash = 37 * hash + (this.pais != null ? this.pais.hashCode() : 0);
-        hash = 37 * hash + (this.ano != null ? this.ano.hashCode() : 0);
+        hash = 83 * hash + this.id;
+        hash = 83 * hash + Objects.hashCode(this.pais);
+        hash = 83 * hash + Objects.hashCode(this.ano);
         return hash;
     }
 
@@ -103,19 +103,15 @@ public class Copa implements java.io.Serializable {
         if (this.id != other.id) {
             return false;
         }
-        if (this.selecao != other.selecao && (this.selecao == null || !this.selecao.equals(other.selecao))) {
+        if (!Objects.equals(this.pais, other.pais)) {
             return false;
         }
-        if (this.pais != other.pais && (this.pais == null || !this.pais.equals(other.pais))) {
-            return false;
-        }
-        if (this.ano != other.ano && (this.ano == null || !this.ano.equals(other.ano))) {
+        if (!Objects.equals(this.ano, other.ano)) {
             return false;
         }
         return true;
     }
-
-
+    
 
 
 }
