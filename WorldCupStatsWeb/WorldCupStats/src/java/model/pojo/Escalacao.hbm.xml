@@ -6,7 +6,7 @@
     <class name="model.pojo.Escalacao" table="Escalacao" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
     </class>
 </hibernate-mapping>

@@ -6,7 +6,7 @@
     <class name="model.pojo.Jogador" table="Jogador" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="dataNascimento" type="date">
             <column name="data_nascimento" length="10" not-null="true" />

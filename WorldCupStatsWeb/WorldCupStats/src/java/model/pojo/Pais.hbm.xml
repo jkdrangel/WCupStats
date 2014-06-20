@@ -6,7 +6,7 @@
     <class name="model.pojo.Pais" table="Pais" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="nome" type="string">
             <column name="nome" length="20" not-null="true" />

@@ -97,12 +97,6 @@ public class Pais  implements java.io.Serializable {
         if ((this.continente == null) ? (other.continente != null) : !this.continente.equals(other.continente)) {
             return false;
         }
-        if (this.selecaos != other.selecaos && (this.selecaos == null || !this.selecaos.equals(other.selecaos))) {
-            return false;
-        }
-        if (this.copas != other.copas && (this.copas == null || !this.copas.equals(other.copas))) {
-            return false;
-        }
         return true;
     }
 

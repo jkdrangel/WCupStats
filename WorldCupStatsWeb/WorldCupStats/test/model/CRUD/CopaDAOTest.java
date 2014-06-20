@@ -7,13 +7,10 @@ package model.CRUD;
 
 import java.sql.Date;
 import java.util.List;
-import javax.persistence.EntityManager;
 import model.pojo.Copa;
 import model.pojo.Pais;
 import model.pojo.Selecao;
-import org.hibernate.ejb.EntityManagerImpl;
 import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,11 +27,6 @@ public class CopaDAOTest {
     Pais brasil, africa, coreia;
     Selecao selecao;
 
-    @AfterClass
-    public void tearDownClass(){
-     //entityManager.createNativeQuery("ALTER TABLE student AUTO_INCREMENT = 1");
-     //EntityManager.executeUpdate(); 
-    }
     
     @Before
     public void setUp() throws Exception {
@@ -55,7 +47,9 @@ public class CopaDAOTest {
         copa2.setPais(coreia);
         copa2.setSelecao(selecao);
 
-        copaDAO.removerTodos();
+        copaDAO.removerTodos(); 
+     //entityManager.createNativeQuery("ALTER TABLE student AUTO_INCREMENT = 1");
+     //EntityManager.executeUpdate(); 
        
     }
     
@@ -68,8 +62,6 @@ public class CopaDAOTest {
     public void testAdicionar() {
         copaDAO.adicionar(copa);
         List<Copa> copas = copaDAO.listar();
-        System.out.println(copa.getAno());
-        System.out.println(copas.get(0).getAno());
         assertEquals(copa, copas.get(0));
     }
 
@@ -79,8 +71,6 @@ public class CopaDAOTest {
         copa.setAno(new Date(113, 0, 0));
         copaDAO.atualizar(copa);
         List<Copa> copas = copaDAO.listar();
-        System.out.println(""+copa.getAno() +" " + copa.getPais()+" "+copa.getId());
-        System.out.println(""+copas.get(0).getAno() +" " + copas.get(0).getPais()+" "+copas.get(0).getId());
         assertEquals(copa, copas.get(0));
     }
 

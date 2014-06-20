@@ -6,7 +6,7 @@
     <class name="model.pojo.Gol" table="Gol" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="jogador" class="model.pojo.Jogador" fetch="select">
             <column name="ID_JOGADOR" not-null="true" />
