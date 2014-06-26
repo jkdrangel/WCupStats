@@ -135,7 +135,7 @@ public class TecnicoDAO{
     }
 
     public Tecnico buscar(String nome) {
-       Tecnico copa = null;
+       Tecnico tecnico = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
@@ -143,9 +143,9 @@ public class TecnicoDAO{
             consulta.setString("parametro", nome);
 
             transacao = sessao.beginTransaction();
-            copa = (Tecnico) consulta.uniqueResult();
+            tecnico = (Tecnico) consulta.uniqueResult();
             transacao.commit();
-            return copa;
+            return tecnico;
 
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel buscar o objeto. Erro: " + e.getMessage());
@@ -156,7 +156,7 @@ public class TecnicoDAO{
                 System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());
             }
         }
-        return copa;
+        return tecnico;
     }
   
 }

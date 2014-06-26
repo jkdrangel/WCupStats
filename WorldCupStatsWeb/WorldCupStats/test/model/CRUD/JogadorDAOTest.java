@@ -81,14 +81,14 @@ public class JogadorDAOTest {
     public void testRemover() {
         jogadorDao.adicionar(neimar);
         jogadorDao.remover(neimar);
-        List<Pais> paises = jogadorDao.listar();
+        List<Jogador> paises = jogadorDao.listar();
         assertTrue(paises.isEmpty());
     }
 
     @Test
     public void testRemoverTodos() {
         jogadorDao.removerTodos();
-        List<Pais> paises = jogadorDao.listar();
+        List<Jogador> paises = jogadorDao.listar();
         assertTrue(paises.isEmpty());
     }
 
