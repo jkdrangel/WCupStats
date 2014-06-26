@@ -19,13 +19,13 @@ import model.pojo.Selecao;
  * 
  * @author D.L.O.L
  * 
- * @see TimeDAO
+ * @see SelecaoDAO
  * @see Jogador
  */
 public class SubstituicaoDAO {
     
     /**
-     * TimeDAO que fez a substituicao.
+     * SelecaoDAO que fez a substituicao.
     */
     private final Selecao time;
     /** Jogador que entra em jogo.
@@ -66,7 +66,7 @@ public class SubstituicaoDAO {
     /**
      * @return the time
      */
-    public TimeDAO getTime() {
+    public SelecaoDAO getTime() {
         return time;
     }
 

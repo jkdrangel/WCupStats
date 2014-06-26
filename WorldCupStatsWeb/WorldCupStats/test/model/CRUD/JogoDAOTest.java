@@ -89,8 +89,8 @@ public class JogoDAOTest {
     public void testGetTimeA() {
         System.out.println("getTimeA");
         JogoDAO instance = null;
-        TimeDAO expResult = null;
-        TimeDAO result = instance.getTimeA();
+        SelecaoDAO expResult = null;
+        SelecaoDAO result = instance.getTimeA();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
@@ -202,7 +202,7 @@ public class JogoDAOTest {
     @Test
     public void testTimeParticipouJogo() {
         System.out.println("timeParticipouJogo");
-        TimeDAO timeC = null;
+        SelecaoDAO timeC = null;
         JogoDAO instance = null;
         boolean expResult = false;
         boolean result = instance.timeParticipouJogo(timeC);
@@ -256,8 +256,8 @@ public class JogoDAOTest {
     public void testVencedor() {
         System.out.println("vencedor");
         JogoDAO instance = null;
-        TimeDAO expResult = null;
-        TimeDAO result = instance.vencedor();
+        SelecaoDAO expResult = null;
+        SelecaoDAO result = instance.vencedor();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
@@ -269,8 +269,8 @@ public class JogoDAOTest {
     public void testDerrotado() {
         System.out.println("Derrotado");
         JogoDAO instance = null;
-        TimeDAO expResult = null;
-        TimeDAO result = instance.Derrotado();
+        SelecaoDAO expResult = null;
+        SelecaoDAO result = instance.Derrotado();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }

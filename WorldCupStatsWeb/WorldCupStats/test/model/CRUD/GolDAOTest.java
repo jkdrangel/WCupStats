@@ -75,8 +75,8 @@ public class GolDAOTest {
     public void testGetSelecao() {
         System.out.println("getSelecao");
         GolDAO instance = null;
-        TimeDAO expResult = null;
-        TimeDAO result = instance.getSelecao();
+        SelecaoDAO expResult = null;
+        SelecaoDAO result = instance.getSelecao();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }

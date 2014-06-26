@@ -49,8 +49,8 @@ public class SubstituicaoDAOTest {
     public void testGetTime() {
         System.out.println("getTime");
         SubstituicaoDAO instance = null;
-        TimeDAO expResult = null;
-        TimeDAO result = instance.getTime();
+        SelecaoDAO expResult = null;
+        SelecaoDAO result = instance.getTime();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }

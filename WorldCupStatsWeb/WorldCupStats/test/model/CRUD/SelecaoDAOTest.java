@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author lsantana
  */
-public class TimeDAOTest {
+public class SelecaoDAOTest {
     
-    public TimeDAOTest() {
+    public SelecaoDAOTest() {
     }
     
     @Before
@@ -30,12 +30,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of toString method, of class TimeDAO.
+     * Test of toString method, of class SelecaoDAO.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);
@@ -43,13 +43,13 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of equals method, of class TimeDAO.
+     * Test of equals method, of class SelecaoDAO.
      */
     @Test
     public void testEquals() {
         System.out.println("equals");
         Object o = null;
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         boolean expResult = false;
         boolean result = instance.equals(o);
         assertEquals(expResult, result);
@@ -57,12 +57,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of getGrupo method, of class TimeDAO.
+     * Test of getGrupo method, of class SelecaoDAO.
      */
     @Test
     public void testGetGrupo() {
         System.out.println("getGrupo");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         char expResult = ' ';
         char result = instance.getGrupo();
         assertEquals(expResult, result);
@@ -70,12 +70,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of getAno method, of class TimeDAO.
+     * Test of getAno method, of class SelecaoDAO.
      */
     @Test
     public void testGetAno() {
         System.out.println("getAno");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         int expResult = 0;
         int result = instance.getAno();
         assertEquals(expResult, result);
@@ -83,12 +83,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of getRank method, of class TimeDAO.
+     * Test of getRank method, of class SelecaoDAO.
      */
     @Test
     public void testGetRank() {
         System.out.println("getRank");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         int expResult = 0;
         int result = instance.getRank();
         assertEquals(expResult, result);
@@ -96,12 +96,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of getTecnico method, of class TimeDAO.
+     * Test of getTecnico method, of class SelecaoDAO.
      */
     @Test
     public void testGetTecnico() {
         System.out.println("getTecnico");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         PessoaDAO expResult = null;
         PessoaDAO result = instance.getTecnico();
         assertEquals(expResult, result);
@@ -109,12 +109,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of getJogadores method, of class TimeDAO.
+     * Test of getJogadores method, of class SelecaoDAO.
      */
     @Test
     public void testGetJogadores() {
         System.out.println("getJogadores");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         List<PessoaDAO> expResult = null;
         List<PessoaDAO> result = instance.getJogadores();
         assertEquals(expResult, result);
@@ -122,24 +122,24 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of addPlayers method, of class TimeDAO.
+     * Test of addPlayers method, of class SelecaoDAO.
      */
     @Test
     public void testAddPlayers() {
         System.out.println("addPlayers");
         PessoaDAO player = null;
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         instance.addPlayers(player);
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getGols method, of class TimeDAO.
+     * Test of getGols method, of class SelecaoDAO.
      */
     @Test
     public void testGetGols() {
         System.out.println("getGols");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         List<GolDAO> expResult = null;
         List<GolDAO> result = instance.getGols();
         assertEquals(expResult, result);
@@ -147,24 +147,24 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of addGoals method, of class TimeDAO.
+     * Test of addGoals method, of class SelecaoDAO.
      */
     @Test
     public void testAddGoals() {
         System.out.println("addGoals");
         GolDAO goal = null;
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         instance.addGoals(goal);
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getPais method, of class TimeDAO.
+     * Test of getPais method, of class SelecaoDAO.
      */
     @Test
     public void testGetPais() {
         System.out.println("getPais");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         PaisDAO expResult = null;
        // PaisDAO result = instance.getPais();
         //assertEquals(expResult, result);
@@ -172,12 +172,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of getCopa method, of class TimeDAO.
+     * Test of getCopa method, of class SelecaoDAO.
      */
     @Test
     public void testGetCopa() {
         System.out.println("getCopa");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         CopaDAO expResult = null;
         CopaDAO result = instance.getCopa();
         assertEquals(expResult, result);
@@ -185,12 +185,12 @@ public class TimeDAOTest {
     }
 
     /**
-     * Test of golRapido method, of class TimeDAO.
+     * Test of golRapido method, of class SelecaoDAO.
      */
     @Test
     public void testGolRapido() {
         System.out.println("golRapido");
-        TimeDAO instance = null;
+        SelecaoDAO instance = null;
         GolDAO expResult = null;
         GolDAO result = instance.golRapido();
         assertEquals(expResult, result);
