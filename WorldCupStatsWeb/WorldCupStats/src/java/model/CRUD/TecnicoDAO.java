@@ -8,7 +8,14 @@
 
 package model.CRUD;
 
+import Util.HibernateUtil;
 import java.util.Date;
+import java.util.List;
+import model.pojo.Jogador;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Classe que representa os tecnicos das selecoes de cada pais nas diversas copas.
@@ -20,35 +27,136 @@ import java.util.Date;
  *
  * @see PessoaDAO
  */
-public class TecnicoDAO extends PessoaDAO{
-    
-    public TecnicoDAO(String nome, Date dataDeNascimento) {
-        super(nome, dataDeNascimento);
-    }
-    
-        /**
-     * Metodo que verifica se a instancia da classe colocada como atributo é a
-     * mesma que a classe que chama esse método
-     *
-     * @param p
-     * @return
-     */
-    @Override
-    public boolean equals(Object o) {
-       TecnicoDAO t;
-        if (o instanceof TecnicoDAO) {
-      t = (TecnicoDAO) o;
-            if (t.getNome().equals(super.getNome()) 
-                && t.getDataDeNascimento().equals(super.getDataDeNascimento())) {
-                return true;
+public class TecnicoDAO{
+  
+     Session sessao = null;
+    Transaction transacao = null;
+
+    public void adicionar(Jogador jogador) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            int x=(int) sessao.save(jogador);
+            jogador.setId(x);
+            System.out.println(jogador.getId());
+            System.out.println(x);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel inserir o copa. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de insercao. Mensagem: " + e.getMessage());
             }
         }
-        return false;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
+    public void atualizar(Jogador jogador) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            sessao.update(jogador);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel atualizar o objeto. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de atualizacao. Mensagem: " + e.getMessage());
+            }
+        }
     }
+
+    public void remover(Jogador jogador) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            sessao.delete(jogador);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel excluir o copa. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());
+            }
+        }
+    }
+
+    public void removerTodos() {
+        try {
+            
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("delete from Copa");
+            
+            transacao = sessao.beginTransaction();
+            consulta.executeUpdate();
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel excluir os objetos. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Jogador> listar() {
+        List<Jogador> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Copa");
+
+            transacao = sessao.beginTransaction();
+            resultado = (List<Jogador>) consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
+    }
+
+    public Jogador buscar(Date ano) {
+        Jogador copa = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Copa where ano = :parametro");
+            consulta.setDate("parametro", ano);
+
+            transacao = sessao.beginTransaction();
+            copa = (Jogador) consulta.uniqueResult();
+            transacao.commit();
+            return copa;
+
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel buscar o objeto. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());
+            }
+        }
+        return copa;
+    }  
+  
 }
