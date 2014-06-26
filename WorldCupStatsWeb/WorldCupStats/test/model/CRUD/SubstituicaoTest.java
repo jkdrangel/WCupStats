@@ -26,7 +26,7 @@ public class SubstituicaoTest {
     private CopaDAO copa;
     private TecnicoDAO tecnico;
     private PaisDAO Brasil;
-    private TimeDAO brazil;
+    private SelecaoDAO brazil;
     private PessoaDAO fma;
     private PessoaDAO fmabh;
     private SubstituicaoDAO substituicao;
@@ -35,7 +35,7 @@ public class SubstituicaoTest {
     public void setUp() {
         tecnico = new TecnicoDAO("Alguem", new Date());
         //Brasil = new PaisDAO("Brasil", "America do Sul");
-        //brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
+        //brazil = new SelecaoDAO('J', 2014, 2, tecnico, Brasil, copa);
 
         fma = new JogadorDAO("Gluttony", new Date(10), 00, FuncaoJogador.GOLEIRO);
         fmabh = new JogadorDAO("Envy", new Date(10), 01, FuncaoJogador.ATACANTE);

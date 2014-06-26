@@ -41,13 +41,13 @@ public class JogoDAO {
      */
     private CopaDAO copa;
     /**
-     * TimeDAO A.
+     * SelecaoDAO A.
      */
-    private final TimeDAO timeA;
+    private final SelecaoDAO timeA;
     /**
- TimeDAO* Time B.
+ SelecaoDAO* Time B.
      */
-    private final TimeDAO timeB;
+    private final SelecaoDAO timeB;
     /**
      * EscalacaoDAO do time A.
      */
@@ -82,8 +82,8 @@ public class JogoDAO {
      * @param escalacaoA
      * @param escalacaoB 
      */
-    public JogoDAO(FaseCopa FASE, Date data, String local, CopaDAO copa, TimeDAO timeA,
-            TimeDAO timeB, EscalacaoDAO escalacaoA, EscalacaoDAO escalacaoB) {
+    public JogoDAO(FaseCopa FASE, Date data, String local, CopaDAO copa, SelecaoDAO timeA,
+            SelecaoDAO timeB, EscalacaoDAO escalacaoA, EscalacaoDAO escalacaoB) {
         this.FASE = FASE;
         this.data = data;
         this.local = local;
@@ -128,13 +128,13 @@ public class JogoDAO {
 
     /**
      * @return the timeA
-     */ public TimeDAO getTimeA() {
+     */ public SelecaoDAO getTimeA() {
         return timeA;
     }
 
     /**
      * @return the timeB
-    TimeDAO    public Time getTimeB() {
+    SelecaoDAO    public Time getTimeB() {
         return timeB;
     }
 
@@ -222,7 +222,7 @@ public class JogoDAO {
         return a + " " + gA + "x" + gB + " " + b;
     }
 
-    public boolean timeParticipouJogo(TimeDAO timeC) {
+    public boolean timeParticipouJogo(SelecaoDAO timeC) {
 
         return (timeA.equals(timeC) || timeB.equals(timeC));
     }
@@ -254,9 +254,9 @@ public class JogoDAO {
         return ( 0 == this.diferencaGols() );
     }
 
-  public TimeDAO vencedor() {
+  public SelecaoDAO vencedor() {
 
-        TimeDAO vencedor = null;
+        SelecaoDAO vencedor = null;
         
         if (!empatou()) {
             int gols[] = this.golsLiquidos();
@@ -265,9 +265,9 @@ public class JogoDAO {
 
         return vencedor;
     }
-    public TimeDAO Derrotado() {
+    public SelecaoDAO Derrotado() {
 
-        TimeDAO derrotado = null;
+        SelecaoDAO derrotado = null;
         
         if (!empatou()) {
             int gols[] = this.golsLiquidos();

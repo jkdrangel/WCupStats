@@ -34,8 +34,8 @@ public class JogoTest {
 
     private JogoDAO jogo;
     private CopaDAO copa;
-    private TimeDAO brazil;
-    private TimeDAO alemanha;
+    private SelecaoDAO brazil;
+    private SelecaoDAO alemanha;
     private EscalacaoDAO doBrazil;
     private EscalacaoDAO daAlemanha;
     private TecnicoDAO tecnico;
@@ -52,8 +52,8 @@ public class JogoTest {
         Alemanha.setNome("Alemanha");
         Alemanha.setContinente("Asia");
                 
-        brazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
-        alemanha = new TimeDAO('H', 2014, 3, tecnico, Alemanha, copa);
+        brazil = new SelecaoDAO('J', 2014, 2, tecnico, Brasil, copa);
+        alemanha = new SelecaoDAO('H', 2014, 3, tecnico, Alemanha, copa);
 
         List<PessoaDAO> br = new ArrayList<PessoaDAO>();
         PessoaDAO jogador1 = new JogadorDAO("Caboré", new Date(10), 99, FuncaoJogador.GOLEIRO);
@@ -163,19 +163,19 @@ public class JogoTest {
     @Test
     public void testTimeParticipouJogo() {
 
-        TimeDAO italia = new TimeDAO('B', 2014, 25, tecnico, new Pais(), copa);
+        SelecaoDAO italia = new SelecaoDAO('B', 2014, 25, tecnico, new Pais(), copa);
         assertEquals(false, jogo.timeParticipouJogo(italia));
 
-        TimeDAO mesmoBrazil = new TimeDAO('J', 2014, 2, tecnico, Brasil, copa);
+        SelecaoDAO mesmoBrazil = new SelecaoDAO('J', 2014, 2, tecnico, Brasil, copa);
         assertEquals(true, jogo.timeParticipouJogo(mesmoBrazil));
 
-        TimeDAO mesmaAlemanha = new TimeDAO('H', 2014, 3, tecnico, Alemanha, copa);
+        SelecaoDAO mesmaAlemanha = new SelecaoDAO('H', 2014, 3, tecnico, Alemanha, copa);
         assertEquals(true, jogo.timeParticipouJogo(mesmaAlemanha));
 
-        TimeDAO outroBrazil = new TimeDAO('J', 2002, 2, tecnico, Brasil, copa);
+        SelecaoDAO outroBrazil = new SelecaoDAO('J', 2002, 2, tecnico, Brasil, copa);
         assertEquals(false, jogo.timeParticipouJogo(outroBrazil));
 
-        TimeDAO outraAlemanha = new TimeDAO('H', 2002, 3, tecnico, Alemanha, copa);
+        SelecaoDAO outraAlemanha = new SelecaoDAO('H', 2002, 3, tecnico, Alemanha, copa);
         assertEquals(false, jogo.timeParticipouJogo(outraAlemanha));
     }
 

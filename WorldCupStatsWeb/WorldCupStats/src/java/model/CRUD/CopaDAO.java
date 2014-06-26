@@ -31,10 +31,7 @@ public class CopaDAO {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             transacao = sessao.beginTransaction();
-            int x=(int) sessao.save(copa);
-            copa.setId(x);
-            System.out.println(copa.getId());
-            System.out.println(x);
+           sessao.save(copa);
             transacao.commit();
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel inserir o copa. Erro: " + e.getMessage());

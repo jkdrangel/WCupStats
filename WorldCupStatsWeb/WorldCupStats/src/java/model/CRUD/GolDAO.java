@@ -25,7 +25,7 @@ public class GolDAO {
     private int ID;
     private final JogoDAO jogo;
     private final JogadorDAO jogador;
-    private final TimeDAO selecao;
+    private final SelecaoDAO selecao;
     private final Date tempo;
     private final boolean foiContra;
     
@@ -38,7 +38,7 @@ public class GolDAO {
      * @param tempo
      * @param foiContra
      */
-    public GolDAO(JogoDAO jogo, JogadorDAO jogador, TimeDAO selecao, Date tempo, boolean foiContra) {
+    public GolDAO(JogoDAO jogo, JogadorDAO jogador, SelecaoDAO selecao, Date tempo, boolean foiContra) {
         this.jogo = jogo;
         this.jogador = jogador;
         this.selecao = selecao;
@@ -74,7 +74,7 @@ public class GolDAO {
      * Getter para o Selecao da classe.
      * @return, Retorna a Selecao que possui o Jogador que fez o GolDAO.
      */
-    public TimeDAO getSelecao(){
+    public SelecaoDAO getSelecao(){
         return this.selecao;
     }
 

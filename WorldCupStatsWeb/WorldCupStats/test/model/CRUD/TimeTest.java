@@ -30,7 +30,7 @@ import org.junit.Test;
  */
 public class TimeTest {
 
-   private TimeDAO time;
+   private SelecaoDAO time;
     private CopaDAO copa;
     private Pais pais;
     private PessoaDAO tecnico;
@@ -51,7 +51,7 @@ public class TimeTest {
         grupo = 'A';
         ano = 1994;
         rank = 1;
-       time = new TimeDAO(grupo, ano, rank, tecnico, pais, copa);
+       time = new SelecaoDAO(grupo, ano, rank, tecnico, pais, copa);
     }
 
     @Test
@@ -156,7 +156,6 @@ public class TimeTest {
 
     @Test
     public void testEqualsTime() {
-        TimeDAO mesmoTime = new TimeDAO(grupo, ano, rank, tecnico, pais, copa); // Mesma declaracao para o time.
-        assertTrue((time.equals(mesmoTime)));
+        SelecaoDAO mesmoTime = new SelecaoDAO(grupo, ano, rank, tecnico, pais, copa);         assertTrue((time.equals(mesmoTime)));
     }
 }

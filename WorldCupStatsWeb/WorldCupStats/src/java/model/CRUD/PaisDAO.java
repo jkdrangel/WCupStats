@@ -9,11 +9,7 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import model.Enuns.FaseCopa;
-import model.pojo.Copa;
 import model.pojo.Pais;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
