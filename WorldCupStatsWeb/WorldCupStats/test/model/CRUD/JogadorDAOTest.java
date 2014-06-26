@@ -6,78 +6,112 @@
 
 package model.CRUD;
 
+import java.util.List;
+import model.pojo.Jogador;
+import model.pojo.Pais;
+import model.pojo.Selecao;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
- * @author lsantana
+ * @author Lucas Vinicius
  */
 public class JogadorDAOTest {
     
-    public JogadorDAOTest() {
-    }
-    
+    JogadorDAO jogadorDao;
+    Jogador neimar, tafarel, birubiru;
+    Selecao selecao;
+
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        jogadorDao = new JogadorDAO();
+       
+        neimar = new Jogador();
+        neimar.setNome("neimar");
+        neimar.setDataNascimento(null);
+        neimar.setNumero(numero);
+        neimar.setPosicao(null);
+        
+        tafarel = new Jogador();
+        tafarel.setNome("brasil");
+        tafarel.setDataNascimento(null);
+        tafarel.setNumero(numero);
+        tafarel.setPosicao(null);
+        
+        birubiru = new Jogador();
+        birubiru.setNome("birubiru");
+        birubiru.setDataNascimento(null);
+        birubiru.setNumero(numero);
+        birubiru.setPosicao(null);
+
+        jogadorDao.removerTodos();
+       
     }
-    
-    @After
+     @After
     public void tearDown() {
+        jogadorDao.removerTodos();
     }
 
     /**
-     * Test of getNumero method, of class JogadorDAO.
+     * Teste simples de adicao de componente em banco de dados
      */
     @Test
-    public void testGetNumero() {
-        System.out.println("getNumero");
-        JogadorDAO instance = null;
-        int expResult = 0;
-        int result = instance.getNumero();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testAdicionar() {
+        jogadorDao.adicionar(neimar);
+        List<Jogador> jogadores = jogadorDao.listar();
+        assertEquals(neimar, jogadores.get(0));
     }
 
     /**
-     * Test of getFuncao method, of class JogadorDAO.
+     * Verifica se o nome do jogador foi atualizado no banco de dados
      */
     @Test
-    public void testGetFuncao() {
-        System.out.println("getFuncao");
-        JogadorDAO instance = null;
-        String expResult = "";
-        String result = instance.getFuncao();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testAtualizar() {
+        jogadorDao.adicionar(neimar);
+        neimar.setNome("Neimar Junior");
+        jogadorDao.atualizar(neimar);
+        List<Jogador> paises = jogadorDao.listar();
+        assertEquals(neimar, paises.get(0));
     }
 
-    /**
-     * Test of setNumero method, of class JogadorDAO.
-     */
     @Test
-    public void testSetNumero() {
-        System.out.println("setNumero");
-        int n = 0;
-        JogadorDAO instance = null;
-        instance.setNumero(n);
-        fail("The test case is a prototype.");
+    public void testRemover() {
+        jogadorDao.adicionar(neimar);
+        jogadorDao.remover(neimar);
+        List<Pais> paises = jogadorDao.listar();
+        assertTrue(paises.isEmpty());
     }
 
-    /**
-     * Test of equals method, of class JogadorDAO.
-     */
     @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        JogadorDAO instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testRemoverTodos() {
+        jogadorDao.removerTodos();
+        List<Pais> paises = jogadorDao.listar();
+        assertTrue(paises.isEmpty());
     }
-    
+
+    @Test
+    public void listar() {
+        jogadorDao.adicionar(neimar);
+        jogadorDao.adicionar(tafarel);
+        jogadorDao.adicionar(birubiru);
+
+        List<Jogador> paises = jogadorDao.listar();
+        assertFalse(paises.isEmpty());
+        assertEquals(neimar, paises.get(0));
+        assertEquals(tafarel, paises.get(1));
+        assertEquals(birubiru, paises.get(2));
+    }
+
+    @Test
+    public void buscar() {
+        jogadorDao.adicionar(neimar);
+        jogadorDao.adicionar(tafarel);
+        jogadorDao.adicionar(birubiru);
+
+        Jogador resultadoBusca = jogadorDao.buscar(tafarel.getNome());
+        assertEquals(tafarel, resultadoBusca);
+    }
 }
