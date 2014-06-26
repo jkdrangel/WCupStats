@@ -8,10 +8,7 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import model.pojo.Copa;
 import model.pojo.Jogo;

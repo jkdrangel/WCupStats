@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3307/wcupstats?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/wcupstats?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">adminCiRTagI</property>
     <property name="hibernate.connection.password">FDGx3lJP3v_h</property>
     <property name="hibernate.current_session_context_class">thread</property>
