@@ -8,7 +8,10 @@
 
 package model.CRUD;
 
+
 import java.util.Date;
+import model.pojo.Jogador;
+import model.pojo.Selecao;
 
 /**
  * Classe que representa uma substituicao, de uma determinada
@@ -24,13 +27,13 @@ public class SubstituicaoDAO {
     /**
      * TimeDAO que fez a substituicao.
     */
-    private final TimeDAO time;
+    private final Selecao time;
     /** Jogador que entra em jogo.
     */ 
-    private final PessoaDAO qEntra;
+    private final Jogador qEntra;
     /** Jogador substituido (que sai do jogo).
     */
-    private final PessoaDAO qSai;
+    private final Jogador qSai;
     /** Tempo em que a substituicao foi realizada.
     */
     private final Date tempo;
@@ -45,7 +48,7 @@ public class SubstituicaoDAO {
      * @param qSai 
      * @param tempo 
      */
-    public SubstituicaoDAO(TimeDAO time, PessoaDAO qEntra, PessoaDAO qSai, Date tempo) {
+    public SubstituicaoDAO(Selecao time, Jogador qEntra, Jogador qSai, Date tempo) {
         
         this.time = time;
         this.qEntra = qEntra; // Não a necessidade de testar se o jogador que entra esta no time.
@@ -70,14 +73,14 @@ public class SubstituicaoDAO {
     /**
      * @return the qEntra
      */
-    public PessoaDAO getqEntra() {
+    public Jogador getqEntra() {
         return qEntra;
     }
 
     /**
      * @return the qSai
      */
-    public PessoaDAO getqSai() {
+    public Jogador getqSai() {
         return qSai;
     }
 

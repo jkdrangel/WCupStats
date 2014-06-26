@@ -8,9 +8,7 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
-import java.util.Date;
 import java.util.List;
-import model.Enuns.FuncaoJogador;
 import model.pojo.Jogador;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -29,7 +27,7 @@ import org.hibernate.Transaction;
  */
 public class JogadorDAO {
 
-     Session sessao = null;
+    Session sessao = null;
     Transaction transacao = null;
 
     public void adicionar(Jogador jogador) {
@@ -43,7 +41,7 @@ public class JogadorDAO {
             System.out.println(x);
             transacao.commit();
         } catch (HibernateException e) {
-            System.err.println("Nao foi possivel inserir o copa. Erro: " + e.getMessage());
+            System.err.println("Nao foi possivel inserir o Jogador. Erro: " + e.getMessage());
         } finally {
             try {
                 sessao.close();
@@ -61,7 +59,7 @@ public class JogadorDAO {
             sessao.update(jogador);
             transacao.commit();
         } catch (HibernateException e) {
-            System.err.println("Nao foi possivel atualizar o objeto. Erro: " + e.getMessage());
+            System.err.println("Nao foi possivel atualizar o objeto Jogador. Erro: " + e.getMessage());
         } finally {
             try {
                 sessao.close();
@@ -79,7 +77,7 @@ public class JogadorDAO {
             sessao.delete(jogador);
             transacao.commit();
         } catch (HibernateException e) {
-            System.err.println("Nao foi possivel excluir o copa. Erro: " + e.getMessage());
+            System.err.println("Nao foi possivel excluir o jogador. Erro: " + e.getMessage());
         } finally {
             try {
                 sessao.close();
@@ -94,7 +92,7 @@ public class JogadorDAO {
             
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("delete from Copa");
+            Query consulta = sessao.createQuery("delete from Jogador");
             
             transacao = sessao.beginTransaction();
             consulta.executeUpdate();
@@ -116,7 +114,7 @@ public class JogadorDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Copa");
+            Query consulta = sessao.createQuery("from Jogador");
 
             transacao = sessao.beginTransaction();
             resultado = (List<Jogador>) consulta.list();
@@ -134,13 +132,13 @@ public class JogadorDAO {
         }
     }
 
-    public Jogador buscar(Date ano) {
+    public Jogador buscar(String nome) {
         Jogador copa = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Copa where ano = :parametro");
-            consulta.setDate("parametro", ano);
+            Query consulta = sessao.createQuery("from Jogador where nome = :parametro");
+            consulta.setString("parametro", nome);
 
             transacao = sessao.beginTransaction();
             copa = (Jogador) consulta.uniqueResult();
