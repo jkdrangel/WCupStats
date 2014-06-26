@@ -18,10 +18,15 @@ public enum FuncaoJogador {
 
     GOLEIRO("Goleiro"),
     LATERAL("Lateral"),
+    LATERAL_ESQUERDO("Lateral Esquerdo"),
+    LATERAL_DIREITO("Lateral DIreito"),
     ZAGUEIRO("Zagueiro"),
-    VOLANTE("Volante"),
     MEIO_DE_CAMPO("Meio de Campo"),
-    ATACANTE("Atacante");
+    VOLANTE("Volante"),
+    MEIO_ATACANTE("Meia Atacante"),
+    ATACANTE("Atacante"),
+    PONTA("Ponta"),
+    CENTRO_AVANTE("Centro Avante");
 
     /**
      * Funcao do jogador.
