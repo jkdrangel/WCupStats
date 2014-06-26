@@ -6,9 +6,7 @@
 
 package model.CRUD;
 
-import java.sql.Date;
 import java.util.List;
-import model.pojo.Copa;
 import model.pojo.Pais;
 import model.pojo.Selecao;
 import org.junit.After;
