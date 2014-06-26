@@ -23,14 +23,14 @@ import java.util.List;
 public class EscalacaoDAO {
     private int ID;
     private JogoDAO jogo;
-    private List<PessoaDAO> jogadores;
+    private List<JogadorDAO> jogadores;
     
     /**
      * Construtor da classe.
      * @param jogo, JogoDAO em que os jogadores foram Escalados.
      * @param jogadores, Jogadores que foram Escalados para o JogoDAO.
      */
-    public EscalacaoDAO(JogoDAO jogo, List<PessoaDAO> jogadores){
+    public EscalacaoDAO(JogoDAO jogo, List<JogadorDAO> jogadores){
         this.jogo = jogo;
         this.jogadores = jogadores;
     }
@@ -71,7 +71,7 @@ public class EscalacaoDAO {
      * Getter para os Jogadores da classe.
      * @return, Retorna o Jogador que fez o Gol.
      */
-    public List<PessoaDAO> getJogador(){
+    public List<JogadorDAO> getJogador(){
         return this.jogadores;
     }
 }

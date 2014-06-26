@@ -24,7 +24,7 @@ import java.util.Date;
 public class GolDAO {
     private int ID;
     private final JogoDAO jogo;
-    private final PessoaDAO jogador;
+    private final JogadorDAO jogador;
     private final TimeDAO selecao;
     private final Date tempo;
     private final boolean foiContra;
@@ -38,7 +38,7 @@ public class GolDAO {
      * @param tempo
      * @param foiContra
      */
-    public GolDAO(JogoDAO jogo, PessoaDAO jogador, TimeDAO selecao, Date tempo, boolean foiContra) {
+    public GolDAO(JogoDAO jogo, JogadorDAO jogador, TimeDAO selecao, Date tempo, boolean foiContra) {
         this.jogo = jogo;
         this.jogador = jogador;
         this.selecao = selecao;
@@ -66,7 +66,7 @@ public class GolDAO {
      * Getter para o Jogador da classe.
      * @return, Retorna o Jogador que fez o GolDAO.
      */
-    public PessoaDAO getJogador(){
+    public JogadorDAO getJogador(){
         return this.jogador;
     }
     
