@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 17, 2014 6:13:05 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Gol" table="Gol" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <many-to-one name="jogador" class="model.pojo.Jogador" fetch="select">
             <column name="ID_JOGADOR" not-null="true" />

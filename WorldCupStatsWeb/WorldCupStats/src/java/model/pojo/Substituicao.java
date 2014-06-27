@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 12/06/2014 11:49:37 by Hibernate Tools 3.6.0
+// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -11,17 +11,21 @@ public class Substituicao  implements java.io.Serializable {
 
 
      private int id;
+     private Jogador jogadorByJogadorSai;
      private Selecao selecao;
      private Jogo jogo;
+     private Jogador jogadorByJogadorEntra;
      private Date tempo;
 
     public Substituicao() {
     }
 
-    public Substituicao(int id, Selecao selecao, Jogo jogo, Date tempo) {
+    public Substituicao(int id, Jogador jogadorByJogadorSai, Selecao selecao, Jogo jogo, Jogador jogadorByJogadorEntra, Date tempo) {
        this.id = id;
+       this.jogadorByJogadorSai = jogadorByJogadorSai;
        this.selecao = selecao;
        this.jogo = jogo;
+       this.jogadorByJogadorEntra = jogadorByJogadorEntra;
        this.tempo = tempo;
     }
    
@@ -31,6 +35,13 @@ public class Substituicao  implements java.io.Serializable {
     
     public void setId(int id) {
         this.id = id;
+    }
+    public Jogador getJogadorByJogadorSai() {
+        return this.jogadorByJogadorSai;
+    }
+    
+    public void setJogadorByJogadorSai(Jogador jogadorByJogadorSai) {
+        this.jogadorByJogadorSai = jogadorByJogadorSai;
     }
     public Selecao getSelecao() {
         return this.selecao;
@@ -46,46 +57,19 @@ public class Substituicao  implements java.io.Serializable {
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
     }
+    public Jogador getJogadorByJogadorEntra() {
+        return this.jogadorByJogadorEntra;
+    }
+    
+    public void setJogadorByJogadorEntra(Jogador jogadorByJogadorEntra) {
+        this.jogadorByJogadorEntra = jogadorByJogadorEntra;
+    }
     public Date getTempo() {
         return this.tempo;
     }
     
     public void setTempo(Date tempo) {
         this.tempo = tempo;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + this.id;
-        hash = 79 * hash + (this.selecao != null ? this.selecao.hashCode() : 0);
-        hash = 79 * hash + (this.jogo != null ? this.jogo.hashCode() : 0);
-        hash = 79 * hash + (this.tempo != null ? this.tempo.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Substituicao other = (Substituicao) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.selecao != other.selecao && (this.selecao == null || !this.selecao.equals(other.selecao))) {
-            return false;
-        }
-        if (this.jogo != other.jogo && (this.jogo == null || !this.jogo.equals(other.jogo))) {
-            return false;
-        }
-        if (this.tempo != other.tempo && (this.tempo == null || !this.tempo.equals(other.tempo))) {
-            return false;
-        }
-        return true;
     }
 
 

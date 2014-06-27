@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 12/06/2014 11:49:37 by Hibernate Tools 3.6.0
+// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -18,6 +18,19 @@ public class Jogador  implements java.io.Serializable {
      private int numero;
      private String posicao;
      private Set gols = new HashSet(0);
+     private Set substituicaosForJogadorSai = new HashSet(0);
+     private Set substituicaosForJogadorEntra = new HashSet(0);
+     private Set escalacaosForJogador1 = new HashSet(0);
+     private Set escalacaosForJogador8 = new HashSet(0);
+     private Set escalacaosForJogador3 = new HashSet(0);
+     private Set escalacaosForJogador10 = new HashSet(0);
+     private Set escalacaosForJogador2 = new HashSet(0);
+     private Set escalacaosForJogador9 = new HashSet(0);
+     private Set escalacaosForJogador5 = new HashSet(0);
+     private Set escalacaosForJogador4 = new HashSet(0);
+     private Set escalacaosForJogador11 = new HashSet(0);
+     private Set escalacaosForJogador7 = new HashSet(0);
+     private Set escalacaosForJogador6 = new HashSet(0);
 
     public Jogador() {
     }
@@ -30,13 +43,26 @@ public class Jogador  implements java.io.Serializable {
         this.numero = numero;
         this.posicao = posicao;
     }
-    public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao, Set gols) {
+    public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao, Set gols, Set substituicaosForJogadorSai, Set substituicaosForJogadorEntra, Set escalacaosForJogador1, Set escalacaosForJogador8, Set escalacaosForJogador3, Set escalacaosForJogador10, Set escalacaosForJogador2, Set escalacaosForJogador9, Set escalacaosForJogador5, Set escalacaosForJogador4, Set escalacaosForJogador11, Set escalacaosForJogador7, Set escalacaosForJogador6) {
        this.id = id;
        this.dataNascimento = dataNascimento;
        this.nome = nome;
        this.numero = numero;
        this.posicao = posicao;
        this.gols = gols;
+       this.substituicaosForJogadorSai = substituicaosForJogadorSai;
+       this.substituicaosForJogadorEntra = substituicaosForJogadorEntra;
+       this.escalacaosForJogador1 = escalacaosForJogador1;
+       this.escalacaosForJogador8 = escalacaosForJogador8;
+       this.escalacaosForJogador3 = escalacaosForJogador3;
+       this.escalacaosForJogador10 = escalacaosForJogador10;
+       this.escalacaosForJogador2 = escalacaosForJogador2;
+       this.escalacaosForJogador9 = escalacaosForJogador9;
+       this.escalacaosForJogador5 = escalacaosForJogador5;
+       this.escalacaosForJogador4 = escalacaosForJogador4;
+       this.escalacaosForJogador11 = escalacaosForJogador11;
+       this.escalacaosForJogador7 = escalacaosForJogador7;
+       this.escalacaosForJogador6 = escalacaosForJogador6;
     }
    
     public int getId() {
@@ -81,43 +107,96 @@ public class Jogador  implements java.io.Serializable {
     public void setGols(Set gols) {
         this.gols = gols;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.id;
-        hash = 37 * hash + (this.dataNascimento != null ? this.dataNascimento.hashCode() : 0);
-        hash = 37 * hash + (this.nome != null ? this.nome.hashCode() : 0);
-        hash = 37 * hash + this.numero;
-        hash = 37 * hash + (this.posicao != null ? this.posicao.hashCode() : 0);
-        return hash;
+    public Set getSubstituicaosForJogadorSai() {
+        return this.substituicaosForJogadorSai;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Jogador other = (Jogador) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.dataNascimento != other.dataNascimento && (this.dataNascimento == null || !this.dataNascimento.equals(other.dataNascimento))) {
-            return false;
-        }
-        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
-            return false;
-        }
-        if (this.numero != other.numero) {
-            return false;
-        }
-        if ((this.posicao == null) ? (other.posicao != null) : !this.posicao.equals(other.posicao)) {
-            return false;
-        }
-        return true;
+    
+    public void setSubstituicaosForJogadorSai(Set substituicaosForJogadorSai) {
+        this.substituicaosForJogadorSai = substituicaosForJogadorSai;
+    }
+    public Set getSubstituicaosForJogadorEntra() {
+        return this.substituicaosForJogadorEntra;
+    }
+    
+    public void setSubstituicaosForJogadorEntra(Set substituicaosForJogadorEntra) {
+        this.substituicaosForJogadorEntra = substituicaosForJogadorEntra;
+    }
+    public Set getEscalacaosForJogador1() {
+        return this.escalacaosForJogador1;
+    }
+    
+    public void setEscalacaosForJogador1(Set escalacaosForJogador1) {
+        this.escalacaosForJogador1 = escalacaosForJogador1;
+    }
+    public Set getEscalacaosForJogador8() {
+        return this.escalacaosForJogador8;
+    }
+    
+    public void setEscalacaosForJogador8(Set escalacaosForJogador8) {
+        this.escalacaosForJogador8 = escalacaosForJogador8;
+    }
+    public Set getEscalacaosForJogador3() {
+        return this.escalacaosForJogador3;
+    }
+    
+    public void setEscalacaosForJogador3(Set escalacaosForJogador3) {
+        this.escalacaosForJogador3 = escalacaosForJogador3;
+    }
+    public Set getEscalacaosForJogador10() {
+        return this.escalacaosForJogador10;
+    }
+    
+    public void setEscalacaosForJogador10(Set escalacaosForJogador10) {
+        this.escalacaosForJogador10 = escalacaosForJogador10;
+    }
+    public Set getEscalacaosForJogador2() {
+        return this.escalacaosForJogador2;
+    }
+    
+    public void setEscalacaosForJogador2(Set escalacaosForJogador2) {
+        this.escalacaosForJogador2 = escalacaosForJogador2;
+    }
+    public Set getEscalacaosForJogador9() {
+        return this.escalacaosForJogador9;
+    }
+    
+    public void setEscalacaosForJogador9(Set escalacaosForJogador9) {
+        this.escalacaosForJogador9 = escalacaosForJogador9;
+    }
+    public Set getEscalacaosForJogador5() {
+        return this.escalacaosForJogador5;
+    }
+    
+    public void setEscalacaosForJogador5(Set escalacaosForJogador5) {
+        this.escalacaosForJogador5 = escalacaosForJogador5;
+    }
+    public Set getEscalacaosForJogador4() {
+        return this.escalacaosForJogador4;
+    }
+    
+    public void setEscalacaosForJogador4(Set escalacaosForJogador4) {
+        this.escalacaosForJogador4 = escalacaosForJogador4;
+    }
+    public Set getEscalacaosForJogador11() {
+        return this.escalacaosForJogador11;
+    }
+    
+    public void setEscalacaosForJogador11(Set escalacaosForJogador11) {
+        this.escalacaosForJogador11 = escalacaosForJogador11;
+    }
+    public Set getEscalacaosForJogador7() {
+        return this.escalacaosForJogador7;
+    }
+    
+    public void setEscalacaosForJogador7(Set escalacaosForJogador7) {
+        this.escalacaosForJogador7 = escalacaosForJogador7;
+    }
+    public Set getEscalacaosForJogador6() {
+        return this.escalacaosForJogador6;
+    }
+    
+    public void setEscalacaosForJogador6(Set escalacaosForJogador6) {
+        this.escalacaosForJogador6 = escalacaosForJogador6;
     }
 
 

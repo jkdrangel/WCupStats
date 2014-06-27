@@ -10,7 +10,6 @@ package model.CRUD;
 import Util.HibernateUtil;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManagerFactory;
 import model.pojo.Copa;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;

@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 12/06/2014 11:49:37 by Hibernate Tools 3.6.0
+// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -14,31 +14,43 @@ public class Jogo  implements java.io.Serializable {
 
      private int id;
      private Copa copa;
+     private Selecao selecaoBySelecaoB;
+     private Selecao selecaoBySelecaoA;
+     private Escalacao escalacaoByEscalacaoB;
+     private Escalacao escalacaoByEscalacaoA;
      private Date data;
      private String local;
      private String fase;
-     private Set gols = new HashSet(0);
      private Set substituicaos = new HashSet(0);
+     private Set gols = new HashSet(0);
 
     public Jogo() {
     }
 
 	
-    public Jogo(int id, Copa copa, Date data, String local, String fase) {
+    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Escalacao escalacaoByEscalacaoB, Escalacao escalacaoByEscalacaoA, Date data, String local, String fase) {
         this.id = id;
         this.copa = copa;
+        this.selecaoBySelecaoB = selecaoBySelecaoB;
+        this.selecaoBySelecaoA = selecaoBySelecaoA;
+        this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
+        this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
         this.data = data;
         this.local = local;
         this.fase = fase;
     }
-    public Jogo(int id, Copa copa, Date data, String local, String fase, Set gols, Set substituicaos) {
+    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Escalacao escalacaoByEscalacaoB, Escalacao escalacaoByEscalacaoA, Date data, String local, String fase, Set substituicaos, Set gols) {
        this.id = id;
        this.copa = copa;
+       this.selecaoBySelecaoB = selecaoBySelecaoB;
+       this.selecaoBySelecaoA = selecaoBySelecaoA;
+       this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
+       this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
        this.data = data;
        this.local = local;
        this.fase = fase;
-       this.gols = gols;
        this.substituicaos = substituicaos;
+       this.gols = gols;
     }
    
     public int getId() {
@@ -54,6 +66,34 @@ public class Jogo  implements java.io.Serializable {
     
     public void setCopa(Copa copa) {
         this.copa = copa;
+    }
+    public Selecao getSelecaoBySelecaoB() {
+        return this.selecaoBySelecaoB;
+    }
+    
+    public void setSelecaoBySelecaoB(Selecao selecaoBySelecaoB) {
+        this.selecaoBySelecaoB = selecaoBySelecaoB;
+    }
+    public Selecao getSelecaoBySelecaoA() {
+        return this.selecaoBySelecaoA;
+    }
+    
+    public void setSelecaoBySelecaoA(Selecao selecaoBySelecaoA) {
+        this.selecaoBySelecaoA = selecaoBySelecaoA;
+    }
+    public Escalacao getEscalacaoByEscalacaoB() {
+        return this.escalacaoByEscalacaoB;
+    }
+    
+    public void setEscalacaoByEscalacaoB(Escalacao escalacaoByEscalacaoB) {
+        this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
+    }
+    public Escalacao getEscalacaoByEscalacaoA() {
+        return this.escalacaoByEscalacaoA;
+    }
+    
+    public void setEscalacaoByEscalacaoA(Escalacao escalacaoByEscalacaoA) {
+        this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
     }
     public Date getData() {
         return this.data;
@@ -76,13 +116,6 @@ public class Jogo  implements java.io.Serializable {
     public void setFase(String fase) {
         this.fase = fase;
     }
-    public Set getGols() {
-        return this.gols;
-    }
-    
-    public void setGols(Set gols) {
-        this.gols = gols;
-    }
     public Set getSubstituicaos() {
         return this.substituicaos;
     }
@@ -90,43 +123,12 @@ public class Jogo  implements java.io.Serializable {
     public void setSubstituicaos(Set substituicaos) {
         this.substituicaos = substituicaos;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + (this.copa != null ? this.copa.hashCode() : 0);
-        hash = 97 * hash + (this.data != null ? this.data.hashCode() : 0);
-        hash = 97 * hash + (this.local != null ? this.local.hashCode() : 0);
-        hash = 97 * hash + (this.fase != null ? this.fase.hashCode() : 0);
-        return hash;
+    public Set getGols() {
+        return this.gols;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Jogo other = (Jogo) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.copa != other.copa && (this.copa == null || !this.copa.equals(other.copa))) {
-            return false;
-        }
-        if (this.data != other.data && (this.data == null || !this.data.equals(other.data))) {
-            return false;
-        }
-        if ((this.local == null) ? (other.local != null) : !this.local.equals(other.local)) {
-            return false;
-        }
-        if ((this.fase == null) ? (other.fase != null) : !this.fase.equals(other.fase)) {
-            return false;
-        }
-        return true;
+    
+    public void setGols(Set gols) {
+        this.gols = gols;
     }
 
 

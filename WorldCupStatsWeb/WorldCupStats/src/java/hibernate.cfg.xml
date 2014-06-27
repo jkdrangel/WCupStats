@@ -10,14 +10,14 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.use_identifier_rollback">true</property>
-    <mapping resource="model/pojo/Jogador.hbm.xml"/>
     <mapping resource="model/pojo/Tecnico.hbm.xml"/>
-    <mapping resource="model/pojo/Jogo.hbm.xml"/>
     <mapping resource="model/pojo/Escalacao.hbm.xml"/>
-    <mapping resource="model/pojo/Substituicao.hbm.xml"/>
+    <mapping resource="model/pojo/Copa.hbm.xml"/>
+    <mapping resource="model/pojo/Pais.hbm.xml"/>
     <mapping resource="model/pojo/Selecao.hbm.xml"/>
     <mapping resource="model/pojo/Gol.hbm.xml"/>
-    <mapping resource="model/pojo/Pais.hbm.xml"/>
-    <mapping resource="model/pojo/Copa.hbm.xml"/>
+    <mapping resource="model/pojo/Substituicao.hbm.xml"/>
+    <mapping resource="model/pojo/Jogador.hbm.xml"/>
+    <mapping resource="model/pojo/Jogo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

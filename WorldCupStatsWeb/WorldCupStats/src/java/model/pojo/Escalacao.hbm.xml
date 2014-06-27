@@ -1,12 +1,60 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 17, 2014 6:13:05 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Escalacao" table="Escalacao" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
+        <many-to-one name="jogadorByJogador6" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador5" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="selecao" class="model.pojo.Selecao" fetch="select">
+            <column name="Selecao" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador4" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador4" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador3" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador2" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador1" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador1" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador10" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador11" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador11" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador9" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador9" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador8" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador7" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador7" not-null="true" />
+        </many-to-one>
+        <set name="jogosForEscalacaoB" table="Jogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EscalacaoB" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Jogo" />
+        </set>
+        <set name="jogosForEscalacaoA" table="Jogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EscalacaoA" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Jogo" />
+        </set>
     </class>
 </hibernate-mapping>

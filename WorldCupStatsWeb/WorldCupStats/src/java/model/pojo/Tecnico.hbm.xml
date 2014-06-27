@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 17, 2014 6:13:05 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Tecnico" table="Tecnico" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
-        <many-to-one name="selecao" class="model.pojo.Selecao" fetch="select">
-            <column name="ID_SELECAO" not-null="true" />
-        </many-to-one>
         <property name="nome" type="string">
             <column name="nome" length="50" not-null="true" />
         </property>
         <property name="dataNascimento" type="date">
             <column name="data_nascimento" length="10" not-null="true" />
         </property>
+        <set name="selecaos" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Tecnico" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
     </class>
 </hibernate-mapping>

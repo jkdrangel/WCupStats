@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 12/06/2014 11:49:37 by Hibernate Tools 3.6.0
+// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -70,48 +70,6 @@ public class Gol  implements java.io.Serializable {
     
     public void setFoiContra(boolean foiContra) {
         this.foiContra = foiContra;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + (this.jogador != null ? this.jogador.hashCode() : 0);
-        hash = 29 * hash + (this.selecao != null ? this.selecao.hashCode() : 0);
-        hash = 29 * hash + (this.jogo != null ? this.jogo.hashCode() : 0);
-        hash = 29 * hash + (this.tempo != null ? this.tempo.hashCode() : 0);
-        hash = 29 * hash + (this.foiContra ? 1 : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Gol other = (Gol) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.jogador != other.jogador && (this.jogador == null || !this.jogador.equals(other.jogador))) {
-            return false;
-        }
-        if (this.selecao != other.selecao && (this.selecao == null || !this.selecao.equals(other.selecao))) {
-            return false;
-        }
-        if (this.jogo != other.jogo && (this.jogo == null || !this.jogo.equals(other.jogo))) {
-            return false;
-        }
-        if (this.tempo != other.tempo && (this.tempo == null || !this.tempo.equals(other.tempo))) {
-            return false;
-        }
-        if (this.foiContra != other.foiContra) {
-            return false;
-        }
-        return true;
     }
 
 

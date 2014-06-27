@@ -1,8 +1,9 @@
 package model.pojo;
-// Generated 12/06/2014 11:49:37 by Hibernate Tools 3.6.0
+// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Pais  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private String nome;
      private String continente;
      private Set selecaos = new HashSet(0);
@@ -21,24 +22,22 @@ public class Pais  implements java.io.Serializable {
     }
 
 	
-    public Pais(int id, String nome, String continente) {
-        this.id = id;
+    public Pais(String nome, String continente) {
         this.nome = nome;
         this.continente = continente;
     }
-    public Pais(int id, String nome, String continente, Set selecaos, Set copas) {
-       this.id = id;
+    public Pais(String nome, String continente, Set selecaos, Set copas) {
        this.nome = nome;
        this.continente = continente;
        this.selecaos = selecaos;
        this.copas = copas;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNome() {
@@ -73,9 +72,7 @@ public class Pais  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + (this.nome != null ? this.nome.hashCode() : 0);
-        hash = 89 * hash + (this.continente != null ? this.continente.hashCode() : 0);
+        hash = 97 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -88,13 +85,7 @@ public class Pais  implements java.io.Serializable {
             return false;
         }
         final Pais other = (Pais) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
-            return false;
-        }
-        if ((this.continente == null) ? (other.continente != null) : !this.continente.equals(other.continente)) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         return true;

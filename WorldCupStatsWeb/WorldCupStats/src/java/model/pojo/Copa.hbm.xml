@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 17, 2014 6:13:05 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Copa" table="Copa" catalog="wcupstats">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
         <many-to-one name="selecao" class="model.pojo.Selecao" fetch="select">
-            <column name="ID_SELECAO" not-null="false" />
+            <column name="ID_SELECAO" />
         </many-to-one>
         <many-to-one name="pais" class="model.pojo.Pais" fetch="select">
-            <column name="ID_SEDE" not-null="false" />
+            <column name="ID_SEDE" />
         </many-to-one>
         <property name="ano" type="date">
             <column name="ano" length="10" not-null="true" />
         </property>
         <set name="selecaos" table="Selecao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ID_COPA" not-null="true" />
+                <column name="ID_COPA" />
             </key>
             <one-to-many class="model.pojo.Selecao" />
         </set>
