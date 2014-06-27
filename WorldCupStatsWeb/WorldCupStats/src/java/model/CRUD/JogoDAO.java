@@ -7,10 +7,14 @@
  */
 package model.CRUD;
 
-import java.util.ArrayList;
-import java.util.Date;
+import Util.HibernateUtil;
 import java.util.List;
-import model.Enuns.FaseCopa;
+import model.pojo.Jogo;
+import model.pojo.Selecao;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Classe que representa um jogo entre duas selecoes em uma copa.
@@ -24,256 +28,131 @@ import model.Enuns.FaseCopa;
  */
 public class JogoDAO {
 
-    /**
-     * fase do jogo na copa.
-     */
-    private final FaseCopa FASE;
-    /**
-     * Data do jogo.
-     */
-    private final Date data;
-    /**
-     * Lugar onde ocorreu o jogo.
-     */
-    private final String local;
-    /**
-     * CopaDAO que houve este jogo.
-     */
-    private CopaDAO copa;
-    /**
-     * SelecaoDAO A.
-     */
-    private final SelecaoDAO timeA;
-    /**
- SelecaoDAO* Time B.
-     */
-    private final SelecaoDAO timeB;
-    /**
-     * EscalacaoDAO do time A.
-     */
-    private final EscalacaoDAO escalacaoA;
-    /**
- EscalacaoDAOalacao do time B.
-     */
-    private final EscalacaoDAO escalacaoB;
-    /**
-     * Lista de substituicoes no jogo.
-     */
-    private List<SubstituicaoDAO> substis;
-    /**
-     * Gols do time A no jogo.
-     */
-    private List<GolDAO> golsTimeA;
-    /**
-     * Gols do time B no jogo.
-     */
-    private List <GolDAO> golsTimeB;
+    Session sessao = null;
+    Transaction transacao = null;
 
-    
-    /**
-     * Construtor da classe.
-     * 
-     * @param FASE
-     * @param data
-     * @param local
-     * @param copa
-     * @param timeA
-     * @param timeB
-     * @param escalacaoA
-     * @param escalacaoB 
-     */
-    public JogoDAO(FaseCopa FASE, Date data, String local, CopaDAO copa, SelecaoDAO timeA,
-            SelecaoDAO timeB, EscalacaoDAO escalacaoA, EscalacaoDAO escalacaoB) {
-        this.FASE = FASE;
-        this.data = data;
-        this.local = local;
-        this.copa = copa;
-        this.timeA = timeA;
-        this.timeB = timeB;
-        this.escalacaoA = escalacaoA;
-        this.escalacaoB = escalacaoB;
+    public void adicionar(Jogo jogo) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
 
-        substis = new ArrayList<SubstituicaoDAO>();
-        golsTimeA = new ArrayList<GolDAO>();
-        golsTimeB = new ArrayList<GolDAO>();
-    }
-
-    /**
-     * @return the FASE
-     */
-    public String getFASE() {
-        return FASE.getFase();
-    }
-
-    /**
-     * @return the data
-     */
-    public Date getData() {
-        return data;
-    }
-
-    /**
-     * @return the local
-     */
-    public String getLocal() {
-        return local;
-    }
-
-    /**
-     * @return the copa
-     */
-  public CopaDAO getCopa() {
-        return copa;
-    }
-
-    /**
-     * @return the timeA
-     */ public SelecaoDAO getTimeA() {
-        return timeA;
-    }
-
-    /**
-     * @return the timeB
-    SelecaoDAO    public Time getTimeB() {
-        return timeB;
-    }
-
-    /**
-     * @return the escalacaoA
-     */public EscalacaoDAO getEscalacaoA() {
-        return escalacaoA;
-    }
-
-    /**
-     * @return the escalacaoB
-     */
-     
-    public EscalacaoDAO getEscalacaoB() {
-        return escalacaoB;
-    }
-
-    /**
-     * @return the substis
-     */
-    public List<SubstituicaoDAO> getSubstituicao() {
-        return substis;
-    }
-
-    /**
-     * @param substis the substis to set
-     */
-    public void addSubstituicao (SubstituicaoDAO substis) {
-        this.substis.add(substis);
-    }
-
-    /**
-     *
-     * @param gol
-     */
-    public void addGolTimeA(GolDAO gol) {
-
-        this.golsTimeA.add(gol);
-    }
-
-    /**
-     *
-     * @param gol
-     */
-    public void addGolTimeB(GolDAO gol) {
-
-        this.golsTimeB.add(gol);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int[] golsLiquidos() {
-
-        int gols[] = new int[2];
-        gols[0] = golsTimeA.size();
-        gols[1] = golsTimeB.size();
-
-        for (GolDAO golA : golsTimeA) {
-            if (golA.isFoiContra()) { 
-                gols[0]--; // Diminui umTimeDAO no placar do Time A
-                gols[1]++; // AumentaTimeDAOgol no placar do Time B
-            }
-   }
-        for (GolDAO golB : golsTimeB) {
-            if (golB.isFoiContra()) {
-                gols[0]++; // AumeTimeDAOum gol no placar do Time A
-                gols[1]--; // DTimeDAOui um gol no placar do Time B
+            transacao = sessao.beginTransaction();
+            sessao.save(jogo);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel inserir o jogo. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de insercao. Mensagem: " + e.getMessage());
             }
         }
-
-        return gols;
     }
 
-    public String placarJogo() {
+    public void atualizar(Jogo jogo) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
 
-        int gols[] = this.golsLiquidos();
-        
-        String a = timeA.toString();
-        int gA = gols[0];
-        String b = timeB.toString();
-        int gB = gols[1];
-
-        return a + " " + gA + "x" + gB + " " + b;
-    }
-
-    public boolean timeParticipouJogo(SelecaoDAO timeC) {
-
-        return (timeA.equals(timeC) || timeB.equals(timeC));
-    }
-
-    public boolean vitoriaIncontestavel() {
-
-        int diff = this.diferencaGols();
-        
-        return (diff >= 3);
-    }
-
-    public int diferencaGols() {
-
-        System.out.println("OS GOLS CONTRA SÃO COMPUTADOS PARA QUAL TIME ???");
-        
-        int gols[] = this.golsLiquidos();
-        
-        int golLiquidoTimeA = gols[0];
-        int golLiquidoTimeB = gols[1];
-
-        int diff = (golLiquidoTimeA > golLiquidoTimeB) ? golLiquidoTimeA - golLiquidoTimeB
-                                                                         : 
-                                                         golLiquidoTimeB - golLiquidoTimeA;
-        return diff;
-    }
-
-    public boolean empatou() {
-
-        return ( 0 == this.diferencaGols() );
-    }
-
-  public SelecaoDAO vencedor() {
-
-        SelecaoDAO vencedor = null;
-        
-        if (!empatou()) {
-            int gols[] = this.golsLiquidos();
-            vencedor = (gols[0] > gols[1])? timeA : timeB;
+            transacao = sessao.beginTransaction();
+            sessao.update(jogo);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel atualizar o objeto Jogo. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de atualizacao. Mensagem: " + e.getMessage());
+            }
         }
-
-        return vencedor;
     }
-    public SelecaoDAO Derrotado() {
 
-        SelecaoDAO derrotado = null;
-        
-        if (!empatou()) {
-            int gols[] = this.golsLiquidos();
-            derrotado = (gols[0] > gols[1])? timeB : timeA;
+    public void remover(Jogo jogo) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            sessao.delete(jogo);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel excluir o jogo. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());
+            }
         }
-
-        return derrotado;
     }
+
+    public void removerTodos() {
+        try {
+
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("delete from Jogo");
+
+            transacao = sessao.beginTransaction();
+            consulta.executeUpdate();
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel excluir os objetos. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Jogo> listar() {
+        List<Jogo> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogo");
+
+            transacao = sessao.beginTransaction();
+            resultado = (List<Jogo>) consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
+    }
+
+    public Jogo buscar(java.sql.Date data, String local) {
+        Jogo jogo = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogo where data = "+ data +" and local = "+ local);
+            //consulta.setString("parametro1", nome);
+
+            transacao = sessao.beginTransaction();
+            jogo = (Jogo) consulta.uniqueResult();
+            transacao.commit();
+            return jogo;
+
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel buscar o objeto. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());
+            }
+        }
+        return jogo;
+    }
+
 }

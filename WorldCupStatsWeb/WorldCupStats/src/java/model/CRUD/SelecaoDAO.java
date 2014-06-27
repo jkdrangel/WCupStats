@@ -8,12 +8,9 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
-import model.pojo.Pais;
 import model.pojo.Selecao;
-import model.pojo.Tecnico;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -32,7 +29,7 @@ import org.hibernate.Transaction;
  */
 public class SelecaoDAO {
 
-   Session sessao = null;
+    Session sessao = null;
     Transaction transacao = null;
 
     public void adicionar(Selecao selecao) {
@@ -43,7 +40,7 @@ public class SelecaoDAO {
             sessao.save(selecao);
             transacao.commit();
         } catch (HibernateException e) {
-            System.err.println("Nao foi possivel inserir o tecnico. Erro: " + e.getMessage());
+            System.err.println("Nao foi possivel inserir a selecao. Erro: " + e.getMessage());
         } finally {
             try {
                 sessao.close();
@@ -53,15 +50,15 @@ public class SelecaoDAO {
         }
     }
 
-    public void atualizar(Tecnico tecnico) {
+    public void atualizar(Selecao selecao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             transacao = sessao.beginTransaction();
-            sessao.update(tecnico);
+            sessao.update(selecao);
             transacao.commit();
         } catch (HibernateException e) {
-            System.err.println("Nao foi possivel atualizar o objeto tecnico. Erro: " + e.getMessage());
+            System.err.println("Nao foi possivel atualizar o objeto Selecao. Erro: " + e.getMessage());
         } finally {
             try {
                 sessao.close();
@@ -71,15 +68,15 @@ public class SelecaoDAO {
         }
     }
 
-    public void remover(Tecnico tecnico) {
+    public void remover(Selecao selecao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             transacao = sessao.beginTransaction();
-            sessao.delete(tecnico);
+            sessao.delete(selecao);
             transacao.commit();
         } catch (HibernateException e) {
-            System.err.println("Nao foi possivel excluir o tecnico. Erro: " + e.getMessage());
+            System.err.println("Nao foi possivel excluir a selecao. Erro: " + e.getMessage());
         } finally {
             try {
                 sessao.close();
@@ -91,11 +88,11 @@ public class SelecaoDAO {
 
     public void removerTodos() {
         try {
-            
+
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("delete from Tecnico");
-            
+            Query consulta = sessao.createQuery("delete from Selecao");
+
             transacao = sessao.beginTransaction();
             consulta.executeUpdate();
             transacao.commit();
@@ -111,15 +108,15 @@ public class SelecaoDAO {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Tecnico> listar() {
-        List<Tecnico> resultado = null;
+    public List<Selecao> listar() {
+        List<Selecao> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Tecnico");
+            Query consulta = sessao.createQuery("from Selecao");
 
             transacao = sessao.beginTransaction();
-            resultado = (List<Tecnico>) consulta.list();
+            resultado = (List<Selecao>) consulta.list();
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
@@ -134,18 +131,18 @@ public class SelecaoDAO {
         }
     }
 
-    public Tecnico buscar(String nome) {
-       Tecnico copa = null;
+    public Selecao buscar(String nome, Date ano) {
+        Selecao selecao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Tecnico where nome = :parametro");
-            consulta.setString("parametro", nome);
+            Query consulta = sessao.createQuery("from Selecao where nome = " + nome + " and ano = " + ano);
+            //consulta.setString("parametro1", nome);
 
             transacao = sessao.beginTransaction();
-            copa = (Tecnico) consulta.uniqueResult();
+            selecao = (Selecao) consulta.uniqueResult();
             transacao.commit();
-            return copa;
+            return selecao;
 
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel buscar o objeto. Erro: " + e.getMessage());
@@ -156,7 +153,7 @@ public class SelecaoDAO {
                 System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());
             }
         }
-        return copa;
+        return selecao;
     }
-  
+
 }
