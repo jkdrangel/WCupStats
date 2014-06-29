@@ -48,8 +48,6 @@ public class CopaDAOTest {
         copa2.setSelecao(selecao);
 
         copaDAO.removerTodos(); 
-     //entityManager.createNativeQuery("ALTER TABLE student AUTO_INCREMENT = 1");
-     //EntityManager.executeUpdate(); 
        
     }
     

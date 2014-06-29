@@ -106,6 +106,8 @@ public class Sistema {
     
     
     public int qtdJogosPais(Pais pais) {
+         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     /*int resultado = 0;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -134,7 +136,8 @@ public class Sistema {
     }
 
     public void eDoBrasil() {
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     public void toDentro() {
