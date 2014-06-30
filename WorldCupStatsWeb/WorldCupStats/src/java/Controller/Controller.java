@@ -27,8 +27,9 @@ import model.pojo.Tecnico;
 public class Controller {
 
     Sistema sistema = new Sistema();
+    
     /**
-     * 
+     * Um novo pais eh cadastrado no sistema
      * @param nome
      * @param continente
      * @return 
@@ -37,7 +38,7 @@ public class Controller {
         return sistema.cadastrarPais(nome, continente);
     }
     /**
-     * 
+     * Um novo jogador eh cadastrado no sistema
      * @param dataNascimento
      * @param nome
      * @param numero
@@ -48,7 +49,7 @@ public class Controller {
         return sistema.cadastrarJogador(dataNascimento, nome, numero, posicao);
     }
     /**
-     * 
+     * Um novo tecnico eh cadastrado no sistema
      * @param nome
      * @param dataNascimento
      * @return 
@@ -57,7 +58,7 @@ public class Controller {
         return sistema.cadastrarTecnico(nome, dataNascimento);
     }
     /**
-     * 
+     * Uma nova selecao eh cadastrada no sistema.
      * @param posicao
      * @param ano
      * @param grupo
@@ -69,7 +70,7 @@ public class Controller {
     }
     
     /**
-     * 
+     * Uma nova copa do mundo eh cadastrada no sistema
      * @param ano
      * @param p
      * @param s
@@ -79,7 +80,8 @@ public class Controller {
         return sistema.cadastrarCopa(ano, p, s);
     }
     /**
-     * 
+     * A partir dos jogadores que compoem uma selecao,
+     * a escalacao para um jogo deve ser cadastrar escolhendo-se 11 jogadores
      * @param j
      * @param s
      * @return 
@@ -88,7 +90,21 @@ public class Controller {
         return sistema.cadastrarEscalacao(j, s);
     }
     /**
-     * 
+     * Um novo jogo é inserido em uma copa do mundo,
+     * deve ser informado a fase na qual o jogo foi realizado (grupos, final, quartas...)
+     * @param copa
+     * @param primeira
+     * @param segunda
+     * @param fase
+     * @return 
+     */
+    public Jogo cadastrarJogo(Copa  copa, Selecao primeira, Selecao segunda, String fase){
+        return sistema.cadastrarJogo(copa, primeira, segunda, fase);
+    }
+    
+    /**
+     * Um novo jogo eh inserido em uma copa do mundo,
+     * deve ser informada a fase na qual o jogo foi realizado (grupos, final, quartas...)
      * @param j
      * @param tempo
      * @param foiContra
@@ -98,7 +114,9 @@ public class Controller {
         return sistema.cadastrarGol(j, tempo, foiContra);
     }
     /**
-     * 
+     * Um gol eh computado para uma das equipes,
+     * o gol pode ter sido contra, 
+     * o tempo é informado em minutos e segundos de partida.
      * @param t
      * @param entrou
      * @param saiu
