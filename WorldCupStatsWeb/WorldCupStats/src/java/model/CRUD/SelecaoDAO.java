@@ -10,6 +10,7 @@ package model.CRUD;
 import Util.HibernateUtil;
 import java.sql.Date;
 import java.util.List;
+import model.pojo.Pais;
 import model.pojo.Selecao;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -131,13 +132,12 @@ public class SelecaoDAO {
         }
     }
 
-    public Selecao buscar(String nome, Date ano) {
+    public Selecao buscar(Pais pais, Date ano) {
         Selecao selecao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Selecao where nome = " + nome + " and ano = " + ano);
-            //consulta.setString("parametro1", nome);
+            Query consulta = sessao.createQuery("from Selecao where pais = " + pais + " and ano = " + ano);
 
             transacao = sessao.beginTransaction();
             selecao = (Selecao) consulta.uniqueResult();

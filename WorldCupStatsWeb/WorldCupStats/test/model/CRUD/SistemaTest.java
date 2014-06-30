@@ -42,7 +42,7 @@ public class SistemaTest {
         List<Pais> paises = sistema.listarPaises();
         assertEquals(brasil, paises.get(0));
     }
-
+    
 
     @Test
     public void cadastrarCopaTest() {

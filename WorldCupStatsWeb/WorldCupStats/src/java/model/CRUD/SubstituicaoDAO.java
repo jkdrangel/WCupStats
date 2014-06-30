@@ -136,7 +136,7 @@ public class SubstituicaoDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Substituicao where nome = " + selecao + " and tempo = " + tempo);
+            Query consulta = sessao.createQuery("from Substituicao where selecao = " + selecao+ " and tempo = " + tempo);
 
             transacao = sessao.beginTransaction();
             substituicao = (Substituicao) consulta.uniqueResult();

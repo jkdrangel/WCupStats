@@ -128,7 +128,7 @@ public class Sistema {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
         }*/
-        return 0;
+       // return 0;
     }
 
     public void eMarmelada() {
