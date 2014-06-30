@@ -8,7 +8,15 @@
 
 package model.CRUD;
 
+import Util.HibernateUtil;
 import java.util.List;
+import model.pojo.Escalacao;
+import model.pojo.Jogo;
+import model.pojo.Selecao;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Classe que representa a EscalacaoDAO de uma Selecao durante um JogoDAO.
@@ -21,57 +29,138 @@ import java.util.List;
  * @see Jogadores
  */
 public class EscalacaoDAO {
-    private int ID;
-    private JogoDAO jogo;
-    private List<JogadorDAO> jogadores;
-    
-    /**
-     * Construtor da classe.
-     * @param jogo, JogoDAO em que os jogadores foram Escalados.
-     * @param jogadores, Jogadores que foram Escalados para o JogoDAO.
-     */
-    public EscalacaoDAO(JogoDAO jogo, List<JogadorDAO> jogadores){
-        this.jogo = jogo;
-        this.jogadores = jogadores;
+
+    Session sessao = null;
+    Transaction transacao = null;
+
+    public void adicionar(Escalacao escalacao) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            sessao.save(escalacao);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel inserir a escalacao. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de insercao. Mensagem: " + e.getMessage());
+            }
+        }
     }
-    
-    /**
-     * Getter para o ID da classe.
-     * @return, Retorna o ID da classe.
-     */
-    public int getID(){
-        return this.ID;
+
+    public void atualizar(Escalacao escalacao) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            sessao.update(escalacao);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel atualizar o objeto Escalacao. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de atualizacao. Mensagem: " + e.getMessage());
+            }
+        }
     }
-    
-    /**
-     * Setter para o ID da classe.
-     * @param ID, ID da classe.
-     */
-    public void setID(int ID){
-        this.ID = ID;
+
+    public void remover(Escalacao escalacao) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            transacao = sessao.beginTransaction();
+            sessao.delete(escalacao);
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel excluir a escalacao. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());
+            }
+        }
     }
-    
-    /**
-     * Getter para o JogoDAO da classe.
-     * @return, Retorna o jogo em que o Gol foi feito.
-     */
-    public JogoDAO getJogo(){
-        return this.jogo;
+
+    public void removerTodos() {
+        try {
+
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("delete from Escalacao");
+
+            transacao = sessao.beginTransaction();
+            consulta.executeUpdate();
+            transacao.commit();
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel excluir os objetos. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de exclusao. Mensagem: " + e.getMessage());
+            }
+        }
     }
-    
-    /**
-     * Setter para o JogoDAO da classe.
-     * @param jogo, JogoDAO em que o Gol foi feito.
-     */
-    public void setJogo(JogoDAO jogo){
-        this.jogo = jogo;
+
+    @SuppressWarnings("unchecked")
+    public List<Escalacao> listar() {
+        List<Escalacao> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Escalacao");
+
+            transacao = sessao.beginTransaction();
+            resultado = (List<Escalacao>) consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
-    
-    /**
-     * Getter para os Jogadores da classe.
-     * @return, Retorna o Jogador que fez o Gol.
-     */
-    public List<JogadorDAO> getJogador(){
-        return this.jogadores;
+
+    public Escalacao buscar(Jogo jogo, Selecao selecao) {
+        Escalacao escalacao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogo where id = " + jogo.getId());
+
+            transacao = sessao.beginTransaction();
+            Jogo play = (Jogo) consulta.uniqueResult();
+            transacao.commit();
+            
+            if (selecao.equals(play.getSelecaoBySelecaoA())) {
+                escalacao = play.getEscalacaoByEscalacaoA();
+            } else if(selecao.equals(play.getSelecaoBySelecaoB())) {
+                escalacao = play.getEscalacaoByEscalacaoB();
+            }
+            
+            return escalacao;
+
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel buscar o objeto. Erro: " + e.getMessage());
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de busca. Mensagem: " + e.getMessage());
+            }
+        }
+        return escalacao;
     }
+
 }
