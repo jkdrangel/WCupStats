@@ -18,14 +18,29 @@ public class Pais  implements java.io.Serializable {
      private Set selecaos = new HashSet(0);
      private Set copas = new HashSet(0);
 
+    /**
+     *
+     */
     public Pais() {
     }
 
-	
+    /**
+     *
+     * @param nome
+     * @param continente
+     */
     public Pais(String nome, String continente) {
         this.nome = nome;
         this.continente = continente;
     }
+
+    /**
+     *
+     * @param nome
+     * @param continente
+     * @param selecaos
+     * @param copas
+     */
     public Pais(String nome, String continente, Set selecaos, Set copas) {
        this.nome = nome;
        this.continente = continente;
@@ -33,38 +48,82 @@ public class Pais  implements java.io.Serializable {
        this.copas = copas;
     }
    
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return this.nome;
     }
     
+    /**
+     *
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getContinente() {
         return this.continente;
     }
     
+    /**
+     *
+     * @param continente
+     */
     public void setContinente(String continente) {
         this.continente = continente;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getSelecaos() {
         return this.selecaos;
     }
     
+    /**
+     *
+     * @param selecaos
+     */
     public void setSelecaos(Set selecaos) {
         this.selecaos = selecaos;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getCopas() {
         return this.copas;
     }
     
+    /**
+     *
+     * @param copas
+     */
     public void setCopas(Set copas) {
         this.copas = copas;
     }

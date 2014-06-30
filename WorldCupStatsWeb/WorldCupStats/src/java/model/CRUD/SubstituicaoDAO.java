@@ -32,6 +32,10 @@ public class SubstituicaoDAO {
     Session sessao = null;
     Transaction transacao = null;
 
+    /**
+     *
+     * @param substituicao
+     */
     public void adicionar(Substituicao substituicao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -50,6 +54,10 @@ public class SubstituicaoDAO {
         }
     }
 
+    /**
+     *
+     * @param substituicao
+     */
     public void atualizar(Substituicao substituicao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -68,6 +76,10 @@ public class SubstituicaoDAO {
         }
     }
 
+    /**
+     *
+     * @param substituicao
+     */
     public void remover(Substituicao substituicao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -86,6 +98,9 @@ public class SubstituicaoDAO {
         }
     }
 
+    /**
+     *
+     */
     public void removerTodos() {
         try {
 
@@ -107,6 +122,10 @@ public class SubstituicaoDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List<Substituicao> listar() {
         List<Substituicao> resultado = null;
@@ -131,6 +150,12 @@ public class SubstituicaoDAO {
         }
     }
 
+    /**
+     *
+     * @param tempo
+     * @param selecao
+     * @return
+     */
     public Substituicao buscar(java.sql.Date tempo, Selecao selecao) {
         Substituicao substituicao = null;
         try {

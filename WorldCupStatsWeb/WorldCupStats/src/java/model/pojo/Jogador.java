@@ -32,10 +32,20 @@ public class Jogador  implements java.io.Serializable {
      private Set escalacaosForJogador7 = new HashSet(0);
      private Set escalacaosForJogador6 = new HashSet(0);
 
+    /**
+     *
+     */
     public Jogador() {
     }
 
-	
+    /**
+     *
+     * @param id
+     * @param dataNascimento
+     * @param nome
+     * @param numero
+     * @param posicao
+     */
     public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao) {
         this.id = id;
         this.dataNascimento = dataNascimento;
@@ -43,6 +53,29 @@ public class Jogador  implements java.io.Serializable {
         this.numero = numero;
         this.posicao = posicao;
     }
+
+    /**
+     *
+     * @param id
+     * @param dataNascimento
+     * @param nome
+     * @param numero
+     * @param posicao
+     * @param gols
+     * @param substituicaosForJogadorSai
+     * @param substituicaosForJogadorEntra
+     * @param escalacaosForJogador1
+     * @param escalacaosForJogador8
+     * @param escalacaosForJogador3
+     * @param escalacaosForJogador10
+     * @param escalacaosForJogador2
+     * @param escalacaosForJogador9
+     * @param escalacaosForJogador5
+     * @param escalacaosForJogador4
+     * @param escalacaosForJogador11
+     * @param escalacaosForJogador7
+     * @param escalacaosForJogador6
+     */
     public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao, Set gols, Set substituicaosForJogadorSai, Set substituicaosForJogadorEntra, Set escalacaosForJogador1, Set escalacaosForJogador8, Set escalacaosForJogador3, Set escalacaosForJogador10, Set escalacaosForJogador2, Set escalacaosForJogador9, Set escalacaosForJogador5, Set escalacaosForJogador4, Set escalacaosForJogador11, Set escalacaosForJogador7, Set escalacaosForJogador6) {
        this.id = id;
        this.dataNascimento = dataNascimento;
@@ -65,136 +98,306 @@ public class Jogador  implements java.io.Serializable {
        this.escalacaosForJogador6 = escalacaosForJogador6;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Date getDataNascimento() {
         return this.dataNascimento;
     }
     
+    /**
+     *
+     * @param dataNascimento
+     */
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return this.nome;
     }
     
+    /**
+     *
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getNumero() {
         return this.numero;
     }
     
+    /**
+     *
+     * @param numero
+     */
     public void setNumero(int numero) {
         this.numero = numero;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getPosicao() {
         return this.posicao;
     }
     
+    /**
+     *
+     * @param posicao
+     */
     public void setPosicao(String posicao) {
         this.posicao = posicao;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getGols() {
         return this.gols;
     }
     
+    /**
+     *
+     * @param gols
+     */
     public void setGols(Set gols) {
         this.gols = gols;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getSubstituicaosForJogadorSai() {
         return this.substituicaosForJogadorSai;
     }
     
+    /**
+     *
+     * @param substituicaosForJogadorSai
+     */
     public void setSubstituicaosForJogadorSai(Set substituicaosForJogadorSai) {
         this.substituicaosForJogadorSai = substituicaosForJogadorSai;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getSubstituicaosForJogadorEntra() {
         return this.substituicaosForJogadorEntra;
     }
     
+    /**
+     *
+     * @param substituicaosForJogadorEntra
+     */
     public void setSubstituicaosForJogadorEntra(Set substituicaosForJogadorEntra) {
         this.substituicaosForJogadorEntra = substituicaosForJogadorEntra;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador1() {
         return this.escalacaosForJogador1;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador1
+     */
     public void setEscalacaosForJogador1(Set escalacaosForJogador1) {
         this.escalacaosForJogador1 = escalacaosForJogador1;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador8() {
         return this.escalacaosForJogador8;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador8
+     */
     public void setEscalacaosForJogador8(Set escalacaosForJogador8) {
         this.escalacaosForJogador8 = escalacaosForJogador8;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador3() {
         return this.escalacaosForJogador3;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador3
+     */
     public void setEscalacaosForJogador3(Set escalacaosForJogador3) {
         this.escalacaosForJogador3 = escalacaosForJogador3;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador10() {
         return this.escalacaosForJogador10;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador10
+     */
     public void setEscalacaosForJogador10(Set escalacaosForJogador10) {
         this.escalacaosForJogador10 = escalacaosForJogador10;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador2() {
         return this.escalacaosForJogador2;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador2
+     */
     public void setEscalacaosForJogador2(Set escalacaosForJogador2) {
         this.escalacaosForJogador2 = escalacaosForJogador2;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador9() {
         return this.escalacaosForJogador9;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador9
+     */
     public void setEscalacaosForJogador9(Set escalacaosForJogador9) {
         this.escalacaosForJogador9 = escalacaosForJogador9;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador5() {
         return this.escalacaosForJogador5;
     }
-    
+        /**
+     *
+     * @param escalacaosForJogador5
+     */
+
     public void setEscalacaosForJogador5(Set escalacaosForJogador5) {
         this.escalacaosForJogador5 = escalacaosForJogador5;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador4() {
         return this.escalacaosForJogador4;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador4
+     */
     public void setEscalacaosForJogador4(Set escalacaosForJogador4) {
         this.escalacaosForJogador4 = escalacaosForJogador4;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador11() {
         return this.escalacaosForJogador11;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador11
+     */
     public void setEscalacaosForJogador11(Set escalacaosForJogador11) {
         this.escalacaosForJogador11 = escalacaosForJogador11;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador7() {
         return this.escalacaosForJogador7;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador7
+     */
     public void setEscalacaosForJogador7(Set escalacaosForJogador7) {
         this.escalacaosForJogador7 = escalacaosForJogador7;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getEscalacaosForJogador6() {
         return this.escalacaosForJogador6;
     }
     
+    /**
+     *
+     * @param escalacaosForJogador6
+     */
     public void setEscalacaosForJogador6(Set escalacaosForJogador6) {
         this.escalacaosForJogador6 = escalacaosForJogador6;
     }

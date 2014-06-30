@@ -18,10 +18,29 @@ import model.CRUD.JogoDAO;
  */
 public enum FaseCopa {
     
+    /**
+     *
+     */
     GRUPOS("Fase de Grupos"),
+
+    /**
+     *
+     */
     OITAVAS("Oitavas de Final"),
+
+    /**
+     *
+     */
     QUARTAS("Quartas de Final"),
+
+    /**
+     *
+     */
     SEMI("Semifinal"),
+
+    /**
+     *
+     */
     FINAL("Final");
 
     /**

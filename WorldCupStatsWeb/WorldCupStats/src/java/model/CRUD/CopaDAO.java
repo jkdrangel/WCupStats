@@ -25,6 +25,10 @@ public class CopaDAO {
     Session sessao = null;
     Transaction transacao = null;
 
+    /**
+     *
+     * @param copa
+     */
     public void adicionar(Copa copa) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -43,6 +47,10 @@ public class CopaDAO {
         }
     }
 
+    /**
+     *
+     * @param copa
+     */
     public void atualizar(Copa copa) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -61,6 +69,10 @@ public class CopaDAO {
         }
     }
 
+    /**
+     *
+     * @param copa
+     */
     public void remover(Copa copa) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -79,6 +91,9 @@ public class CopaDAO {
         }
     }
 
+    /**
+     *
+     */
     public void removerTodos() {
         try {
             
@@ -100,6 +115,10 @@ public class CopaDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List<Copa> listar() {
         List<Copa> resultado = null;
@@ -124,6 +143,11 @@ public class CopaDAO {
         }
     }
 
+    /**
+     *
+     * @param ano
+     * @return
+     */
     public Copa buscar(Date ano) {
         Copa copa = null;
         try {

@@ -20,13 +20,28 @@ public class Copa  implements java.io.Serializable {
      private Set selecaos = new HashSet(0);
      private Set jogos = new HashSet(0);
 
+    /**
+     *
+     */
     public Copa() {
     }
 
-	
+    /**
+     *
+     * @param ano
+     */
     public Copa(Date ano) {
         this.ano = ano;
     }
+
+    /**
+     *
+     * @param selecao
+     * @param pais
+     * @param ano
+     * @param selecaos
+     * @param jogos
+     */
     public Copa(Selecao selecao, Pais pais, Date ano, Set selecaos, Set jogos) {
        this.selecao = selecao;
        this.pais = pais;
@@ -35,45 +50,98 @@ public class Copa  implements java.io.Serializable {
        this.jogos = jogos;
     }
    
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Selecao getSelecao() {
         return this.selecao;
     }
     
+    /**
+     *
+     * @param selecao
+     */
     public void setSelecao(Selecao selecao) {
         this.selecao = selecao;
     }
+
+    /**
+     *
+     * @return
+     */
     public Pais getPais() {
         return this.pais;
     }
     
+    /**
+     *
+     * @param pais
+     */
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+    /**
+     *
+     * @return
+     */
     public Date getAno() {
         return this.ano;
     }
     
+    /**
+     *
+     * @param ano
+     */
     public void setAno(Date ano) {
         this.ano = ano;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getSelecaos() {
         return this.selecaos;
     }
     
+    /**
+     *
+     * @param selecaos
+     */
     public void setSelecaos(Set selecaos) {
         this.selecaos = selecaos;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getJogos() {
         return this.jogos;
     }
     
+    /**
+     *
+     * @param jogos
+     */
     public void setJogos(Set jogos) {
         this.jogos = jogos;
     }

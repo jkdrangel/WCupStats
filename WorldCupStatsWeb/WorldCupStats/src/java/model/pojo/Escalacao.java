@@ -27,10 +27,28 @@ public class Escalacao  implements java.io.Serializable {
      private Set jogosForEscalacaoB = new HashSet(0);
      private Set jogosForEscalacaoA = new HashSet(0);
 
+    /**
+     *
+     */
     public Escalacao() {
     }
 
-	
+    /**
+     *
+     * @param id
+     * @param jogadorByJogador6
+     * @param jogadorByJogador5
+     * @param selecao
+     * @param jogadorByJogador4
+     * @param jogadorByJogador3
+     * @param jogadorByJogador2
+     * @param jogadorByJogador1
+     * @param jogadorByJogador10
+     * @param jogadorByJogador11
+     * @param jogadorByJogador9
+     * @param jogadorByJogador8
+     * @param jogadorByJogador7
+     */
     public Escalacao(int id, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Selecao selecao, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador1, Jogador jogadorByJogador10, Jogador jogadorByJogador11, Jogador jogadorByJogador9, Jogador jogadorByJogador8, Jogador jogadorByJogador7) {
         this.id = id;
         this.jogadorByJogador6 = jogadorByJogador6;
@@ -46,6 +64,25 @@ public class Escalacao  implements java.io.Serializable {
         this.jogadorByJogador8 = jogadorByJogador8;
         this.jogadorByJogador7 = jogadorByJogador7;
     }
+
+    /**
+     *
+     * @param id
+     * @param jogadorByJogador6
+     * @param jogadorByJogador5
+     * @param selecao
+     * @param jogadorByJogador4
+     * @param jogadorByJogador3
+     * @param jogadorByJogador2
+     * @param jogadorByJogador1
+     * @param jogadorByJogador10
+     * @param jogadorByJogador11
+     * @param jogadorByJogador9
+     * @param jogadorByJogador8
+     * @param jogadorByJogador7
+     * @param jogosForEscalacaoB
+     * @param jogosForEscalacaoA
+     */
     public Escalacao(int id, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Selecao selecao, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador1, Jogador jogadorByJogador10, Jogador jogadorByJogador11, Jogador jogadorByJogador9, Jogador jogadorByJogador8, Jogador jogadorByJogador7, Set jogosForEscalacaoB, Set jogosForEscalacaoA) {
        this.id = id;
        this.jogadorByJogador6 = jogadorByJogador6;
@@ -64,108 +101,242 @@ public class Escalacao  implements java.io.Serializable {
        this.jogosForEscalacaoA = jogosForEscalacaoA;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador6() {
         return this.jogadorByJogador6;
     }
     
+    /**
+     *
+     * @param jogadorByJogador6
+     */
     public void setJogadorByJogador6(Jogador jogadorByJogador6) {
         this.jogadorByJogador6 = jogadorByJogador6;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador5() {
         return this.jogadorByJogador5;
     }
     
+    /**
+     *
+     * @param jogadorByJogador5
+     */
     public void setJogadorByJogador5(Jogador jogadorByJogador5) {
         this.jogadorByJogador5 = jogadorByJogador5;
     }
+
+    /**
+     *
+     * @return
+     */
     public Selecao getSelecao() {
         return this.selecao;
     }
     
+    /**
+     *
+     * @param selecao
+     */
     public void setSelecao(Selecao selecao) {
         this.selecao = selecao;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador4() {
         return this.jogadorByJogador4;
     }
     
+    /**
+     *
+     * @param jogadorByJogador4
+     */
     public void setJogadorByJogador4(Jogador jogadorByJogador4) {
         this.jogadorByJogador4 = jogadorByJogador4;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador3() {
         return this.jogadorByJogador3;
     }
     
+    /**
+     *
+     * @param jogadorByJogador3
+     */
     public void setJogadorByJogador3(Jogador jogadorByJogador3) {
         this.jogadorByJogador3 = jogadorByJogador3;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador2() {
         return this.jogadorByJogador2;
     }
     
+    /**
+     *
+     * @param jogadorByJogador2
+     */
     public void setJogadorByJogador2(Jogador jogadorByJogador2) {
         this.jogadorByJogador2 = jogadorByJogador2;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador1() {
         return this.jogadorByJogador1;
     }
     
+    /**
+     *
+     * @param jogadorByJogador1
+     */
     public void setJogadorByJogador1(Jogador jogadorByJogador1) {
         this.jogadorByJogador1 = jogadorByJogador1;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador10() {
         return this.jogadorByJogador10;
     }
     
+    /**
+     *
+     * @param jogadorByJogador10
+     */
     public void setJogadorByJogador10(Jogador jogadorByJogador10) {
         this.jogadorByJogador10 = jogadorByJogador10;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador11() {
         return this.jogadorByJogador11;
     }
     
+    /**
+     *
+     * @param jogadorByJogador11
+     */
     public void setJogadorByJogador11(Jogador jogadorByJogador11) {
         this.jogadorByJogador11 = jogadorByJogador11;
     }
+    /**
+     *
+     * @return
+     */
+
     public Jogador getJogadorByJogador9() {
         return this.jogadorByJogador9;
     }
     
+    /**
+     *
+     * @param jogadorByJogador9
+     */
     public void setJogadorByJogador9(Jogador jogadorByJogador9) {
         this.jogadorByJogador9 = jogadorByJogador9;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador8() {
         return this.jogadorByJogador8;
     }
     
+    /**
+     *
+     * @param jogadorByJogador8
+     */
     public void setJogadorByJogador8(Jogador jogadorByJogador8) {
         this.jogadorByJogador8 = jogadorByJogador8;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogador7() {
         return this.jogadorByJogador7;
     }
     
+    /**
+     *
+     * @param jogadorByJogador7
+     */
     public void setJogadorByJogador7(Jogador jogadorByJogador7) {
         this.jogadorByJogador7 = jogadorByJogador7;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getJogosForEscalacaoB() {
         return this.jogosForEscalacaoB;
     }
     
+    /**
+     *
+     * @param jogosForEscalacaoB
+     */
     public void setJogosForEscalacaoB(Set jogosForEscalacaoB) {
         this.jogosForEscalacaoB = jogosForEscalacaoB;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getJogosForEscalacaoA() {
         return this.jogosForEscalacaoA;
     }
     
+    /**
+     *
+     * @param jogosForEscalacaoA
+     */
     public void setJogosForEscalacaoA(Set jogosForEscalacaoA) {
         this.jogosForEscalacaoA = jogosForEscalacaoA;
     }

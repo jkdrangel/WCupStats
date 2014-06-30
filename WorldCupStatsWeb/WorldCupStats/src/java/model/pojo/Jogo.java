@@ -24,10 +24,24 @@ public class Jogo  implements java.io.Serializable {
      private Set substituicaos = new HashSet(0);
      private Set gols = new HashSet(0);
 
+    /**
+     *
+     */
     public Jogo() {
     }
 
-	
+    /**
+     *
+     * @param id
+     * @param copa
+     * @param selecaoBySelecaoB
+     * @param selecaoBySelecaoA
+     * @param escalacaoByEscalacaoB
+     * @param escalacaoByEscalacaoA
+     * @param data
+     * @param local
+     * @param fase
+     */
     public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Escalacao escalacaoByEscalacaoB, Escalacao escalacaoByEscalacaoA, Date data, String local, String fase) {
         this.id = id;
         this.copa = copa;
@@ -39,6 +53,21 @@ public class Jogo  implements java.io.Serializable {
         this.local = local;
         this.fase = fase;
     }
+
+    /**
+     *
+     * @param id
+     * @param copa
+     * @param selecaoBySelecaoB
+     * @param selecaoBySelecaoA
+     * @param escalacaoByEscalacaoB
+     * @param escalacaoByEscalacaoA
+     * @param data
+     * @param local
+     * @param fase
+     * @param substituicaos
+     * @param gols
+     */
     public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Escalacao escalacaoByEscalacaoB, Escalacao escalacaoByEscalacaoA, Date data, String local, String fase, Set substituicaos, Set gols) {
        this.id = id;
        this.copa = copa;
@@ -53,80 +82,178 @@ public class Jogo  implements java.io.Serializable {
        this.gols = gols;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Copa getCopa() {
         return this.copa;
     }
     
+    /**
+     *
+     * @param copa
+     */
     public void setCopa(Copa copa) {
         this.copa = copa;
     }
+
+    /**
+     *
+     * @return
+     */
     public Selecao getSelecaoBySelecaoB() {
         return this.selecaoBySelecaoB;
     }
     
+    /**
+     *
+     * @param selecaoBySelecaoB
+     */
     public void setSelecaoBySelecaoB(Selecao selecaoBySelecaoB) {
         this.selecaoBySelecaoB = selecaoBySelecaoB;
     }
+
+    /**
+     *
+     * @return
+     */
     public Selecao getSelecaoBySelecaoA() {
         return this.selecaoBySelecaoA;
     }
     
+    /**
+     *
+     * @param selecaoBySelecaoA
+     */
     public void setSelecaoBySelecaoA(Selecao selecaoBySelecaoA) {
         this.selecaoBySelecaoA = selecaoBySelecaoA;
     }
+
+    /**
+     *
+     * @return
+     */
     public Escalacao getEscalacaoByEscalacaoB() {
         return this.escalacaoByEscalacaoB;
     }
     
+    /**
+     *
+     * @param escalacaoByEscalacaoB
+     */
     public void setEscalacaoByEscalacaoB(Escalacao escalacaoByEscalacaoB) {
         this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
     }
+
+    /**
+     *
+     * @return
+     */
     public Escalacao getEscalacaoByEscalacaoA() {
         return this.escalacaoByEscalacaoA;
     }
     
+    /**
+     *
+     * @param escalacaoByEscalacaoA
+     */
     public void setEscalacaoByEscalacaoA(Escalacao escalacaoByEscalacaoA) {
         this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
     }
+
+    /**
+     *
+     * @return
+     */
     public Date getData() {
         return this.data;
     }
     
+    /**
+     *
+     * @param data
+     */
     public void setData(Date data) {
         this.data = data;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getLocal() {
         return this.local;
     }
-    
+        /**
+     *
+     * @param local
+     */
+
     public void setLocal(String local) {
         this.local = local;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getFase() {
         return this.fase;
     }
     
+    /**
+     *
+     * @param fase
+     */
     public void setFase(String fase) {
         this.fase = fase;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getSubstituicaos() {
         return this.substituicaos;
     }
     
+    /**
+     *
+     * @param substituicaos
+     */
     public void setSubstituicaos(Set substituicaos) {
         this.substituicaos = substituicaos;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getGols() {
         return this.gols;
     }
     
+    /**
+     *
+     * @param gols
+     */
     public void setGols(Set gols) {
         this.gols = gols;
     }

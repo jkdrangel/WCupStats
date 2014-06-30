@@ -32,6 +32,10 @@ public class TecnicoDAO{
     Session sessao = null;
     Transaction transacao = null;
 
+    /**
+     *
+     * @param tecnico
+     */
     public void adicionar(Tecnico tecnico) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -53,6 +57,10 @@ public class TecnicoDAO{
         }
     }
 
+    /**
+     *
+     * @param tecnico
+     */
     public void atualizar(Tecnico tecnico) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -71,6 +79,10 @@ public class TecnicoDAO{
         }
     }
 
+    /**
+     *
+     * @param tecnico
+     */
     public void remover(Tecnico tecnico) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -89,6 +101,9 @@ public class TecnicoDAO{
         }
     }
 
+    /**
+     *
+     */
     public void removerTodos() {
         try {
             
@@ -110,6 +125,10 @@ public class TecnicoDAO{
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List<Tecnico> listar() {
         List<Tecnico> resultado = null;
@@ -134,6 +153,11 @@ public class TecnicoDAO{
         }
     }
 
+    /**
+     *
+     * @param nome
+     * @return
+     */
     public Tecnico buscar(String nome) {
        Tecnico tecnico = null;
         try {

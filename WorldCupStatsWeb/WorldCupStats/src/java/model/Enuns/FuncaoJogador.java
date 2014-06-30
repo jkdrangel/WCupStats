@@ -16,16 +16,59 @@ package model.Enuns;
  */
 public enum FuncaoJogador {
 
+    /**
+     *
+     */
     GOLEIRO("Goleiro"),
+
+    /**
+     *
+     */
     LATERAL("Lateral"),
+
+    /**
+     *
+     */
     LATERAL_ESQUERDO("Lateral Esquerdo"),
+
+    /**
+     *
+     */
     LATERAL_DIREITO("Lateral DIreito"),
+
+    /**
+     *
+     */
     ZAGUEIRO("Zagueiro"),
+
+    /**
+     *
+     */
     MEIO_DE_CAMPO("Meio de Campo"),
+
+    /**
+     *
+     */
     VOLANTE("Volante"),
+
+    /**
+     *
+     */
     MEIO_ATACANTE("Meia Atacante"),
+
+    /**
+     *
+     */
     ATACANTE("Atacante"),
+
+    /**
+     *
+     */
     PONTA("Ponta"),
+
+    /**
+     *
+     */
     CENTRO_AVANTE("Centro Avante");
 
     /**

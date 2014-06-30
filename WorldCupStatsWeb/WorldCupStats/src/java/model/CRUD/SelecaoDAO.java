@@ -33,6 +33,10 @@ public class SelecaoDAO {
     Session sessao = null;
     Transaction transacao = null;
 
+    /**
+     *
+     * @param selecao
+     */
     public void adicionar(Selecao selecao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -51,6 +55,10 @@ public class SelecaoDAO {
         }
     }
 
+    /**
+     *
+     * @param selecao
+     */
     public void atualizar(Selecao selecao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -69,6 +77,10 @@ public class SelecaoDAO {
         }
     }
 
+    /**
+     *
+     * @param selecao
+     */
     public void remover(Selecao selecao) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -87,6 +99,9 @@ public class SelecaoDAO {
         }
     }
 
+    /**
+     *
+     */
     public void removerTodos() {
         try {
 
@@ -108,6 +123,10 @@ public class SelecaoDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List<Selecao> listar() {
         List<Selecao> resultado = null;
@@ -132,6 +151,12 @@ public class SelecaoDAO {
         }
     }
 
+    /**
+     *
+     * @param pais
+     * @param ano
+     * @return
+     */
     public Selecao buscar(Pais pais, Date ano) {
         Selecao selecao = null;
         try {

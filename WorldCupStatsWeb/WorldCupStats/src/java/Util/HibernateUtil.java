@@ -29,7 +29,11 @@ private static final SessionFactory sessionFactory = buildSessionFactory();
 		}
 	}
 	
-	public static SessionFactory getSessionFactory() {
+    /**
+     *
+     * @return
+     */
+    public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 

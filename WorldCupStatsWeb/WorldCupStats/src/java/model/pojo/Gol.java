@@ -17,9 +17,21 @@ public class Gol  implements java.io.Serializable {
      private Date tempo;
      private boolean foiContra;
 
+    /**
+     *
+     */
     public Gol() {
     }
 
+    /**
+     *
+     * @param id
+     * @param jogador
+     * @param selecao
+     * @param jogo
+     * @param tempo
+     * @param foiContra
+     */
     public Gol(int id, Jogador jogador, Selecao selecao, Jogo jogo, Date tempo, boolean foiContra) {
        this.id = id;
        this.jogador = jogador;
@@ -29,45 +41,98 @@ public class Gol  implements java.io.Serializable {
        this.foiContra = foiContra;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogador() {
         return this.jogador;
     }
     
+    /**
+     *
+     * @param jogador
+     */
     public void setJogador(Jogador jogador) {
         this.jogador = jogador;
     }
+
+    /**
+     *
+     * @return
+     */
     public Selecao getSelecao() {
         return this.selecao;
     }
     
+    /**
+     *
+     * @param selecao
+     */
     public void setSelecao(Selecao selecao) {
         this.selecao = selecao;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogo getJogo() {
         return this.jogo;
     }
     
+    /**
+     *
+     * @param jogo
+     */
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
     }
+
+    /**
+     *
+     * @return
+     */
     public Date getTempo() {
         return this.tempo;
     }
     
+    /**
+     *
+     * @param tempo
+     */
     public void setTempo(Date tempo) {
         this.tempo = tempo;
     }
+
+    /**
+     *
+     * @return
+     */
     public boolean isFoiContra() {
         return this.foiContra;
     }
     
+    /**
+     *
+     * @param foiContra
+     */
     public void setFoiContra(boolean foiContra) {
         this.foiContra = foiContra;
     }

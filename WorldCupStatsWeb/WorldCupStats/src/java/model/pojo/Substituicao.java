@@ -16,10 +16,22 @@ public class Substituicao  implements java.io.Serializable {
      private Jogo jogo;
      private Jogador jogadorByJogadorEntra;
      private Date tempo;
+    /**
+     *
+     */
 
     public Substituicao() {
     }
 
+    /**
+     *
+     * @param id
+     * @param jogadorByJogadorSai
+     * @param selecao
+     * @param jogo
+     * @param jogadorByJogadorEntra
+     * @param tempo
+     */
     public Substituicao(int id, Jogador jogadorByJogadorSai, Selecao selecao, Jogo jogo, Jogador jogadorByJogadorEntra, Date tempo) {
        this.id = id;
        this.jogadorByJogadorSai = jogadorByJogadorSai;
@@ -29,45 +41,98 @@ public class Substituicao  implements java.io.Serializable {
        this.tempo = tempo;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogadorSai() {
         return this.jogadorByJogadorSai;
     }
     
+    /**
+     *
+     * @param jogadorByJogadorSai
+     */
     public void setJogadorByJogadorSai(Jogador jogadorByJogadorSai) {
         this.jogadorByJogadorSai = jogadorByJogadorSai;
     }
+
+    /**
+     *
+     * @return
+     */
     public Selecao getSelecao() {
         return this.selecao;
     }
     
+    /**
+     *
+     * @param selecao
+     */
     public void setSelecao(Selecao selecao) {
         this.selecao = selecao;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogo getJogo() {
         return this.jogo;
     }
     
+    /**
+     *
+     * @param jogo
+     */
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
     }
+
+    /**
+     *
+     * @return
+     */
     public Jogador getJogadorByJogadorEntra() {
         return this.jogadorByJogadorEntra;
     }
     
+    /**
+     *
+     * @param jogadorByJogadorEntra
+     */
     public void setJogadorByJogadorEntra(Jogador jogadorByJogadorEntra) {
         this.jogadorByJogadorEntra = jogadorByJogadorEntra;
     }
+
+    /**
+     *
+     * @return
+     */
     public Date getTempo() {
         return this.tempo;
     }
     
+    /**
+     *
+     * @param tempo
+     */
     public void setTempo(Date tempo) {
         this.tempo = tempo;
     }

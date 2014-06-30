@@ -31,7 +31,11 @@ public class PaisDAO{
 	Session sessao = null;
 	Transaction transacao = null;
 	
-	public void adicionar(Pais pais) {
+    /**
+     *
+     * @param pais
+     */
+    public void adicionar(Pais pais) {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 					
@@ -49,8 +53,11 @@ public class PaisDAO{
 		}
 	}
 	
-	
-	public void atualizar(Pais pais) {
+    /**
+     *
+     * @param pais
+     */
+    public void atualizar(Pais pais) {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 					
@@ -68,7 +75,11 @@ public class PaisDAO{
 		}
 	}
 	
-	public void remover(Pais pais) {
+    /**
+     *
+     * @param pais
+     */
+    public void remover(Pais pais) {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 					
@@ -86,8 +97,10 @@ public class PaisDAO{
 		}
 	}
 	
-	
-	public void removerTodos() {
+    /**
+     *
+     */
+    public void removerTodos() {
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();
 
@@ -107,7 +120,11 @@ public class PaisDAO{
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+    /**
+     *
+     * @return
+     */
+    @SuppressWarnings("unchecked")
 	public List<Pais> listar() {
 		List<Pais> resultado = null;
 		try {
@@ -131,8 +148,12 @@ public class PaisDAO{
 		}
 	}
 	
-	
-	public Pais buscar(String nome) {
+    /**
+     *
+     * @param nome
+     * @return
+     */
+    public Pais buscar(String nome) {
 		Pais pais = null;
 		try {
 			sessao = HibernateUtil.getSessionFactory().openSession();

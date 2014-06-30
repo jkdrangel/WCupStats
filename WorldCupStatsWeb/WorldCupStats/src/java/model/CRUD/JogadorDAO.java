@@ -30,6 +30,10 @@ public class JogadorDAO {
     Session sessao = null;
     Transaction transacao = null;
 
+    /**
+     *
+     * @param jogador
+     */
     public void adicionar(Jogador jogador) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -51,6 +55,10 @@ public class JogadorDAO {
         }
     }
 
+    /**
+     *
+     * @param jogador
+     */
     public void atualizar(Jogador jogador) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -69,6 +77,10 @@ public class JogadorDAO {
         }
     }
 
+    /**
+     *
+     * @param jogador
+     */
     public void remover(Jogador jogador) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -87,6 +99,9 @@ public class JogadorDAO {
         }
     }
 
+    /**
+     *
+     */
     public void removerTodos() {
         try {
             
@@ -108,6 +123,10 @@ public class JogadorDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List<Jogador> listar() {
         List<Jogador> resultado = null;
@@ -132,6 +151,11 @@ public class JogadorDAO {
         }
     }
 
+    /**
+     *
+     * @param nome
+     * @return
+     */
     public Jogador buscar(String nome) {
         Jogador copa = null;
         try {

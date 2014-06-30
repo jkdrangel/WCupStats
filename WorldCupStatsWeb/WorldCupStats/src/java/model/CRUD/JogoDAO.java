@@ -31,6 +31,10 @@ public class JogoDAO {
     Session sessao = null;
     Transaction transacao = null;
 
+    /**
+     *
+     * @param jogo
+     */
     public void adicionar(Jogo jogo) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -49,6 +53,10 @@ public class JogoDAO {
         }
     }
 
+    /**
+     *
+     * @param jogo
+     */
     public void atualizar(Jogo jogo) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -67,6 +75,10 @@ public class JogoDAO {
         }
     }
 
+    /**
+     *
+     * @param jogo
+     */
     public void remover(Jogo jogo) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -85,6 +97,9 @@ public class JogoDAO {
         }
     }
 
+    /**
+     *
+     */
     public void removerTodos() {
         try {
 
@@ -106,6 +121,10 @@ public class JogoDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List<Jogo> listar() {
         List<Jogo> resultado = null;
@@ -130,6 +149,12 @@ public class JogoDAO {
         }
     }
 
+    /**
+     *
+     * @param data
+     * @param local
+     * @return
+     */
     public Jogo buscar(java.sql.Date data, String local) {
         Jogo jogo = null;
         try {
