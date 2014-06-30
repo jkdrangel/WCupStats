@@ -4,6 +4,7 @@ package model.pojo;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -113,6 +114,26 @@ public class Selecao  implements java.io.Serializable {
        this.substituicaos = substituicaos;
        this.jogosForSelecaoB = jogosForSelecaoB;
        this.jogosForSelecaoA = jogosForSelecaoA;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.pais);
+        hash = 53 * hash + Objects.hashCode(this.ano);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Selecao other = (Selecao) obj;
+        return true;
     }
    
     public Integer getId() {
