@@ -50,8 +50,6 @@ public class Selecao  implements java.io.Serializable {
 
     public Selecao() {
     }
-
-	
     public Selecao(Tecnico tecnico, String grupo, Date ano, int posicao, int jogador1, int jogador2, int jogador3, int jogador5, int jogador6, int jogador7, int jogador8, int jogador9, int jogador10, int jogador11, int jogador12, int jogador13, int jogador14, int jogador15, int jogador16, int jogador17, int jogador18, int jogador19, int jogador20, int jogador21, int jogador22, int jogador23) {
         this.tecnico = tecnico;
         this.grupo = grupo;
