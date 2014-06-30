@@ -163,7 +163,6 @@ public class JogadorDAO {
 
             Query consulta = sessao.createQuery("from Jogador where nome = :parametro");
             consulta.setString("parametro", nome);
-
             transacao = sessao.beginTransaction();
             copa = (Jogador) consulta.uniqueResult();
             transacao.commit();

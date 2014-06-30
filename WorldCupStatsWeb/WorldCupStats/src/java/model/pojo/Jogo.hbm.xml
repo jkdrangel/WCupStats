@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0 -->
+<!-- Generated 30/06/2014 12:17:06 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Jogo" table="Jogo" catalog="wcupstats">
         <id name="id" type="int">
@@ -17,12 +17,6 @@
         <many-to-one name="selecaoBySelecaoA" class="model.pojo.Selecao" fetch="select">
             <column name="SelecaoA" not-null="true" />
         </many-to-one>
-        <many-to-one name="escalacaoByEscalacaoB" class="model.pojo.Escalacao" fetch="select">
-            <column name="EscalacaoB" not-null="true" />
-        </many-to-one>
-        <many-to-one name="escalacaoByEscalacaoA" class="model.pojo.Escalacao" fetch="select">
-            <column name="EscalacaoA" not-null="true" />
-        </many-to-one>
         <property name="data" type="date">
             <column name="data" length="10" not-null="true" />
         </property>
@@ -37,6 +31,12 @@
                 <column name="ID_JOGO" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Substituicao" />
+        </set>
+        <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogo" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Escalacao" />
         </set>
         <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
             <key>

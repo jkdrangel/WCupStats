@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
+// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -131,7 +131,8 @@ public class Pais  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 53 * hash + Objects.hashCode(this.nome);
+        hash = 53 * hash + Objects.hashCode(this.continente);
         return hash;
     }
 
@@ -145,6 +146,9 @@ public class Pais  implements java.io.Serializable {
         }
         final Pais other = (Pais) obj;
         if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.continente, other.continente)) {
             return false;
         }
         return true;

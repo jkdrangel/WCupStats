@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
+// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -149,7 +149,7 @@ public class Copa  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.ano);
+        hash = 67 * hash + Objects.hashCode(this.ano);
         return hash;
     }
 
@@ -167,8 +167,6 @@ public class Copa  implements java.io.Serializable {
         }
         return true;
     }
-
-    
 
 
 

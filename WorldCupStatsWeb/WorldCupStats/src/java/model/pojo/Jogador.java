@@ -1,9 +1,10 @@
 package model.pojo;
-// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
+// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -17,20 +18,20 @@ public class Jogador  implements java.io.Serializable {
      private String nome;
      private int numero;
      private String posicao;
-     private Set gols = new HashSet(0);
-     private Set substituicaosForJogadorSai = new HashSet(0);
-     private Set substituicaosForJogadorEntra = new HashSet(0);
-     private Set escalacaosForJogador1 = new HashSet(0);
-     private Set escalacaosForJogador8 = new HashSet(0);
      private Set escalacaosForJogador3 = new HashSet(0);
-     private Set escalacaosForJogador10 = new HashSet(0);
-     private Set escalacaosForJogador2 = new HashSet(0);
-     private Set escalacaosForJogador9 = new HashSet(0);
-     private Set escalacaosForJogador5 = new HashSet(0);
-     private Set escalacaosForJogador4 = new HashSet(0);
-     private Set escalacaosForJogador11 = new HashSet(0);
-     private Set escalacaosForJogador7 = new HashSet(0);
      private Set escalacaosForJogador6 = new HashSet(0);
+     private Set gols = new HashSet(0);
+     private Set escalacaosForJogador7 = new HashSet(0);
+     private Set escalacaosForJogador11 = new HashSet(0);
+     private Set escalacaosForJogador4 = new HashSet(0);
+     private Set escalacaosForJogador9 = new HashSet(0);
+     private Set substituicaosForJogadorSai = new HashSet(0);
+     private Set escalacaosForJogador8 = new HashSet(0);
+     private Set substituicaosForJogadorEntra = new HashSet(0);
+     private Set escalacaosForJogador5 = new HashSet(0);
+     private Set escalacaosForJogador1 = new HashSet(0);
+     private Set escalacaosForJogador2 = new HashSet(0);
+     private Set escalacaosForJogador10 = new HashSet(0);
 
     /**
      *
@@ -76,26 +77,27 @@ public class Jogador  implements java.io.Serializable {
      * @param escalacaosForJogador7
      * @param escalacaosForJogador6
      */
-    public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao, Set gols, Set substituicaosForJogadorSai, Set substituicaosForJogadorEntra, Set escalacaosForJogador1, Set escalacaosForJogador8, Set escalacaosForJogador3, Set escalacaosForJogador10, Set escalacaosForJogador2, Set escalacaosForJogador9, Set escalacaosForJogador5, Set escalacaosForJogador4, Set escalacaosForJogador11, Set escalacaosForJogador7, Set escalacaosForJogador6) {
+   
+    public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao, Set escalacaosForJogador3, Set escalacaosForJogador6, Set gols, Set escalacaosForJogador7, Set escalacaosForJogador11, Set escalacaosForJogador4, Set escalacaosForJogador9, Set substituicaosForJogadorSai, Set escalacaosForJogador8, Set substituicaosForJogadorEntra, Set escalacaosForJogador5, Set escalacaosForJogador1, Set escalacaosForJogador2, Set escalacaosForJogador10) {
        this.id = id;
        this.dataNascimento = dataNascimento;
        this.nome = nome;
        this.numero = numero;
        this.posicao = posicao;
-       this.gols = gols;
-       this.substituicaosForJogadorSai = substituicaosForJogadorSai;
-       this.substituicaosForJogadorEntra = substituicaosForJogadorEntra;
-       this.escalacaosForJogador1 = escalacaosForJogador1;
-       this.escalacaosForJogador8 = escalacaosForJogador8;
        this.escalacaosForJogador3 = escalacaosForJogador3;
-       this.escalacaosForJogador10 = escalacaosForJogador10;
-       this.escalacaosForJogador2 = escalacaosForJogador2;
-       this.escalacaosForJogador9 = escalacaosForJogador9;
-       this.escalacaosForJogador5 = escalacaosForJogador5;
-       this.escalacaosForJogador4 = escalacaosForJogador4;
-       this.escalacaosForJogador11 = escalacaosForJogador11;
-       this.escalacaosForJogador7 = escalacaosForJogador7;
        this.escalacaosForJogador6 = escalacaosForJogador6;
+       this.gols = gols;
+       this.escalacaosForJogador7 = escalacaosForJogador7;
+       this.escalacaosForJogador11 = escalacaosForJogador11;
+       this.escalacaosForJogador4 = escalacaosForJogador4;
+       this.escalacaosForJogador9 = escalacaosForJogador9;
+       this.substituicaosForJogadorSai = substituicaosForJogadorSai;
+       this.escalacaosForJogador8 = escalacaosForJogador8;
+       this.substituicaosForJogadorEntra = substituicaosForJogadorEntra;
+       this.escalacaosForJogador5 = escalacaosForJogador5;
+       this.escalacaosForJogador1 = escalacaosForJogador1;
+       this.escalacaosForJogador2 = escalacaosForJogador2;
+       this.escalacaosForJogador10 = escalacaosForJogador10;
     }
    
     /**
@@ -280,6 +282,10 @@ public class Jogador  implements java.io.Serializable {
      */
     public Set getEscalacaosForJogador10() {
         return this.escalacaosForJogador10;
+    }    
+    
+    public Set getEscalacaosForJogador6() {
+        return this.escalacaosForJogador6;
     }
     
     /**
@@ -289,6 +295,9 @@ public class Jogador  implements java.io.Serializable {
     public void setEscalacaosForJogador10(Set escalacaosForJogador10) {
         this.escalacaosForJogador10 = escalacaosForJogador10;
     }
+        public void setEscalacaosForJogador6(Set escalacaosForJogador6) {
+        this.escalacaosForJogador6 = escalacaosForJogador6;
+    }
 
     /**
      *
@@ -297,6 +306,7 @@ public class Jogador  implements java.io.Serializable {
     public Set getEscalacaosForJogador2() {
         return this.escalacaosForJogador2;
     }
+    
     
     /**
      *
@@ -369,6 +379,7 @@ public class Jogador  implements java.io.Serializable {
     public void setEscalacaosForJogador11(Set escalacaosForJogador11) {
         this.escalacaosForJogador11 = escalacaosForJogador11;
     }
+     
 
     /**
      *
@@ -386,20 +397,30 @@ public class Jogador  implements java.io.Serializable {
         this.escalacaosForJogador7 = escalacaosForJogador7;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Set getEscalacaosForJogador6() {
-        return this.escalacaosForJogador6;
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 11 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 11 * hash + Objects.hashCode(this.nome);
+        return hash;
     }
-    
-    /**
-     *
-     * @param escalacaosForJogador6
-     */
-    public void setEscalacaosForJogador6(Set escalacaosForJogador6) {
-        this.escalacaosForJogador6 = escalacaosForJogador6;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Jogador other = (Jogador) obj;
+        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
     }
 
 
