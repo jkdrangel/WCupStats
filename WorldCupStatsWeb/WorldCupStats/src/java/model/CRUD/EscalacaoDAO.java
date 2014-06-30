@@ -137,17 +137,12 @@ public class EscalacaoDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Jogo where id = " + jogo.getId());
+            Query consulta = sessao.createQuery("from Escalacao where jogo = " + jogo +" and selecao= " + selecao);
 
             transacao = sessao.beginTransaction();
             Jogo play = (Jogo) consulta.uniqueResult();
             transacao.commit();
             
-            if (selecao.equals(play.getSelecaoBySelecaoA())) {
-                escalacao = play.getEscalacaoByEscalacaoA();
-            } else if(selecao.equals(play.getSelecaoBySelecaoB())) {
-                escalacao = play.getEscalacaoByEscalacaoB();
-            }
             
             return escalacao;
 

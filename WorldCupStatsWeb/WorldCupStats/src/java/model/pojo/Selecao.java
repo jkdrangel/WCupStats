@@ -2,8 +2,11 @@ package model.pojo;
 // Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
+
+
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -115,6 +118,26 @@ public class Selecao  implements java.io.Serializable {
        this.copas = copas;
        this.substituicaos = substituicaos;
        this.escalacaos = escalacaos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.pais);
+        hash = 53 * hash + Objects.hashCode(this.ano);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Selecao other = (Selecao) obj;
+        return true;
     }
    
     public Integer getId() {
