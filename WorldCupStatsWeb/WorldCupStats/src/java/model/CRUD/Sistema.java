@@ -621,6 +621,10 @@ public class Sistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public Jogo cadastrarJogo(Copa copa, Selecao primeira, Selecao segunda, String fase) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 
 }
