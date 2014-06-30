@@ -137,7 +137,7 @@ public class EscalacaoDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Escalacao where jogo = " + jogo +" and selecao= " + selecao);
+            Query consulta = sessao.createQuery("from Escalacao where jogo = " + jogo.getId() +" and selecao= " + selecao.getId());
 
             transacao = sessao.beginTransaction();
             Jogo play = (Jogo) consulta.uniqueResult();

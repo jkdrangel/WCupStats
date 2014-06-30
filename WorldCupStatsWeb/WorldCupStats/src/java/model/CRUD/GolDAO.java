@@ -136,7 +136,7 @@ public class GolDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Gol where jogo = " + jogo + " and tempo = " + tempo);
+            Query consulta = sessao.createQuery("from Gol where jogo = " + jogo.getId() + " and tempo = " + tempo);
 
             transacao = sessao.beginTransaction();
             gol = (Gol) consulta.uniqueResult();

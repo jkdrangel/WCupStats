@@ -162,7 +162,7 @@ public class SelecaoDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Selecao where pais = " + pais + " and ano = " + ano);
+            Query consulta = sessao.createQuery("from Selecao where pais = " + pais.getId() + " and ano = " + ano);
 
             transacao = sessao.beginTransaction();
             selecao = (Selecao) consulta.uniqueResult();
