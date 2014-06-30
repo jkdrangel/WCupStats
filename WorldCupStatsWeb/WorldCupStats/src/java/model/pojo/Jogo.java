@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
+// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -16,40 +16,36 @@ public class Jogo  implements java.io.Serializable {
      private Copa copa;
      private Selecao selecaoBySelecaoB;
      private Selecao selecaoBySelecaoA;
-     private Escalacao escalacaoByEscalacaoB;
-     private Escalacao escalacaoByEscalacaoA;
      private Date data;
      private String local;
      private String fase;
      private Set substituicaos = new HashSet(0);
+     private Set escalacaos = new HashSet(0);
      private Set gols = new HashSet(0);
 
     public Jogo() {
     }
 
 	
-    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Escalacao escalacaoByEscalacaoB, Escalacao escalacaoByEscalacaoA, Date data, String local, String fase) {
+    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase) {
         this.id = id;
         this.copa = copa;
         this.selecaoBySelecaoB = selecaoBySelecaoB;
         this.selecaoBySelecaoA = selecaoBySelecaoA;
-        this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
-        this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
         this.data = data;
         this.local = local;
         this.fase = fase;
     }
-    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Escalacao escalacaoByEscalacaoB, Escalacao escalacaoByEscalacaoA, Date data, String local, String fase, Set substituicaos, Set gols) {
+    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase, Set substituicaos, Set escalacaos, Set gols) {
        this.id = id;
        this.copa = copa;
        this.selecaoBySelecaoB = selecaoBySelecaoB;
        this.selecaoBySelecaoA = selecaoBySelecaoA;
-       this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
-       this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
        this.data = data;
        this.local = local;
        this.fase = fase;
        this.substituicaos = substituicaos;
+       this.escalacaos = escalacaos;
        this.gols = gols;
     }
    
@@ -81,20 +77,6 @@ public class Jogo  implements java.io.Serializable {
     public void setSelecaoBySelecaoA(Selecao selecaoBySelecaoA) {
         this.selecaoBySelecaoA = selecaoBySelecaoA;
     }
-    public Escalacao getEscalacaoByEscalacaoB() {
-        return this.escalacaoByEscalacaoB;
-    }
-    
-    public void setEscalacaoByEscalacaoB(Escalacao escalacaoByEscalacaoB) {
-        this.escalacaoByEscalacaoB = escalacaoByEscalacaoB;
-    }
-    public Escalacao getEscalacaoByEscalacaoA() {
-        return this.escalacaoByEscalacaoA;
-    }
-    
-    public void setEscalacaoByEscalacaoA(Escalacao escalacaoByEscalacaoA) {
-        this.escalacaoByEscalacaoA = escalacaoByEscalacaoA;
-    }
     public Date getData() {
         return this.data;
     }
@@ -122,6 +104,13 @@ public class Jogo  implements java.io.Serializable {
     
     public void setSubstituicaos(Set substituicaos) {
         this.substituicaos = substituicaos;
+    }
+    public Set getEscalacaos() {
+        return this.escalacaos;
+    }
+    
+    public void setEscalacaos(Set escalacaos) {
+        this.escalacaos = escalacaos;
     }
     public Set getGols() {
         return this.gols;

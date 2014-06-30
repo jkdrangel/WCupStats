@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0 -->
+<!-- Generated 30/06/2014 12:17:06 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Selecao" table="Selecao" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
@@ -92,11 +92,23 @@
         <property name="jogador23" type="int">
             <column name="Jogador23" not-null="true" />
         </property>
+        <set name="jogosForSelecaoB" table="Jogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SelecaoB" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Jogo" />
+        </set>
         <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_SELECAO" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Gol" />
+        </set>
+        <set name="jogosForSelecaoA" table="Jogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SelecaoA" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Jogo" />
         </set>
         <set name="copas" table="Copa" inverse="true" lazy="true" fetch="select">
             <key>
@@ -104,29 +116,17 @@
             </key>
             <one-to-many class="model.pojo.Copa" />
         </set>
-        <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Selecao" not-null="true" />
-            </key>
-            <one-to-many class="model.pojo.Escalacao" />
-        </set>
         <set name="substituicaos" table="Substituicao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_SELECAO" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Substituicao" />
         </set>
-        <set name="jogosForSelecaoB" table="Jogo" inverse="true" lazy="true" fetch="select">
+        <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="SelecaoB" not-null="true" />
+                <column name="Selecao" not-null="true" />
             </key>
-            <one-to-many class="model.pojo.Jogo" />
-        </set>
-        <set name="jogosForSelecaoA" table="Jogo" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SelecaoA" not-null="true" />
-            </key>
-            <one-to-many class="model.pojo.Jogo" />
+            <one-to-many class="model.pojo.Escalacao" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,9 +1,10 @@
 package model.pojo;
-// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
+// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -60,6 +61,32 @@ public class Tecnico  implements java.io.Serializable {
     
     public void setSelecaos(Set selecaos) {
         this.selecaos = selecaos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.nome);
+        hash = 47 * hash + Objects.hashCode(this.dataNascimento);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tecnico other = (Tecnico) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
+            return false;
+        }
+        return true;
     }
 
 

@@ -14,8 +14,8 @@
     <mapping resource="model/pojo/Escalacao.hbm.xml"/>
     <mapping resource="model/pojo/Copa.hbm.xml"/>
     <mapping resource="model/pojo/Pais.hbm.xml"/>
-    <mapping resource="model/pojo/Selecao.hbm.xml"/>
     <mapping resource="model/pojo/Gol.hbm.xml"/>
+    <mapping resource="model/pojo/Selecao.hbm.xml"/>
     <mapping resource="model/pojo/Substituicao.hbm.xml"/>
     <mapping resource="model/pojo/Jogador.hbm.xml"/>
     <mapping resource="model/pojo/Jogo.hbm.xml"/>

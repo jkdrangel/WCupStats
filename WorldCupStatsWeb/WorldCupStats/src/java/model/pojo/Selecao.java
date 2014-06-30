@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 27/06/2014 16:47:37 by Hibernate Tools 3.6.0
+// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -41,15 +41,17 @@ public class Selecao  implements java.io.Serializable {
      private int jogador21;
      private int jogador22;
      private int jogador23;
-     private Set gols = new HashSet(0);
-     private Set copas = new HashSet(0);
-     private Set escalacaos = new HashSet(0);
-     private Set substituicaos = new HashSet(0);
      private Set jogosForSelecaoB = new HashSet(0);
+     private Set gols = new HashSet(0);
      private Set jogosForSelecaoA = new HashSet(0);
+     private Set copas = new HashSet(0);
+     private Set substituicaos = new HashSet(0);
+     private Set escalacaos = new HashSet(0);
 
     public Selecao() {
     }
+
+	
     public Selecao(Tecnico tecnico, String grupo, Date ano, int posicao, int jogador1, int jogador2, int jogador3, int jogador5, int jogador6, int jogador7, int jogador8, int jogador9, int jogador10, int jogador11, int jogador12, int jogador13, int jogador14, int jogador15, int jogador16, int jogador17, int jogador18, int jogador19, int jogador20, int jogador21, int jogador22, int jogador23) {
         this.tecnico = tecnico;
         this.grupo = grupo;
@@ -78,7 +80,7 @@ public class Selecao  implements java.io.Serializable {
         this.jogador22 = jogador22;
         this.jogador23 = jogador23;
     }
-    public Selecao(Copa copa, Pais pais, Tecnico tecnico, String grupo, Date ano, int posicao, int jogador1, int jogador2, int jogador3, int jogador5, int jogador6, int jogador7, int jogador8, int jogador9, int jogador10, int jogador11, int jogador12, int jogador13, int jogador14, int jogador15, int jogador16, int jogador17, int jogador18, int jogador19, int jogador20, int jogador21, int jogador22, int jogador23, Set gols, Set copas, Set escalacaos, Set substituicaos, Set jogosForSelecaoB, Set jogosForSelecaoA) {
+    public Selecao(Copa copa, Pais pais, Tecnico tecnico, String grupo, Date ano, int posicao, int jogador1, int jogador2, int jogador3, int jogador5, int jogador6, int jogador7, int jogador8, int jogador9, int jogador10, int jogador11, int jogador12, int jogador13, int jogador14, int jogador15, int jogador16, int jogador17, int jogador18, int jogador19, int jogador20, int jogador21, int jogador22, int jogador23, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set copas, Set substituicaos, Set escalacaos) {
        this.copa = copa;
        this.pais = pais;
        this.tecnico = tecnico;
@@ -107,12 +109,12 @@ public class Selecao  implements java.io.Serializable {
        this.jogador21 = jogador21;
        this.jogador22 = jogador22;
        this.jogador23 = jogador23;
-       this.gols = gols;
-       this.copas = copas;
-       this.escalacaos = escalacaos;
-       this.substituicaos = substituicaos;
        this.jogosForSelecaoB = jogosForSelecaoB;
+       this.gols = gols;
        this.jogosForSelecaoA = jogosForSelecaoA;
+       this.copas = copas;
+       this.substituicaos = substituicaos;
+       this.escalacaos = escalacaos;
     }
    
     public Integer getId() {
@@ -318,12 +320,26 @@ public class Selecao  implements java.io.Serializable {
     public void setJogador23(int jogador23) {
         this.jogador23 = jogador23;
     }
+    public Set getJogosForSelecaoB() {
+        return this.jogosForSelecaoB;
+    }
+    
+    public void setJogosForSelecaoB(Set jogosForSelecaoB) {
+        this.jogosForSelecaoB = jogosForSelecaoB;
+    }
     public Set getGols() {
         return this.gols;
     }
     
     public void setGols(Set gols) {
         this.gols = gols;
+    }
+    public Set getJogosForSelecaoA() {
+        return this.jogosForSelecaoA;
+    }
+    
+    public void setJogosForSelecaoA(Set jogosForSelecaoA) {
+        this.jogosForSelecaoA = jogosForSelecaoA;
     }
     public Set getCopas() {
         return this.copas;
@@ -332,13 +348,6 @@ public class Selecao  implements java.io.Serializable {
     public void setCopas(Set copas) {
         this.copas = copas;
     }
-    public Set getEscalacaos() {
-        return this.escalacaos;
-    }
-    
-    public void setEscalacaos(Set escalacaos) {
-        this.escalacaos = escalacaos;
-    }
     public Set getSubstituicaos() {
         return this.substituicaos;
     }
@@ -346,19 +355,12 @@ public class Selecao  implements java.io.Serializable {
     public void setSubstituicaos(Set substituicaos) {
         this.substituicaos = substituicaos;
     }
-    public Set getJogosForSelecaoB() {
-        return this.jogosForSelecaoB;
+    public Set getEscalacaos() {
+        return this.escalacaos;
     }
     
-    public void setJogosForSelecaoB(Set jogosForSelecaoB) {
-        this.jogosForSelecaoB = jogosForSelecaoB;
-    }
-    public Set getJogosForSelecaoA() {
-        return this.jogosForSelecaoA;
-    }
-    
-    public void setJogosForSelecaoA(Set jogosForSelecaoA) {
-        this.jogosForSelecaoA = jogosForSelecaoA;
+    public void setEscalacaos(Set escalacaos) {
+        this.escalacaos = escalacaos;
     }
 
 
