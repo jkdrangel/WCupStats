@@ -48,8 +48,8 @@ public class Controller {
         return sistema.cadastrarCopa(ano, p, s);
     }
 
-    public Escalacao cadastrarEscalacao(Jogo j) {
-        return sistema.cadastrarEscalacao(j);
+    public Escalacao cadastrarEscalacao(Jogo j, Selecao s) {
+        return sistema.cadastrarEscalacao(j, s);
     }
 
     public Gol cadastrarGolEmJogo(Jogo j, Date tempo, boolean foiContra) {
@@ -111,11 +111,48 @@ public class Controller {
     public List<Gol> listaGolsDaPartida(Jogo j) {
         return sistema.listaGolsDaPartida(j);
     }
+    
+    public String consultarCaracteristicasJogador(Jogador j){
+        return sistema.consultarCaracteristicasJogador(j);
+    }
+    
+    
 
     public int consultarQuatidadeDeJogoPais(Pais p){
         return sistema.consultarQuatidadeDeJogoPais(p);
     }
     
+    public String consultarQuantidadeEMediaDeGols(Copa c){
+        return sistema.consultarQuantidadeEMediaDeGols(c);
+    }
+    
+    public List<Jogo> consultarMaioresGoleadas(){
+        return sistema.consultarMaioresGoleadas();
+    }
+    public List<Jogo> listarJogosEmpatados(Copa c){
+        return sistema.listarJogosEmpatados(c);
+    }
+    public List<String> listarVitoriasIncontestaveis(){
+        return sistema.listarVitoriasIncontestaveis();
+    }
+    public List<Selecao> consutarOrdemClassificacao(Copa c){
+        return sistema.consutarOrdemClassificacao(c);
+    }
+    public List<String> consultaArtilheiros(){
+        return sistema.consultaArtilheiros();
+    }
+    public double consultaMediaIdadeSelecoes(Copa c){
+        return sistema.consultaMediaIdadeSelecoes(c);
+    }
+    public List<String> listaTodasFinais(){
+        return sistema.listaTodasFinais();
+    }
+    public List<Tecnico> listaTecnicosCampeoes(){
+        return sistema.listaTecnicosCampeoes();
+    }
+    public List<String> listaGolsContra(){
+        return sistema.listaGolsContra();
+    }
     public int qtdJogosPais(Pais pais) {
         return sistema.qtdJogosPais(pais);
     }
