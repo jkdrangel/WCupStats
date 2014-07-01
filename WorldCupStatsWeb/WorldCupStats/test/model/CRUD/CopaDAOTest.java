@@ -53,7 +53,7 @@ public class CopaDAOTest {
     
     @After
     public void tearDown() {
-    copaDAO.removerTodos();
+        copaDAO.removerTodos();
     }
 
     @Test

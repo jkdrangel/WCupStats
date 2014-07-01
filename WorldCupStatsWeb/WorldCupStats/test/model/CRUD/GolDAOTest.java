@@ -22,7 +22,7 @@ import org.junit.Test;
  */
 public class GolDAOTest {
     GolDAO golDAO;
-    Gol gol1, gol2, gol3, gol4, gol5;
+    Gol gol1, gol2, gol3, gol4;
     Jogo jogo;
     Jogador jogador1, jogador2, jogador3;
     Selecao selecao1, selecao2;
@@ -49,11 +49,31 @@ public class GolDAOTest {
         gol1 = new Gol();
         gol1.setJogador(jogador1);
         gol1.setJogo(jogo);
+        gol1.setSelecao(selecao1);
         gol1.setFoiContra(false);
+        
+        gol2 = new Gol();
+        gol2.setJogador(jogador1);
+        gol2.setJogo(jogo);
+        gol2.setSelecao(selecao1);
+        gol2.setFoiContra(false);
+        
+        gol3 = new Gol();
+        gol3.setJogador(jogador2);
+        gol3.setJogo(jogo);
+        gol3.setSelecao(selecao1);
+        gol3.setFoiContra(false);
+        
+        gol4 = new Gol();
+        gol4.setJogador(jogador3);
+        gol4.setJogo(jogo);
+        gol4.setSelecao(selecao2);
+        gol4.setFoiContra(false);
     }
     
     @After
     public void tearDown() {
+        golDAO.removerTodos();
     }
 
     /**
