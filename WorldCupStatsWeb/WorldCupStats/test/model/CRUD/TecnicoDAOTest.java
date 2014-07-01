@@ -74,7 +74,7 @@ public class TecnicoDAOTest {
         
         tecnicoDao.atualizar(felipao);
         tecnicos = tecnicoDao.listar();
-        assertEquals(" Tecnico Felipao", tecnicos.get(0).getNome());
+        assertEquals("Tecnico Felipao", tecnicos.get(0).getNome());
     }
 
     @Test

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/07/2014 08:14:25 by Hibernate Tools 3.6.0 -->
+<!-- Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Copa" table="Copa" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
@@ -25,7 +25,7 @@
         </set>
         <set name="jogos" table="Jogo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ID_COPA" not-null="true" />
+                <column name="ID_COPA" />
             </key>
             <one-to-many class="model.pojo.Jogo" />
         </set>

@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Substituicao  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Jogador jogadorByJogadorSai;
      private Selecao selecao;
      private Jogo jogo;
@@ -21,8 +21,11 @@ public class Substituicao  implements java.io.Serializable {
     public Substituicao() {
     }
 
-    public Substituicao(int id, Jogador jogadorByJogadorSai, Selecao selecao, Jogo jogo, Jogador jogadorByJogadorEntra, Date tempo) {
-       this.id = id;
+	
+    public Substituicao(Date tempo) {
+        this.tempo = tempo;
+    }
+    public Substituicao(Jogador jogadorByJogadorSai, Selecao selecao, Jogo jogo, Jogador jogadorByJogadorEntra, Date tempo) {
        this.jogadorByJogadorSai = jogadorByJogadorSai;
        this.selecao = selecao;
        this.jogo = jogo;
@@ -30,11 +33,11 @@ public class Substituicao  implements java.io.Serializable {
        this.tempo = tempo;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Jogador getJogadorByJogadorSai() {
@@ -76,11 +79,11 @@ public class Substituicao  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.jogadorByJogadorSai);
-        hash = 29 * hash + Objects.hashCode(this.selecao);
-        hash = 29 * hash + Objects.hashCode(this.jogo);
-        hash = 29 * hash + Objects.hashCode(this.jogadorByJogadorEntra);
-        hash = 29 * hash + Objects.hashCode(this.tempo);
+        hash = 53 * hash + Objects.hashCode(this.jogadorByJogadorSai);
+        hash = 53 * hash + Objects.hashCode(this.selecao);
+        hash = 53 * hash + Objects.hashCode(this.jogo);
+        hash = 53 * hash + Objects.hashCode(this.jogadorByJogadorEntra);
+        hash = 53 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 

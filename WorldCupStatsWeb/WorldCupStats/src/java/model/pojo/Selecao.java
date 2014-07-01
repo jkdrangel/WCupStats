@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -54,31 +54,7 @@ public class Selecao  implements java.io.Serializable {
     }
 
 	
-    public Selecao(Jogador jogadorByJogador20, Tecnico tecnico, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador18, Jogador jogadorByJogador1, Jogador jogadorByJogador19, Jogador jogadorByJogador14, Jogador jogadorByJogador15, Jogador jogadorByJogador16, Jogador jogadorByJogador17, Jogador jogadorByJogador23, Jogador jogadorByJogador10, Jogador jogadorByJogador9, Jogador jogadorByJogador11, Jogador jogadorByJogador21, Jogador jogadorByJogador8, Jogador jogadorByJogador12, Jogador jogadorByJogador22, Jogador jogadorByJogador13, Jogador jogadorByJogador7, String grupo, Date ano, int posicao) {
-        this.jogadorByJogador20 = jogadorByJogador20;
-        this.tecnico = tecnico;
-        this.jogadorByJogador6 = jogadorByJogador6;
-        this.jogadorByJogador5 = jogadorByJogador5;
-        this.jogadorByJogador4 = jogadorByJogador4;
-        this.jogadorByJogador3 = jogadorByJogador3;
-        this.jogadorByJogador2 = jogadorByJogador2;
-        this.jogadorByJogador18 = jogadorByJogador18;
-        this.jogadorByJogador1 = jogadorByJogador1;
-        this.jogadorByJogador19 = jogadorByJogador19;
-        this.jogadorByJogador14 = jogadorByJogador14;
-        this.jogadorByJogador15 = jogadorByJogador15;
-        this.jogadorByJogador16 = jogadorByJogador16;
-        this.jogadorByJogador17 = jogadorByJogador17;
-        this.jogadorByJogador23 = jogadorByJogador23;
-        this.jogadorByJogador10 = jogadorByJogador10;
-        this.jogadorByJogador9 = jogadorByJogador9;
-        this.jogadorByJogador11 = jogadorByJogador11;
-        this.jogadorByJogador21 = jogadorByJogador21;
-        this.jogadorByJogador8 = jogadorByJogador8;
-        this.jogadorByJogador12 = jogadorByJogador12;
-        this.jogadorByJogador22 = jogadorByJogador22;
-        this.jogadorByJogador13 = jogadorByJogador13;
-        this.jogadorByJogador7 = jogadorByJogador7;
+    public Selecao(String grupo, Date ano, int posicao) {
         this.grupo = grupo;
         this.ano = ano;
         this.posicao = posicao;
@@ -376,9 +352,9 @@ public class Selecao  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.pais);
-        hash = 37 * hash + Objects.hashCode(this.copa);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.pais);
+        hash = 79 * hash + Objects.hashCode(this.copa);
         return hash;
     }
 

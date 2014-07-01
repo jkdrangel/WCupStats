@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/07/2014 08:14:25 by Hibernate Tools 3.6.0 -->
+<!-- Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Jogo" table="Jogo" catalog="wcupstats">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
         <many-to-one name="copa" class="model.pojo.Copa" fetch="select">
-            <column name="ID_COPA" not-null="true" />
+            <column name="ID_COPA" />
         </many-to-one>
         <many-to-one name="selecaoBySelecaoB" class="model.pojo.Selecao" fetch="select">
-            <column name="SelecaoB" not-null="true" />
+            <column name="SelecaoB" />
         </many-to-one>
         <many-to-one name="selecaoBySelecaoA" class="model.pojo.Selecao" fetch="select">
-            <column name="SelecaoA" not-null="true" />
+            <column name="SelecaoA" />
         </many-to-one>
         <property name="data" type="date">
             <column name="data" length="10" not-null="true" />
@@ -26,21 +26,21 @@
         <property name="fase" type="string">
             <column name="fase" length="16" not-null="true" />
         </property>
-        <set name="substituicaos" table="Substituicao" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_JOGO" not-null="true" />
-            </key>
-            <one-to-many class="model.pojo.Substituicao" />
-        </set>
         <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Jogo" not-null="true" />
+                <column name="Jogo" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
+        <set name="substituicaos" table="Substituicao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_JOGO" />
+            </key>
+            <one-to-many class="model.pojo.Substituicao" />
+        </set>
         <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ID_JOGO" not-null="true" />
+                <column name="ID_JOGO" />
             </key>
             <one-to-many class="model.pojo.Gol" />
         </set>

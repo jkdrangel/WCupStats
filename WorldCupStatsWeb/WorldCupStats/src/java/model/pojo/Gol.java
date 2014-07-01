@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Gol  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Jogador jogador;
      private Selecao selecao;
      private Jogo jogo;
@@ -21,8 +21,12 @@ public class Gol  implements java.io.Serializable {
     public Gol() {
     }
 
-    public Gol(int id, Jogador jogador, Selecao selecao, Jogo jogo, Date tempo, boolean foiContra) {
-       this.id = id;
+	
+    public Gol(Date tempo, boolean foiContra) {
+        this.tempo = tempo;
+        this.foiContra = foiContra;
+    }
+    public Gol(Jogador jogador, Selecao selecao, Jogo jogo, Date tempo, boolean foiContra) {
        this.jogador = jogador;
        this.selecao = selecao;
        this.jogo = jogo;
@@ -30,11 +34,11 @@ public class Gol  implements java.io.Serializable {
        this.foiContra = foiContra;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Jogador getJogador() {
@@ -75,11 +79,11 @@ public class Gol  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.jogador);
-        hash = 83 * hash + Objects.hashCode(this.selecao);
-        hash = 83 * hash + Objects.hashCode(this.jogo);
-        hash = 83 * hash + Objects.hashCode(this.tempo);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.jogador);
+        hash = 37 * hash + Objects.hashCode(this.selecao);
+        hash = 37 * hash + Objects.hashCode(this.jogo);
+        hash = 37 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 

@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 01/07/2014 08:14:25 by Hibernate Tools 3.6.0 -->
+<!-- Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Gol" table="Gol" catalog="wcupstats">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
         <many-to-one name="jogador" class="model.pojo.Jogador" fetch="select">
-            <column name="ID_JOGADOR" not-null="true" />
+            <column name="ID_JOGADOR" />
         </many-to-one>
         <many-to-one name="selecao" class="model.pojo.Selecao" fetch="select">
-            <column name="ID_SELECAO" not-null="true" />
+            <column name="ID_SELECAO" />
         </many-to-one>
         <many-to-one name="jogo" class="model.pojo.Jogo" fetch="select">
-            <column name="ID_JOGO" not-null="true" />
+            <column name="ID_JOGO" />
         </many-to-one>
         <property name="tempo" type="date">
             <column name="tempo" length="10" not-null="true" />

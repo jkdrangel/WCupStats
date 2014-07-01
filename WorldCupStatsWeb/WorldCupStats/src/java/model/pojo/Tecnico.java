@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class Tecnico  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private String nome;
      private Date dataNascimento;
      private Set selecaos = new HashSet(0);
@@ -22,23 +22,21 @@ public class Tecnico  implements java.io.Serializable {
     }
 
 	
-    public Tecnico(int id, String nome, Date dataNascimento) {
-        this.id = id;
+    public Tecnico(String nome, Date dataNascimento) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }
-    public Tecnico(int id, String nome, Date dataNascimento, Set selecaos) {
-       this.id = id;
+    public Tecnico(String nome, Date dataNascimento, Set selecaos) {
        this.nome = nome;
        this.dataNascimento = dataNascimento;
        this.selecaos = selecaos;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNome() {
@@ -65,9 +63,9 @@ public class Tecnico  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.nome);
-        hash = 31 * hash + Objects.hashCode(this.dataNascimento);
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.nome);
+        hash = 83 * hash + Objects.hashCode(this.dataNascimento);
         return hash;
     }
 

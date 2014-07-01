@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class Jogador  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Date dataNascimento;
      private String nome;
      private int numero;
@@ -60,15 +60,13 @@ public class Jogador  implements java.io.Serializable {
     }
 
 	
-    public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao) {
-        this.id = id;
+    public Jogador(Date dataNascimento, String nome, int numero, String posicao) {
         this.dataNascimento = dataNascimento;
         this.nome = nome;
         this.numero = numero;
         this.posicao = posicao;
     }
-    public Jogador(int id, Date dataNascimento, String nome, int numero, String posicao, Set selecaosForJogador17, Set substituicaosForJogadorSai, Set selecaosForJogador8, Set selecaosForJogador10, Set selecaosForJogador9, Set selecaosForJogador12, Set selecaosForJogador11, Set selecaosForJogador14, Set escalacaosForJogador2, Set selecaosForJogador13, Set selecaosForJogador16, Set selecaosForJogador15, Set escalacaosForJogador3, Set gols, Set escalacaosForJogador6, Set escalacaosForJogador11, Set escalacaosForJogador7, Set escalacaosForJogador4, Set escalacaosForJogador9, Set selecaosForJogador7, Set selecaosForJogador6, Set selecaosForJogador3, Set selecaosForJogador19, Set selecaosForJogador5, Set escalacaosForJogador8, Set selecaosForJogador18, Set selecaosForJogador1, Set selecaosForJogador2, Set substituicaosForJogadorEntra, Set escalacaosForJogador5, Set escalacaosForJogador1, Set selecaosForJogador4, Set selecaosForJogador23, Set selecaosForJogador22, Set selecaosForJogador21, Set selecaosForJogador20, Set escalacaosForJogador10) {
-       this.id = id;
+    public Jogador(Date dataNascimento, String nome, int numero, String posicao, Set selecaosForJogador17, Set substituicaosForJogadorSai, Set selecaosForJogador8, Set selecaosForJogador10, Set selecaosForJogador9, Set selecaosForJogador12, Set selecaosForJogador11, Set selecaosForJogador14, Set escalacaosForJogador2, Set selecaosForJogador13, Set selecaosForJogador16, Set selecaosForJogador15, Set escalacaosForJogador3, Set gols, Set escalacaosForJogador6, Set escalacaosForJogador11, Set escalacaosForJogador7, Set escalacaosForJogador4, Set escalacaosForJogador9, Set selecaosForJogador7, Set selecaosForJogador6, Set selecaosForJogador3, Set selecaosForJogador19, Set selecaosForJogador5, Set escalacaosForJogador8, Set selecaosForJogador18, Set selecaosForJogador1, Set selecaosForJogador2, Set substituicaosForJogadorEntra, Set escalacaosForJogador5, Set escalacaosForJogador1, Set selecaosForJogador4, Set selecaosForJogador23, Set selecaosForJogador22, Set selecaosForJogador21, Set selecaosForJogador20, Set escalacaosForJogador10) {
        this.dataNascimento = dataNascimento;
        this.nome = nome;
        this.numero = numero;
@@ -112,11 +110,11 @@ public class Jogador  implements java.io.Serializable {
        this.escalacaosForJogador10 = escalacaosForJogador10;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Date getDataNascimento() {
@@ -410,8 +408,8 @@ public class Jogador  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.dataNascimento);
-        hash = 79 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 59 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 

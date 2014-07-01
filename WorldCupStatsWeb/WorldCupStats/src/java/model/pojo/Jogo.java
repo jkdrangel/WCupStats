@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -13,48 +13,43 @@ import java.util.Set;
 public class Jogo  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Copa copa;
      private Selecao selecaoBySelecaoB;
      private Selecao selecaoBySelecaoA;
      private Date data;
      private String local;
      private String fase;
-     private Set substituicaos = new HashSet(0);
      private Set escalacaos = new HashSet(0);
+     private Set substituicaos = new HashSet(0);
      private Set gols = new HashSet(0);
 
     public Jogo() {
     }
 
 	
-    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase) {
-        this.id = id;
-        this.copa = copa;
-        this.selecaoBySelecaoB = selecaoBySelecaoB;
-        this.selecaoBySelecaoA = selecaoBySelecaoA;
+    public Jogo(Date data, String local, String fase) {
         this.data = data;
         this.local = local;
         this.fase = fase;
     }
-    public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase, Set substituicaos, Set escalacaos, Set gols) {
-       this.id = id;
+    public Jogo(Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase, Set escalacaos, Set substituicaos, Set gols) {
        this.copa = copa;
        this.selecaoBySelecaoB = selecaoBySelecaoB;
        this.selecaoBySelecaoA = selecaoBySelecaoA;
        this.data = data;
        this.local = local;
        this.fase = fase;
-       this.substituicaos = substituicaos;
        this.escalacaos = escalacaos;
+       this.substituicaos = substituicaos;
        this.gols = gols;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Copa getCopa() {
@@ -99,19 +94,19 @@ public class Jogo  implements java.io.Serializable {
     public void setFase(String fase) {
         this.fase = fase;
     }
-    public Set getSubstituicaos() {
-        return this.substituicaos;
-    }
-    
-    public void setSubstituicaos(Set substituicaos) {
-        this.substituicaos = substituicaos;
-    }
     public Set getEscalacaos() {
         return this.escalacaos;
     }
     
     public void setEscalacaos(Set escalacaos) {
         this.escalacaos = escalacaos;
+    }
+    public Set getSubstituicaos() {
+        return this.substituicaos;
+    }
+    
+    public void setSubstituicaos(Set substituicaos) {
+        this.substituicaos = substituicaos;
     }
     public Set getGols() {
         return this.gols;
@@ -124,10 +119,10 @@ public class Jogo  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.copa);
-        hash = 37 * hash + Objects.hashCode(this.selecaoBySelecaoB);
-        hash = 37 * hash + Objects.hashCode(this.selecaoBySelecaoA);
-        hash = 37 * hash + Objects.hashCode(this.data);
+        hash = 71 * hash + Objects.hashCode(this.copa);
+        hash = 71 * hash + Objects.hashCode(this.selecaoBySelecaoB);
+        hash = 71 * hash + Objects.hashCode(this.selecaoBySelecaoA);
+        hash = 71 * hash + Objects.hashCode(this.data);
         return hash;
     }
 

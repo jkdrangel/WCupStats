@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
 
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Escalacao  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Selecao selecao;
      private Jogador jogadorByJogador6;
      private Jogador jogadorByJogador5;
@@ -30,8 +30,7 @@ public class Escalacao  implements java.io.Serializable {
     public Escalacao() {
     }
 
-    public Escalacao(int id, Selecao selecao, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador1, Jogador jogadorByJogador10, Jogo jogo, Jogador jogadorByJogador11, Jogador jogadorByJogador9, Jogador jogadorByJogador8, Jogador jogadorByJogador7) {
-       this.id = id;
+    public Escalacao(Selecao selecao, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador1, Jogador jogadorByJogador10, Jogo jogo, Jogador jogadorByJogador11, Jogador jogadorByJogador9, Jogador jogadorByJogador8, Jogador jogadorByJogador7) {
        this.selecao = selecao;
        this.jogadorByJogador6 = jogadorByJogador6;
        this.jogadorByJogador5 = jogadorByJogador5;
@@ -47,11 +46,11 @@ public class Escalacao  implements java.io.Serializable {
        this.jogadorByJogador7 = jogadorByJogador7;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Selecao getSelecao() {
@@ -149,8 +148,8 @@ public class Escalacao  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.selecao);
-        hash = 79 * hash + Objects.hashCode(this.jogo);
+        hash = 59 * hash + Objects.hashCode(this.selecao);
+        hash = 59 * hash + Objects.hashCode(this.jogo);
         return hash;
     }
 
