@@ -7,89 +7,90 @@
 package model.CRUD;
 
 import java.util.List;
+import model.pojo.Jogador;
+import model.pojo.Jogo;
+import model.pojo.Selecao;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author lsantana
  */
 public class EscalacaoDAOTest {
+    EscalacaoDAO escDAO;
+    Selecao selecaoA, selecaoB;
+    Jogo jogo;
+    Jogador jogA1, jogA2, jogA3, jogA4, jogA5, jogA6, jogA7,
+            jogA8, jogA9, jogA10, jogA11;
+    Jogador jogB1, jogB2, jogB3, jogB4, jogB5, jogB6, jogB7,
+            jogB8, jogB9, jogB10, jogB11;
     
-    public EscalacaoDAOTest() {
-    }
     
     @Before
     public void setUp() {
+        escDAO = new EscalacaoDAO();
+        
+        jogA1 = new Jogador();
+        jogA2 = new Jogador();
+        jogA3 = new Jogador();
+        jogA4 = new Jogador();
+        jogA5 = new Jogador();
+        jogA6 = new Jogador();
+        jogA7 = new Jogador();
+        jogA8 = new Jogador();
+        jogA9 = new Jogador();
+        jogA10 = new Jogador();
+        jogA11 = new Jogador();
+        
+        jogB1 = new Jogador();
+        jogB2 = new Jogador();
+        jogB3 = new Jogador();
+        jogB4 = new Jogador();
+        jogB5 = new Jogador();
+        jogB6 = new Jogador();
+        jogB7 = new Jogador();
+        jogB8 = new Jogador();
+        jogB9 = new Jogador();
+        jogB10 = new Jogador();
+        jogB11 = new Jogador();
+        
+        selecaoA = new Selecao();
+        selecaoA.setJogador1(jogA1.getId());
+        selecaoA.setJogador2(jogA2.getId());
+        selecaoA.setJogador3(jogA3.getId());
+        selecaoA.setJogador4(jogA4.getId());
+        selecaoA.setJogador5(jogA5.getId());
+        selecaoA.setJogador6(jogA6.getId());
+        selecaoA.setJogador7(jogA7.getId());
+        selecaoA.setJogador8(jogA8.getId());
+        selecaoA.setJogador9(jogA9.getId());
+        selecaoA.setJogador10(jogA10.getId());
+        selecaoA.setJogador11(jogA11.getId());
+        
+        selecaoB = new Selecao();
+        selecaoB.setJogador1(jogB1.getId());
+        selecaoB.setJogador2(jogB2.getId());
+        selecaoB.setJogador3(jogB3.getId());
+        selecaoB.setJogador4(jogB4.getId());
+        selecaoB.setJogador5(jogB5.getId());
+        selecaoB.setJogador6(jogB6.getId());
+        selecaoB.setJogador7(jogB7.getId());
+        selecaoB.setJogador8(jogB8.getId());
+        selecaoB.setJogador9(jogB9.getId());
+        selecaoB.setJogador10(jogB10.getId());
+        selecaoB.setJogador11(jogB11.getId());
+        
+        jogo = new Jogo();
+        jogo.setSelecaoBySelecaoA(selecaoA);
+        jogo.setSelecaoBySelecaoB(selecaoB);
     }
     
     @After
     public void tearDown() {
+        escDAO.removerTodos();
     }
 
-    /**
-     * Test of getID method, of class EscalacaoDAO.
-     */
-    @Test
-    public void testGetID() {
-        System.out.println("getID");
-        EscalacaoDAO instance = null;
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setID method, of class EscalacaoDAO.
-     */
-    @Test
-    public void testSetID() {
-        System.out.println("setID");
-        int ID = 0;
-        EscalacaoDAO instance = null;
-        instance.setID(ID);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getJogo method, of class EscalacaoDAO.
-     */
-    @Test
-    public void testGetJogo() {
-        System.out.println("getJogo");
-        EscalacaoDAO instance = null;
-        JogoDAO expResult = null;
-        JogoDAO result = instance.getJogo();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setJogo method, of class EscalacaoDAO.
-     */
-    @Test
-    public void testSetJogo() {
-        System.out.println("setJogo");
-        JogoDAO jogo = null;
-        EscalacaoDAO instance = null;
-        instance.setJogo(jogo);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getJogador method, of class EscalacaoDAO.
-     */
-    @Test
-    public void testGetJogador() {
-        System.out.println("getJogador");
-        EscalacaoDAO instance = null;
-        List<PessoaDAO> expResult = null;
-        List<PessoaDAO> result = instance.getJogador();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-    
 }
