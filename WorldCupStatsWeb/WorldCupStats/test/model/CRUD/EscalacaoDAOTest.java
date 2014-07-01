@@ -131,4 +131,55 @@ public class EscalacaoDAOTest {
         List<Escalacao> escs = escDAO.listar();
         assertEquals(escA, escs.get(0));
     }
+    
+    @Test
+    public void testAtualizar(){
+        escDAO.adicionar(escA);
+        escDAO.adicionar(escB);
+        Jogador jogA12 = new Jogador();
+        
+        escA.setJogadorByJogador6(jogA12);
+        escDAO.atualizar(escA);
+        List<Escalacao> escs = escDAO.listar();
+        
+        assertEquals(11, escs.size());
+        assertEquals(escA, escs.get(1));
+    }
+    
+    @Test
+    public void testRemover(){
+        escDAO.adicionar(escA);
+        escDAO.adicionar(escB);
+        
+        escDAO.remover(escA);
+        List<Escalacao> escs = escDAO.listar();
+        assertEquals(1, escs.size());
+    }
+    
+    @Test
+    public void testRemoverTodos(){
+        escDAO.adicionar(escA);
+        escDAO.adicionar(escB);
+        
+        escDAO.removerTodos();
+        List<Escalacao> escs = escDAO.listar();
+        assertTrue(escs.isEmpty());
+    }
+    
+    @Test
+    public void testListar(){
+        List<Escalacao> escs = escDAO.listar();
+        assertTrue(escs.isEmpty());
+        
+        escDAO.adicionar(escA);
+        escDAO.adicionar(escB);
+        assertFalse(escs.isEmpty());
+        
+        assertEquals(escA, escs.get(0));
+        assertEquals(escB, escs.get(1));
+        
+        escDAO.remover(escA);
+        escs = escDAO.listar();
+        assertEquals(1, escs.size());
+    }
 }
