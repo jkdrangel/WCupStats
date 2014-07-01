@@ -25,6 +25,7 @@ public class Selecao  implements java.io.Serializable {
      private int jogador1;
      private int jogador2;
      private int jogador3;
+     private int jogador4;
      private int jogador5;
      private int jogador6;
      private int jogador7;
@@ -66,6 +67,7 @@ public class Selecao  implements java.io.Serializable {
      * @param jogador1
      * @param jogador2
      * @param jogador3
+     * @param jogador4
      * @param jogador5
      * @param jogador6
      * @param jogador7
@@ -94,6 +96,7 @@ public class Selecao  implements java.io.Serializable {
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
         this.jogador3 = jogador3;
+        this.jogador4 = jogador4;
         this.jogador5 = jogador5;
         this.jogador6 = jogador6;
         this.jogador7 = jogador7;
@@ -126,6 +129,7 @@ public class Selecao  implements java.io.Serializable {
      * @param jogador1
      * @param jogador2
      * @param jogador3
+     * @param jogador4
      * @param jogador5
      * @param jogador6
      * @param jogador7
@@ -162,6 +166,7 @@ public class Selecao  implements java.io.Serializable {
        this.jogador1 = jogador1;
        this.jogador2 = jogador2;
        this.jogador3 = jogador3;
+       this.jogador4 = jogador4;
        this.jogador5 = jogador5;
        this.jogador6 = jogador6;
        this.jogador7 = jogador7;
@@ -367,6 +372,22 @@ public class Selecao  implements java.io.Serializable {
      */
     public void setJogador3(int jogador3) {
         this.jogador3 = jogador3;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public int getJogador4() {
+        return this.jogador4;
+    }
+    
+    /**
+     *
+     * @param jogador4
+     */
+    public void setJogador4(int jogador4) {
+        this.jogador3 = jogador4;
     }
 
     /**
