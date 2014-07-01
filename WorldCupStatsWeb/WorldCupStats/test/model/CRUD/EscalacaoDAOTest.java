@@ -182,4 +182,13 @@ public class EscalacaoDAOTest {
         escs = escDAO.listar();
         assertEquals(1, escs.size());
     }
+    
+    @Test
+    public void testBuscar(){
+        escDAO.adicionar(escA);
+        escDAO.adicionar(escB);
+        
+        Escalacao resultado = escDAO.buscar(jogo, selecaoA);
+        assertEquals(escA, resultado);
+    }
 }
