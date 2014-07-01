@@ -6,7 +6,12 @@
 
 package model.CRUD;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
+import model.pojo.Jogo;
+import model.pojo.Pais;
+import model.pojo.Selecao;
+import model.pojo.Substituicao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,84 +19,86 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author lsantana
+ * @author marc
  */
 public class SubstituicaoDAOTest {
-    
-    public SubstituicaoDAOTest() {
-    }
+
+    private SubstituicaoDAO dao;
+    private Substituicao substituicao;
+    private Selecao selecao;
+    private Jogo jogo;
     
     @Before
     public void setUp() {
+
+        dao = new SubstituicaoDAO();
+        
+        selecao = new Selecao();
+        selecao.setAno(new Date(100, 1, 1));
+        substituicao = new Substituicao();
+        substituicao.setSelecao(selecao);
+        
+        jogo = new Jogo();
     }
+
     
     @After
     public void tearDown() {
+        dao.removerTodos();
+    }
+    
+    /**
+     * Test of adicionar method, of class SubstituicaoDAO.
+     */
+    @Test
+    public void testAdicionar() {
+        
+        
     }
 
     /**
-     * Test of toString method, of class SubstituicaoDAO.
+     * Test of atualizar method, of class SubstituicaoDAO.
      */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        SubstituicaoDAO instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testAtualizar() {
+
+        
     }
 
     /**
-     * Test of getTime method, of class SubstituicaoDAO.
+     * Test of remover method, of class SubstituicaoDAO.
      */
     @Test
-    public void testGetTime() {
-        System.out.println("getTime");
-        SubstituicaoDAO instance = null;
-        SelecaoDAO expResult = null;
-        SelecaoDAO result = instance.getTime();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testRemover() {
+
+        
     }
 
     /**
-     * Test of getqEntra method, of class SubstituicaoDAO.
+     * Test of removerTodos method, of class SubstituicaoDAO.
      */
     @Test
-    public void testGetqEntra() {
-        System.out.println("getqEntra");
-        SubstituicaoDAO instance = null;
-        PessoaDAO expResult = null;
-        PessoaDAO result = instance.getqEntra();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testRemoverTodos() {
+
+        
     }
 
     /**
-     * Test of getqSai method, of class SubstituicaoDAO.
+     * Test of listar method, of class SubstituicaoDAO.
      */
     @Test
-    public void testGetqSai() {
-        System.out.println("getqSai");
-        SubstituicaoDAO instance = null;
-        PessoaDAO expResult = null;
-        PessoaDAO result = instance.getqSai();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testListar() {
+
+        
     }
 
     /**
-     * Test of getTempo method, of class SubstituicaoDAO.
+     * Test of buscar method, of class SubstituicaoDAO.
      */
     @Test
-    public void testGetTempo() {
-        System.out.println("getTempo");
-        SubstituicaoDAO instance = null;
-        Date expResult = null;
-        Date result = instance.getTempo();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    public void testBuscar() {
+      
+        
     }
     
 }
