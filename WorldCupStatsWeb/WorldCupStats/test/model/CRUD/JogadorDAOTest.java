@@ -6,7 +6,9 @@
 
 package model.CRUD;
 
+import java.sql.Date;
 import java.util.List;
+import model.Enuns.FuncaoJogador;
 import model.pojo.Jogador;
 import model.pojo.Pais;
 import model.pojo.Selecao;
@@ -31,21 +33,21 @@ public class JogadorDAOTest {
        
         neimar = new Jogador();
         neimar.setNome("neimar");
-        neimar.setDataNascimento(null);
-        neimar.setNumero(numero);
-        neimar.setPosicao(null);
+        neimar.setDataNascimento(new Date(100,1,1));
+        neimar.setNumero(10);
+        neimar.setPosicao(FuncaoJogador.ATACANTE.getFuncao());
         
         tafarel = new Jogador();
         tafarel.setNome("brasil");
-        tafarel.setDataNascimento(null);
-        tafarel.setNumero(numero);
-        tafarel.setPosicao(null);
+        tafarel.setDataNascimento(new Date(100,1,1));
+        tafarel.setNumero(11);
+        tafarel.setPosicao(FuncaoJogador.ATACANTE.getFuncao());
         
         birubiru = new Jogador();
         birubiru.setNome("birubiru");
-        birubiru.setDataNascimento(null);
-        birubiru.setNumero(numero);
-        birubiru.setPosicao(null);
+        birubiru.setDataNascimento(new Date(100,1,1));
+        birubiru.setNumero(12);
+        birubiru.setPosicao(FuncaoJogador.ATACANTE.getFuncao());
 
         jogadorDao.removerTodos();
        
@@ -73,8 +75,8 @@ public class JogadorDAOTest {
         jogadorDao.adicionar(neimar);
         neimar.setNome("Neimar Junior");
         jogadorDao.atualizar(neimar);
-        List<Jogador> paises = jogadorDao.listar();
-        assertEquals(neimar, paises.get(0));
+        List<Jogador> jogadores = jogadorDao.listar();
+        assertEquals(neimar, jogadores.get(0));
     }
 
     @Test

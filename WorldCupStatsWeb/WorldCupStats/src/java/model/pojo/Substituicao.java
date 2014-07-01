@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -17,22 +17,10 @@ public class Substituicao  implements java.io.Serializable {
      private Jogo jogo;
      private Jogador jogadorByJogadorEntra;
      private Date tempo;
-    /**
-     *
-     */
 
     public Substituicao() {
     }
 
-    /**
-     *
-     * @param id
-     * @param jogadorByJogadorSai
-     * @param selecao
-     * @param jogo
-     * @param jogadorByJogadorEntra
-     * @param tempo
-     */
     public Substituicao(int id, Jogador jogadorByJogadorSai, Selecao selecao, Jogo jogo, Jogador jogadorByJogadorEntra, Date tempo) {
        this.id = id;
        this.jogadorByJogadorSai = jogadorByJogadorSai;
@@ -42,98 +30,45 @@ public class Substituicao  implements java.io.Serializable {
        this.tempo = tempo;
     }
    
-    /**
-     *
-     * @return
-     */
     public int getId() {
         return this.id;
     }
     
-    /**
-     *
-     * @param id
-     */
     public void setId(int id) {
         this.id = id;
     }
-
-    /**
-     *
-     * @return
-     */
     public Jogador getJogadorByJogadorSai() {
         return this.jogadorByJogadorSai;
     }
     
-    /**
-     *
-     * @param jogadorByJogadorSai
-     */
     public void setJogadorByJogadorSai(Jogador jogadorByJogadorSai) {
         this.jogadorByJogadorSai = jogadorByJogadorSai;
     }
-
-    /**
-     *
-     * @return
-     */
     public Selecao getSelecao() {
         return this.selecao;
     }
     
-    /**
-     *
-     * @param selecao
-     */
     public void setSelecao(Selecao selecao) {
         this.selecao = selecao;
     }
-
-    /**
-     *
-     * @return
-     */
     public Jogo getJogo() {
         return this.jogo;
     }
     
-    /**
-     *
-     * @param jogo
-     */
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
     }
-
-    /**
-     *
-     * @return
-     */
     public Jogador getJogadorByJogadorEntra() {
         return this.jogadorByJogadorEntra;
     }
     
-    /**
-     *
-     * @param jogadorByJogadorEntra
-     */
     public void setJogadorByJogadorEntra(Jogador jogadorByJogadorEntra) {
         this.jogadorByJogadorEntra = jogadorByJogadorEntra;
     }
-
-    /**
-     *
-     * @return
-     */
     public Date getTempo() {
         return this.tempo;
     }
     
-    /**
-     *
-     * @param tempo
-     */
     public void setTempo(Date tempo) {
         this.tempo = tempo;
     }
@@ -141,10 +76,11 @@ public class Substituicao  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.jogadorByJogadorSai);
-        hash = 43 * hash + Objects.hashCode(this.jogo);
-        hash = 43 * hash + Objects.hashCode(this.jogadorByJogadorEntra);
-        hash = 43 * hash + Objects.hashCode(this.tempo);
+        hash = 29 * hash + Objects.hashCode(this.jogadorByJogadorSai);
+        hash = 29 * hash + Objects.hashCode(this.selecao);
+        hash = 29 * hash + Objects.hashCode(this.jogo);
+        hash = 29 * hash + Objects.hashCode(this.jogadorByJogadorEntra);
+        hash = 29 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 
@@ -158,6 +94,9 @@ public class Substituicao  implements java.io.Serializable {
         }
         final Substituicao other = (Substituicao) obj;
         if (!Objects.equals(this.jogadorByJogadorSai, other.jogadorByJogadorSai)) {
+            return false;
+        }
+        if (!Objects.equals(this.selecao, other.selecao)) {
             return false;
         }
         if (!Objects.equals(this.jogo, other.jogo)) {

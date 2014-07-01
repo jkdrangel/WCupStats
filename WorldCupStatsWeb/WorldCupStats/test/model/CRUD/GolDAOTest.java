@@ -6,7 +6,6 @@
 
 package model.CRUD;
 
-import java.util.Date;
 import java.util.List;
 import model.pojo.Gol;
 import model.pojo.Jogador;
@@ -37,11 +36,11 @@ public class GolDAOTest {
         jogador3 = new Jogador();
         
         selecao1 = new Selecao();
-        selecao1.setJogador1(jogador1.getId());
-        selecao1.setJogador2(jogador2.getId());
+        selecao1.setJogadorByJogador1(jogador1);
+        selecao1.setJogadorByJogador2(jogador2);
         
         selecao2 = new Selecao();
-        selecao2.setJogador1(jogador3.getId());
+        selecao2.setJogadorByJogador1(jogador3);
         
         jogo = new Jogo();
         jogo.setSelecaoBySelecaoA(selecao1);

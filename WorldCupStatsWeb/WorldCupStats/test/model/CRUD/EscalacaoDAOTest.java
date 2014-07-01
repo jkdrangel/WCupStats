@@ -60,30 +60,30 @@ public class EscalacaoDAOTest {
         jogB11 = new Jogador();
         
         selecaoA = new Selecao();
-        selecaoA.setJogador1(jogA1.getId());
-        selecaoA.setJogador2(jogA2.getId());
-        selecaoA.setJogador3(jogA3.getId());
-        selecaoA.setJogador4(jogA4.getId());
-        selecaoA.setJogador5(jogA5.getId());
-        selecaoA.setJogador6(jogA6.getId());
-        selecaoA.setJogador7(jogA7.getId());
-        selecaoA.setJogador8(jogA8.getId());
-        selecaoA.setJogador9(jogA9.getId());
-        selecaoA.setJogador10(jogA10.getId());
-        selecaoA.setJogador11(jogA11.getId());
+        selecaoA.setJogadorByJogador1(jogA1);
+        selecaoA.setJogadorByJogador2(jogA2);
+        selecaoA.setJogadorByJogador3(jogA3);
+        selecaoA.setJogadorByJogador4(jogA4);
+        selecaoA.setJogadorByJogador5(jogA5);
+        selecaoA.setJogadorByJogador6(jogA6);
+        selecaoA.setJogadorByJogador7(jogA7);
+        selecaoA.setJogadorByJogador8(jogA8);
+        selecaoA.setJogadorByJogador9(jogA9);
+        selecaoA.setJogadorByJogador10(jogA10);
+        selecaoA.setJogadorByJogador11(jogA11);
         
         selecaoB = new Selecao();
-        selecaoB.setJogador1(jogB1.getId());
-        selecaoB.setJogador2(jogB2.getId());
-        selecaoB.setJogador3(jogB3.getId());
-        selecaoB.setJogador4(jogB4.getId());
-        selecaoB.setJogador5(jogB5.getId());
-        selecaoB.setJogador6(jogB6.getId());
-        selecaoB.setJogador7(jogB7.getId());
-        selecaoB.setJogador8(jogB8.getId());
-        selecaoB.setJogador9(jogB9.getId());
-        selecaoB.setJogador10(jogB10.getId());
-        selecaoB.setJogador11(jogB11.getId());
+        selecaoB.setJogadorByJogador1(jogB1);
+        selecaoB.setJogadorByJogador2(jogB2);
+        selecaoB.setJogadorByJogador3(jogB3);
+        selecaoB.setJogadorByJogador4(jogB4);
+        selecaoB.setJogadorByJogador5(jogB5);
+        selecaoB.setJogadorByJogador6(jogB6);
+        selecaoB.setJogadorByJogador7(jogB7);
+        selecaoB.setJogadorByJogador8(jogB8);
+        selecaoB.setJogadorByJogador9(jogB9);
+        selecaoB.setJogadorByJogador10(jogB10);
+        selecaoB.setJogadorByJogador11(jogB11);
         
         jogo = new Jogo();
         jogo.setSelecaoBySelecaoA(selecaoA);
@@ -142,7 +142,7 @@ public class EscalacaoDAOTest {
         escDAO.atualizar(escA);
         List<Escalacao> escs = escDAO.listar();
         
-        assertEquals(11, escs.size());
+        assertEquals(2, escs.size());
         assertEquals(escA, escs.get(1));
     }
     

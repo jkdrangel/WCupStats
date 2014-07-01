@@ -1,7 +1,5 @@
 package model.pojo;
-// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
-
-
+// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -16,35 +14,35 @@ public class Selecao  implements java.io.Serializable {
 
 
      private Integer id;
-     private Copa copa;
+     private Jogador jogadorByJogador20;
      private Pais pais;
      private Tecnico tecnico;
+     private Jogador jogadorByJogador6;
+     private Jogador jogadorByJogador5;
+     private Copa copa;
+     private Jogador jogadorByJogador4;
+     private Jogador jogadorByJogador3;
+     private Jogador jogadorByJogador2;
+     private Jogador jogadorByJogador18;
+     private Jogador jogadorByJogador1;
+     private Jogador jogadorByJogador19;
+     private Jogador jogadorByJogador14;
+     private Jogador jogadorByJogador15;
+     private Jogador jogadorByJogador16;
+     private Jogador jogadorByJogador17;
+     private Jogador jogadorByJogador23;
+     private Jogador jogadorByJogador10;
+     private Jogador jogadorByJogador9;
+     private Jogador jogadorByJogador11;
+     private Jogador jogadorByJogador21;
+     private Jogador jogadorByJogador8;
+     private Jogador jogadorByJogador12;
+     private Jogador jogadorByJogador22;
+     private Jogador jogadorByJogador13;
+     private Jogador jogadorByJogador7;
      private String grupo;
      private Date ano;
      private int posicao;
-     private int jogador1;
-     private int jogador2;
-     private int jogador3;
-     private int jogador4;
-     private int jogador5;
-     private int jogador6;
-     private int jogador7;
-     private int jogador8;
-     private int jogador9;
-     private int jogador10;
-     private int jogador11;
-     private int jogador12;
-     private int jogador13;
-     private int jogador14;
-     private int jogador15;
-     private int jogador16;
-     private int jogador17;
-     private int jogador18;
-     private int jogador19;
-     private int jogador20;
-     private int jogador21;
-     private int jogador22;
-     private int jogador23;
      private Set jogosForSelecaoB = new HashSet(0);
      private Set gols = new HashSet(0);
      private Set jogosForSelecaoA = new HashSet(0);
@@ -52,140 +50,69 @@ public class Selecao  implements java.io.Serializable {
      private Set substituicaos = new HashSet(0);
      private Set escalacaos = new HashSet(0);
 
-    /**
-     *
-     */
     public Selecao() {
     }
 
-    /**
-     *
-     * @param tecnico
-     * @param grupo
-     * @param ano
-     * @param posicao
-     * @param jogador1
-     * @param jogador2
-     * @param jogador3
-     * @param jogador4
-     * @param jogador5
-     * @param jogador6
-     * @param jogador7
-     * @param jogador8
-     * @param jogador9
-     * @param jogador10
-     * @param jogador11
-     * @param jogador12
-     * @param jogador13
-     * @param jogador14
-     * @param jogador15
-     * @param jogador16
-     * @param jogador17
-     * @param jogador18
-     * @param jogador19
-     * @param jogador20
-     * @param jogador21
-     * @param jogador22
-     * @param jogador23
-     */
-    public Selecao(Tecnico tecnico, String grupo, Date ano, int posicao, int jogador1, int jogador2, int jogador3, int jogador5, int jogador6, int jogador7, int jogador8, int jogador9, int jogador10, int jogador11, int jogador12, int jogador13, int jogador14, int jogador15, int jogador16, int jogador17, int jogador18, int jogador19, int jogador20, int jogador21, int jogador22, int jogador23) {
+	
+    public Selecao(Jogador jogadorByJogador20, Tecnico tecnico, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador18, Jogador jogadorByJogador1, Jogador jogadorByJogador19, Jogador jogadorByJogador14, Jogador jogadorByJogador15, Jogador jogadorByJogador16, Jogador jogadorByJogador17, Jogador jogadorByJogador23, Jogador jogadorByJogador10, Jogador jogadorByJogador9, Jogador jogadorByJogador11, Jogador jogadorByJogador21, Jogador jogadorByJogador8, Jogador jogadorByJogador12, Jogador jogadorByJogador22, Jogador jogadorByJogador13, Jogador jogadorByJogador7, String grupo, Date ano, int posicao) {
+        this.jogadorByJogador20 = jogadorByJogador20;
         this.tecnico = tecnico;
+        this.jogadorByJogador6 = jogadorByJogador6;
+        this.jogadorByJogador5 = jogadorByJogador5;
+        this.jogadorByJogador4 = jogadorByJogador4;
+        this.jogadorByJogador3 = jogadorByJogador3;
+        this.jogadorByJogador2 = jogadorByJogador2;
+        this.jogadorByJogador18 = jogadorByJogador18;
+        this.jogadorByJogador1 = jogadorByJogador1;
+        this.jogadorByJogador19 = jogadorByJogador19;
+        this.jogadorByJogador14 = jogadorByJogador14;
+        this.jogadorByJogador15 = jogadorByJogador15;
+        this.jogadorByJogador16 = jogadorByJogador16;
+        this.jogadorByJogador17 = jogadorByJogador17;
+        this.jogadorByJogador23 = jogadorByJogador23;
+        this.jogadorByJogador10 = jogadorByJogador10;
+        this.jogadorByJogador9 = jogadorByJogador9;
+        this.jogadorByJogador11 = jogadorByJogador11;
+        this.jogadorByJogador21 = jogadorByJogador21;
+        this.jogadorByJogador8 = jogadorByJogador8;
+        this.jogadorByJogador12 = jogadorByJogador12;
+        this.jogadorByJogador22 = jogadorByJogador22;
+        this.jogadorByJogador13 = jogadorByJogador13;
+        this.jogadorByJogador7 = jogadorByJogador7;
         this.grupo = grupo;
         this.ano = ano;
         this.posicao = posicao;
-        this.jogador1 = jogador1;
-        this.jogador2 = jogador2;
-        this.jogador3 = jogador3;
-        this.jogador4 = jogador4;
-        this.jogador5 = jogador5;
-        this.jogador6 = jogador6;
-        this.jogador7 = jogador7;
-        this.jogador8 = jogador8;
-        this.jogador9 = jogador9;
-        this.jogador10 = jogador10;
-        this.jogador11 = jogador11;
-        this.jogador12 = jogador12;
-        this.jogador13 = jogador13;
-        this.jogador14 = jogador14;
-        this.jogador15 = jogador15;
-        this.jogador16 = jogador16;
-        this.jogador17 = jogador17;
-        this.jogador18 = jogador18;
-        this.jogador19 = jogador19;
-        this.jogador20 = jogador20;
-        this.jogador21 = jogador21;
-        this.jogador22 = jogador22;
-        this.jogador23 = jogador23;
     }
-
-    /**
-     *
-     * @param copa
-     * @param pais
-     * @param tecnico
-     * @param grupo
-     * @param ano
-     * @param posicao
-     * @param jogador1
-     * @param jogador2
-     * @param jogador3
-     * @param jogador4
-     * @param jogador5
-     * @param jogador6
-     * @param jogador7
-     * @param jogador8
-     * @param jogador9
-     * @param jogador10
-     * @param jogador11
-     * @param jogador12
-     * @param jogador13
-     * @param jogador14
-     * @param jogador15
-     * @param jogador16
-     * @param jogador17
-     * @param jogador18
-     * @param jogador19
-     * @param jogador20
-     * @param jogador21
-     * @param jogador22
-     * @param jogador23
-     * @param gols
-     * @param copas
-     * @param escalacaos
-     * @param substituicaos
-     * @param jogosForSelecaoB
-     * @param jogosForSelecaoA
-     */
-    public Selecao(Copa copa, Pais pais, Tecnico tecnico, String grupo, Date ano, int posicao, int jogador1, int jogador2, int jogador3, int jogador5, int jogador6, int jogador7, int jogador8, int jogador9, int jogador10, int jogador11, int jogador12, int jogador13, int jogador14, int jogador15, int jogador16, int jogador17, int jogador18, int jogador19, int jogador20, int jogador21, int jogador22, int jogador23, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set copas, Set substituicaos, Set escalacaos) {
-       this.copa = copa;
+    public Selecao(Jogador jogadorByJogador20, Pais pais, Tecnico tecnico, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Copa copa, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador18, Jogador jogadorByJogador1, Jogador jogadorByJogador19, Jogador jogadorByJogador14, Jogador jogadorByJogador15, Jogador jogadorByJogador16, Jogador jogadorByJogador17, Jogador jogadorByJogador23, Jogador jogadorByJogador10, Jogador jogadorByJogador9, Jogador jogadorByJogador11, Jogador jogadorByJogador21, Jogador jogadorByJogador8, Jogador jogadorByJogador12, Jogador jogadorByJogador22, Jogador jogadorByJogador13, Jogador jogadorByJogador7, String grupo, Date ano, int posicao, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set copas, Set substituicaos, Set escalacaos) {
+       this.jogadorByJogador20 = jogadorByJogador20;
        this.pais = pais;
        this.tecnico = tecnico;
+       this.jogadorByJogador6 = jogadorByJogador6;
+       this.jogadorByJogador5 = jogadorByJogador5;
+       this.copa = copa;
+       this.jogadorByJogador4 = jogadorByJogador4;
+       this.jogadorByJogador3 = jogadorByJogador3;
+       this.jogadorByJogador2 = jogadorByJogador2;
+       this.jogadorByJogador18 = jogadorByJogador18;
+       this.jogadorByJogador1 = jogadorByJogador1;
+       this.jogadorByJogador19 = jogadorByJogador19;
+       this.jogadorByJogador14 = jogadorByJogador14;
+       this.jogadorByJogador15 = jogadorByJogador15;
+       this.jogadorByJogador16 = jogadorByJogador16;
+       this.jogadorByJogador17 = jogadorByJogador17;
+       this.jogadorByJogador23 = jogadorByJogador23;
+       this.jogadorByJogador10 = jogadorByJogador10;
+       this.jogadorByJogador9 = jogadorByJogador9;
+       this.jogadorByJogador11 = jogadorByJogador11;
+       this.jogadorByJogador21 = jogadorByJogador21;
+       this.jogadorByJogador8 = jogadorByJogador8;
+       this.jogadorByJogador12 = jogadorByJogador12;
+       this.jogadorByJogador22 = jogadorByJogador22;
+       this.jogadorByJogador13 = jogadorByJogador13;
+       this.jogadorByJogador7 = jogadorByJogador7;
        this.grupo = grupo;
        this.ano = ano;
        this.posicao = posicao;
-       this.jogador1 = jogador1;
-       this.jogador2 = jogador2;
-       this.jogador3 = jogador3;
-       this.jogador4 = jogador4;
-       this.jogador5 = jogador5;
-       this.jogador6 = jogador6;
-       this.jogador7 = jogador7;
-       this.jogador8 = jogador8;
-       this.jogador9 = jogador9;
-       this.jogador10 = jogador10;
-       this.jogador11 = jogador11;
-       this.jogador12 = jogador12;
-       this.jogador13 = jogador13;
-       this.jogador14 = jogador14;
-       this.jogador15 = jogador15;
-       this.jogador16 = jogador16;
-       this.jogador17 = jogador17;
-       this.jogador18 = jogador18;
-       this.jogador19 = jogador19;
-       this.jogador20 = jogador20;
-       this.jogador21 = jogador21;
-       this.jogador22 = jogador22;
-       this.jogador23 = jogador23;
        this.jogosForSelecaoB = jogosForSelecaoB;
        this.gols = gols;
        this.jogosForSelecaoA = jogosForSelecaoA;
@@ -193,12 +120,265 @@ public class Selecao  implements java.io.Serializable {
        this.substituicaos = substituicaos;
        this.escalacaos = escalacaos;
     }
+   
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public Jogador getJogadorByJogador20() {
+        return this.jogadorByJogador20;
+    }
+    
+    public void setJogadorByJogador20(Jogador jogadorByJogador20) {
+        this.jogadorByJogador20 = jogadorByJogador20;
+    }
+    public Pais getPais() {
+        return this.pais;
+    }
+    
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+    public Tecnico getTecnico() {
+        return this.tecnico;
+    }
+    
+    public void setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
+    }
+    public Jogador getJogadorByJogador6() {
+        return this.jogadorByJogador6;
+    }
+    
+    public void setJogadorByJogador6(Jogador jogadorByJogador6) {
+        this.jogadorByJogador6 = jogadorByJogador6;
+    }
+    public Jogador getJogadorByJogador5() {
+        return this.jogadorByJogador5;
+    }
+    
+    public void setJogadorByJogador5(Jogador jogadorByJogador5) {
+        this.jogadorByJogador5 = jogadorByJogador5;
+    }
+    public Copa getCopa() {
+        return this.copa;
+    }
+    
+    public void setCopa(Copa copa) {
+        this.copa = copa;
+    }
+    public Jogador getJogadorByJogador4() {
+        return this.jogadorByJogador4;
+    }
+    
+    public void setJogadorByJogador4(Jogador jogadorByJogador4) {
+        this.jogadorByJogador4 = jogadorByJogador4;
+    }
+    public Jogador getJogadorByJogador3() {
+        return this.jogadorByJogador3;
+    }
+    
+    public void setJogadorByJogador3(Jogador jogadorByJogador3) {
+        this.jogadorByJogador3 = jogadorByJogador3;
+    }
+    public Jogador getJogadorByJogador2() {
+        return this.jogadorByJogador2;
+    }
+    
+    public void setJogadorByJogador2(Jogador jogadorByJogador2) {
+        this.jogadorByJogador2 = jogadorByJogador2;
+    }
+    public Jogador getJogadorByJogador18() {
+        return this.jogadorByJogador18;
+    }
+    
+    public void setJogadorByJogador18(Jogador jogadorByJogador18) {
+        this.jogadorByJogador18 = jogadorByJogador18;
+    }
+    public Jogador getJogadorByJogador1() {
+        return this.jogadorByJogador1;
+    }
+    
+    public void setJogadorByJogador1(Jogador jogadorByJogador1) {
+        this.jogadorByJogador1 = jogadorByJogador1;
+    }
+    public Jogador getJogadorByJogador19() {
+        return this.jogadorByJogador19;
+    }
+    
+    public void setJogadorByJogador19(Jogador jogadorByJogador19) {
+        this.jogadorByJogador19 = jogadorByJogador19;
+    }
+    public Jogador getJogadorByJogador14() {
+        return this.jogadorByJogador14;
+    }
+    
+    public void setJogadorByJogador14(Jogador jogadorByJogador14) {
+        this.jogadorByJogador14 = jogadorByJogador14;
+    }
+    public Jogador getJogadorByJogador15() {
+        return this.jogadorByJogador15;
+    }
+    
+    public void setJogadorByJogador15(Jogador jogadorByJogador15) {
+        this.jogadorByJogador15 = jogadorByJogador15;
+    }
+    public Jogador getJogadorByJogador16() {
+        return this.jogadorByJogador16;
+    }
+    
+    public void setJogadorByJogador16(Jogador jogadorByJogador16) {
+        this.jogadorByJogador16 = jogadorByJogador16;
+    }
+    public Jogador getJogadorByJogador17() {
+        return this.jogadorByJogador17;
+    }
+    
+    public void setJogadorByJogador17(Jogador jogadorByJogador17) {
+        this.jogadorByJogador17 = jogadorByJogador17;
+    }
+    public Jogador getJogadorByJogador23() {
+        return this.jogadorByJogador23;
+    }
+    
+    public void setJogadorByJogador23(Jogador jogadorByJogador23) {
+        this.jogadorByJogador23 = jogadorByJogador23;
+    }
+    public Jogador getJogadorByJogador10() {
+        return this.jogadorByJogador10;
+    }
+    
+    public void setJogadorByJogador10(Jogador jogadorByJogador10) {
+        this.jogadorByJogador10 = jogadorByJogador10;
+    }
+    public Jogador getJogadorByJogador9() {
+        return this.jogadorByJogador9;
+    }
+    
+    public void setJogadorByJogador9(Jogador jogadorByJogador9) {
+        this.jogadorByJogador9 = jogadorByJogador9;
+    }
+    public Jogador getJogadorByJogador11() {
+        return this.jogadorByJogador11;
+    }
+    
+    public void setJogadorByJogador11(Jogador jogadorByJogador11) {
+        this.jogadorByJogador11 = jogadorByJogador11;
+    }
+    public Jogador getJogadorByJogador21() {
+        return this.jogadorByJogador21;
+    }
+    
+    public void setJogadorByJogador21(Jogador jogadorByJogador21) {
+        this.jogadorByJogador21 = jogadorByJogador21;
+    }
+    public Jogador getJogadorByJogador8() {
+        return this.jogadorByJogador8;
+    }
+    
+    public void setJogadorByJogador8(Jogador jogadorByJogador8) {
+        this.jogadorByJogador8 = jogadorByJogador8;
+    }
+    public Jogador getJogadorByJogador12() {
+        return this.jogadorByJogador12;
+    }
+    
+    public void setJogadorByJogador12(Jogador jogadorByJogador12) {
+        this.jogadorByJogador12 = jogadorByJogador12;
+    }
+    public Jogador getJogadorByJogador22() {
+        return this.jogadorByJogador22;
+    }
+    
+    public void setJogadorByJogador22(Jogador jogadorByJogador22) {
+        this.jogadorByJogador22 = jogadorByJogador22;
+    }
+    public Jogador getJogadorByJogador13() {
+        return this.jogadorByJogador13;
+    }
+    
+    public void setJogadorByJogador13(Jogador jogadorByJogador13) {
+        this.jogadorByJogador13 = jogadorByJogador13;
+    }
+    public Jogador getJogadorByJogador7() {
+        return this.jogadorByJogador7;
+    }
+    
+    public void setJogadorByJogador7(Jogador jogadorByJogador7) {
+        this.jogadorByJogador7 = jogadorByJogador7;
+    }
+    public String getGrupo() {
+        return this.grupo;
+    }
+    
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+    public Date getAno() {
+        return this.ano;
+    }
+    
+    public void setAno(Date ano) {
+        this.ano = ano;
+    }
+    public int getPosicao() {
+        return this.posicao;
+    }
+    
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
+    }
+    public Set getJogosForSelecaoB() {
+        return this.jogosForSelecaoB;
+    }
+    
+    public void setJogosForSelecaoB(Set jogosForSelecaoB) {
+        this.jogosForSelecaoB = jogosForSelecaoB;
+    }
+    public Set getGols() {
+        return this.gols;
+    }
+    
+    public void setGols(Set gols) {
+        this.gols = gols;
+    }
+    public Set getJogosForSelecaoA() {
+        return this.jogosForSelecaoA;
+    }
+    
+    public void setJogosForSelecaoA(Set jogosForSelecaoA) {
+        this.jogosForSelecaoA = jogosForSelecaoA;
+    }
+    public Set getCopas() {
+        return this.copas;
+    }
+    
+    public void setCopas(Set copas) {
+        this.copas = copas;
+    }
+    public Set getSubstituicaos() {
+        return this.substituicaos;
+    }
+    
+    public void setSubstituicaos(Set substituicaos) {
+        this.substituicaos = substituicaos;
+    }
+    public Set getEscalacaos() {
+        return this.escalacaos;
+    }
+    
+    public void setEscalacaos(Set escalacaos) {
+        this.escalacaos = escalacaos;
+    }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.pais);
-        hash = 97 * hash + Objects.hashCode(this.ano);
+        hash = 37 * hash + Objects.hashCode(this.pais);
+        hash = 37 * hash + Objects.hashCode(this.copa);
         return hash;
     }
 
@@ -214,570 +394,13 @@ public class Selecao  implements java.io.Serializable {
         if (!Objects.equals(this.pais, other.pais)) {
             return false;
         }
-        if (!Objects.equals(this.ano, other.ano)) {
+        if (!Objects.equals(this.copa, other.copa)) {
             return false;
         }
         return true;
     }
 
-   
-    /**
-     *
-     * @return
-     */
-    public Integer getId() {
-        return this.id;
-    }
-    
-    /**
-     *
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    /**
-     *
-     * @return
-     */
-    public Copa getCopa() {
-        return this.copa;
-    }
-    
-    /**
-     *
-     * @param copa
-     */
-    public void setCopa(Copa copa) {
-        this.copa = copa;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Pais getPais() {
-        return this.pais;
-    }
-    
-    /**
-     *
-     * @param pais
-     */
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Tecnico getTecnico() {
-        return this.tecnico;
-    }
-    
-    /**
-     *
-     * @param tecnico
-     */
-    public void setTecnico(Tecnico tecnico) {
-        this.tecnico = tecnico;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getGrupo() {
-        return this.grupo;
-    }
-    
-    /**
-     *
-     * @param grupo
-     */
-    public void setGrupo(String grupo) {
-        this.grupo = grupo;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Date getAno() {
-        return this.ano;
-    }
-    
-    /**
-     *
-     * @param ano
-     */
-    public void setAno(Date ano) {
-        this.ano = ano;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getPosicao() {
-        return this.posicao;
-    }
-    
-    /**
-     *
-     * @param posicao
-     */
-    public void setPosicao(int posicao) {
-        this.posicao = posicao;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador1() {
-        return this.jogador1;
-    }
-    
-    /**
-     *
-     * @param jogador1
-     */
-    public void setJogador1(int jogador1) {
-        this.jogador1 = jogador1;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador2() {
-        return this.jogador2;
-    }
-    
-    /**
-     *
-     * @param jogador2
-     */
-    public void setJogador2(int jogador2) {
-        this.jogador2 = jogador2;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador3() {
-        return this.jogador3;
-    }
-    
-    /**
-     *
-     * @param jogador3
-     */
-    public void setJogador3(int jogador3) {
-        this.jogador3 = jogador3;
-    }
-    
-    /**
-     *
-     * @return
-     */
-    public int getJogador4() {
-        return this.jogador4;
-    }
-    
-    /**
-     *
-     * @param jogador4
-     */
-    public void setJogador4(int jogador4) {
-        this.jogador3 = jogador4;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador5() {
-        return this.jogador5;
-    }
-    
-    /**
-     *
-     * @param jogador5
-     */
-    public void setJogador5(int jogador5) {
-        this.jogador5 = jogador5;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador6() {
-        return this.jogador6;
-    }
-    
-    /**
-     *
-     * @param jogador6
-     */
-    public void setJogador6(int jogador6) {
-        this.jogador6 = jogador6;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador7() {
-        return this.jogador7;
-    }
-    
-    /**
-     *
-     * @param jogador7
-     */
-    public void setJogador7(int jogador7) {
-        this.jogador7 = jogador7;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador8() {
-        return this.jogador8;
-    }
-    
-    /**
-     *
-     * @param jogador8
-     */
-    public void setJogador8(int jogador8) {
-        this.jogador8 = jogador8;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador9() {
-        return this.jogador9;
-    }
-    
-    /**
-     *
-     * @param jogador9
-     */
-    public void setJogador9(int jogador9) {
-        this.jogador9 = jogador9;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador10() {
-        return this.jogador10;
-    }
-    
-    /**
-     *
-     * @param jogador10
-     */
-    public void setJogador10(int jogador10) {
-        this.jogador10 = jogador10;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador11() {
-        return this.jogador11;
-    }
-    
-    /**
-     *
-     * @param jogador11
-     */
-    public void setJogador11(int jogador11) {
-        this.jogador11 = jogador11;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador12() {
-        return this.jogador12;
-    }
-    
-    /**
-     *
-     * @param jogador12
-     */
-    public void setJogador12(int jogador12) {
-        this.jogador12 = jogador12;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador13() {
-        return this.jogador13;
-    }
-    
-    /**
-     *
-     * @param jogador13
-     */
-    public void setJogador13(int jogador13) {
-        this.jogador13 = jogador13;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador14() {
-        return this.jogador14;
-    }
-    
-    /**
-     *
-     * @param jogador14
-     */
-    public void setJogador14(int jogador14) {
-        this.jogador14 = jogador14;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador15() {
-        return this.jogador15;
-    }
-    
-    /**
-     *
-     * @param jogador15
-     */
-    public void setJogador15(int jogador15) {
-        this.jogador15 = jogador15;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador16() {
-        return this.jogador16;
-    }
-    
-    /**
-     *
-     * @param jogador16
-     */
-    public void setJogador16(int jogador16) {
-        this.jogador16 = jogador16;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador17() {
-        return this.jogador17;
-    }
-    
-    /**
-     *
-     * @param jogador17
-     */
-    public void setJogador17(int jogador17) {
-        this.jogador17 = jogador17;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador18() {
-        return this.jogador18;
-    }
-    
-    /**
-     *
-     * @param jogador18
-     */
-    public void setJogador18(int jogador18) {
-        this.jogador18 = jogador18;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador19() {
-        return this.jogador19;
-    }
-    
-    /**
-     *
-     * @param jogador19
-     */
-    public void setJogador19(int jogador19) {
-        this.jogador19 = jogador19;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador20() {
-        return this.jogador20;
-    }
-    
-    /**
-     *
-     * @param jogador20
-     */
-    public void setJogador20(int jogador20) {
-        this.jogador20 = jogador20;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador21() {
-        return this.jogador21;
-    }
-    
-    /**
-     *
-     * @param jogador21
-     */
-    public void setJogador21(int jogador21) {
-        this.jogador21 = jogador21;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador22() {
-        return this.jogador22;
-    }
-    
-    /**
-     *
-     * @param jogador22
-     */
-    public void setJogador22(int jogador22) {
-        this.jogador22 = jogador22;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getJogador23() {
-        return this.jogador23;
-    }
-    
-    /**
-     *
-     * @param jogador23
-     */
-    public void setJogador23(int jogador23) {
-        this.jogador23 = jogador23;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Set getJogosForSelecaoB() {
-        return this.jogosForSelecaoB;
-    }
-    
-    public void setJogosForSelecaoB(Set jogosForSelecaoB) {
-        this.jogosForSelecaoB = jogosForSelecaoB;
-    }
-    public Set getGols() {
-        return this.gols;
-    }
-    
-    /**
-     *
-     * @param gols
-     */
-    public void setGols(Set gols) {
-        this.gols = gols;
-    }
-    public Set getJogosForSelecaoA() {
-        return this.jogosForSelecaoA;
-    }
-    
-    public void setJogosForSelecaoA(Set jogosForSelecaoA) {
-        this.jogosForSelecaoA = jogosForSelecaoA;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Set getCopas() {
-        return this.copas;
-    }
-    
-    /**
-     *
-     * @param copas
-     */
-    public void setCopas(Set copas) {
-        this.copas = copas;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Set getEscalacaos() {
-        return this.escalacaos;
-    }
-    
-    /**
-     *
-     * @param escalacaos
-     */
-    public void setEscalacaos(Set escalacaos) {
-        this.escalacaos = escalacaos;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Set getSubstituicaos() {
-        return this.substituicaos;
-    }
-    
-    /**
-     *
-     * @param substituicaos
-     */
-    public void setSubstituicaos(Set substituicaos) {
-        this.substituicaos = substituicaos;
-    }
 
 
 }

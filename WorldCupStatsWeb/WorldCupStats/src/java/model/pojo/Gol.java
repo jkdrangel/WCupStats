@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -18,21 +18,9 @@ public class Gol  implements java.io.Serializable {
      private Date tempo;
      private boolean foiContra;
 
-    /**
-     *
-     */
     public Gol() {
     }
 
-    /**
-     *
-     * @param id
-     * @param jogador
-     * @param selecao
-     * @param jogo
-     * @param tempo
-     * @param foiContra
-     */
     public Gol(int id, Jogador jogador, Selecao selecao, Jogo jogo, Date tempo, boolean foiContra) {
        this.id = id;
        this.jogador = jogador;
@@ -42,16 +30,56 @@ public class Gol  implements java.io.Serializable {
        this.foiContra = foiContra;
     }
    
-    /**
-     *
-     * @return
-     */
+    public int getId() {
+        return this.id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    public Jogador getJogador() {
+        return this.jogador;
+    }
+    
+    public void setJogador(Jogador jogador) {
+        this.jogador = jogador;
+    }
+    public Selecao getSelecao() {
+        return this.selecao;
+    }
+    
+    public void setSelecao(Selecao selecao) {
+        this.selecao = selecao;
+    }
+    public Jogo getJogo() {
+        return this.jogo;
+    }
+    
+    public void setJogo(Jogo jogo) {
+        this.jogo = jogo;
+    }
+    public Date getTempo() {
+        return this.tempo;
+    }
+    
+    public void setTempo(Date tempo) {
+        this.tempo = tempo;
+    }
+    public boolean isFoiContra() {
+        return this.foiContra;
+    }
+    
+    public void setFoiContra(boolean foiContra) {
+        this.foiContra = foiContra;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.jogo);
-        hash = 59 * hash + Objects.hashCode(this.tempo);
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.jogador);
+        hash = 83 * hash + Objects.hashCode(this.selecao);
+        hash = 83 * hash + Objects.hashCode(this.jogo);
+        hash = 83 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 
@@ -64,99 +92,19 @@ public class Gol  implements java.io.Serializable {
             return false;
         }
         final Gol other = (Gol) obj;
+        if (!Objects.equals(this.jogador, other.jogador)) {
+            return false;
+        }
+        if (!Objects.equals(this.selecao, other.selecao)) {
+            return false;
+        }
+        if (!Objects.equals(this.jogo, other.jogo)) {
+            return false;
+        }
+        if (!Objects.equals(this.tempo, other.tempo)) {
+            return false;
+        }
         return true;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-    
-    /**
-     *
-     * @param id
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Jogador getJogador() {
-        return this.jogador;
-    }
-    
-    /**
-     *
-     * @param jogador
-     */
-    public void setJogador(Jogador jogador) {
-        this.jogador = jogador;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Selecao getSelecao() {
-        return this.selecao;
-    }
-    
-    /**
-     *
-     * @param selecao
-     */
-    public void setSelecao(Selecao selecao) {
-        this.selecao = selecao;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Jogo getJogo() {
-        return this.jogo;
-    }
-    
-    /**
-     *
-     * @param jogo
-     */
-    public void setJogo(Jogo jogo) {
-        this.jogo = jogo;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Date getTempo() {
-        return this.tempo;
-    }
-    
-    /**
-     *
-     * @param tempo
-     */
-    public void setTempo(Date tempo) {
-        this.tempo = tempo;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean isFoiContra() {
-        return this.foiContra;
-    }
-    
-    /**
-     *
-     * @param foiContra
-     */
-    public void setFoiContra(boolean foiContra) {
-        this.foiContra = foiContra;
     }
 
 

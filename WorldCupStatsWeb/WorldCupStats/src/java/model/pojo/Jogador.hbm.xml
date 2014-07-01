@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/06/2014 12:17:06 by Hibernate Tools 3.6.0 -->
+<!-- Generated 01/07/2014 08:14:25 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Jogador" table="Jogador" catalog="wcupstats">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="dataNascimento" type="date">
             <column name="data_nascimento" length="10" not-null="true" />
@@ -20,15 +20,81 @@
         <property name="posicao" type="string">
             <column name="posicao" length="13" not-null="true" />
         </property>
-        <set name="escalacaosForJogador3" table="Escalacao" inverse="true" lazy="true" fetch="select">
+        <set name="selecaosForJogador17" table="Selecao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Jogador3" not-null="true" />
+                <column name="Jogador17" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="substituicaosForJogadorSai" table="Substituicao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JogadorSai" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Substituicao" />
+        </set>
+        <set name="selecaosForJogador8" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador8" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador10" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador10" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador9" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador9" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador12" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador12" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador11" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador11" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador14" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador14" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="escalacaosForJogador2" table="Escalacao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador2" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
-        <set name="escalacaosForJogador6" table="Escalacao" inverse="true" lazy="true" fetch="select">
+        <set name="selecaosForJogador13" table="Selecao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Jogador6" not-null="true" />
+                <column name="Jogador13" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador16" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador16" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador15" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador15" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="escalacaosForJogador3" table="Escalacao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador3" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
@@ -38,15 +104,21 @@
             </key>
             <one-to-many class="model.pojo.Gol" />
         </set>
-        <set name="escalacaosForJogador7" table="Escalacao" inverse="true" lazy="true" fetch="select">
+        <set name="escalacaosForJogador6" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Jogador7" not-null="true" />
+                <column name="Jogador6" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
         <set name="escalacaosForJogador11" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Jogador11" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Escalacao" />
+        </set>
+        <set name="escalacaosForJogador7" table="Escalacao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador7" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
@@ -62,17 +134,59 @@
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
-        <set name="substituicaosForJogadorSai" table="Substituicao" inverse="true" lazy="true" fetch="select">
+        <set name="selecaosForJogador7" table="Selecao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="JogadorSai" not-null="true" />
+                <column name="Jogador7" not-null="true" />
             </key>
-            <one-to-many class="model.pojo.Substituicao" />
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador6" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador6" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador3" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador3" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador19" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador19" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador5" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador5" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
         </set>
         <set name="escalacaosForJogador8" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Jogador8" not-null="true" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
+        </set>
+        <set name="selecaosForJogador18" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador18" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador1" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador1" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador2" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador2" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
         </set>
         <set name="substituicaosForJogadorEntra" table="Substituicao" inverse="true" lazy="true" fetch="select">
             <key>
@@ -92,11 +206,35 @@
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
-        <set name="escalacaosForJogador2" table="Escalacao" inverse="true" lazy="true" fetch="select">
+        <set name="selecaosForJogador4" table="Selecao" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Jogador2" not-null="true" />
+                <column name="Jogador4" not-null="true" />
             </key>
-            <one-to-many class="model.pojo.Escalacao" />
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador23" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador23" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador22" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador22" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador21" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador21" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
+        </set>
+        <set name="selecaosForJogador20" table="Selecao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogador20" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Selecao" />
         </set>
         <set name="escalacaosForJogador10" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>

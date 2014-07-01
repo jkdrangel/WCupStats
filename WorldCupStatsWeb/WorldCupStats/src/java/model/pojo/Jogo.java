@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 30/06/2014 12:17:05 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 08:14:24 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -24,24 +24,9 @@ public class Jogo  implements java.io.Serializable {
      private Set escalacaos = new HashSet(0);
      private Set gols = new HashSet(0);
 
-    /**
-     *
-     */
     public Jogo() {
     }
 
-    /**
-     *
-     * @param id
-     * @param copa
-     * @param selecaoBySelecaoB
-     * @param selecaoBySelecaoA
-     * @param escalacaoByEscalacaoB
-     * @param escalacaoByEscalacaoA
-     * @param data
-     * @param local
-     * @param fase
-     */
 	
     public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase) {
         this.id = id;
@@ -52,21 +37,6 @@ public class Jogo  implements java.io.Serializable {
         this.local = local;
         this.fase = fase;
     }
-
-    /**
-     *
-     * @param id
-     * @param copa
-     * @param selecaoBySelecaoB
-     * @param selecaoBySelecaoA
-     * @param escalacaoByEscalacaoB
-     * @param escalacaoByEscalacaoA
-     * @param data
-     * @param local
-     * @param fase
-     * @param substituicaos
-     * @param gols
-     */
     public Jogo(int id, Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase, Set substituicaos, Set escalacaos, Set gols) {
        this.id = id;
        this.copa = copa;
@@ -79,13 +49,85 @@ public class Jogo  implements java.io.Serializable {
        this.escalacaos = escalacaos;
        this.gols = gols;
     }
+   
+    public int getId() {
+        return this.id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    public Copa getCopa() {
+        return this.copa;
+    }
+    
+    public void setCopa(Copa copa) {
+        this.copa = copa;
+    }
+    public Selecao getSelecaoBySelecaoB() {
+        return this.selecaoBySelecaoB;
+    }
+    
+    public void setSelecaoBySelecaoB(Selecao selecaoBySelecaoB) {
+        this.selecaoBySelecaoB = selecaoBySelecaoB;
+    }
+    public Selecao getSelecaoBySelecaoA() {
+        return this.selecaoBySelecaoA;
+    }
+    
+    public void setSelecaoBySelecaoA(Selecao selecaoBySelecaoA) {
+        this.selecaoBySelecaoA = selecaoBySelecaoA;
+    }
+    public Date getData() {
+        return this.data;
+    }
+    
+    public void setData(Date data) {
+        this.data = data;
+    }
+    public String getLocal() {
+        return this.local;
+    }
+    
+    public void setLocal(String local) {
+        this.local = local;
+    }
+    public String getFase() {
+        return this.fase;
+    }
+    
+    public void setFase(String fase) {
+        this.fase = fase;
+    }
+    public Set getSubstituicaos() {
+        return this.substituicaos;
+    }
+    
+    public void setSubstituicaos(Set substituicaos) {
+        this.substituicaos = substituicaos;
+    }
+    public Set getEscalacaos() {
+        return this.escalacaos;
+    }
+    
+    public void setEscalacaos(Set escalacaos) {
+        this.escalacaos = escalacaos;
+    }
+    public Set getGols() {
+        return this.gols;
+    }
+    
+    public void setGols(Set gols) {
+        this.gols = gols;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoB);
-        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoA);
-        hash = 89 * hash + Objects.hashCode(this.data);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.copa);
+        hash = 37 * hash + Objects.hashCode(this.selecaoBySelecaoB);
+        hash = 37 * hash + Objects.hashCode(this.selecaoBySelecaoA);
+        hash = 37 * hash + Objects.hashCode(this.data);
         return hash;
     }
 
@@ -98,6 +140,9 @@ public class Jogo  implements java.io.Serializable {
             return false;
         }
         final Jogo other = (Jogo) obj;
+        if (!Objects.equals(this.copa, other.copa)) {
+            return false;
+        }
         if (!Objects.equals(this.selecaoBySelecaoB, other.selecaoBySelecaoB)) {
             return false;
         }
@@ -108,160 +153,6 @@ public class Jogo  implements java.io.Serializable {
             return false;
         }
         return true;
-    }
-
-
-   
-    /**
-     *
-     * @return
-     */
-    public int getId() {
-        return this.id;
-    }
-    
-    /**
-     *
-     * @param id
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Copa getCopa() {
-        return this.copa;
-    }
-    
-    /**
-     *
-     * @param copa
-     */
-    public void setCopa(Copa copa) {
-        this.copa = copa;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Selecao getSelecaoBySelecaoB() {
-        return this.selecaoBySelecaoB;
-    }
-    
-    /**
-     *
-     * @param selecaoBySelecaoB
-     */
-    public void setSelecaoBySelecaoB(Selecao selecaoBySelecaoB) {
-        this.selecaoBySelecaoB = selecaoBySelecaoB;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Selecao getSelecaoBySelecaoA() {
-        return this.selecaoBySelecaoA;
-    }
-    
-    /**
-     *
-     * @param selecaoBySelecaoA
-     */
-    public void setSelecaoBySelecaoA(Selecao selecaoBySelecaoA) {
-        this.selecaoBySelecaoA = selecaoBySelecaoA;
-    }
-
-
-    /**
-     *
-     * @return
-     */
-    public Date getData() {
-        return this.data;
-    }
-    
-    /**
-     *
-     * @param data
-     */
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getLocal() {
-        return this.local;
-    }
-        /**
-     *
-     * @param local
-     */
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getFase() {
-        return this.fase;
-    }
-    
-    /**
-     *
-     * @param fase
-     */
-    public void setFase(String fase) {
-        this.fase = fase;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Set getSubstituicaos() {
-        return this.substituicaos;
-    }
-    
-    /**
-     *
-     * @param substituicaos
-     */
-    public void setSubstituicaos(Set substituicaos) {
-        this.substituicaos = substituicaos;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Set getEscalacaos() {
-        return this.escalacaos;
-    }
-    
-    public void setEscalacaos(Set escalacaos) {
-        this.escalacaos = escalacaos;
-    }
-    public Set getGols() {
-        return this.gols;
-    }
-    
-    /**
-     *
-     * @param gols
-     */
-    public void setGols(Set gols) {
-        this.gols = gols;
     }
 
 

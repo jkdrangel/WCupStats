@@ -1,21 +1,90 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/06/2014 12:17:06 by Hibernate Tools 3.6.0 -->
+<!-- Generated 01/07/2014 08:14:25 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Selecao" table="Selecao" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="copa" class="model.pojo.Copa" fetch="select">
-            <column name="ID_COPA" />
+        <many-to-one name="jogadorByJogador20" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador20" not-null="true" />
         </many-to-one>
         <many-to-one name="pais" class="model.pojo.Pais" fetch="select">
             <column name="ID_PAIS" />
         </many-to-one>
         <many-to-one name="tecnico" class="model.pojo.Tecnico" fetch="select">
             <column name="Tecnico" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador6" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador5" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="copa" class="model.pojo.Copa" fetch="select">
+            <column name="ID_COPA" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador4" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador4" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador3" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador2" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador18" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador18" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador1" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador1" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador19" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador19" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador14" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador14" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador15" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador16" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador16" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador17" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador17" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador23" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador23" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador10" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador9" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador9" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador11" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador11" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador21" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador21" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador8" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador12" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador12" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador22" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador22" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador13" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador13" not-null="true" />
+        </many-to-one>
+        <many-to-one name="jogadorByJogador7" class="model.pojo.Jogador" fetch="select">
+            <column name="Jogador7" not-null="true" />
         </many-to-one>
         <property name="grupo" type="string">
             <column name="grupo" length="20" not-null="true" />
@@ -25,72 +94,6 @@
         </property>
         <property name="posicao" type="int">
             <column name="posicao" not-null="true" />
-        </property>
-        <property name="jogador1" type="int">
-            <column name="Jogador1" not-null="true" />
-        </property>
-        <property name="jogador2" type="int">
-            <column name="Jogador2" not-null="true" />
-        </property>
-        <property name="jogador3" type="int">
-            <column name="Jogador3" not-null="true" />
-        </property>
-        <property name="jogador5" type="int">
-            <column name="Jogador5" not-null="true" />
-        </property>
-        <property name="jogador6" type="int">
-            <column name="Jogador6" not-null="true" />
-        </property>
-        <property name="jogador7" type="int">
-            <column name="Jogador7" not-null="true" />
-        </property>
-        <property name="jogador8" type="int">
-            <column name="Jogador8" not-null="true" />
-        </property>
-        <property name="jogador9" type="int">
-            <column name="Jogador9" not-null="true" />
-        </property>
-        <property name="jogador10" type="int">
-            <column name="Jogador10" not-null="true" />
-        </property>
-        <property name="jogador11" type="int">
-            <column name="Jogador11" not-null="true" />
-        </property>
-        <property name="jogador12" type="int">
-            <column name="Jogador12" not-null="true" />
-        </property>
-        <property name="jogador13" type="int">
-            <column name="Jogador13" not-null="true" />
-        </property>
-        <property name="jogador14" type="int">
-            <column name="Jogador14" not-null="true" />
-        </property>
-        <property name="jogador15" type="int">
-            <column name="Jogador15" not-null="true" />
-        </property>
-        <property name="jogador16" type="int">
-            <column name="Jogador16" not-null="true" />
-        </property>
-        <property name="jogador17" type="int">
-            <column name="Jogador17" not-null="true" />
-        </property>
-        <property name="jogador18" type="int">
-            <column name="Jogador18" not-null="true" />
-        </property>
-        <property name="jogador19" type="int">
-            <column name="Jogador19" not-null="true" />
-        </property>
-        <property name="jogador20" type="int">
-            <column name="Jogador20" not-null="true" />
-        </property>
-        <property name="jogador21" type="int">
-            <column name="Jogador21" not-null="true" />
-        </property>
-        <property name="jogador22" type="int">
-            <column name="Jogador22" not-null="true" />
-        </property>
-        <property name="jogador23" type="int">
-            <column name="Jogador23" not-null="true" />
         </property>
         <set name="jogosForSelecaoB" table="Jogo" inverse="true" lazy="true" fetch="select">
             <key>
