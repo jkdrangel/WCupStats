@@ -7,22 +7,49 @@
 package model.CRUD;
 
 import java.util.Date;
+import model.pojo.Gol;
+import model.pojo.Jogador;
+import model.pojo.Jogo;
+import model.pojo.Selecao;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author lsantana
  */
 public class GolDAOTest {
-    
-    public GolDAOTest() {
-    }
+    GolDAO golDAO;
+    Gol gol1, gol2, gol3, gol4, gol5;
+    Jogo jogo;
+    Jogador jogador1, jogador2, jogador3;
+    Selecao selecao1, selecao2;
     
     @Before
     public void setUp() {
+        golDAO = new GolDAO();
+        
+        jogador1 = new Jogador();
+        jogador2 = new Jogador();
+        jogador3 = new Jogador();
+        
+        selecao1 = new Selecao();
+        selecao1.setJogador1(jogador1.getId());
+        selecao1.setJogador2(jogador2.getId());
+        
+        selecao2 = new Selecao();
+        selecao2.setJogador1(jogador3.getId());
+        
+        jogo = new Jogo();
+        jogo.setSelecaoBySelecaoA(selecao1);
+        jogo.setSelecaoBySelecaoB(selecao2);
+        
+        gol1 = new Gol();
+        gol1.setJogador(jogador1);
+        gol1.setJogo(jogo);
+        gol1.setFoiContra(false);
     }
     
     @After
