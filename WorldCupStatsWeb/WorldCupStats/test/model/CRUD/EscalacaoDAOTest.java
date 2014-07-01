@@ -7,6 +7,7 @@
 package model.CRUD;
 
 import java.util.List;
+import model.pojo.Escalacao;
 import model.pojo.Jogador;
 import model.pojo.Jogo;
 import model.pojo.Selecao;
@@ -21,6 +22,7 @@ import org.junit.Test;
  */
 public class EscalacaoDAOTest {
     EscalacaoDAO escDAO;
+    Escalacao escA, escB;
     Selecao selecaoA, selecaoB;
     Jogo jogo;
     Jogador jogA1, jogA2, jogA3, jogA4, jogA5, jogA6, jogA7,
@@ -86,6 +88,36 @@ public class EscalacaoDAOTest {
         jogo = new Jogo();
         jogo.setSelecaoBySelecaoA(selecaoA);
         jogo.setSelecaoBySelecaoB(selecaoB);
+        
+        escA = new Escalacao();
+        escA.setJogadorByJogador1(jogA1);
+        escA.setJogadorByJogador2(jogA2);
+        escA.setJogadorByJogador3(jogA3);
+        escA.setJogadorByJogador4(jogA4);
+        escA.setJogadorByJogador5(jogA5);
+        escA.setJogadorByJogador6(jogA6);
+        escA.setJogadorByJogador7(jogA7);
+        escA.setJogadorByJogador8(jogA8);
+        escA.setJogadorByJogador9(jogA9);
+        escA.setJogadorByJogador10(jogA10);
+        escA.setJogadorByJogador11(jogA11);
+        escA.setSelecao(selecaoA);
+        escA.setJogo(jogo);
+        
+        escB = new Escalacao();
+        escB.setJogadorByJogador1(jogB1);
+        escB.setJogadorByJogador2(jogB2);
+        escB.setJogadorByJogador3(jogB3);
+        escB.setJogadorByJogador4(jogB4);
+        escB.setJogadorByJogador5(jogB5);
+        escB.setJogadorByJogador6(jogB6);
+        escB.setJogadorByJogador7(jogB7);
+        escB.setJogadorByJogador8(jogB8);
+        escB.setJogadorByJogador9(jogB9);
+        escB.setJogadorByJogador10(jogA10);
+        escB.setJogadorByJogador11(jogA11);
+        escB.setSelecao(selecaoB);
+        escB.setJogo(jogo);
     }
     
     @After
@@ -93,4 +125,10 @@ public class EscalacaoDAOTest {
         escDAO.removerTodos();
     }
 
+    @Test
+    public void testAdicionar(){
+        escDAO.adicionar(escA);
+        List<Escalacao> escs = escDAO.listar();
+        assertEquals(escA, escs.get(0));
+    }
 }
