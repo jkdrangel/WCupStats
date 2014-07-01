@@ -83,15 +83,15 @@ public class JogadorDAOTest {
     public void testRemover() {
         jogadorDao.adicionar(neimar);
         jogadorDao.remover(neimar);
-        List<Jogador> paises = jogadorDao.listar();
-        assertTrue(paises.isEmpty());
+        List<Jogador> jogadores = jogadorDao.listar();
+        assertTrue(jogadores.isEmpty());
     }
 
     @Test
     public void testRemoverTodos() {
         jogadorDao.removerTodos();
-        List<Jogador> paises = jogadorDao.listar();
-        assertTrue(paises.isEmpty());
+        List<Jogador> jogadores = jogadorDao.listar();
+        assertTrue(jogadores.isEmpty());
     }
 
     @Test
@@ -100,11 +100,11 @@ public class JogadorDAOTest {
         jogadorDao.adicionar(tafarel);
         jogadorDao.adicionar(birubiru);
 
-        List<Jogador> paises = jogadorDao.listar();
-        assertFalse(paises.isEmpty());
-        assertEquals(neimar, paises.get(0));
-        assertEquals(tafarel, paises.get(1));
-        assertEquals(birubiru, paises.get(2));
+        List<Jogador> jogadores = jogadorDao.listar();
+        assertFalse(jogadores.isEmpty());
+        assertEquals(neimar, jogadores.get(0));
+        assertEquals(tafarel, jogadores.get(1));
+        assertEquals(birubiru, jogadores.get(2));
     }
 
     @Test
