@@ -82,10 +82,10 @@ public class Jogo  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.selecaoBySelecaoB);
-        hash = 29 * hash + Objects.hashCode(this.selecaoBySelecaoA);
-        hash = 29 * hash + Objects.hashCode(this.data);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoB);
+        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoA);
+        hash = 89 * hash + Objects.hashCode(this.data);
         return hash;
     }
 
@@ -98,8 +98,19 @@ public class Jogo  implements java.io.Serializable {
             return false;
         }
         final Jogo other = (Jogo) obj;
+        if (!Objects.equals(this.selecaoBySelecaoB, other.selecaoBySelecaoB)) {
+            return false;
+        }
+        if (!Objects.equals(this.selecaoBySelecaoA, other.selecaoBySelecaoA)) {
+            return false;
+        }
+        if (!Objects.equals(this.data, other.data)) {
+            return false;
+        }
         return true;
     }
+
+
    
     /**
      *

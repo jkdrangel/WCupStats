@@ -196,9 +196,9 @@ public class Selecao  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.pais);
-        hash = 53 * hash + Objects.hashCode(this.ano);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.pais);
+        hash = 97 * hash + Objects.hashCode(this.ano);
         return hash;
     }
 
@@ -211,8 +211,15 @@ public class Selecao  implements java.io.Serializable {
             return false;
         }
         final Selecao other = (Selecao) obj;
+        if (!Objects.equals(this.pais, other.pais)) {
+            return false;
+        }
+        if (!Objects.equals(this.ano, other.ano)) {
+            return false;
+        }
         return true;
     }
+
    
     /**
      *

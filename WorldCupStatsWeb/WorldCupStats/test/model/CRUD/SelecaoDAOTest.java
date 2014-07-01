@@ -11,9 +11,7 @@ import java.util.List;
 import model.pojo.Pais;
 import model.pojo.Selecao;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -23,15 +21,30 @@ import static org.junit.Assert.*;
  */
 public class SelecaoDAOTest {
    
-    private SelecaoDAO sDao;
-    private Selecao selecao;
+    private SelecaoDAO dao;
+    private Selecao selecaoA;
+    private Selecao selecaoB;
+    private Pais paisA;
+    private Pais paisB;
     
     @Before
     public void setUp() {
+        dao = new SelecaoDAO();
+        
+        selecaoA = new Selecao();
+        paisA = new Pais("Pais", "Mundo");
+        selecaoA.setPais(paisA);
+        selecaoA.setAno(new Date(100, 1, 1));
+        
+        selecaoB = new Selecao();
+        paisB = new Pais("Country", "World");
+        selecaoB.setPais(paisB);
+        selecaoB.setAno(new Date(50, 1, 1));
     }
     
     @After
     public void tearDown() {
+        dao.removerTodos();
     }
 
     /**
@@ -40,7 +53,12 @@ public class SelecaoDAOTest {
     @Test
     public void testAdicionar() {
         
+        dao.adicionar(selecaoA);
+        dao.adicionar(selecaoB);
         
+        List<Selecao> selecoes = dao.listar();
+        assertEquals(selecaoA, selecoes.get(0));
+        assertEquals(selecaoB, selecoes.get(1));
     }
 
     /**
@@ -48,7 +66,12 @@ public class SelecaoDAOTest {
      */
     @Test
     public void testAtualizar() {
-        
+       
+        dao.adicionar(selecaoA);
+        selecaoA.setPais(paisB);
+        dao.atualizar(selecaoA);
+        List<Selecao> selecoes = dao.listar();
+        assertEquals(selecaoA, selecoes.get(0));
     }
 
     /**
@@ -57,6 +80,12 @@ public class SelecaoDAOTest {
     @Test
     public void testRemover() {
         
+        dao.adicionar(selecaoA);
+        dao.adicionar(selecaoB);
+        
+        dao.remover(selecaoA);
+        List<Selecao> selecoes = dao.listar();
+        assertEquals(selecaoB, selecoes.get(0));
     }
 
     /**
@@ -65,6 +94,15 @@ public class SelecaoDAOTest {
     @Test
     public void testRemoverTodos() {
         
+        dao.adicionar(selecaoA);
+        dao.adicionar(selecaoB);
+        
+        dao.remover(selecaoA);
+        dao.remover(selecaoB);
+        
+        dao.removerTodos();
+        List<Selecao> selecoes = dao.listar();
+        assertTrue(selecoes.isEmpty());
     }
 
     /**
@@ -72,7 +110,18 @@ public class SelecaoDAOTest {
      */
     @Test
     public void testListar() {
-
+        
+        List<Selecao> selecoes = dao.listar();
+        assertTrue(selecoes.isEmpty());
+        
+        dao.adicionar(selecaoA);
+        dao.adicionar(selecaoB);
+        
+        selecoes = dao.listar();
+        assertFalse(selecoes.isEmpty());
+        
+        assertEquals(selecaoA, selecoes.get(0));
+        assertEquals(selecaoB, selecoes.get(1));
     }
 
     /**
@@ -81,6 +130,14 @@ public class SelecaoDAOTest {
     @Test
     public void testBuscar() {
         
+        dao.adicionar(selecaoA);
+        dao.adicionar(selecaoB);
+        
+        Selecao selecao = dao.buscar(paisA, new Date(100, 1, 1));
+        assertEquals(selecaoA, selecao);
+        
+        selecao = dao.buscar(paisB, new Date(50, 1, 1));
+        assertEquals(selecaoB, selecao);
     }
     
 }
