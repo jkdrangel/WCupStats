@@ -11,6 +11,7 @@ import Util.HibernateUtil;
 import java.util.Date;
 import java.util.List;
 import model.pojo.Jogador;
+import model.pojo.Jogo;
 import model.pojo.Selecao;
 import model.pojo.Substituicao;
 import org.hibernate.HibernateException;
@@ -156,12 +157,13 @@ public class SubstituicaoDAO {
      * @param selecao
      * @return
      */
-    public Substituicao buscar(java.sql.Date tempo, Selecao selecao) {
+    public Substituicao buscar(java.sql.Date tempo, Selecao selecao, Jogo jogo) {
         Substituicao substituicao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Substituicao where selecao = " + selecao.getId()+ " and tempo = " + tempo);
+            Query consulta = sessao.createQuery("from Substituicao where selecao = " + selecao.getId()+ " and tempo = " + tempo+
+                                                " and jogo = "+jogo.getId());
 
             transacao = sessao.beginTransaction();
             substituicao = (Substituicao) consulta.uniqueResult();
