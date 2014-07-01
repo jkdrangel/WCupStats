@@ -123,21 +123,21 @@ public class GolDAOTest {
     
     @Test
     public void testListar(){
-        List<Gol> copas = golDAO.listar();
-        assertTrue(copas.isEmpty());
+        List<Gol> gols = golDAO.listar();
+        assertTrue(gols.isEmpty());
         
         golDAO.adicionar(gol1);
         golDAO.adicionar(gol2);
         golDAO.adicionar(gol3);
         golDAO.adicionar(gol4);
-        assertFalse(copas.isEmpty());
+        assertFalse(gols.isEmpty());
         
-        assertEquals(gol1, copas.get(0));
-        assertEquals(gol2, copas.get(1));
-        assertEquals(gol4, copas.get(2));
+        assertEquals(gol1, gols.get(0));
+        assertEquals(gol2, gols.get(1));
+        assertEquals(gol4, gols.get(2));
         
         golDAO.remover(gol2);
-        List<Gol> gols = golDAO.listar();
+        gols = golDAO.listar();
         assertEquals(3, gols.size());
     }
     
