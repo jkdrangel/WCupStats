@@ -52,6 +52,7 @@ public class GolDAOTest {
         gol1.setJogo(jogo);
         gol1.setSelecao(selecao1);
         gol1.setFoiContra(false);
+        gol1.setTempo(new java.sql.Date(114, 0, 0));
         
         gol2 = new Gol();
         gol2.setJogador(jogador1);
@@ -94,5 +95,60 @@ public class GolDAOTest {
         golDAO.atualizar(gol2);
         List<Gol> gols = golDAO.listar();
         assertEquals(gol2, gols.get(1));
+    }
+    
+    @Test
+    public void testRemover(){
+        golDAO.adicionar(gol1);
+        golDAO.adicionar(gol2);
+        golDAO.adicionar(gol3);
+        golDAO.adicionar(gol4);
+        
+        golDAO.remover(gol3);
+        List<Gol> gols = golDAO.listar();
+        assertEquals(3, gols.size());
+    }
+    
+    @Test
+    public void testRemoverTodos(){
+        golDAO.adicionar(gol1);
+        golDAO.adicionar(gol2);
+        golDAO.adicionar(gol3);
+        golDAO.adicionar(gol4);
+        
+        golDAO.removerTodos();
+        List<Gol> gols = golDAO.listar();
+        assertTrue(gols.isEmpty());
+    }
+    
+    @Test
+    public void testListar(){
+        List<Gol> copas = golDAO.listar();
+        assertTrue(copas.isEmpty());
+        
+        golDAO.adicionar(gol1);
+        golDAO.adicionar(gol2);
+        golDAO.adicionar(gol3);
+        golDAO.adicionar(gol4);
+        assertFalse(copas.isEmpty());
+        
+        assertEquals(gol1, copas.get(0));
+        assertEquals(gol2, copas.get(1));
+        assertEquals(gol4, copas.get(2));
+        
+        golDAO.remover(gol2);
+        List<Gol> gols = golDAO.listar();
+        assertEquals(3, gols.size());
+    }
+    
+    @Test
+    public void testBuscar(){
+        golDAO.adicionar(gol1);
+        golDAO.adicionar(gol2);
+        golDAO.adicionar(gol3);
+        golDAO.adicionar(gol4);
+        
+        Gol resultado = golDAO.buscar(jogo, new java.sql.Date(114, 0, 0));
+        assertEquals(gol1, resultado);
     }
 }
