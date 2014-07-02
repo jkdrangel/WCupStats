@@ -6,10 +6,14 @@
 package model.CRUD;
 
 import java.sql.Date;
+import java.util.List;
 import model.pojo.Jogo;
 import model.pojo.Selecao;
 import model.pojo.Substituicao;
 import org.junit.After;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
