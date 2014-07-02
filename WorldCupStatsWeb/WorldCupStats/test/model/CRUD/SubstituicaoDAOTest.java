@@ -44,11 +44,11 @@ public class SubstituicaoDAOTest {
 
         substituicao2 = new Substituicao();
         substituicao2.setSelecao(selecao);
-        substituicao1.setTempo(new Date(300000));
+        substituicao2.setTempo(new Date(300000));
 
         substituicao3 = new Substituicao();
         substituicao3.setSelecao(selecao);
-        substituicao1.setTempo(new Date(900000));
+        substituicao3.setTempo(new Date(900000));
 
         jogo = new Jogo();
     }
