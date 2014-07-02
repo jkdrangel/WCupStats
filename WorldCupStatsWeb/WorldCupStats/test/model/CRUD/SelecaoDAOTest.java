@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.util.List;
 import model.pojo.Pais;
 import model.pojo.Selecao;
+import model.pojo.Substituicao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -97,11 +98,12 @@ public class SelecaoDAOTest {
         dao.adicionar(selecaoA);
         dao.adicionar(selecaoB);
         
-        dao.remover(selecaoA);
-        dao.remover(selecaoB);
-        
-        dao.removerTodos();
         List<Selecao> selecoes = dao.listar();
+        assertTrue(2 == selecoes.size());
+
+        dao.removerTodos();
+        
+        selecoes = dao.listar();
         assertTrue(selecoes.isEmpty());
     }
 

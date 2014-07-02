@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.CRUD;
 
 import java.sql.Date;
@@ -24,36 +23,54 @@ import static org.junit.Assert.*;
 public class SubstituicaoDAOTest {
 
     private SubstituicaoDAO dao;
-    private Substituicao substituicao;
+    private Substituicao substituicao1;
+    private Substituicao substituicao2;
+    private Substituicao substituicao3;
     private Selecao selecao;
     private Jogo jogo;
-    
+
     @Before
     public void setUp() {
 
         dao = new SubstituicaoDAO();
-        
+
         selecao = new Selecao();
         selecao.setAno(new Date(100, 1, 1));
-        substituicao = new Substituicao();
-        substituicao.setSelecao(selecao);
-        
+
+        substituicao1 = new Substituicao();
+        substituicao1.setSelecao(selecao);
+        substituicao1.setTempo(new Date(150000));
+
+        substituicao2 = new Substituicao();
+        substituicao2.setSelecao(selecao);
+        substituicao1.setTempo(new Date(300000));
+
+        substituicao3 = new Substituicao();
+        substituicao3.setSelecao(selecao);
+        substituicao1.setTempo(new Date(900000));
+
         jogo = new Jogo();
     }
 
-    
     @After
     public void tearDown() {
         dao.removerTodos();
     }
-    
+
     /**
      * Test of adicionar method, of class SubstituicaoDAO.
      */
     @Test
     public void testAdicionar() {
-        
-        
+
+        dao.adicionar(substituicao1);
+        dao.adicionar(substituicao2);
+        dao.adicionar(substituicao3);
+
+        List<Substituicao> substituicoes = dao.listar();
+        assertEquals(substituicao1, substituicoes.get(0));
+        assertEquals(substituicao2, substituicoes.get(1));
+        assertEquals(substituicao3, substituicoes.get(2));
     }
 
     /**
@@ -62,7 +79,11 @@ public class SubstituicaoDAOTest {
     @Test
     public void testAtualizar() {
 
-        
+        dao.adicionar(substituicao1);
+        substituicao1.setTempo(new Date(1000000));
+        dao.atualizar(substituicao1);
+        List<Substituicao> substituicoes = dao.listar();
+        assertEquals(substituicao1, substituicoes.get(0));
     }
 
     /**
@@ -71,7 +92,12 @@ public class SubstituicaoDAOTest {
     @Test
     public void testRemover() {
 
-        
+        dao.adicionar(substituicao1);
+        dao.adicionar(substituicao2);
+
+        dao.remover(substituicao1);
+        List<Substituicao> substituicoes = dao.listar();
+        assertEquals(substituicao2, substituicoes.get(0));
     }
 
     /**
@@ -80,7 +106,16 @@ public class SubstituicaoDAOTest {
     @Test
     public void testRemoverTodos() {
 
+        dao.adicionar(substituicao1);
+        dao.adicionar(substituicao2);
+
+        List<Substituicao> substituicoes = dao.listar();
+        assertTrue(2 == substituicoes.size());
         
+        dao.removerTodos();
+        
+        substituicoes = dao.listar();
+        assertTrue(substituicoes.isEmpty());
     }
 
     /**
@@ -89,7 +124,19 @@ public class SubstituicaoDAOTest {
     @Test
     public void testListar() {
 
-        
+        List<Substituicao> substituicoes = dao.listar();
+        assertTrue(substituicoes.isEmpty());
+
+        dao.adicionar(substituicao1);
+        dao.adicionar(substituicao2);
+        dao.adicionar(substituicao3);
+
+        substituicoes = dao.listar();
+        assertFalse(substituicoes.isEmpty());
+
+        assertEquals(substituicao1, substituicoes.get(0));
+        assertEquals(substituicao2, substituicoes.get(1));
+        assertEquals(substituicao3, substituicoes.get(2));
     }
 
     /**
@@ -97,8 +144,19 @@ public class SubstituicaoDAOTest {
      */
     @Test
     public void testBuscar() {
-      
-        
+
+        dao.adicionar(substituicao1);
+        dao.adicionar(substituicao2);
+        dao.adicionar(substituicao3);
+
+        Substituicao subs = dao.buscar(new Date(150000), selecao, jogo);
+        assertEquals(substituicao1, subs);
+
+        subs = dao.buscar(new Date(300000), selecao, jogo);
+        assertEquals(substituicao2, subs);
+
+        subs = dao.buscar(new Date(900000), selecao, jogo);
+        assertEquals(substituicao3, subs);
     }
-    
+
 }
