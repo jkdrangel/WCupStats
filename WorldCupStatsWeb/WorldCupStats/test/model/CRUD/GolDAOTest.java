@@ -39,6 +39,9 @@ public class GolDAOTest {
     @Before
     public void setUp() {
         golDAO = new GolDAO();
+        daoJogador = new JogadorDAO();
+        daoSelecao = new SelecaoDAO();
+        daoJogo = new JogoDAO();
         
         jogador1 = new Jogador(new Date(99, 1, 1), "Gonzaga", 10, FuncaoJogador.GOLEIRO.getFuncao());
         jogador2 = new Jogador(new Date(150, 1, 1), "Alguem", 99, FuncaoJogador.VOLANTE.getFuncao());

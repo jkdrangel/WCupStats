@@ -32,6 +32,7 @@ public class SelecaoDAOTest {
     @Before
     public void setUp() {
         dao = new SelecaoDAO();
+        daoPais = new PaisDAO();
         
         selecaoA = new Selecao("A", new Date(100, 1, 1), 5);
         paisA = new Pais("Pais", "Mundo");

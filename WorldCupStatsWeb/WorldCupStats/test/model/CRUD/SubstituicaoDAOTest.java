@@ -39,6 +39,8 @@ public class SubstituicaoDAOTest {
     public void setUp() {
 
         dao = new SubstituicaoDAO();
+        daoSelecao = new SelecaoDAO();
+        daoJogo = new JogoDAO());
 
         selecao = new Selecao("A", new Date(100, 1, 1), 5);
 
@@ -53,7 +55,8 @@ public class SubstituicaoDAOTest {
 
         jogo = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
         
-        daoSelecao.adicionar(selecao);        
+        daoSelecao.adicionar(selecao); 
+        
         daoJogo.adicionar(jogo);
     }
 
