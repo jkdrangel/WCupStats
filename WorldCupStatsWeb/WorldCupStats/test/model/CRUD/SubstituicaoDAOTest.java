@@ -20,7 +20,7 @@ import org.junit.Test;
 
 /**
  *
- * @author marc
+ * @author D.L.O.L.
  */
 public class SubstituicaoDAOTest {
 
@@ -41,7 +41,6 @@ public class SubstituicaoDAOTest {
         dao = new SubstituicaoDAO();
 
         selecao = new Selecao("A", new Date(100, 1, 1), 5);
-        daoSelecao.adicionar(selecao);
 
         substituicao1 = new Substituicao(new Date(150000));
         substituicao1.setSelecao(selecao);
@@ -53,6 +52,8 @@ public class SubstituicaoDAOTest {
         substituicao3.setSelecao(selecao);
 
         jogo = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
+        
+        daoSelecao.adicionar(selecao);        
         daoJogo.adicionar(jogo);
     }
 

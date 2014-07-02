@@ -35,13 +35,14 @@ public class SelecaoDAOTest {
         
         selecaoA = new Selecao("A", new Date(100, 1, 1), 5);
         paisA = new Pais("Pais", "Mundo");
-        daoPais.adicionar(paisA);
         selecaoA.setPais(paisA);
         
         selecaoB = new Selecao("H", new Date(50, 1, 1), 1);
         paisB = new Pais("Country", "World");
-        daoPais.adicionar(paisB);
         selecaoB.setPais(paisB);
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
     }
     
     @After
