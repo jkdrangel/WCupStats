@@ -104,7 +104,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select Pais from Selecoes join Copa where ano=:parametro");
+            Query consulta = sessao.createQuery("select Pais from Selecao join Copa where ano=:parametro");
             consulta.setDate("parametro", copa.getAno());
             transacao = sessao.beginTransaction();
             resultado = (List<Pais>) consulta.list();
@@ -116,7 +116,7 @@ public class Sistema {
         } finally {
             try {
                 sessao.close();
-            } catch (Throwable e) {
+            } catch (HibernateException e) {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
         }
@@ -144,7 +144,7 @@ public class Sistema {
         } finally {
             try {
                 sessao.close();
-            } catch (Throwable e) {
+            } catch (HibernateException e) {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
         }
@@ -181,77 +181,7 @@ public class Sistema {
         // return 0;
     }
 
-    /**
-     *
-     */
-    public void eMarmelada() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void eDoBrasil() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-    }
-
-    /**
-     *
-     */
-    public void toDentro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void arrozDeCopa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void sempreVice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void fregues() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void timeRuim() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void timeBom() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void invictos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public void perdeuGanhou() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     /**
      *
      * @param dataNascimento
@@ -261,7 +191,9 @@ public class Sistema {
      * @return
      */
     public Jogador cadastrarJogador(Date dataNascimento, String nome, int numero, String posicao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Jogador j = new Jogador(dataNascimento, nome, numero, posicao);
+        jogador.adicionar(j);
+        return j;
     }
 
     /**
@@ -349,7 +281,7 @@ public class Sistema {
      * @return
      */
     public List<Tecnico> listarTecnicos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tecnico.listar();
     }
 
     /**
@@ -357,7 +289,7 @@ public class Sistema {
      * @return
      */
     public List<Selecao> listarSelecoes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return selecao.listar();
     }
 
     /**
@@ -650,16 +582,16 @@ public class Sistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    List<Escalacao> listarEscalacoes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Escalacao> listarEscalacoes() {
+        return escalacao.listar();
     }
 
-    List<Escalacao> listaGols(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Gol> listaGols() {
+        return gol.listar();
     }
 
-    List<Substituicao> listarSubstituicoes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Substituicao> listarSubstituicoes() {
+        return substituicao.listar();
     }
 
 }

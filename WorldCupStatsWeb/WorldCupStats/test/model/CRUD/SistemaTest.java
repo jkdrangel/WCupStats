@@ -18,10 +18,8 @@ import model.pojo.Selecao;
 import model.pojo.Substituicao;
 import model.pojo.Tecnico;
 import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -31,51 +29,80 @@ import org.junit.Test;
 public class SistemaTest {
 
     Sistema sistema = new Sistema();
+    PaisDAO paisDao = sistema.pais;
+    CopaDAO copaDao = sistema.copa;
+    TecnicoDAO tecnicoDao = sistema.tecnico;
+    EscalacaoDAO escalacaoDao = sistema.escalacao;
+    GolDAO golDao = sistema.gol;
+    JogadorDAO jogadorDao = sistema.jogador;
+    JogoDAO jogoDao = sistema.jogo;
+    SelecaoDAO selecaoDao = sistema.selecao;
+    SubstituicaoDAO substituicaoDao = sistema.substituicao;
+
+    Pais brasil, africa, coreia;
+    Selecao selecao, selecaoA, selecaoB;
+    Escalacao escA, escB;
+    Jogador jogA1, jogA2, jogA3, jogA4, jogA5, jogA6, jogA7,
+            jogA8, jogA9, jogA10, jogA11, jogB1, jogB2, jogB3,
+            jogB4, jogB5, jogB6, jogB7, jogB8, jogB9, jogB10, jogB11;
+    Copa copa, copa1, copa2;
+    Gol gol1, gol2, gol3, gol4;
+    Jogo jogo1, jogo2, jogo3;
+    Substituicao substituicao1, substituicao2, substituicao3;
+    Tecnico felipao, titi, zagalo;
 
     public SistemaTest() {
-        sistema.copa.removerTodos();
-        sistema.pais.removerTodos();
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
     }
 
     @Before
     public void setUp() {
+        brasil = new Pais("", "");
+        africa = new Pais("", "");
+        coreia = new Pais("", "");
+        selecao = new Selecao("", new Date(1), 0);
+        selecaoA = new Selecao("", new Date(1), 0);
+        selecaoB = new Selecao("", new Date(1), 0);
+        escA = new Escalacao();
+        escB = new Escalacao();
     }
 
     @After
     public void tearDown() {
+        copaDao.removerTodos();
+        paisDao.removerTodos();
+        escalacaoDao.removerTodos();
+        golDao.removerTodos();
+        jogadorDao.removerTodos();
+        jogoDao.removerTodos();
+        selecaoDao.removerTodos();
+        substituicaoDao.removerTodos();
+        tecnicoDao.removerTodos();
     }
 
     @Test
     public void testCadastrarPais() {
-        Pais brasil= sistema.cadastrarPais("Brazil", "America do sul");
+        brasil = sistema.cadastrarPais("Brazil", "America do sul");
         assertNotNull(brasil);
         List<Pais> paises = sistema.listarPaises();
         assertEquals(brasil, paises.get(0));
     }
-    
 
     @Test
     public void testCadastrarCopa() {
-        Copa brasil= sistema.cadastrarCopa(new Date(114,1,1),null,null);
-        assertNotNull(brasil);
+        paisDao.adicionar(brasil);
+        selecaoDao.adicionar(selecao);
+        copa1 = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecao);
+        assertNotNull(copa1);
         List<Copa> copas = sistema.listarCopas();
-        assertEquals(brasil, copas.get(0));
+        assertEquals(copa1, copas.get(0));
     }
 
     @Test
     public void testListarPaises() {
-        Pais brasil= sistema.cadastrarPais("brasil", "america");
-        Pais africa= sistema.cadastrarPais("africa", "africa");
-        Pais coreia= sistema.cadastrarPais("coreia", "asia");
-        
+        brasil = sistema.cadastrarPais("brasil", "america");
+        africa = sistema.cadastrarPais("africa", "africa");
+        coreia = sistema.cadastrarPais("coreia", "asia");
+
         List<Pais> paises = sistema.listarPaises();
         assertFalse(paises.isEmpty());
         assertEquals(brasil, paises.get(0));
@@ -85,76 +112,31 @@ public class SistemaTest {
 
     @Test
     public void testListarCopas() {
-        
-        Copa copa= sistema.cadastrarCopa(new Date(114,1,1),null,null);
-        Copa copa1= sistema.cadastrarCopa(new Date(110,1,1),null,null);
-        Copa copa2= sistema.cadastrarCopa(new Date(106,1,1),null,null);
+        selecaoDao.adicionar(selecao);
+        selecaoDao.adicionar(selecaoA);
+        selecaoDao.adicionar(selecaoB);
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(africa);
+        paisDao.adicionar(coreia);
+        copa = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecao);
+        copa1 = sistema.cadastrarCopa(new Date(110, 1, 1), africa, selecaoA);
+        copa2 = sistema.cadastrarCopa(new Date(106, 1, 1), coreia, selecaoB);
         List<Copa> copas = sistema.listarCopas();
         assertFalse(copas.isEmpty());
         assertEquals(copa, copas.get(0));
         assertEquals(copa1, copas.get(1));
         assertEquals(copa2, copas.get(2));
-        
+
     }
-    
-    @Test
-    public void testEMarmelada(){
-    sistema.eMarmelada();
-    }
-    
-    @Test
-    public void testEDoBrasil(){
-    sistema.eDoBrasil();
-    }
-    
-    @Test
-    public void testToDentro(){
-    sistema.toDentro();
-    }
-    
-    @Test
-    public void testArrozDeCopa(){
-    sistema.arrozDeCopa();
-    }
-    
-    @Test
-    public void testSempreVice(){
-    sistema.sempreVice();
-    }
-    
-    
-    @Test
-    public void testFregues(){
-    sistema.fregues();
-    }
-    
-    
-    @Test
-    public void testTimeBom(){
-    sistema.timeBom();
-    }
-    
-    @Test
-    public void testTimeRuim(){
-    sistema.timeRuim();
-    }
-    
-    @Test
-    public void testInvictos(){
-    sistema.invictos();
-    }
-    
-    @Test
-    public void testPerdeuGanhou(){
-    sistema.perdeuGanhou();
-    }
+
+   
     /**
      * Test of listarPaisesCopa method, of class Sistema.
      */
     @Test
     public void testListarPaisesCopa() {
         System.out.println("listarPaisesCopa");
-        Copa copa = null;
+        copa = null;
         Sistema instance = new Sistema();
         List<Pais> expResult = null;
         List<Pais> result = instance.listarPaisesCopa(copa);
@@ -169,7 +151,7 @@ public class SistemaTest {
     @Test
     public void testListarJogosCopa() {
         System.out.println("listarJogosCopa");
-        Copa copa = null;
+        copa = null;
         Sistema instance = new Sistema();
         List<Jogo> expResult = null;
         List<Jogo> result = instance.listarJogosCopa(copa);
@@ -193,14 +175,13 @@ public class SistemaTest {
         fail("The test case is a prototype.");
     }
 
-  
     /**
      * Test of cadastrarJogador method, of class Sistema.
      */
     @Test
     public void testCadastrarJogador() {
-       Jogador jogador = sistema.cadastrarJogador(new Date(92,1,1), "neimar", 10, FuncaoJogador.MEIO_DE_CAMPO.getFuncao());
-        List<Jogador> lista= sistema.listarJogadores();
+        Jogador jogador = sistema.cadastrarJogador(new Date(92, 1, 1), "neimar", 10, FuncaoJogador.MEIO_DE_CAMPO.getFuncao());
+        List<Jogador> lista = sistema.listarJogadores();
         assertEquals(jogador, lista.get(0));
     }
 
@@ -209,8 +190,8 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarTecnico() {
-        Tecnico tecnico = sistema.cadastrarTecnico("felipão", new Date(50,1,1));
-        List<Tecnico> lista= sistema.listarTecnicos();
+        Tecnico tecnico = sistema.cadastrarTecnico("felipão", new Date(50, 1, 1));
+        List<Tecnico> lista = sistema.listarTecnicos();
         assertEquals(tecnico, lista.get(0));
     }
 
@@ -219,8 +200,9 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarSelecao() {
-        Selecao selecao = sistema.cadastrarSelecao(1, null, null, null);
-        List<Selecao> lista= sistema.listarSelecoes();
+        paisDao.adicionar(brasil);
+        selecao = sistema.cadastrarSelecao(1, new Date(114,1,1), "A", brasil);
+        List<Selecao> lista = sistema.listarSelecoes();
         assertEquals(selecao, lista.get(0));
     }
 
@@ -229,8 +211,9 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarEscalacao() {
-        Escalacao escalacao = sistema.cadastrarEscalacao(null, null);
-        List<Escalacao> lista= sistema.listarEscalacoes();
+        selecaoDao.adicionar(selecao);
+        Escalacao escalacao = sistema.cadastrarEscalacao(null, selecao);
+        List<Escalacao> lista = sistema.listarEscalacoes();
         assertEquals(escalacao, lista.get(0));
     }
 
@@ -239,8 +222,8 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarGol() {
-       Gol gol = sistema.cadastrarGol(null, null, true);
-        List<Escalacao> lista= sistema.listaGols(null);
+        Gol gol = sistema.cadastrarGol(null, new Date(100,1,1), true);
+        List<Gol> lista = sistema.listaGols();
         assertEquals(gol, lista.get(0));
     }
 
@@ -249,8 +232,8 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarSubstituicao() {
-       Substituicao substituicao = sistema.cadastrarSubstituicao(null, null, null);
-        List<Substituicao> lista= sistema.listarSubstituicoes();
+        Substituicao substituicao = sistema.cadastrarSubstituicao(new Date(114,1,1), null, null);
+        List<Substituicao> lista = sistema.listarSubstituicoes();
         assertEquals(substituicao, lista.get(0));
     }
 
@@ -259,9 +242,9 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadores() {
-       Jogador jogador= sistema.cadastrarJogador(null, null, 1, null);
-        Jogador jogador1= sistema.cadastrarJogador(null, null, 2, null);
-        Jogador jogador2= sistema.cadastrarJogador(null, null, 3, null);
+        Jogador jogador = sistema.cadastrarJogador(new Date(90,1,1), "neimar", 1, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador1 = sistema.cadastrarJogador(new Date(80,1,1), "fred", 2,FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador2 = sistema.cadastrarJogador(new Date(85,1,1), "david", 3, FuncaoJogador.ZAGUEIRO.getFuncao());
         List<Jogador> jogadores = sistema.listarJogadores();
         assertFalse(jogadores.isEmpty());
         assertEquals(jogador, jogadores.get(0));
@@ -274,9 +257,9 @@ public class SistemaTest {
      */
     @Test
     public void testListarTecnicos() {
-        Tecnico tecnico= sistema.cadastrarTecnico("felipao",new Date(90,1,1));
-        Tecnico tecnico1= sistema.cadastrarTecnico("pareira",new Date(85,1,1));
-        Tecnico tecnico2= sistema.cadastrarTecnico("dunga",new Date(80,1,1));
+        Tecnico tecnico = sistema.cadastrarTecnico("felipao", new Date(90, 1, 1));
+        Tecnico tecnico1 = sistema.cadastrarTecnico("pareira", new Date(85, 1, 1));
+        Tecnico tecnico2 = sistema.cadastrarTecnico("dunga", new Date(80, 1, 1));
         List<Tecnico> tecnicos = sistema.listarTecnicos();
         assertFalse(tecnicos.isEmpty());
         assertEquals(tecnico, tecnicos.get(0));
@@ -289,9 +272,13 @@ public class SistemaTest {
      */
     @Test
     public void testListarSelecoes() {
-        Selecao selecao= sistema.cadastrarSelecao(1, null, null, null);
-        Selecao selecao1= sistema.cadastrarSelecao(2, null, null, null);
-        Selecao selecao2= sistema.cadastrarSelecao(3, null, null, null);
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(africa);
+        paisDao.adicionar(coreia);
+        
+        selecao = sistema.cadastrarSelecao(1, new Date(110,1,1), "A", brasil);
+        Selecao selecao1 = sistema.cadastrarSelecao(2, new Date(110,1,1), "B", africa);
+        Selecao selecao2 = sistema.cadastrarSelecao(3, new Date(110,1,1), "C", coreia);
         List<Selecao> selecoes = sistema.listarSelecoes();
         assertFalse(selecoes.isEmpty());
         assertEquals(selecao, selecoes.get(0));
@@ -305,7 +292,7 @@ public class SistemaTest {
     @Test
     public void testListarJogadoresDaSelecao() {
         System.out.println("listarJogadoresDaSelecao");
-        Selecao selecao = null;
+        selecao = null;
         Sistema instance = new Sistema();
         List<Jogador> expResult = null;
         List<Jogador> result = instance.listarJogadoresDaSelecao(selecao);
@@ -606,7 +593,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarPaisesComMaiorNumeroDeViceCampeonatos method, of class Sistema.
+     * Test of listarPaisesComMaiorNumeroDeViceCampeonatos method, of class
+     * Sistema.
      */
     @Test
     public void testListarPaisesComMaiorNumeroDeViceCampeonatos() {
@@ -619,7 +607,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarPaisesComMaiorPercentualDeDerrotas method, of class Sistema.
+     * Test of listarPaisesComMaiorPercentualDeDerrotas method, of class
+     * Sistema.
      */
     @Test
     public void testListarPaisesComMaiorPercentualDeDerrotas() {
@@ -632,7 +621,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarJogadoresComMaiorNumeroDeGolPorPartida method, of class Sistema.
+     * Test of listarJogadoresComMaiorNumeroDeGolPorPartida method, of class
+     * Sistema.
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeGolPorPartida() {
@@ -646,7 +636,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarJogadorComMaiorMediaDeGolPorPartidaNasCopas method, of class Sistema.
+     * Test of listarJogadorComMaiorMediaDeGolPorPartidaNasCopas method, of
+     * class Sistema.
      */
     @Test
     public void testListarJogadorComMaiorMediaDeGolPorPartidaNasCopas() {
@@ -659,7 +650,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarJogadorComMaiorQuantidadeDeJogosEmCopas method, of class Sistema.
+     * Test of listarJogadorComMaiorQuantidadeDeJogosEmCopas method, of class
+     * Sistema.
      */
     @Test
     public void testListarJogadorComMaiorQuantidadeDeJogosEmCopas() {
@@ -685,7 +677,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarJogadoresComMaiorNumeroDeJogosComoReserva method, of class Sistema.
+     * Test of listarJogadoresComMaiorNumeroDeJogosComoReserva method, of class
+     * Sistema.
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeJogosComoReserva() {
@@ -724,7 +717,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarPaisesComMaisEliminacoesPrimeiraFase method, of class Sistema.
+     * Test of listarPaisesComMaisEliminacoesPrimeiraFase method, of class
+     * Sistema.
      */
     @Test
     public void testListarPaisesComMaisEliminacoesPrimeiraFase() {
@@ -750,7 +744,8 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarPaisesQuePerderamPartidaEGanharamACopa method, of class Sistema.
+     * Test of listarPaisesQuePerderamPartidaEGanharamACopa method, of class
+     * Sistema.
      */
     @Test
     public void testListarPaisesQuePerderamPartidaEGanharamACopa() {
@@ -768,7 +763,7 @@ public class SistemaTest {
     @Test
     public void testCadastrarJogo() {
         System.out.println("cadastrarJogo");
-        Copa copa = null;
+        copa = null;
         Selecao primeira = null;
         Selecao segunda = null;
         String fase = "";
@@ -798,10 +793,9 @@ public class SistemaTest {
     @Test
     public void testListaGols() {
         System.out.println("listaGols");
-        Object object = null;
         Sistema instance = new Sistema();
-        List<Escalacao> expResult = null;
-        List<Escalacao> result = instance.listaGols(object);
+        List<Gol> expResult = null;
+        List<Gol> result = instance.listaGols();
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
