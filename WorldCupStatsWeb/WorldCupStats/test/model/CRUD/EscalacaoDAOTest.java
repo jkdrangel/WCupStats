@@ -118,6 +118,7 @@ public class EscalacaoDAOTest {
         escB.setJogadorByJogador11(jogA11);
         escB.setSelecao(selecaoB);
         escB.setJogo(jogo);
+        escDAO.removerTodos();
     }
     
     @After

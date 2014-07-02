@@ -58,18 +58,22 @@ public class GolDAOTest {
         gol2.setJogo(jogo);
         gol2.setSelecao(selecao1);
         gol2.setFoiContra(false);
+        gol2.setTempo(new java.sql.Date(114, 0, 0));
         
         gol3 = new Gol();
         gol3.setJogador(jogador2);
         gol3.setJogo(jogo);
         gol3.setSelecao(selecao1);
         gol3.setFoiContra(false);
+        gol3.setTempo(new java.sql.Date(114, 0, 0));
         
         gol4 = new Gol();
         gol4.setJogador(jogador3);
         gol4.setJogo(jogo);
         gol4.setSelecao(selecao2);
         gol4.setFoiContra(false);
+        gol4.setTempo(new java.sql.Date(114, 0, 0));
+        golDAO.removerTodos();
     }
     
     @After
