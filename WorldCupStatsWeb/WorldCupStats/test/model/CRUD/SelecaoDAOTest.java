@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.util.List;
 import model.pojo.Pais;
 import model.pojo.Selecao;
-import model.pojo.Substituicao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,26 +24,31 @@ public class SelecaoDAOTest {
     private SelecaoDAO dao;
     private Selecao selecaoA;
     private Selecao selecaoB;
+    
+    private PaisDAO daoPais;
     private Pais paisA;
     private Pais paisB;
     
     @Before
     public void setUp() {
         dao = new SelecaoDAO();
+        daoPais = new PaisDAO();
         
-        selecaoA = new Selecao();
+        selecaoA = new Selecao("A", new Date(100, 1, 1), 5);
         paisA = new Pais("Pais", "Mundo");
         selecaoA.setPais(paisA);
-        selecaoA.setAno(new Date(100, 1, 1));
         
-        selecaoB = new Selecao();
+        selecaoB = new Selecao("H", new Date(50, 1, 1), 1);
         paisB = new Pais("Country", "World");
         selecaoB.setPais(paisB);
-        selecaoB.setAno(new Date(50, 1, 1));
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
     }
     
     @After
     public void tearDown() {
+        daoPais.removerTodos();
         dao.removerTodos();
     }
 

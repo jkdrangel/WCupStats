@@ -6,7 +6,10 @@
 
 package model.CRUD;
 
+import java.sql.Date;
 import java.util.List;
+import model.Enuns.FaseCopa;
+import model.Enuns.FuncaoJogador;
 import model.pojo.Gol;
 import model.pojo.Jogador;
 import model.pojo.Jogo;
@@ -18,66 +21,78 @@ import org.junit.Test;
 
 /**
  *
- * @author lsantana
+ * @author D.L.O.L.
  */
 public class GolDAOTest {
-    GolDAO golDAO;
-    Gol gol1, gol2, gol3, gol4;
-    Jogo jogo;
-    Jogador jogador1, jogador2, jogador3;
-    Selecao selecao1, selecao2;
+    private GolDAO golDAO;
+    private Gol gol1, gol2, gol3, gol4;
+    
+    private JogoDAO daoJogo;
+    private Jogo jogo;
+    
+    private JogadorDAO daoJogador;
+    private Jogador jogador1, jogador2, jogador3;
+    
+    private SelecaoDAO daoSelecao;
+    private Selecao selecao1, selecao2;
     
     @Before
     public void setUp() {
         golDAO = new GolDAO();
+        daoJogador = new JogadorDAO();
+        daoSelecao = new SelecaoDAO();
+        daoJogo = new JogoDAO();
         
-        jogador1 = new Jogador();
-        jogador2 = new Jogador();
-        jogador3 = new Jogador();
+        jogador1 = new Jogador(new Date(99, 1, 1), "Gonzaga", 10, FuncaoJogador.GOLEIRO.getFuncao());
+        jogador2 = new Jogador(new Date(150, 1, 1), "Alguem", 99, FuncaoJogador.VOLANTE.getFuncao());
+        jogador3 = new Jogador(new Date(500, 1, 1), "Veinho", 00, FuncaoJogador.ATACANTE.getFuncao());
         
-        selecao1 = new Selecao();
+        selecao1 = new Selecao("A", new Date(100, 1, 1), 5);
         selecao1.setJogadorByJogador1(jogador1);
         selecao1.setJogadorByJogador2(jogador2);
         
-        selecao2 = new Selecao();
+        selecao2 = new Selecao("H", new Date(50, 1, 1), 1);
         selecao2.setJogadorByJogador1(jogador3);
         
-        jogo = new Jogo();
+        jogo = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
         jogo.setSelecaoBySelecaoA(selecao1);
         jogo.setSelecaoBySelecaoB(selecao2);
         
-        gol1 = new Gol();
+        gol1 = new Gol(new java.sql.Date(114000), false);
         gol1.setJogador(jogador1);
         gol1.setJogo(jogo);
         gol1.setSelecao(selecao1);
-        gol1.setFoiContra(false);
-        gol1.setTempo(new java.sql.Date(114, 0, 0));
         
-        gol2 = new Gol();
+        gol2 = new Gol(new java.sql.Date(30000), false);
         gol2.setJogador(jogador1);
         gol2.setJogo(jogo);
         gol2.setSelecao(selecao1);
-        gol2.setFoiContra(false);
-        gol2.setTempo(new java.sql.Date(114, 0, 0));
         
-        gol3 = new Gol();
+        gol3 = new Gol(new java.sql.Date(50000), false);
         gol3.setJogador(jogador2);
         gol3.setJogo(jogo);
         gol3.setSelecao(selecao1);
-        gol3.setFoiContra(false);
-        gol3.setTempo(new java.sql.Date(114, 0, 0));
         
-        gol4 = new Gol();
+        gol4 = new Gol(new java.sql.Date(90000), false);
         gol4.setJogador(jogador3);
         gol4.setJogo(jogo);
         gol4.setSelecao(selecao2);
-        gol4.setFoiContra(false);
-        gol4.setTempo(new java.sql.Date(114, 0, 0));
-        golDAO.removerTodos();
+
+        daoJogador.adicionar(jogador1);
+        daoJogador.adicionar(jogador2);
+        daoJogador.adicionar(jogador3);
+        
+        daoSelecao.adicionar(selecao1);
+        daoSelecao.adicionar(selecao2);
+        
+        daoJogo.adicionar(jogo);
     }
     
     @After
     public void tearDown() {
+        daoJogador.removerTodos();
+        daoSelecao.removerTodos();
+        daoJogo.removerTodos();
         golDAO.removerTodos();
     }
 
@@ -109,7 +124,10 @@ public class GolDAOTest {
         
         golDAO.remover(gol3);
         List<Gol> gols = golDAO.listar();
-        assertEquals(3, gols.size());
+        assertTrue(3 == gols.size());
+        assertEquals(gol1, gols.get(0));
+        assertEquals(gol2, gols.get(1));
+        assertEquals(gol4, gols.get(2));
     }
     
     @Test
@@ -151,7 +169,7 @@ public class GolDAOTest {
         golDAO.adicionar(gol3);
         golDAO.adicionar(gol4);
         
-        Gol resultado = golDAO.buscar(jogo, new java.sql.Date(114, 0, 0));
+        Gol resultado = golDAO.buscar(jogo, new java.sql.Date(114000));
         assertEquals(gol1, resultado);
     }
 }

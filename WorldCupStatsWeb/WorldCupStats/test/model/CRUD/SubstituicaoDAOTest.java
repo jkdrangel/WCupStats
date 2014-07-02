@@ -7,6 +7,7 @@ package model.CRUD;
 
 import java.sql.Date;
 import java.util.List;
+import model.Enuns.FaseCopa;
 import model.pojo.Jogo;
 import model.pojo.Selecao;
 import model.pojo.Substituicao;
@@ -19,7 +20,7 @@ import org.junit.Test;
 
 /**
  *
- * @author marc
+ * @author D.L.O.L.
  */
 public class SubstituicaoDAOTest {
 
@@ -27,34 +28,43 @@ public class SubstituicaoDAOTest {
     private Substituicao substituicao1;
     private Substituicao substituicao2;
     private Substituicao substituicao3;
+    
+    private SelecaoDAO daoSelecao;
     private Selecao selecao;
+    
+    private JogoDAO daoJogo;
     private Jogo jogo;
 
     @Before
     public void setUp() {
 
         dao = new SubstituicaoDAO();
+        daoSelecao = new SelecaoDAO();
+        daoJogo = new JogoDAO();
 
-        selecao = new Selecao();
-        selecao.setAno(new Date(100, 1, 1));
+        selecao = new Selecao("A", new Date(100, 1, 1), 5);
 
-        substituicao1 = new Substituicao();
+        substituicao1 = new Substituicao(new Date(150000));
         substituicao1.setSelecao(selecao);
-        substituicao1.setTempo(new Date(150000));
 
-        substituicao2 = new Substituicao();
+        substituicao2 = new Substituicao(new Date(300000));
         substituicao2.setSelecao(selecao);
         substituicao2.setTempo(new Date(300000));
-
-        substituicao3 = new Substituicao();
+        substituicao3 = new Substituicao(new Date(900000));
         substituicao3.setSelecao(selecao);
         substituicao3.setTempo(new Date(900000));
 
-        jogo = new Jogo();
+        jogo = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
+        
+        daoSelecao.adicionar(selecao); 
+        
+        daoJogo.adicionar(jogo);
     }
 
     @After
     public void tearDown() {
+        daoSelecao.removerTodos();
+        daoJogo.removerTodos();
         dao.removerTodos();
     }
 

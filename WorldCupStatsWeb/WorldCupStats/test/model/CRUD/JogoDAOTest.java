@@ -30,6 +30,7 @@ public class JogoDAOTest {
     
     @Before
     public void setUp() {
+        dao = new JogoDAO();
         
         jogo1 = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
         jogo2 = new Jogo(new Date(104, 1, 1), "Manaus", FaseCopa.OITAVAS.getFase());
