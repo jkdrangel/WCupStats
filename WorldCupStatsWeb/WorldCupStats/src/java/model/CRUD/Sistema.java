@@ -32,6 +32,13 @@ public class Sistema {
 
     PaisDAO pais = new PaisDAO();
     CopaDAO copa = new CopaDAO();
+    TecnicoDAO tecnico = new TecnicoDAO();
+    EscalacaoDAO escalacao = new EscalacaoDAO();
+    GolDAO gol = new GolDAO();
+    JogadorDAO jogador = new JogadorDAO();
+    JogoDAO jogo = new JogoDAO();
+    SelecaoDAO selecao = new SelecaoDAO();
+    SubstituicaoDAO substituicao = new SubstituicaoDAO();
     Session sessao = null;
     Transaction transacao = null;
 
@@ -97,8 +104,8 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select Pais from Selecoes join Copa where ano=" + copa.getAno());
-
+            Query consulta = sessao.createQuery("select Pais from Selecoes join Copa where ano=:parametro");
+            consulta.setDate("parametro", copa.getAno());
             transacao = sessao.beginTransaction();
             resultado = (List<Pais>) consulta.list();
             transacao.commit();
@@ -121,7 +128,7 @@ public class Sistema {
      * @return
      */
     public List<Jogo> listarJogosCopa(Copa copa) {
-     List<Jogo> resultado = null;
+        List<Jogo> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
@@ -140,38 +147,38 @@ public class Sistema {
             } catch (Throwable e) {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
-        } 
+        }
     }
-    
+
     /**
      *
      * @param pais
      * @return
      */
     public int qtdJogosPais(Pais pais) {
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-    /*int resultado = 0;
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-            Query consulta = sessao.createQuery("select sum() from Copa where ano=");
+        /*int resultado = 0;
+         try {
+         sessao = HibernateUtil.getSessionFactory().openSession();
 
-            transacao = sessao.beginTransaction();
-            resultado = (int)consulta.uniqueResult();
-            transacao.commit();
-            return resultado;
-        } catch (HibernateException e) {
-            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
-            throw new HibernateException(e);
-        } finally {
-            try {
-                sessao.close();
-            } catch (Throwable e) {
-                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
-            }
-        }*/
-       // return 0;
+         Query consulta = sessao.createQuery("select sum() from Copa where ano=");
+
+         transacao = sessao.beginTransaction();
+         resultado = (int)consulta.uniqueResult();
+         transacao.commit();
+         return resultado;
+         } catch (HibernateException e) {
+         System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+         throw new HibernateException(e);
+         } finally {
+         try {
+         sessao.close();
+         } catch (Throwable e) {
+         System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+         }
+         }*/
+        // return 0;
     }
 
     /**
@@ -186,7 +193,7 @@ public class Sistema {
      */
     public void eDoBrasil() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+
     }
 
     /**
@@ -264,7 +271,9 @@ public class Sistema {
      * @return
      */
     public Tecnico cadastrarTecnico(String nome, Date dataNascimento) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Tecnico t = new Tecnico(nome, dataNascimento);
+        tecnico.adicionar(t);
+        return t;
     }
 
     /**
@@ -276,7 +285,10 @@ public class Sistema {
      * @return
      */
     public Selecao cadastrarSelecao(int posicao, Date ano, String grupo, Pais pais) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Selecao s = new Selecao(grupo, ano, posicao);
+        s.setPais(pais);
+        selecao.adicionar(s);
+        return s;
     }
 
     /**
@@ -286,7 +298,12 @@ public class Sistema {
      * @return
      */
     public Escalacao cadastrarEscalacao(Jogo j, Selecao s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Escalacao e = new Escalacao();
+        e.setJogo(j);
+        e.setSelecao(s);
+        escalacao.adicionar(e);
+        return e;
+
     }
 
     /**
@@ -297,7 +314,10 @@ public class Sistema {
      * @return
      */
     public Gol cadastrarGol(Jogo j, Date tempo, boolean foiContra) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Gol g = new Gol(tempo, foiContra);
+        g.setJogo(j);
+        gol.adicionar(g);
+        return g;
     }
 
     /**
@@ -308,7 +328,12 @@ public class Sistema {
      * @return
      */
     public Substituicao cadastrarSubstituicao(Date t, Jogador entrou, Jogador saiu) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Substituicao s = new Substituicao(t);
+        s.setJogadorByJogadorEntra(entrou);
+        s.setJogadorByJogadorSai(saiu);
+        substituicao.adicionar(s);
+
+        return s;
     }
 
     /**
@@ -636,7 +661,5 @@ public class Sistema {
     List<Substituicao> listarSubstituicoes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-   
 
 }

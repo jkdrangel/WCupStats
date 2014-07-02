@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.util.List;
 import model.Enuns.FuncaoJogador;
 import model.pojo.Jogador;
-import model.pojo.Pais;
 import model.pojo.Selecao;
 import org.junit.After;
 import static org.junit.Assert.*;

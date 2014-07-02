@@ -7,8 +7,6 @@ package Controller;
 
 import java.util.Date;
 import java.util.List;
-import model.CRUD.CopaDAO;
-import model.CRUD.PaisDAO;
 import model.CRUD.Sistema;
 import model.pojo.Copa;
 import model.pojo.Escalacao;
