@@ -15,6 +15,6 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({CopaDAOTest.class, EscalacaoDAOTest.class, GolDAOTest.class, JogadorDAOTest.class
-, JogoDAOTest.class, PaisDAOTest.class, SelecaoDAOTest.class, SistemaTest.class, SubstituicaoDAOTest.class,TecnicoDAOTest.class})
+, JogoDAOTest.class, PaisDAOTest.class, SelecaoDAOTest.class, SubstituicaoDAOTest.class,TecnicoDAOTest.class})
 public class TestSuite {   
 }

@@ -162,10 +162,10 @@ public class EscalacaoDAOTest {
     
     @After
     public void tearDown() {
-        daoJogador.removerTodos();
-        daoSelecao.removerTodos();
-        daoJogo.removerTodos();
         escDAO.removerTodos();
+        daoJogo.removerTodos();
+        daoSelecao.removerTodos();
+        daoJogador.removerTodos();
     }
 
     @Test
@@ -186,7 +186,7 @@ public class EscalacaoDAOTest {
         List<Escalacao> escs = escDAO.listar();
         
         assertEquals(2, escs.size());
-        assertEquals(escA, escs.get(1));
+        assertEquals(escA, escs.get(0));
     }
     
     @Test
@@ -216,6 +216,7 @@ public class EscalacaoDAOTest {
         
         escDAO.adicionar(escA);
         escDAO.adicionar(escB);
+        escs = escDAO.listar();
         assertFalse(escs.isEmpty());
         
         assertEquals(escA, escs.get(0));

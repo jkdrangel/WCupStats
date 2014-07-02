@@ -291,12 +291,13 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresDaSelecao() {
-        System.out.println("listarJogadoresDaSelecao");
-        selecao = null;
-        Sistema instance = new Sistema();
-        List<Jogador> expResult = null;
-        List<Jogador> result = instance.listarJogadoresDaSelecao(selecao);
-        assertEquals(expResult, result);
+        selecao.setJogadorByJogador1(jogB1);
+        selecao.setJogadorByJogador10(jogB10);
+        selecao.setJogadorByJogador11(jogB11);
+        
+        List<Jogador> result = sistema.listarJogadoresDaSelecao(selecao);
+        assertFalse(result.isEmpty());
+        assertEquals(jogB1,result.get(0));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

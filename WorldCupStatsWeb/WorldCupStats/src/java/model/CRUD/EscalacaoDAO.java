@@ -140,7 +140,7 @@ public class EscalacaoDAO {
             Query consulta = sessao.createQuery("from Escalacao where jogo = " + jogo.getId() +" and selecao= " + selecao.getId());
 
             transacao = sessao.beginTransaction();
-            Jogo play = (Jogo) consulta.uniqueResult();
+             escalacao = (Escalacao) consulta.uniqueResult();
             transacao.commit();
             
             
