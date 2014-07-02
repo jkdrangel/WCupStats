@@ -23,7 +23,7 @@ import org.junit.Test;
  */
 public class JogoDAOTest {
     
-    private JogoDAO dao=new JogoDAO();
+    private JogoDAO dao;
     private Jogo jogo1;
     private Jogo jogo2;
     private Jogo jogo3;
