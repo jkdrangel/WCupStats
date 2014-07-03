@@ -166,10 +166,10 @@ public class Escalacao  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.selecao, other.selecao)) {
+        if (!Objects.equals(this.selecao.getId(), other.selecao.getId())) {
             return false;
         }
-        if (!Objects.equals(this.jogo, other.jogo)) {
+        if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {
             return false;
         }
         return true;

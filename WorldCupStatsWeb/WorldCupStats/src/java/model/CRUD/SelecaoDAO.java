@@ -144,7 +144,7 @@ public class SelecaoDAO {
             throw new HibernateException(e);
         } finally {
             try {
-                sessao.close();
+               sessao.close();
             } catch (HibernateException e) {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }

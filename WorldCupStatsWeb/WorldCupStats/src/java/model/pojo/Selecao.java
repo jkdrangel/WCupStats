@@ -354,7 +354,7 @@ public class Selecao  implements java.io.Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.pais);
+        //hash = 97 * hash + Objects.hashCode(this.pais);
         hash = 97 * hash + Objects.hashCode(this.grupo);
         hash = 97 * hash + Objects.hashCode(this.ano);
         hash = 97 * hash + this.posicao;
@@ -373,7 +373,7 @@ public class Selecao  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.pais, other.pais)) {
+        if (!Objects.equals(this.pais.getId(), other.pais.getId())) {
             return false;
         }
         if (!Objects.equals(this.grupo, other.grupo)) {

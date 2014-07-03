@@ -6,6 +6,7 @@
 package model.CRUD;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import model.Enuns.FuncaoJogador;
 import model.pojo.Copa;
@@ -222,7 +223,7 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarGol() {
-        Gol gol = sistema.cadastrarGol(null, new Date(100,1,1), true);
+        Gol gol = sistema.cadastrarGol(null, new Time(0,0,1), true);
         List<Gol> lista = sistema.listaGols();
         assertEquals(gol, lista.get(0));
     }
@@ -232,7 +233,7 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarSubstituicao() {
-        Substituicao substituicao = sistema.cadastrarSubstituicao(new Date(114,1,1), null, null);
+        Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1,30,1), null, null);
         List<Substituicao> lista = sistema.listarSubstituicoes();
         assertEquals(substituicao, lista.get(0));
     }

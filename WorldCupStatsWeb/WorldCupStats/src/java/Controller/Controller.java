@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import model.CRUD.Sistema;
@@ -108,7 +109,7 @@ public class Controller {
      * @param foiContra
      * @return 
      */
-    public Gol cadastrarGolEmJogo(Jogo j, Date tempo, boolean foiContra) {
+    public Gol cadastrarGolEmJogo(Jogo j, Time tempo, boolean foiContra) {
         return sistema.cadastrarGol(j, tempo, foiContra);
     }
     /**
@@ -120,7 +121,7 @@ public class Controller {
      * @param saiu
      * @return 
      */
-    public Substituicao cadastrarSubstituicao(Date t, Jogador entrou, Jogador saiu) {
+    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu) {
         return sistema.cadastrarSubstituicao(t, entrou, saiu);
     }   
     /**

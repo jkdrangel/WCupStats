@@ -20,7 +20,7 @@
         <many-to-one name="jogadorByJogadorEntra" class="model.pojo.Jogador" fetch="select">
             <column name="JogadorEntra" />
         </many-to-one>
-        <property name="tempo" type="date">
+        <property name="tempo" type="time">
             <column name="tempo" length="10" not-null="true" />
         </property>
     </class>

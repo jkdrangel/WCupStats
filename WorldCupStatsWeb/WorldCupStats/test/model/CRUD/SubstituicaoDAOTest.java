@@ -6,14 +6,20 @@
 package model.CRUD;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import model.Enuns.FaseCopa;
+import model.Enuns.FuncaoJogador;
+import model.pojo.Jogador;
 import model.pojo.Jogo;
 import model.pojo.Selecao;
 import model.pojo.Substituicao;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,12 +34,15 @@ public class SubstituicaoDAOTest {
     private Substituicao substituicao1;
     private Substituicao substituicao2;
     private Substituicao substituicao3;
-    
+
     private SelecaoDAO daoSelecao;
     private Selecao selecao;
-    
+
     private JogoDAO daoJogo;
     private Jogo jogo;
+
+    private JogadorDAO daoJogador;
+    private Jogador jogador1, jogador2;
 
     @Before
     public void setUp() {
@@ -41,23 +50,37 @@ public class SubstituicaoDAOTest {
         dao = new SubstituicaoDAO();
         daoSelecao = new SelecaoDAO();
         daoJogo = new JogoDAO();
+        daoJogador= new JogadorDAO();
 
         selecao = new Selecao("A", new Date(100, 1, 1), 5);
-
-        substituicao1 = new Substituicao(new Date(150000));
-        substituicao1.setSelecao(selecao);
-
-        substituicao2 = new Substituicao(new Date(300000));
-        substituicao2.setSelecao(selecao);
-        substituicao2.setTempo(new Date(300000));
-        substituicao3 = new Substituicao(new Date(900000));
-        substituicao3.setSelecao(selecao);
-        substituicao3.setTempo(new Date(900000));
-
+        
+        
         jogo = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
+        jogador1 = new Jogador(new Date(99, 1, 1), "Gonzaga", 10, FuncaoJogador.GOLEIRO.getFuncao());
+        jogador2 = new Jogador(new Date(150, 1, 1), "Alguem", 99, FuncaoJogador.VOLANTE.getFuncao());
         
-        daoSelecao.adicionar(selecao); 
+        substituicao1 = new Substituicao(new Time(0, 93, 10));
+        substituicao1.setSelecao(selecao);
+        substituicao1.setJogadorByJogadorEntra(jogador1);
+        substituicao1.setJogadorByJogadorSai(jogador2);
+        substituicao1.setJogo(jogo);
+
+        substituicao2 = new Substituicao(new Time(1,0,1));
+        substituicao2.setSelecao(selecao);
+        substituicao2.setJogadorByJogadorEntra(jogador1);
+        substituicao2.setJogadorByJogadorSai(jogador2);
+        substituicao2.setJogo(jogo);
         
+        substituicao3 = new Substituicao(new Time(1,1,1));
+        substituicao3.setSelecao(selecao);
+        substituicao3.setJogadorByJogadorEntra(jogador1);
+        substituicao3.setJogadorByJogadorSai(jogador2);
+        substituicao3.setJogo(jogo);
+
+
+        daoSelecao.adicionar(selecao);
+        daoJogador.adicionar(jogador1);
+        daoJogador.adicionar(jogador2);
         daoJogo.adicionar(jogo);
     }
 
@@ -66,6 +89,7 @@ public class SubstituicaoDAOTest {
         daoSelecao.removerTodos();
         daoJogo.removerTodos();
         dao.removerTodos();
+        daoJogador.removerTodos();
     }
 
     /**
@@ -91,7 +115,7 @@ public class SubstituicaoDAOTest {
     public void testAtualizar() {
 
         dao.adicionar(substituicao1);
-        substituicao1.setTempo(new Date(1000000));
+        substituicao1.setTempo(new Time(0, 0, 10));
         dao.atualizar(substituicao1);
         List<Substituicao> substituicoes = dao.listar();
         assertEquals(substituicao1, substituicoes.get(0));
@@ -122,9 +146,9 @@ public class SubstituicaoDAOTest {
 
         List<Substituicao> substituicoes = dao.listar();
         assertTrue(2 == substituicoes.size());
-        
+
         dao.removerTodos();
-        
+
         substituicoes = dao.listar();
         assertTrue(substituicoes.isEmpty());
     }
@@ -160,13 +184,13 @@ public class SubstituicaoDAOTest {
         dao.adicionar(substituicao2);
         dao.adicionar(substituicao3);
 
-        Substituicao subs = dao.buscar(new Date(150000), selecao, jogo);
+        Substituicao subs = dao.buscar(substituicao1.getTempo(), selecao, jogo);
         assertEquals(substituicao1, subs);
 
-        subs = dao.buscar(new Date(300000), selecao, jogo);
+        subs = dao.buscar(substituicao2.getTempo(), selecao, jogo);
         assertEquals(substituicao2, subs);
 
-        subs = dao.buscar(new Date(900000), selecao, jogo);
+        subs = dao.buscar(substituicao3.getTempo(), selecao, jogo);
         assertEquals(substituicao3, subs);
     }
 

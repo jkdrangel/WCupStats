@@ -8,6 +8,7 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import model.pojo.Copa;
@@ -242,7 +243,7 @@ public class Sistema {
      * @param foiContra
      * @return
      */
-    public Gol cadastrarGol(Jogo j, Date tempo, boolean foiContra) {
+    public Gol cadastrarGol(Jogo j, Time tempo, boolean foiContra) {
         Gol g = new Gol(tempo, foiContra);
         g.setJogo(j);
         gol.adicionar(g);
@@ -256,7 +257,7 @@ public class Sistema {
      * @param saiu
      * @return
      */
-    public Substituicao cadastrarSubstituicao(Date t, Jogador entrou, Jogador saiu) {
+    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu) {
         Substituicao s = new Substituicao(t);
         s.setJogadorByJogadorEntra(entrou);
         s.setJogadorByJogadorSai(saiu);

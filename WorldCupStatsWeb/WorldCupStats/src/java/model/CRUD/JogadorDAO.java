@@ -39,10 +39,7 @@ public class JogadorDAO {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             transacao = sessao.beginTransaction();
-            int x=(int) sessao.save(jogador);
-            jogador.setId(x);
-            System.out.println(jogador.getId());
-            System.out.println(x);
+            sessao.save(jogador);
             transacao.commit();
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel inserir o Jogador. Erro: " + e.getMessage());

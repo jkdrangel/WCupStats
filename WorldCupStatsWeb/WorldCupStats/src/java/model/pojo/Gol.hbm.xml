@@ -17,7 +17,7 @@
         <many-to-one name="jogo" class="model.pojo.Jogo" fetch="select">
             <column name="ID_JOGO" />
         </many-to-one>
-        <property name="tempo" type="date">
+        <property name="tempo" type="time">
             <column name="tempo" length="10" not-null="true" />
         </property>
         <property name="foiContra" type="boolean">

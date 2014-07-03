@@ -2,6 +2,7 @@ package model.pojo;
 // Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
 
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class Gol  implements java.io.Serializable {
      private Jogador jogador;
      private Selecao selecao;
      private Jogo jogo;
-     private Date tempo;
+     private Time tempo;
      private boolean foiContra;
      private Set jogosForGolB = new HashSet(0);
      private Set jogosForGolA = new HashSet(0);
@@ -26,11 +27,11 @@ public class Gol  implements java.io.Serializable {
     }
 
 	
-    public Gol(Date tempo, boolean foiContra) {
+    public Gol(Time tempo, boolean foiContra) {
         this.tempo = tempo;
         this.foiContra = foiContra;
     }
-    public Gol(Jogador jogador, Selecao selecao, Jogo jogo, Date tempo, boolean foiContra, Set jogosForGolB, Set jogosForGolA) {
+    public Gol(Jogador jogador, Selecao selecao, Jogo jogo, Time tempo, boolean foiContra, Set jogosForGolB, Set jogosForGolA) {
        this.jogador = jogador;
        this.selecao = selecao;
        this.jogo = jogo;
@@ -68,11 +69,11 @@ public class Gol  implements java.io.Serializable {
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
     }
-    public Date getTempo() {
+    public Time getTempo() {
         return this.tempo;
     }
     
-    public void setTempo(Date tempo) {
+    public void setTempo(Time tempo) {
         this.tempo = tempo;
     }
     public boolean isFoiContra() {
@@ -101,8 +102,8 @@ public class Gol  implements java.io.Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.jogador);
-        hash = 97 * hash + Objects.hashCode(this.jogo);
+        hash = 97 * hash + Objects.hashCode(this.jogador.getId());
+        hash = 97 * hash + Objects.hashCode(this.jogo.getId());
         hash = 97 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
@@ -119,10 +120,10 @@ public class Gol  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.jogador, other.jogador)) {
+        if (!Objects.equals(this.jogador.getId(), other.jogador.getId())) {
             return false;
         }
-        if (!Objects.equals(this.jogo, other.jogo)) {
+        if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {
             return false;
         }
         if (!Objects.equals(this.tempo, other.tempo)) {

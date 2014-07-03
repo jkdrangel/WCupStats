@@ -58,22 +58,22 @@ public class GolDAOTest {
         jogo.setSelecaoBySelecaoA(selecao1);
         jogo.setSelecaoBySelecaoB(selecao2);
         
-        gol1 = new Gol(new java.sql.Date(114000), false);
+        gol1 = new Gol(new java.sql.Time(1,0,0), false);
         gol1.setJogador(jogador1);
         gol1.setJogo(jogo);
         gol1.setSelecao(selecao1);
         
-        gol2 = new Gol(new java.sql.Date(30000), false);
+        gol2 = new Gol(new java.sql.Time(1,1,1), false);
         gol2.setJogador(jogador1);
         gol2.setJogo(jogo);
         gol2.setSelecao(selecao1);
         
-        gol3 = new Gol(new java.sql.Date(50000), false);
+        gol3 = new Gol(new java.sql.Time(0,1,2), false);
         gol3.setJogador(jogador2);
         gol3.setJogo(jogo);
         gol3.setSelecao(selecao1);
         
-        gol4 = new Gol(new java.sql.Date(90000), false);
+        gol4 = new Gol(new java.sql.Time(0,20,1), false);
         gol4.setJogador(jogador3);
         gol4.setJogo(jogo);
         gol4.setSelecao(selecao2);
@@ -151,15 +151,14 @@ public class GolDAOTest {
         golDAO.adicionar(gol2);
         golDAO.adicionar(gol3);
         golDAO.adicionar(gol4);
+        gols = golDAO.listar();
         assertFalse(gols.isEmpty());
         
         assertEquals(gol1, gols.get(0));
         assertEquals(gol2, gols.get(1));
-        assertEquals(gol4, gols.get(2));
-        
-        golDAO.remover(gol2);
-        gols = golDAO.listar();
-        assertEquals(3, gols.size());
+        assertEquals(gol3, gols.get(2));
+        assertEquals(gol4, gols.get(3));
+     
     }
     
     @Test
@@ -169,7 +168,7 @@ public class GolDAOTest {
         golDAO.adicionar(gol3);
         golDAO.adicionar(gol4);
         
-        Gol resultado = golDAO.buscar(jogo, new java.sql.Date(114000));
+        Gol resultado = golDAO.buscar(jogo, gol1.getTempo());
         assertEquals(gol1, resultado);
     }
 }

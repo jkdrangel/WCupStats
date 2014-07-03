@@ -131,13 +131,13 @@ public class GolDAO {
         }
     }
 
-    public Gol buscar(Jogo jogo, java.sql.Date tempo) {
+    public Gol buscar(Jogo jogo, java.sql.Time tempo) {
         Gol gol = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             Query consulta = sessao.createQuery("from Gol where jogo=:j and tempo=:t");
-            consulta.setDate("d", tempo);
+            consulta.setTime("t", tempo);
             consulta.setEntity("j", jogo);
             transacao = sessao.beginTransaction();
             gol = (Gol) consulta.uniqueResult();
