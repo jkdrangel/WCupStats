@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
+// Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -78,12 +78,13 @@ public class Substituicao  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.jogadorByJogadorSai);
-        hash = 53 * hash + Objects.hashCode(this.selecao);
-        hash = 53 * hash + Objects.hashCode(this.jogo);
-        hash = 53 * hash + Objects.hashCode(this.jogadorByJogadorEntra);
-        hash = 53 * hash + Objects.hashCode(this.tempo);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.jogadorByJogadorSai);
+        hash = 79 * hash + Objects.hashCode(this.selecao);
+        hash = 79 * hash + Objects.hashCode(this.jogo);
+        hash = 79 * hash + Objects.hashCode(this.jogadorByJogadorEntra);
+        hash = 79 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 
@@ -96,6 +97,9 @@ public class Substituicao  implements java.io.Serializable {
             return false;
         }
         final Substituicao other = (Substituicao) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
         if (!Objects.equals(this.jogadorByJogadorSai, other.jogadorByJogadorSai)) {
             return false;
         }

@@ -155,6 +155,7 @@ public class SubstituicaoDAO {
      *
      * @param tempo
      * @param selecao
+     * @param jogo
      * @return
      */
     public Substituicao buscar(java.sql.Date tempo, Selecao selecao, Jogo jogo) {
@@ -162,9 +163,10 @@ public class SubstituicaoDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Substituicao where selecao = " + selecao.getId()+ " and tempo = " + tempo+
-                                                " and jogo = "+jogo.getId());
-
+            Query consulta = sessao.createQuery("from Substituicao where selecao =:s and tempo=:t and jogo=:j");
+            consulta.setDate("t", tempo);
+            consulta.setEntity("j", jogo);
+            consulta.setEntity("s", selecao);
             transacao = sessao.beginTransaction();
             substituicao = (Substituicao) consulta.uniqueResult();
             transacao.commit();

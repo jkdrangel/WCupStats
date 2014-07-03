@@ -96,8 +96,8 @@ public class Controller {
      * @param fase
      * @return 
      */
-    public Jogo cadastrarJogo(Copa  copa, Selecao primeira, Selecao segunda, String fase){
-        return sistema.cadastrarJogo(copa, primeira, segunda, fase);
+    public Jogo cadastrarJogo(Date d,Copa  copa, Selecao primeira, Selecao segunda, String fase){
+        return sistema.cadastrarJogo(d,copa, primeira, segunda, fase);
     }
     
     /**
@@ -227,8 +227,8 @@ public class Controller {
      * @param j
      * @return 
      */
-    public String consultarCaracteristicasJogador(Jogador j){
-        return sistema.consultarCaracteristicasJogador(j);
+    public String consultarCaracteristicasJogador(Jogador j, Copa c){
+        return sistema.consultarCaracteristicasJogador(j,c);
     }
     
     /**

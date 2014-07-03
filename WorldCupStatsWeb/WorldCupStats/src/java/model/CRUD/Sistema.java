@@ -29,7 +29,7 @@ import org.hibernate.Transaction;
  * @author lsantana
  */
 public class Sistema {
-
+    
     PaisDAO pais = new PaisDAO();
     CopaDAO copa = new CopaDAO();
     TecnicoDAO tecnico = new TecnicoDAO();
@@ -103,7 +103,7 @@ public class Sistema {
         List<Pais> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-
+            
             Query consulta = sessao.createQuery("select Pais from Selecao join Copa where ano=:parametro");
             consulta.setDate("parametro", copa.getAno());
             transacao = sessao.beginTransaction();
@@ -131,9 +131,9 @@ public class Sistema {
         List<Jogo> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-
-            Query consulta = sessao.createQuery("select Jogo from Copa where ano=" + copa.getAno());
-
+            
+            Query consulta = sessao.createQuery("select Jogo from Copa where ano=:parametro");
+            consulta.setDate("parametro", copa.getAno());
             transacao = sessao.beginTransaction();
             resultado = (List<Jogo>) consulta.list();
             transacao.commit();
@@ -156,32 +156,29 @@ public class Sistema {
      * @return
      */
     public int qtdJogosPais(Pais pais) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-        /*int resultado = 0;
-         try {
-         sessao = HibernateUtil.getSessionFactory().openSession();
-
-         Query consulta = sessao.createQuery("select sum() from Copa where ano=");
-
-         transacao = sessao.beginTransaction();
-         resultado = (int)consulta.uniqueResult();
-         transacao.commit();
-         return resultado;
-         } catch (HibernateException e) {
-         System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
-         throw new HibernateException(e);
-         } finally {
-         try {
-         sessao.close();
-         } catch (Throwable e) {
-         System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
-         }
-         }*/
-        // return 0;
+        
+        int resultado = 0;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select sum() from Jogo where pais=:parametro");
+            consulta.setEntity("parametro", pais);
+            transacao = sessao.beginTransaction();
+            resultado = (int) consulta.uniqueResult();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
-    
     /**
      *
      * @param dataNascimento
@@ -235,7 +232,7 @@ public class Sistema {
         e.setSelecao(s);
         escalacao.adicionar(e);
         return e;
-
+        
     }
 
     /**
@@ -264,7 +261,7 @@ public class Sistema {
         s.setJogadorByJogadorEntra(entrou);
         s.setJogadorByJogadorSai(saiu);
         substituicao.adicionar(s);
-
+        
         return s;
     }
 
@@ -273,7 +270,7 @@ public class Sistema {
      * @return
      */
     public List<Jogador> listarJogadores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return jogador.listar();
     }
 
     /**
@@ -298,7 +295,27 @@ public class Sistema {
      * @return
      */
     public List<Jogador> listarJogadoresDaSelecao(Selecao selecao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Jogador> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select Jogador where selecao=:parametro");
+            consulta.setEntity("parametro", selecao);
+            transacao = sessao.beginTransaction();
+            resultado = (List<Jogador>) consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
+        
     }
 
     /**
@@ -307,7 +324,27 @@ public class Sistema {
      * @return
      */
     public Tecnico consultarTecnicoSelecao(Selecao s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Tecnico resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select Tecnico where selecao=:parametro");
+            consulta.setEntity("parametro", s);
+            transacao = sessao.beginTransaction();
+            resultado = (Tecnico) consulta.uniqueResult();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
+        
     }
 
     /**
@@ -316,7 +353,34 @@ public class Sistema {
      * @return
      */
     public String consultarPlacarJogo(Jogo j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            String r = "";
+            Query consulta = sessao.createQuery("select count() from Gol where jogo=:parametro and selecao=:s");
+            consulta.setEntity("parametro", j);
+            consulta.setEntity("s", j.getSelecaoBySelecaoA());
+            r = " " + consulta.uniqueResult() + " X ";
+            consulta = sessao.createQuery("select count() from Gol where jogo=:parametro and selecao=:s");
+            consulta.setEntity("parametro", j);
+            consulta.setEntity("s", j.getSelecaoBySelecaoB());
+            r = r + "" + consulta.uniqueResult();
+            transacao = sessao.beginTransaction();
+            transacao.commit();
+            
+            return r;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
+        
     }
 
     /**
@@ -325,7 +389,26 @@ public class Sistema {
      * @return
      */
     public Escalacao consultarEscalacaoSelecao(Selecao s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Escalacao resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select Escalacao where selecao=:parametro");
+            consulta.setEntity("parametro", s);
+            transacao = sessao.beginTransaction();
+            resultado = (Escalacao) consulta.uniqueResult();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -334,7 +417,26 @@ public class Sistema {
      * @return
      */
     public List<Substituicao> listaSubstituicoesJogo(Jogo j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Substituicao> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select Substituicao where jogo=:parametro");
+            consulta.setEntity("parametro", j);
+            transacao = sessao.beginTransaction();
+            resultado = (List<Substituicao>) consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -343,7 +445,26 @@ public class Sistema {
      * @return
      */
     public List<Gol> listaGolsDaPartida(Jogo j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Gol> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select Gol where jogo=:parametro");
+            consulta.setEntity("parametro", j);
+            transacao = sessao.beginTransaction();
+            resultado = (List<Gol>) consulta.list();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -352,16 +473,57 @@ public class Sistema {
      * @return
      */
     public int consultarQuatidadeDeJogoPais(Pais p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int resultado = 0;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select count() from Jogo join Selecao where Selecao.pais=:parametro");
+            consulta.setEntity("parametro", p);
+            transacao = sessao.beginTransaction();
+            resultado = (int) consulta.uniqueResult();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
      *
      * @param j
+     * @param c
      * @return
      */
-    public String consultarCaracteristicasJogador(Jogador j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String consultarCaracteristicasJogador(Jogador j, Copa c) {
+        String resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("select Jogador from Copa join Selecao where copa=:parametro and jogador=:j");
+            consulta.setEntity("parametro", c);
+            consulta.setEntity("j", j);
+            transacao = sessao.beginTransaction();
+            Jogador jogador =(Jogador)consulta.uniqueResult();
+            resultado = "Nome:" +jogador.getNome()+"Posicao:"+jogador.getPosicao()+"Data:"+jogador.getDataNascimento();
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -577,21 +739,26 @@ public class Sistema {
     public List<Pais> listarPaisesQuePerderamPartidaEGanharamACopa() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public Jogo cadastrarJogo(Copa copa, Selecao primeira, Selecao segunda, String fase) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public Jogo cadastrarJogo(Date data, Copa copa, Selecao primeira, Selecao segunda, String fase) {
+        Jogo j = new Jogo(data, "maraca", fase);
+        j.setCopa(copa);
+        j.setSelecaoBySelecaoA(primeira);
+        j.setSelecaoBySelecaoB(segunda);
+        jogo.adicionar(j);
+        return j;
     }
-
+    
     public List<Escalacao> listarEscalacoes() {
         return escalacao.listar();
     }
-
+    
     public List<Gol> listaGols() {
         return gol.listar();
     }
-
+    
     public List<Substituicao> listarSubstituicoes() {
         return substituicao.listar();
     }
-
+    
 }

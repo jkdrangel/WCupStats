@@ -397,12 +397,7 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarCaracteristicasJogador() {
-        System.out.println("consultarCaracteristicasJogador");
-        Jogador j = null;
-        Sistema instance = new Sistema();
-        String expResult = "";
-        String result = instance.consultarCaracteristicasJogador(j);
-        assertEquals(expResult, result);
+        
         fail("The test case is a prototype.");
     }
 
@@ -763,15 +758,7 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarJogo() {
-        System.out.println("cadastrarJogo");
-        copa = null;
-        Selecao primeira = null;
-        Selecao segunda = null;
-        String fase = "";
-        Sistema instance = new Sistema();
-        Jogo expResult = null;
-        Jogo result = instance.cadastrarJogo(copa, primeira, segunda, fase);
-        assertEquals(expResult, result);
+      
         fail("The test case is a prototype.");
     }
 

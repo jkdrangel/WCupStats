@@ -41,9 +41,6 @@ public class SelecaoDAOTest {
         selecaoB = new Selecao("H", new Date(50, 1, 1), 1);
         paisB = new Pais("Country", "World");
         selecaoB.setPais(paisB);
-        
-        daoPais.adicionar(paisA);
-        daoPais.adicionar(paisB);
     }
     
     @After
@@ -58,6 +55,9 @@ public class SelecaoDAOTest {
     @Test
     public void testAdicionar() {
         
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
         dao.adicionar(selecaoA);
         dao.adicionar(selecaoB);
         
@@ -72,6 +72,9 @@ public class SelecaoDAOTest {
     @Test
     public void testAtualizar() {
        
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
         dao.adicionar(selecaoA);
         selecaoA.setPais(paisB);
         dao.atualizar(selecaoA);
@@ -85,6 +88,9 @@ public class SelecaoDAOTest {
     @Test
     public void testRemover() {
         
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
         dao.adicionar(selecaoA);
         dao.adicionar(selecaoB);
         
@@ -99,6 +105,9 @@ public class SelecaoDAOTest {
     @Test
     public void testRemoverTodos() {
         
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
         dao.adicionar(selecaoA);
         dao.adicionar(selecaoB);
         
@@ -117,6 +126,9 @@ public class SelecaoDAOTest {
     @Test
     public void testListar() {
         
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
         List<Selecao> selecoes = dao.listar();
         assertTrue(selecoes.isEmpty());
         
@@ -136,6 +148,9 @@ public class SelecaoDAOTest {
     @Test
     public void testBuscar() {
         
+        
+        daoPais.adicionar(paisA);
+        daoPais.adicionar(paisB);
         dao.adicionar(selecaoA);
         dao.adicionar(selecaoB);
         

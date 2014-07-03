@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
+// Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -352,9 +352,12 @@ public class Selecao  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.pais);
-        hash = 79 * hash + Objects.hashCode(this.copa);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.pais);
+        hash = 97 * hash + Objects.hashCode(this.grupo);
+        hash = 97 * hash + Objects.hashCode(this.ano);
+        hash = 97 * hash + this.posicao;
         return hash;
     }
 
@@ -367,10 +370,19 @@ public class Selecao  implements java.io.Serializable {
             return false;
         }
         final Selecao other = (Selecao) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
         if (!Objects.equals(this.pais, other.pais)) {
             return false;
         }
-        if (!Objects.equals(this.copa, other.copa)) {
+        if (!Objects.equals(this.grupo, other.grupo)) {
+            return false;
+        }
+        if (!Objects.equals(this.ano, other.ano)) {
+            return false;
+        }
+        if (this.posicao != other.posicao) {
             return false;
         }
         return true;

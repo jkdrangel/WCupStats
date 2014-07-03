@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 01/07/2014 12:52:27 by Hibernate Tools 3.6.0
+// Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -63,9 +63,10 @@ public class Tecnico  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.nome);
-        hash = 83 * hash + Objects.hashCode(this.dataNascimento);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
         return hash;
     }
 
@@ -78,6 +79,9 @@ public class Tecnico  implements java.io.Serializable {
             return false;
         }
         final Tecnico other = (Tecnico) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
