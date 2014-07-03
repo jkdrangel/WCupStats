@@ -160,8 +160,10 @@ public class JogoDAO {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Jogo where data = "+ data +" and local = "+ local);
-            //consulta.setString("parametro1", nome);
+            Query consulta = sessao.createQuery("from Jogo where data = :parametro1 and local = :parametro2");
+            consulta.setDate("parametro1", data);
+            consulta.setString("parametro2", local);
+
 
             transacao = sessao.beginTransaction();
             jogo = (Jogo) consulta.uniqueResult();
