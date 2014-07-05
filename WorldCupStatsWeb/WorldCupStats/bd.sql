@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `wcupstats` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `wcupstats`;
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.6.17, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: wcupstats
 -- ------------------------------------------------------
--- Server version	5.5.37-0+wheezy1
+-- Server version	5.6.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -34,9 +34,9 @@ CREATE TABLE `Copa` (
   KEY `ID_SEDE` (`ID_SEDE`),
   KEY `FK_6bo63t1ktmsamyjx9lckj26uq` (`ID_SELECAO`),
   KEY `FK_qjg6s7ruo90ku3gr4wnhlp2aw` (`ID_SEDE`),
-  CONSTRAINT `Copa_ibfk_2` FOREIGN KEY (`ID_SEDE`) REFERENCES `Pais` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `Copa_ibfk_1` FOREIGN KEY (`ID_SELECAO`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=377 DEFAULT CHARSET=utf8;
+  CONSTRAINT `Copa_ibfk_1` FOREIGN KEY (`ID_SELECAO`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `Copa_ibfk_2` FOREIGN KEY (`ID_SEDE`) REFERENCES `Pais` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,9 +84,9 @@ CREATE TABLE `Escalacao` (
   KEY `FK_nowt5fjie2u1ak0gsrfcapk85` (`Jogador9`),
   KEY `FK_q2jfefdbhjxfks6antx74vr4x` (`Jogador8`),
   KEY `FK_a6x7t2svmt00kk9xs9v1fs1ag` (`Jogador7`),
-  CONSTRAINT `FK_a6x7t2svmt00kk9xs9v1fs1ag` FOREIGN KEY (`Jogador7`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_1mfys6wuqe7wqw7o2n8mvixe8` FOREIGN KEY (`Jogador1`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_29l2o3dwofv0uq0vhrd2mmy52` FOREIGN KEY (`Jogador3`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_a6x7t2svmt00kk9xs9v1fs1ag` FOREIGN KEY (`Jogador7`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_d1mj72g07mgi075uu6ciaqpvq` FOREIGN KEY (`Jogador4`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_forjmpxm0hb834u33uu4le7v1` FOREIGN KEY (`Selecao`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_gfb1gjaqoxv64vrtq4rstjnfq` FOREIGN KEY (`Jogador6`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -97,7 +97,7 @@ CREATE TABLE `Escalacao` (
   CONSTRAINT `FK_nowt5fjie2u1ak0gsrfcapk85` FOREIGN KEY (`Jogador9`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_nx3v0x66lbu7c9fhlm3qxv72y` FOREIGN KEY (`Jogador10`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_q2jfefdbhjxfks6antx74vr4x` FOREIGN KEY (`Jogador8`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `Gol` (
   CONSTRAINT `FK_dy5t574jj3r0cas0436rmsw4t` FOREIGN KEY (`ID_SELECAO`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_i0ofbqls399gh6emlo72nxl9p` FOREIGN KEY (`ID_JOGO`) REFERENCES `Jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_jxn1iwy5gk1ljngufdab0s87l` FOREIGN KEY (`ID_JOGADOR`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=295 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `Jogador` (
   `numero` int(11) NOT NULL,
   `posicao` varchar(13) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2738 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,14 +189,10 @@ CREATE TABLE `Jogo` (
   KEY `FK_tc7gt20drtr0gj0om4wweu29b` (`ID_COPA`),
   KEY `FK_10ebi8emygefnkbtgnindonx2` (`SelecaoB`),
   KEY `FK_pofmnrxros002j18bv4sa0bob` (`SelecaoA`),
-  KEY `GolA` (`GolA`),
-  KEY `GolB` (`GolB`),
-  CONSTRAINT `Jogo_ibfk_2` FOREIGN KEY (`GolB`) REFERENCES `Gol` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_10ebi8emygefnkbtgnindonx2` FOREIGN KEY (`SelecaoB`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_pofmnrxros002j18bv4sa0bob` FOREIGN KEY (`SelecaoA`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_tc7gt20drtr0gj0om4wweu29b` FOREIGN KEY (`ID_COPA`) REFERENCES `Copa` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `Jogo_ibfk_1` FOREIGN KEY (`GolA`) REFERENCES `Gol` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=333 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_tc7gt20drtr0gj0om4wweu29b` FOREIGN KEY (`ID_COPA`) REFERENCES `Copa` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +216,7 @@ CREATE TABLE `Pais` (
   `continente` varchar(20) NOT NULL,
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1039 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,6 +266,7 @@ CREATE TABLE `Selecao` (
   `Jogador22` int(11) DEFAULT NULL,
   `Jogador23` int(11) DEFAULT NULL,
   `Jogador4` int(11) DEFAULT NULL,
+  `nome` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `grupo` (`grupo`),
   KEY `ID_COPA` (`ID_COPA`),
@@ -324,7 +321,6 @@ CREATE TABLE `Selecao` (
   KEY `FK_2hxx7ovj8be2l2lw90aadgycq` (`Jogador22`),
   KEY `FK_1poorm7enb3n7p5u7trxrffp7` (`Jogador13`),
   KEY `FK_lwjwcbnuqrefsptx6sk23wlkx` (`Jogador7`),
-  CONSTRAINT `Selecao_ibfk_26` FOREIGN KEY (`Jogador4`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_1` FOREIGN KEY (`ID_COPA`) REFERENCES `Copa` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_10` FOREIGN KEY (`Jogador8`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_11` FOREIGN KEY (`Jogador9`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -343,6 +339,7 @@ CREATE TABLE `Selecao` (
   CONSTRAINT `Selecao_ibfk_23` FOREIGN KEY (`Jogador21`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_24` FOREIGN KEY (`Jogador22`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_25` FOREIGN KEY (`Jogador23`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `Selecao_ibfk_26` FOREIGN KEY (`Jogador4`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_3` FOREIGN KEY (`Tecnico`) REFERENCES `Tecnico` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_4` FOREIGN KEY (`Jogador1`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_5` FOREIGN KEY (`Jogador2`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -350,7 +347,7 @@ CREATE TABLE `Selecao` (
   CONSTRAINT `Selecao_ibfk_7` FOREIGN KEY (`Jogador5`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_8` FOREIGN KEY (`Jogador6`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `Selecao_ibfk_9` FOREIGN KEY (`Jogador7`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1419 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,7 +382,7 @@ CREATE TABLE `Substituicao` (
   CONSTRAINT `FK_exot7nm0x8o0unbp09kb5or5r` FOREIGN KEY (`JogadorEntra`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_g873mceb22x4uv45fh4m1ijtc` FOREIGN KEY (`ID_JOGO`) REFERENCES `Jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_hwrhqfa1v9dnb9afekp7t90xn` FOREIGN KEY (`JogadorSai`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=264 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +406,7 @@ CREATE TABLE `Tecnico` (
   `nome` varchar(50) NOT NULL,
   `data_nascimento` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -430,4 +427,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-03 13:16:33
+-- Dump completed on 2014-07-05 13:33:08

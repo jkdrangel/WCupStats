@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
+// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -43,6 +43,7 @@ public class Selecao  implements java.io.Serializable {
      private String grupo;
      private Date ano;
      private int posicao;
+     private String nome;
      private Set jogosForSelecaoB = new HashSet(0);
      private Set gols = new HashSet(0);
      private Set jogosForSelecaoA = new HashSet(0);
@@ -59,7 +60,7 @@ public class Selecao  implements java.io.Serializable {
         this.ano = ano;
         this.posicao = posicao;
     }
-    public Selecao(Jogador jogadorByJogador20, Pais pais, Tecnico tecnico, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Copa copa, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador18, Jogador jogadorByJogador1, Jogador jogadorByJogador19, Jogador jogadorByJogador14, Jogador jogadorByJogador15, Jogador jogadorByJogador16, Jogador jogadorByJogador17, Jogador jogadorByJogador23, Jogador jogadorByJogador10, Jogador jogadorByJogador9, Jogador jogadorByJogador11, Jogador jogadorByJogador21, Jogador jogadorByJogador8, Jogador jogadorByJogador12, Jogador jogadorByJogador22, Jogador jogadorByJogador13, Jogador jogadorByJogador7, String grupo, Date ano, int posicao, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set copas, Set substituicaos, Set escalacaos) {
+    public Selecao(Jogador jogadorByJogador20, Pais pais, Tecnico tecnico, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Copa copa, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador18, Jogador jogadorByJogador1, Jogador jogadorByJogador19, Jogador jogadorByJogador14, Jogador jogadorByJogador15, Jogador jogadorByJogador16, Jogador jogadorByJogador17, Jogador jogadorByJogador23, Jogador jogadorByJogador10, Jogador jogadorByJogador9, Jogador jogadorByJogador11, Jogador jogadorByJogador21, Jogador jogadorByJogador8, Jogador jogadorByJogador12, Jogador jogadorByJogador22, Jogador jogadorByJogador13, Jogador jogadorByJogador7, String grupo, Date ano, int posicao, String nome, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set copas, Set substituicaos, Set escalacaos) {
        this.jogadorByJogador20 = jogadorByJogador20;
        this.pais = pais;
        this.tecnico = tecnico;
@@ -89,6 +90,7 @@ public class Selecao  implements java.io.Serializable {
        this.grupo = grupo;
        this.ano = ano;
        this.posicao = posicao;
+       this.nome = nome;
        this.jogosForSelecaoB = jogosForSelecaoB;
        this.gols = gols;
        this.jogosForSelecaoA = jogosForSelecaoA;
@@ -307,6 +309,13 @@ public class Selecao  implements java.io.Serializable {
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     public Set getJogosForSelecaoB() {
         return this.jogosForSelecaoB;
     }
@@ -353,11 +362,10 @@ public class Selecao  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        //hash = 97 * hash + Objects.hashCode(this.pais);
-        hash = 97 * hash + Objects.hashCode(this.grupo);
-        hash = 97 * hash + Objects.hashCode(this.ano);
-        hash = 97 * hash + this.posicao;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.grupo);
+        hash = 59 * hash + Objects.hashCode(this.ano);
+        hash = 59 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -373,16 +381,13 @@ public class Selecao  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.pais.getId(), other.pais.getId())) {
-            return false;
-        }
         if (!Objects.equals(this.grupo, other.grupo)) {
             return false;
         }
         if (!Objects.equals(this.ano, other.ano)) {
             return false;
         }
-        if (this.posicao != other.posicao) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         return true;

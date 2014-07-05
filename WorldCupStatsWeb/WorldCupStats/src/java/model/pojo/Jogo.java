@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
+// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -16,12 +16,12 @@ public class Jogo  implements java.io.Serializable {
      private Integer id;
      private Copa copa;
      private Selecao selecaoBySelecaoB;
-     private Gol golByGolB;
      private Selecao selecaoBySelecaoA;
-     private Gol golByGolA;
      private Date data;
      private String local;
      private String fase;
+     private Integer golA;
+     private Integer golB;
      private Set escalacaos = new HashSet(0);
      private Set substituicaos = new HashSet(0);
      private Set gols = new HashSet(0);
@@ -35,15 +35,15 @@ public class Jogo  implements java.io.Serializable {
         this.local = local;
         this.fase = fase;
     }
-    public Jogo(Copa copa, Selecao selecaoBySelecaoB, Gol golByGolB, Selecao selecaoBySelecaoA, Gol golByGolA, Date data, String local, String fase, Set escalacaos, Set substituicaos, Set gols) {
+    public Jogo(Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase, Integer golA, Integer golB, Set escalacaos, Set substituicaos, Set gols) {
        this.copa = copa;
        this.selecaoBySelecaoB = selecaoBySelecaoB;
-       this.golByGolB = golByGolB;
        this.selecaoBySelecaoA = selecaoBySelecaoA;
-       this.golByGolA = golByGolA;
        this.data = data;
        this.local = local;
        this.fase = fase;
+       this.golA = golA;
+       this.golB = golB;
        this.escalacaos = escalacaos;
        this.substituicaos = substituicaos;
        this.gols = gols;
@@ -70,26 +70,12 @@ public class Jogo  implements java.io.Serializable {
     public void setSelecaoBySelecaoB(Selecao selecaoBySelecaoB) {
         this.selecaoBySelecaoB = selecaoBySelecaoB;
     }
-    public Gol getGolByGolB() {
-        return this.golByGolB;
-    }
-    
-    public void setGolByGolB(Gol golByGolB) {
-        this.golByGolB = golByGolB;
-    }
     public Selecao getSelecaoBySelecaoA() {
         return this.selecaoBySelecaoA;
     }
     
     public void setSelecaoBySelecaoA(Selecao selecaoBySelecaoA) {
         this.selecaoBySelecaoA = selecaoBySelecaoA;
-    }
-    public Gol getGolByGolA() {
-        return this.golByGolA;
-    }
-    
-    public void setGolByGolA(Gol golByGolA) {
-        this.golByGolA = golByGolA;
     }
     public Date getData() {
         return this.data;
@@ -111,6 +97,20 @@ public class Jogo  implements java.io.Serializable {
     
     public void setFase(String fase) {
         this.fase = fase;
+    }
+    public Integer getGolA() {
+        return this.golA;
+    }
+    
+    public void setGolA(Integer golA) {
+        this.golA = golA;
+    }
+    public Integer getGolB() {
+        return this.golB;
+    }
+    
+    public void setGolB(Integer golB) {
+        this.golB = golB;
     }
     public Set getEscalacaos() {
         return this.escalacaos;
@@ -136,11 +136,12 @@ public class Jogo  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoB);
+        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoA);
         hash = 89 * hash + Objects.hashCode(this.data);
         hash = 89 * hash + Objects.hashCode(this.local);
-        hash = 89 * hash + Objects.hashCode(this.fase);
         return hash;
     }
 
@@ -156,14 +157,16 @@ public class Jogo  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        
+        if (!Objects.equals(this.selecaoBySelecaoB, other.selecaoBySelecaoB)) {
+            return false;
+        }
+        if (!Objects.equals(this.selecaoBySelecaoA, other.selecaoBySelecaoA)) {
+            return false;
+        }
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
         if (!Objects.equals(this.local, other.local)) {
-            return false;
-        }
-        if (!Objects.equals(this.fase, other.fase)) {
             return false;
         }
         return true;

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03/07/2014 09:33:33 by Hibernate Tools 3.6.0 -->
+<!-- Generated Jul 5, 2014 1:28:31 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Jogo" table="Jogo" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
@@ -14,14 +14,8 @@
         <many-to-one name="selecaoBySelecaoB" class="model.pojo.Selecao" fetch="select">
             <column name="SelecaoB" />
         </many-to-one>
-        <many-to-one name="golByGolB" class="model.pojo.Gol" fetch="select">
-            <column name="GolB" />
-        </many-to-one>
         <many-to-one name="selecaoBySelecaoA" class="model.pojo.Selecao" fetch="select">
             <column name="SelecaoA" />
-        </many-to-one>
-        <many-to-one name="golByGolA" class="model.pojo.Gol" fetch="select">
-            <column name="GolA" />
         </many-to-one>
         <property name="data" type="date">
             <column name="data" length="10" not-null="true" />
@@ -31,6 +25,12 @@
         </property>
         <property name="fase" type="string">
             <column name="fase" length="16" not-null="true" />
+        </property>
+        <property name="golA" type="java.lang.Integer">
+            <column name="GolA" />
+        </property>
+        <property name="golB" type="java.lang.Integer">
+            <column name="GolB" />
         </property>
         <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
             <key>

@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated 03/07/2014 09:33:32 by Hibernate Tools 3.6.0
+// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
 
 import java.util.Objects;
 
@@ -148,9 +148,9 @@ public class Escalacao  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.selecao);
-        hash = 41 * hash + Objects.hashCode(this.jogo);
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.selecao.getId());
+        hash = 29 * hash + Objects.hashCode(this.jogo.getId());
         return hash;
     }
 
