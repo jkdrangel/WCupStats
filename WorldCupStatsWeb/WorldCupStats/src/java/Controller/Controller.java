@@ -91,14 +91,16 @@ public class Controller {
     /**
      * Um novo jogo é inserido em uma copa do mundo,
      * deve ser informado a fase na qual o jogo foi realizado (grupos, final, quartas...)
+     * @param d
+     * @param local
      * @param copa
      * @param primeira
      * @param segunda
      * @param fase
      * @return 
      */
-    public Jogo cadastrarJogo(Date d,Copa  copa, Selecao primeira, Selecao segunda, String fase){
-        return sistema.cadastrarJogo(d,copa, primeira, segunda, fase);
+    public Jogo cadastrarJogo(Date d, String local,Copa  copa, Selecao primeira, Selecao segunda, String fase){
+        return sistema.cadastrarJogo(d,local,copa, primeira, segunda, fase);
     }
     
     /**
@@ -107,10 +109,12 @@ public class Controller {
      * @param j
      * @param tempo
      * @param foiContra
+     * @param jogador
+     * @param s
      * @return 
      */
-    public Gol cadastrarGolEmJogo(Jogo j, Time tempo, boolean foiContra) {
-        return sistema.cadastrarGol(j, tempo, foiContra);
+    public Gol cadastrarGolEmJogo(Jogo j, Time tempo, boolean foiContra, Jogador jogador, Selecao s) {
+        return sistema.cadastrarGol(j, tempo, foiContra, jogador, s);
     }
     /**
      * Um gol eh computado para uma das equipes,
@@ -119,10 +123,11 @@ public class Controller {
      * @param t
      * @param entrou
      * @param saiu
+     * @param j
      * @return 
      */
-    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu) {
-        return sistema.cadastrarSubstituicao(t, entrou, saiu);
+    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu, Jogo j) {
+        return sistema.cadastrarSubstituicao(t, entrou, saiu, j);
     }   
     /**
      * 

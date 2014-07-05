@@ -82,7 +82,7 @@ public class Copa  implements java.io.Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.pais);
+        hash = 89 * hash + Objects.hashCode(this.pais.getId());
         hash = 89 * hash + Objects.hashCode(this.ano);
         return hash;
     }
@@ -99,7 +99,7 @@ public class Copa  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.pais, other.pais)) {
+        if (!Objects.equals(this.pais.getId(), other.pais.getId())) {
             return false;
         }
         if (!Objects.equals(this.ano, other.ano)) {

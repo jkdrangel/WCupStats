@@ -8,6 +8,7 @@ package model.CRUD;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
+import model.Enuns.FaseCopa;
 import model.Enuns.FuncaoJogador;
 import model.pojo.Copa;
 import model.pojo.Escalacao;
@@ -41,8 +42,9 @@ public class SistemaTest {
     SubstituicaoDAO substituicaoDao = sistema.substituicao;
 
     Pais brasil, africa, coreia;
-    Selecao selecao, selecaoA, selecaoB;
-    Escalacao escA, escB;
+    Selecao selecaoB1, selecaoA1, selecaoC1,selecaoB2, selecaoA2, selecaoC2,
+            selecaoB3, selecaoA3, selecaoC3;
+    Escalacao escA1, escB1, escC1,escA2, escB2, escC2,escA3, escB3, escC3;
     Jogador jogA1, jogA2, jogA3, jogA4, jogA5, jogA6, jogA7,
             jogA8, jogA9, jogA10, jogA11, jogB1, jogB2, jogB3,
             jogB4, jogB5, jogB6, jogB7, jogB8, jogB9, jogB10, jogB11;
@@ -57,14 +59,62 @@ public class SistemaTest {
 
     @Before
     public void setUp() {
-        brasil = new Pais("", "");
-        africa = new Pais("", "");
-        coreia = new Pais("", "");
-        selecao = new Selecao("", new Date(1), 0);
-        selecaoA = new Selecao("", new Date(1), 0);
-        selecaoB = new Selecao("", new Date(1), 0);
-        escA = new Escalacao();
-        escB = new Escalacao();
+        
+        copa =new Copa(new Date(114, 1, 1));
+        copa1 =new Copa(new Date(110, 1, 1));
+        copa2 =new Copa(new Date(106, 1, 1));
+        
+        brasil = new Pais("brasil", "america");
+        africa = new Pais("Africa", "africa");
+        coreia = new Pais("coreia", "asia");
+        
+        copa.setPais(brasil);
+        copa.setPais(africa);
+        copa.setPais(coreia);
+        copa1.setPais(brasil);
+        copa1.setPais(africa);
+        copa1.setPais(coreia);
+        copa2.setPais(brasil);
+        copa2.setPais(africa);
+        copa2.setPais(coreia);
+        
+        selecaoB1 = new Selecao("brasil", new Date(114), 1);
+        selecaoA1 = new Selecao("africa", new Date(114), 2);
+        selecaoC1 = new Selecao("coreia", new Date(114), 3);
+        selecaoB2 = new Selecao("brasil", new Date(110), 1);
+        selecaoA2 = new Selecao("africa", new Date(110), 3);
+        selecaoC2 = new Selecao("coreia", new Date(110), 2);
+        selecaoB3 = new Selecao("brasil", new Date(106), 2);
+        selecaoA3 = new Selecao("africa", new Date(106), 1);
+        selecaoC3 = new Selecao("coreia", new Date(106), 3);
+        
+        escA1 = new Escalacao();
+        escB1 = new Escalacao();
+        escC1 = new Escalacao();
+        escA2 = new Escalacao();
+        escB2 = new Escalacao();
+        escC2 = new Escalacao();
+        escA3 = new Escalacao();
+        escB3 = new Escalacao();
+        escC3 = new Escalacao();
+        
+        escA1.setSelecao(selecaoA1);
+        
+        jogB1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.GOLEIRO.getFuncao());
+        jogB2=new Jogador(new Date(83, 3, 20), "daniel", 2, FuncaoJogador.LATERAL.getFuncao()); 
+        jogB3=new Jogador(new Date(90, 11, 2), "tiago", 3, FuncaoJogador.LATERAL.getFuncao()); 
+        jogB4=new Jogador(new Date(81, 3, 5), "david", 4, FuncaoJogador.ZAGUEIRO.getFuncao()); 
+        jogB5=new Jogador(new Date(89, 8, 21), "fernandinho", 5, FuncaoJogador.VOLANTE.getFuncao()); 
+        jogB6=new Jogador(new Date(97, 6, 13), "marcelo", 6, FuncaoJogador.LATERAL.getFuncao()); 
+        jogB7=new Jogador(new Date(95, 1, 11), "hulk", 7, FuncaoJogador.ATACANTE.getFuncao()); 
+        jogB8=new Jogador(new Date(82, 6, 8), "paulinho", 8, FuncaoJogador.VOLANTE.getFuncao()); 
+        jogB9=new Jogador(new Date(84, 2, 27), "fred", 9, FuncaoJogador.ATACANTE.getFuncao()); 
+        jogB10=new Jogador(new Date(79, 8, 12), "neymar", 10, FuncaoJogador.ATACANTE.getFuncao()); 
+        jogB11=new Jogador(new Date(91, 7, 30), "oscar", 11, FuncaoJogador.MEIO_DE_CAMPO.getFuncao()); 
+     
+        jogo1= new Jogo(new Date(114, 6, 20), "Maracana", FaseCopa.GRUPOS.getFase());
+        jogo2= new Jogo(new Date(114, 6, 21), "dunas", FaseCopa.GRUPOS.getFase());
+        jogo3= new Jogo(new Date(114, 6, 22), "fonte nova", FaseCopa.GRUPOS.getFase());
     }
 
     @After
@@ -91,8 +141,8 @@ public class SistemaTest {
     @Test
     public void testCadastrarCopa() {
         paisDao.adicionar(brasil);
-        selecaoDao.adicionar(selecao);
-        copa1 = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecao);
+        selecaoDao.adicionar(selecaoB1);
+        copa1 = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecaoB1);
         assertNotNull(copa1);
         List<Copa> copas = sistema.listarCopas();
         assertEquals(copa1, copas.get(0));
@@ -113,15 +163,15 @@ public class SistemaTest {
 
     @Test
     public void testListarCopas() {
-        selecaoDao.adicionar(selecao);
-        selecaoDao.adicionar(selecaoA);
-        selecaoDao.adicionar(selecaoB);
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA2);
+        selecaoDao.adicionar(selecaoC3);
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-        copa = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecao);
-        copa1 = sistema.cadastrarCopa(new Date(110, 1, 1), africa, selecaoA);
-        copa2 = sistema.cadastrarCopa(new Date(106, 1, 1), coreia, selecaoB);
+        copa = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecaoB1);
+        copa1 = sistema.cadastrarCopa(new Date(110, 1, 1), africa, selecaoA2);
+        copa2 = sistema.cadastrarCopa(new Date(106, 1, 1), coreia, selecaoC3);
         List<Copa> copas = sistema.listarCopas();
         assertFalse(copas.isEmpty());
         assertEquals(copa, copas.get(0));
@@ -136,13 +186,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesCopa() {
-        System.out.println("listarPaisesCopa");
-        copa = null;
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesCopa(copa);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -151,13 +194,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogosCopa() {
-        System.out.println("listarJogosCopa");
-        copa = null;
-        Sistema instance = new Sistema();
-        List<Jogo> expResult = null;
-        List<Jogo> result = instance.listarJogosCopa(copa);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -166,13 +202,6 @@ public class SistemaTest {
      */
     @Test
     public void testQtdJogosPais() {
-        System.out.println("qtdJogosPais");
-        Pais pais = null;
-        Sistema instance = new Sistema();
-        int expResult = 0;
-        int result = instance.qtdJogosPais(pais);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -202,9 +231,9 @@ public class SistemaTest {
     @Test
     public void testCadastrarSelecao() {
         paisDao.adicionar(brasil);
-        selecao = sistema.cadastrarSelecao(1, new Date(114,1,1), "A", brasil);
+        selecaoB1 = sistema.cadastrarSelecao(1, new Date(114,1,1), "A", brasil);
         List<Selecao> lista = sistema.listarSelecoes();
-        assertEquals(selecao, lista.get(0));
+        assertEquals(selecaoB1, lista.get(0));
     }
 
     /**
@@ -212,8 +241,9 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarEscalacao() {
-        selecaoDao.adicionar(selecao);
-        Escalacao escalacao = sistema.cadastrarEscalacao(null, selecao);
+        selecaoDao.adicionar(selecaoB1);
+        jogoDao.adicionar(jogo1);
+        Escalacao escalacao = sistema.cadastrarEscalacao(jogo1, selecaoB1);
         List<Escalacao> lista = sistema.listarEscalacoes();
         assertEquals(escalacao, lista.get(0));
     }
@@ -223,7 +253,10 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarGol() {
-        Gol gol = sistema.cadastrarGol(null, new Time(0,0,1), true);
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB1);
+        selecaoDao.adicionar(selecaoA1);
+        Gol gol = sistema.cadastrarGol(jogo1, new Time(0,0,1), true, jogB1, selecaoA1);
         List<Gol> lista = sistema.listaGols();
         assertEquals(gol, lista.get(0));
     }
@@ -233,7 +266,10 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarSubstituicao() {
-        Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1,30,1), null, null);
+        jogadorDao.adicionar(jogB1);
+        jogadorDao.adicionar(jogB11);
+        jogoDao.adicionar(jogo1);
+        Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1,30,1), jogB1, jogB11, jogo1);
         List<Substituicao> lista = sistema.listarSubstituicoes();
         assertEquals(substituicao, lista.get(0));
     }
@@ -277,12 +313,12 @@ public class SistemaTest {
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
         
-        selecao = sistema.cadastrarSelecao(1, new Date(110,1,1), "A", brasil);
+        selecaoB1 = sistema.cadastrarSelecao(1, new Date(110,1,1), "A", brasil);
         Selecao selecao1 = sistema.cadastrarSelecao(2, new Date(110,1,1), "B", africa);
         Selecao selecao2 = sistema.cadastrarSelecao(3, new Date(110,1,1), "C", coreia);
         List<Selecao> selecoes = sistema.listarSelecoes();
         assertFalse(selecoes.isEmpty());
-        assertEquals(selecao, selecoes.get(0));
+        assertEquals(selecaoB1, selecoes.get(0));
         assertEquals(selecao1, selecoes.get(1));
         assertEquals(selecao2, selecoes.get(2));
     }
@@ -292,15 +328,19 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresDaSelecao() {
-        selecao.setJogadorByJogador1(jogB1);
-        selecao.setJogadorByJogador10(jogB10);
-        selecao.setJogadorByJogador11(jogB11);
+        selecaoB1.setJogadorByJogador1(jogB1);
+        selecaoB1.setJogadorByJogador10(jogB10);
+        selecaoB1.setJogadorByJogador11(jogB11);
         
-        List<Jogador> result = sistema.listarJogadoresDaSelecao(selecao);
+        jogadorDao.adicionar(jogB1);
+        jogadorDao.adicionar(jogB10);
+        jogadorDao.adicionar(jogB11);
+        
+        selecaoDao.adicionar(selecaoB1);
+        
+        List<Jogador> result = sistema.listarJogadoresDaSelecao(selecaoB1);
         assertFalse(result.isEmpty());
         assertEquals(jogB1,result.get(0));
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -308,13 +348,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarTecnicoSelecao() {
-        System.out.println("consultarTecnicoSelecao");
-        Selecao s = null;
-        Sistema instance = new Sistema();
-        Tecnico expResult = null;
-        Tecnico result = instance.consultarTecnicoSelecao(s);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -323,13 +356,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarPlacarJogo() {
-        System.out.println("consultarPlacarJogo");
-        Jogo j = null;
-        Sistema instance = new Sistema();
-        String expResult = "";
-        String result = instance.consultarPlacarJogo(j);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -338,13 +364,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarEscalacaoSelecao() {
-        System.out.println("consultarEscalacaoSelecao");
-        Selecao s = null;
-        Sistema instance = new Sistema();
-        Escalacao expResult = null;
-        Escalacao result = instance.consultarEscalacaoSelecao(s);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -353,13 +372,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaSubstituicoesJogo() {
-        System.out.println("listaSubstituicoesJogo");
-        Jogo j = null;
-        Sistema instance = new Sistema();
-        List<Substituicao> expResult = null;
-        List<Substituicao> result = instance.listaSubstituicoesJogo(j);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -368,13 +380,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaGolsDaPartida() {
-        System.out.println("listaGolsDaPartida");
-        Jogo j = null;
-        Sistema instance = new Sistema();
-        List<Gol> expResult = null;
-        List<Gol> result = instance.listaGolsDaPartida(j);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -383,13 +388,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarQuatidadeDeJogoPais() {
-        System.out.println("consultarQuatidadeDeJogoPais");
-        Pais p = null;
-        Sistema instance = new Sistema();
-        int expResult = 0;
-        int result = instance.consultarQuatidadeDeJogoPais(p);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -407,12 +405,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarQuantidadeEMediaDeGols() {
-        System.out.println("consultarQuantidadeEMediaDeGols");
-        Copa c = null;
-        Sistema instance = new Sistema();
-        String expResult = "";
-        String result = instance.consultarQuantidadeEMediaDeGols(c);
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -421,11 +413,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarMaioresGoleadas() {
-        System.out.println("consultarMaioresGoleadas");
-        Sistema instance = new Sistema();
-        List<Jogo> expResult = null;
-        List<Jogo> result = instance.consultarMaioresGoleadas();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -434,12 +421,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogosEmpatados() {
-        System.out.println("listarJogosEmpatados");
-        Copa c = null;
-        Sistema instance = new Sistema();
-        List<Jogo> expResult = null;
-        List<Jogo> result = instance.listarJogosEmpatados(c);
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -448,11 +429,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarVitoriasIncontestaveis() {
-        System.out.println("listarVitoriasIncontestaveis");
-        Sistema instance = new Sistema();
-        List<String> expResult = null;
-        List<String> result = instance.listarVitoriasIncontestaveis();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -461,12 +437,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsutarOrdemClassificacao() {
-        System.out.println("consutarOrdemClassificacao");
-        Copa c = null;
-        Sistema instance = new Sistema();
-        List<Selecao> expResult = null;
-        List<Selecao> result = instance.consutarOrdemClassificacao(c);
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -475,11 +445,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultaArtilheiros() {
-        System.out.println("consultaArtilheiros");
-        Sistema instance = new Sistema();
-        List<String> expResult = null;
-        List<String> result = instance.consultaArtilheiros();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -488,12 +453,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultaMediaIdadeSelecoes() {
-        System.out.println("consultaMediaIdadeSelecoes");
-        Copa c = null;
-        Sistema instance = new Sistema();
-        double expResult = 0.0;
-        double result = instance.consultaMediaIdadeSelecoes(c);
-        assertEquals(expResult, result, 0.0);
         fail("The test case is a prototype.");
     }
 
@@ -502,11 +461,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaTodasFinais() {
-        System.out.println("listaTodasFinais");
-        Sistema instance = new Sistema();
-        List<String> expResult = null;
-        List<String> result = instance.listaTodasFinais();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -515,11 +469,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaTecnicosCampeoes() {
-        System.out.println("listaTecnicosCampeoes");
-        Sistema instance = new Sistema();
-        List<Tecnico> expResult = null;
-        List<Tecnico> result = instance.listaTecnicosCampeoes();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -528,11 +477,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaGolsContra() {
-        System.out.println("listaGolsContra");
-        Sistema instance = new Sistema();
-        List<String> expResult = null;
-        List<String> result = instance.listaGolsContra();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -541,11 +485,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaCopasComPaisSedeCampeao() {
-        System.out.println("listaCopasComPaisSedeCampeao");
-        Sistema instance = new Sistema();
-        List<Copa> expResult = null;
-        List<Copa> result = instance.listaCopasComPaisSedeCampeao();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -554,11 +493,6 @@ public class SistemaTest {
      */
     @Test
     public void testListaDecrescenteDePaisesComMaisTitulos() {
-        System.out.println("listaDecrescenteDePaisesComMaisTitulos");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listaDecrescenteDePaisesComMaisTitulos();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -567,12 +501,6 @@ public class SistemaTest {
      */
     @Test
     public void testQuatidadeDeParticipacoesEmCopas() {
-        System.out.println("quatidadeDeParticipacoesEmCopas");
-        Pais p = null;
-        Sistema instance = new Sistema();
-        int expResult = 0;
-        int result = instance.quatidadeDeParticipacoesEmCopas(p);
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -581,11 +509,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaisParticipacoes() {
-        System.out.println("listarPaisesComMaisParticipacoes");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesComMaisParticipacoes();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -595,11 +518,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaiorNumeroDeViceCampeonatos() {
-        System.out.println("listarPaisesComMaiorNumeroDeViceCampeonatos");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesComMaiorNumeroDeViceCampeonatos();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -609,11 +527,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaiorPercentualDeDerrotas() {
-        System.out.println("listarPaisesComMaiorPercentualDeDerrotas");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesComMaiorPercentualDeDerrotas();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -623,12 +536,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeGolPorPartida() {
-        System.out.println("listarJogadoresComMaiorNumeroDeGolPorPartida");
-        Jogo j = null;
-        Sistema instance = new Sistema();
-        List<Jogador> expResult = null;
-        List<Jogador> result = instance.listarJogadoresComMaiorNumeroDeGolPorPartida(j);
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -638,11 +545,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadorComMaiorMediaDeGolPorPartidaNasCopas() {
-        System.out.println("listarJogadorComMaiorMediaDeGolPorPartidaNasCopas");
-        Sistema instance = new Sistema();
-        List<Jogador> expResult = null;
-        List<Jogador> result = instance.listarJogadorComMaiorMediaDeGolPorPartidaNasCopas();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -652,11 +554,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadorComMaiorQuantidadeDeJogosEmCopas() {
-        System.out.println("listarJogadorComMaiorQuantidadeDeJogosEmCopas");
-        Sistema instance = new Sistema();
-        List<Jogador> expResult = null;
-        List<Jogador> result = instance.listarJogadorComMaiorQuantidadeDeJogosEmCopas();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -665,11 +562,6 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarGolMaisRapidoNasCopas() {
-        System.out.println("consultarGolMaisRapidoNasCopas");
-        Sistema instance = new Sistema();
-        Gol expResult = null;
-        Gol result = instance.consultarGolMaisRapidoNasCopas();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -679,11 +571,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeJogosComoReserva() {
-        System.out.println("listarJogadoresComMaiorNumeroDeJogosComoReserva");
-        Sistema instance = new Sistema();
-        List<Jogador> expResult = null;
-        List<Jogador> result = instance.listarJogadoresComMaiorNumeroDeJogosComoReserva();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -692,11 +579,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresReservaQueFizeramGols() {
-        System.out.println("listarJogadoresReservaQueFizeramGols");
-        Sistema instance = new Sistema();
-        List<Jogador> expResult = null;
-        List<Jogador> result = instance.listarJogadoresReservaQueFizeramGols();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -705,11 +587,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesQueMaisParticiparamDeFinais() {
-        System.out.println("listarPaisesQueMaisParticiparamDeFinais");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesQueMaisParticiparamDeFinais();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -719,11 +596,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaisEliminacoesPrimeiraFase() {
-        System.out.println("listarPaisesComMaisEliminacoesPrimeiraFase");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesComMaisEliminacoesPrimeiraFase();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -732,11 +604,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComTotalDeVitoriasNaCopa() {
-        System.out.println("listarPaisesComTotalDeVitoriasNaCopa");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesComTotalDeVitoriasNaCopa();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -746,11 +613,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesQuePerderamPartidaEGanharamACopa() {
-        System.out.println("listarPaisesQuePerderamPartidaEGanharamACopa");
-        Sistema instance = new Sistema();
-        List<Pais> expResult = null;
-        List<Pais> result = instance.listarPaisesQuePerderamPartidaEGanharamACopa();
-        assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
 
@@ -759,21 +621,32 @@ public class SistemaTest {
      */
     @Test
     public void testCadastrarJogo() {
-      
-        fail("The test case is a prototype.");
-    }
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA1);
+        Jogo jogo = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase());
+        List<Jogo> lista = sistema.listarJogos();
+        assertEquals(jogo, lista.get(0));
+        }
 
     /**
      * Test of listarEscalacoes method, of class Sistema.
      */
     @Test
     public void testListarEscalacoes() {
-        System.out.println("listarEscalacoes");
-        Sistema instance = new Sistema();
-        List<Escalacao> expResult = null;
-        List<Escalacao> result = instance.listarEscalacoes();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA2);
+        selecaoDao.adicionar(selecaoC3);
+        jogoDao.adicionar(jogo1);
+        jogoDao.adicionar(jogo2);
+        jogoDao.adicionar(jogo3);
+        escA1 = sistema.cadastrarEscalacao(jogo1, selecaoB1);
+        escA2 = sistema.cadastrarEscalacao(jogo2, selecaoA2);
+        escA3 = sistema.cadastrarEscalacao(jogo3, selecaoC3);
+        List<Escalacao> escalacoes = sistema.listarEscalacoes();
+        assertFalse(escalacoes.isEmpty());
+        assertEquals(escA1, escalacoes.get(0));
+        assertEquals(escA2, escalacoes.get(1));
+        assertEquals(escA3, escalacoes.get(2));
     }
 
     /**
@@ -781,12 +654,18 @@ public class SistemaTest {
      */
     @Test
     public void testListaGols() {
-        System.out.println("listaGols");
-        Sistema instance = new Sistema();
-        List<Gol> expResult = null;
-        List<Gol> result = instance.listaGols();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        selecaoDao.adicionar(selecaoB1);
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB1);
+        gol1 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
+        gol2 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
+        gol3 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
+        List<Gol> gols = sistema.listaGols();
+        assertFalse(gols.isEmpty());
+        assertEquals(gol1, gols.get(0));
+        assertEquals(gol2, gols.get(1));
+        assertEquals(gol3, gols.get(2));
+    
     }
 
     /**
@@ -794,11 +673,22 @@ public class SistemaTest {
      */
     @Test
     public void testListarSubstituicoes() {
-        System.out.println("listarSubstituicoes");
-        Sistema instance = new Sistema();
-        List<Substituicao> expResult = null;
-        List<Substituicao> result = instance.listarSubstituicoes();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        selecaoDao.adicionar(selecaoB1);
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB2);
+        jogadorDao.adicionar(jogB3);
+        jogadorDao.adicionar(jogB4);
+        jogadorDao.adicionar(jogB5);
+        jogadorDao.adicionar(jogB10);
+        jogadorDao.adicionar(jogB11);
+        
+        substituicao1 = sistema.cadastrarSubstituicao(new Time(1,1,1), jogB5, jogB10, jogo1);
+        substituicao2 = sistema.cadastrarSubstituicao(new Time(0,40,1), jogB2, jogB11, jogo1);
+        substituicao3 = sistema.cadastrarSubstituicao(new Time(1,15,1), jogB3, jogB4, jogo1);
+        List<Substituicao> substituicoes = sistema.listarSubstituicoes();
+        assertFalse(substituicoes.isEmpty());
+        assertEquals(substituicao1, substituicoes.get(0));
+        assertEquals(substituicao2, substituicoes.get(1));
+        assertEquals(substituicao3, substituicoes.get(2));
     }
 }

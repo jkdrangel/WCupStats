@@ -56,9 +56,7 @@ public class Sistema {
      * @return
      */
     public Pais cadastrarPais(String nome, String continente) {
-        Pais p = new Pais();
-        p.setContinente(continente);
-        p.setNome(nome);
+        Pais p = new Pais(nome, continente);
         pais.adicionar(p);
         return p;
     }
@@ -162,7 +160,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select sum() from Jogo where pais=:parametro");
+            Query consulta = sessao.createQuery("select count(id) from Jogo join Selecao where pais=:parametro");
             consulta.setEntity("parametro", pais);
             transacao = sessao.beginTransaction();
             resultado = (int) consulta.uniqueResult();
@@ -243,8 +241,8 @@ public class Sistema {
      * @param foiContra
      * @return
      */
-    public Gol cadastrarGol(Jogo j, Time tempo, boolean foiContra) {
-        Gol g = new Gol(tempo, foiContra);
+    public Gol cadastrarGol(Jogo j, Time tempo, boolean foiContra, Jogador jogador, Selecao s) {
+        Gol g = new Gol(jogador, s, j, tempo, foiContra);
         g.setJogo(j);
         gol.adicionar(g);
         return g;
@@ -255,12 +253,14 @@ public class Sistema {
      * @param t
      * @param entrou
      * @param saiu
+     * @param j
      * @return
      */
-    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu) {
+    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu, Jogo j) {
         Substituicao s = new Substituicao(t);
         s.setJogadorByJogadorEntra(entrou);
         s.setJogadorByJogadorSai(saiu);
+        s.setJogo(j);
         substituicao.adicionar(s);
         
         return s;
@@ -300,7 +300,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Jogador where selecao=:parametro");
+            Query consulta = sessao.createQuery("select Jogador from Selecao join Jogador where selecao=:parametro");
             consulta.setEntity("parametro", selecao);
             transacao = sessao.beginTransaction();
             resultado = (List<Jogador>) consulta.list();
@@ -478,7 +478,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select count() from Jogo join Selecao where Selecao.pais=:parametro");
+            Query consulta = sessao.createQuery("select count(*) from Jogo inner join Selecao where Selecao.pais=:parametro");
             consulta.setEntity("parametro", p);
             transacao = sessao.beginTransaction();
             resultado = (int) consulta.uniqueResult();
@@ -741,8 +741,8 @@ public class Sistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Jogo cadastrarJogo(Date data, Copa copa, Selecao primeira, Selecao segunda, String fase) {
-        Jogo j = new Jogo(data, "maraca", fase);
+    public Jogo cadastrarJogo(Date data, String local, Copa copa, Selecao primeira, Selecao segunda, String fase) {
+        Jogo j = new Jogo(data, local, fase);
         j.setCopa(copa);
         j.setSelecaoBySelecaoA(primeira);
         j.setSelecaoBySelecaoB(segunda);
@@ -760,6 +760,10 @@ public class Sistema {
     
     public List<Substituicao> listarSubstituicoes() {
         return substituicao.listar();
+    }
+
+    public List<Jogo> listarJogos() {
+    return jogo.listar();
     }
     
 }
