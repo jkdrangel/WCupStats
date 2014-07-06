@@ -329,7 +329,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Tecnico where selecao=:parametro");
+            Query consulta = sessao.createQuery("select Tecnico from Tecnico inner join Selecao where selecao=:parametro");
             consulta.setEntity("parametro", s);
             transacao = sessao.beginTransaction();
             resultado = (Tecnico) consulta.uniqueResult();

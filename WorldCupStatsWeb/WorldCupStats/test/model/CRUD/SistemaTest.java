@@ -116,6 +116,8 @@ public class SistemaTest {
         jogo1= new Jogo(new Date(114, 6, 20), "Maracana", FaseCopa.GRUPOS.getFase());
         jogo2= new Jogo(new Date(114, 6, 21), "dunas", FaseCopa.GRUPOS.getFase());
         jogo3= new Jogo(new Date(114, 6, 22), "fonte nova", FaseCopa.GRUPOS.getFase());
+        
+        felipao= new Tecnico("felipao", new Date(84, 6, 22));
     }
 
     @After
@@ -346,7 +348,11 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarTecnicoSelecao() {
-        fail("The test case is a prototype.");
+        tecnicoDao.adicionar(felipao);
+        selecaoB1.setTecnico(felipao);
+        selecaoDao.adicionar(selecaoB1);
+        Tecnico t = sistema.consultarTecnicoSelecao(selecaoB1);
+        assertEquals(selecaoB1.getTecnico(), t);
     }
 
     /**
