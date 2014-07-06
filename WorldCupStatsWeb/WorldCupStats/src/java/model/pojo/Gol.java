@@ -114,7 +114,16 @@ public class Gol  implements java.io.Serializable {
     @Override
     public String toString() {
         String oqFoi = (this.isFoiContra())? "Contra":"Normal";
-        return "Gol "+ selecao.getNome() +", "+ this.getTempo().getMinutes() +", "+ this.getJogador().getNome() 
+        
+        int hora = this.getTempo().getHours();
+        int minutos = this.getTempo().getMinutes() + hora*60;
+        int s = this.getTempo().getSeconds();
+        String segundos = ""+s;
+        if(s < 10) {
+            segundos = "0"+s;
+        }
+        
+        return "Gol "+ selecao.getNome() +", "+ minutos+":"+segundos +", "+ this.getJogador().getNome() 
                 +"["+oqFoi+"]";
     }
 
