@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
+// Generated 06/07/2014 15:27:33 by Hibernate Tools 3.6.0
 
 import java.util.Objects;
 
@@ -55,13 +55,12 @@ public class Escalacao  implements java.io.Serializable {
         this.jogo = jogo;
     }
 
-    @Override
+        @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.selecao.getId());
-        hash = 53 * hash + Objects.hashCode(this.jogador.getId());
-        hash = 53 * hash + Objects.hashCode(this.jogo.getId());
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.selecao);
+        hash = 41 * hash + Objects.hashCode(this.jogo);
         return hash;
     }
 
@@ -80,17 +79,11 @@ public class Escalacao  implements java.io.Serializable {
         if (!Objects.equals(this.selecao.getId(), other.selecao.getId())) {
             return false;
         }
-        if (!Objects.equals(this.jogador.getId(), other.jogador.getId())) {
-            return false;
-        }
         if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {
             return false;
         }
         return true;
     }
-
-
-
 
 }
 

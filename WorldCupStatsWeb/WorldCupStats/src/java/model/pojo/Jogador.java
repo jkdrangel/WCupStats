@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
+// Generated 06/07/2014 15:27:33 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -117,12 +117,12 @@ public class Jogador  implements java.io.Serializable {
         this.substituicaosForJogadorSai = substituicaosForJogadorSai;
     }
 
-    @Override
+@Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.dataNascimento);
-        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 97 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -147,9 +147,10 @@ public class Jogador  implements java.io.Serializable {
         return true;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return this.getPosicao() +" - "+ this.getNome();
+    }
 }
 
 

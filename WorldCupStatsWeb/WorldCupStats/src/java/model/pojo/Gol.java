@@ -1,9 +1,8 @@
 package model.pojo;
-// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
+// Generated 06/07/2014 15:27:33 by Hibernate Tools 3.6.0
 
 
 import java.sql.Time;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -78,15 +77,13 @@ public class Gol  implements java.io.Serializable {
         this.foiContra = foiContra;
     }
 
-    @Override
+ @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 19 * hash + Objects.hashCode(this.id);
-        hash = 19 * hash + Objects.hashCode(this.jogador.getId());
-        hash = 19 * hash + Objects.hashCode(this.selecao.getId());
-        hash = 19 * hash + Objects.hashCode(this.jogo.getId());
-        hash = 19 * hash + Objects.hashCode(this.tempo);
-        hash = 19 * hash + (this.foiContra ? 1 : 0);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.jogador.getId());
+        hash = 97 * hash + Objects.hashCode(this.jogo.getId());
+        hash = 97 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 
@@ -105,23 +102,21 @@ public class Gol  implements java.io.Serializable {
         if (!Objects.equals(this.jogador.getId(), other.jogador.getId())) {
             return false;
         }
-        if (!Objects.equals(this.selecao.getId(), other.selecao.getId())) {
-            return false;
-        }
         if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {
             return false;
         }
         if (!Objects.equals(this.tempo, other.tempo)) {
             return false;
         }
-        if (this.foiContra != other.foiContra) {
-            return false;
-        }
         return true;
     }
 
-
-
+    @Override
+    public String toString() {
+        String oqFoi = (this.isFoiContra())? "Contra":"Normal";
+        return "Gol "+ selecao.getNome() +", "+ this.getTempo().getMinutes() +", "+ this.getJogador().getNome() 
+                +"["+oqFoi+"]";
+    }
 
 }
 

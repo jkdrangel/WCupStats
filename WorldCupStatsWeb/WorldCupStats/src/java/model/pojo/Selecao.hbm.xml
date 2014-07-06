@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 6, 2014 10:58:32 AM by Hibernate Tools 3.6.0 -->
+<!-- Generated 06/07/2014 15:27:35 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="model.pojo.Selecao" table="Selecao" catalog="wcupstats">
+    <class name="model.pojo.Selecao" table="selecao" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
@@ -29,37 +29,37 @@
         <property name="nome" type="string">
             <column name="nome" length="45" />
         </property>
-        <set name="jogadors" table="Jogador" inverse="true" lazy="true" fetch="select">
+        <set name="jogadors" table="jogador" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Selecao" />
             </key>
             <one-to-many class="model.pojo.Jogador" />
         </set>
-        <set name="jogosForSelecaoB" table="Jogo" inverse="true" lazy="true" fetch="select">
+        <set name="jogosForSelecaoB" table="jogo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="SelecaoB" />
             </key>
             <one-to-many class="model.pojo.Jogo" />
         </set>
-        <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
+        <set name="gols" table="gol" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_SELECAO" />
             </key>
             <one-to-many class="model.pojo.Gol" />
         </set>
-        <set name="jogosForSelecaoA" table="Jogo" inverse="true" lazy="true" fetch="select">
+        <set name="jogosForSelecaoA" table="jogo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="SelecaoA" />
             </key>
             <one-to-many class="model.pojo.Jogo" />
         </set>
-        <set name="substituicaos" table="Substituicao" inverse="true" lazy="true" fetch="select">
+        <set name="substituicaos" table="substituicao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_SELECAO" />
             </key>
             <one-to-many class="model.pojo.Substituicao" />
         </set>
-        <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
+        <set name="escalacaos" table="escalacao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Selecao" />
             </key>
