@@ -1,9 +1,8 @@
 package model.pojo;
-// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
+// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
 
 
 import java.sql.Time;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -80,11 +79,12 @@ public class Substituicao  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.id);
-        hash = 31 * hash + Objects.hashCode(this.jogadorByJogadorSai.getId());
-        hash = 31 * hash + Objects.hashCode(this.jogo.getId());
-        hash = 31 * hash + Objects.hashCode(this.jogadorByJogadorEntra.getId());
-        hash = 31 * hash + Objects.hashCode(this.tempo);
+        hash = 73 * hash + Objects.hashCode(this.id);
+        hash = 73 * hash + Objects.hashCode(this.jogadorByJogadorSai.getId());
+        hash = 73 * hash + Objects.hashCode(this.selecao.getId());
+        hash = 73 * hash + Objects.hashCode(this.jogo.getId());
+        hash = 73 * hash + Objects.hashCode(this.jogadorByJogadorEntra.getId());
+        hash = 73 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 
@@ -101,6 +101,9 @@ public class Substituicao  implements java.io.Serializable {
             return false;
         }
         if (!Objects.equals(this.jogadorByJogadorSai.getId(), other.jogadorByJogadorSai.getId())) {
+            return false;
+        }
+        if (!Objects.equals(this.selecao.getId(), other.selecao.getId())) {
             return false;
         }
         if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {

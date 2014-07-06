@@ -72,11 +72,10 @@ public class Controller {
      * Uma nova copa do mundo eh cadastrada no sistema
      * @param ano
      * @param p
-     * @param s
      * @return 
      */
-    public Copa cadastrarCopa(Date ano, Pais p, Selecao s) {
-        return sistema.cadastrarCopa(ano, p, s);
+    public Copa cadastrarCopa(Date ano, Pais p) {
+        return sistema.cadastrarCopa(ano, p);
     }
     /**
      * A partir dos jogadores que compoem uma selecao,

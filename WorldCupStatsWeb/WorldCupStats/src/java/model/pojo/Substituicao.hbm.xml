@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 5, 2014 1:28:31 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated Jul 6, 2014 10:58:32 AM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Substituicao" table="Substituicao" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">

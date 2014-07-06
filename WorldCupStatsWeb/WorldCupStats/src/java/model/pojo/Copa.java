@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
+// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -14,7 +14,6 @@ public class Copa  implements java.io.Serializable {
 
 
      private Integer id;
-     private Selecao selecao;
      private Pais pais;
      private Date ano;
      private Set selecaos = new HashSet(0);
@@ -27,8 +26,7 @@ public class Copa  implements java.io.Serializable {
     public Copa(Date ano) {
         this.ano = ano;
     }
-    public Copa(Selecao selecao, Pais pais, Date ano, Set selecaos, Set jogos) {
-       this.selecao = selecao;
+    public Copa(Pais pais, Date ano, Set selecaos, Set jogos) {
        this.pais = pais;
        this.ano = ano;
        this.selecaos = selecaos;
@@ -41,13 +39,6 @@ public class Copa  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
-    }
-    public Selecao getSelecao() {
-        return this.selecao;
-    }
-    
-    public void setSelecao(Selecao selecao) {
-        this.selecao = selecao;
     }
     public Pais getPais() {
         return this.pais;
@@ -80,10 +71,10 @@ public class Copa  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.pais.getId());
-        hash = 89 * hash + Objects.hashCode(this.ano);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.pais.getId());
+        hash = 97 * hash + Objects.hashCode(this.ano);
         return hash;
     }
 

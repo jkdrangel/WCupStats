@@ -31,29 +31,33 @@ public class CopaDAOTest {
     @Before
     public void setUp() throws Exception {
         copaDAO = new CopaDAO();
-       
+        paisdao = new PaisDAO();
+        
+        brasil= new Pais("brasil", "america");
+        africa= new Pais("africa", "africa");
+        coreia= new Pais("coreia", "asia");
+        paisdao.adicionar(brasil);
+        paisdao.adicionar(africa);
+        paisdao.adicionar(coreia);
+        
         copa = new Copa();
         copa.setAno(new Date(114, 0, 0));
         copa.setPais(brasil);
-        copa.setSelecao(selecao);
 
         copa1 = new Copa();
         copa1.setAno(new Date(110, 0, 0));
         copa1.setPais(africa);
-        copa1.setSelecao(selecao);
 
         copa2 = new Copa();
         copa2.setAno(new Date(102, 0, 0));
         copa2.setPais(coreia);
-        copa2.setSelecao(selecao);
 
-        copaDAO.removerTodos(); 
-       
     }
     
     @After
     public void tearDown() {
         copaDAO.removerTodos();
+        paisdao.removerTodos();
     }
 
     @Test

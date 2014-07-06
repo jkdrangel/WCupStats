@@ -1,90 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 5, 2014 1:28:31 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated Jul 6, 2014 10:58:32 AM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="model.pojo.Selecao" table="Selecao" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="jogadorByJogador20" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador20" />
+        <many-to-one name="copa" class="model.pojo.Copa" fetch="select">
+            <column name="ID_COPA" />
         </many-to-one>
         <many-to-one name="pais" class="model.pojo.Pais" fetch="select">
             <column name="ID_PAIS" />
         </many-to-one>
         <many-to-one name="tecnico" class="model.pojo.Tecnico" fetch="select">
             <column name="Tecnico" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador6" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador6" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador5" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador5" />
-        </many-to-one>
-        <many-to-one name="copa" class="model.pojo.Copa" fetch="select">
-            <column name="ID_COPA" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador4" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador4" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador3" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador3" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador2" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador2" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador18" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador18" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador1" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador1" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador19" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador19" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador14" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador14" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador15" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador15" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador16" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador16" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador17" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador17" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador23" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador23" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador10" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador10" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador9" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador9" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador11" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador11" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador21" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador21" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador8" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador8" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador12" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador12" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador22" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador22" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador13" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador13" />
-        </many-to-one>
-        <many-to-one name="jogadorByJogador7" class="model.pojo.Jogador" fetch="select">
-            <column name="Jogador7" />
         </many-to-one>
         <property name="grupo" type="string">
             <column name="grupo" length="20" not-null="true" />
@@ -98,6 +29,12 @@
         <property name="nome" type="string">
             <column name="nome" length="45" />
         </property>
+        <set name="jogadors" table="Jogador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Selecao" />
+            </key>
+            <one-to-many class="model.pojo.Jogador" />
+        </set>
         <set name="jogosForSelecaoB" table="Jogo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="SelecaoB" />
@@ -115,12 +52,6 @@
                 <column name="SelecaoA" />
             </key>
             <one-to-many class="model.pojo.Jogo" />
-        </set>
-        <set name="copas" table="Copa" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_SELECAO" />
-            </key>
-            <one-to-many class="model.pojo.Copa" />
         </set>
         <set name="substituicaos" table="Substituicao" inverse="true" lazy="true" fetch="select">
             <key>

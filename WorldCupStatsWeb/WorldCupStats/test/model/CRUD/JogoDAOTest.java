@@ -9,10 +9,15 @@ package model.CRUD;
 import java.sql.Date;
 import java.util.List;
 import model.Enuns.FaseCopa;
+import model.pojo.Copa;
 import model.pojo.Jogo;
+import model.pojo.Selecao;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,19 +32,47 @@ public class JogoDAOTest {
     private Jogo jogo1;
     private Jogo jogo2;
     private Jogo jogo3;
+    private Selecao selecao1, selecao2, selecao3;
+    private Copa copa;
+    private CopaDAO daoCopa;
+    private SelecaoDAO daoSelecao;
     
     @Before
     public void setUp() {
         dao = new JogoDAO();
+        daoCopa = new CopaDAO();
+        daoSelecao = new SelecaoDAO();
+        
+        copa = new Copa(new Date(114, 1, 1));
+        
+        selecao1=new Selecao("A", copa.getAno(),1);
+        selecao2=new Selecao("A", copa.getAno(),2);
+        selecao3=new Selecao("A", copa.getAno(),3);
         
         jogo1 = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
+        jogo1.setCopa(copa);
+        jogo1.setSelecaoBySelecaoA(selecao1);
+        jogo1.setSelecaoBySelecaoB(selecao2);
         jogo2 = new Jogo(new Date(104, 1, 1), "Manaus", FaseCopa.OITAVAS.getFase());
+        jogo2.setCopa(copa);
+        jogo2.setSelecaoBySelecaoA(selecao3);
+        jogo2.setSelecaoBySelecaoB(selecao2);
         jogo3 = new Jogo(new Date(4, 1, 1), "Pelourinho", FaseCopa.SEMI.getFase());
+        jogo3.setCopa(copa);
+        jogo3.setSelecaoBySelecaoA(selecao1);
+        jogo3.setSelecaoBySelecaoB(selecao3);
+        
+        daoSelecao.adicionar(selecao1);
+        daoSelecao.adicionar(selecao2);
+        daoSelecao.adicionar(selecao3);
+        daoCopa.adicionar(copa);
     }
 
     @After
     public void tearDown() {
         dao.removerTodos();
+        daoCopa.removerTodos();
+        daoSelecao.removerTodos();
     }
     
     /**

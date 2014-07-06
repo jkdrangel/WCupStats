@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
+// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
 
 
 import java.sql.Time;
@@ -81,11 +81,12 @@ public class Gol  implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.jogador.getId());
-        hash = 29 * hash + Objects.hashCode(this.selecao.getId());
-        hash = 29 * hash + Objects.hashCode(this.jogo.getId());
-        hash = 29 * hash + Objects.hashCode(this.tempo);
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.jogador.getId());
+        hash = 19 * hash + Objects.hashCode(this.selecao.getId());
+        hash = 19 * hash + Objects.hashCode(this.jogo.getId());
+        hash = 19 * hash + Objects.hashCode(this.tempo);
+        hash = 19 * hash + (this.foiContra ? 1 : 0);
         return hash;
     }
 
@@ -111,6 +112,9 @@ public class Gol  implements java.io.Serializable {
             return false;
         }
         if (!Objects.equals(this.tempo, other.tempo)) {
+            return false;
+        }
+        if (this.foiContra != other.foiContra) {
             return false;
         }
         return true;

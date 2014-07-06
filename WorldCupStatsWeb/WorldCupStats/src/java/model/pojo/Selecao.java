@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 5, 2014 1:28:30 PM by Hibernate Tools 3.6.0
+// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -14,40 +14,17 @@ public class Selecao  implements java.io.Serializable {
 
 
      private Integer id;
-     private Jogador jogadorByJogador20;
+     private Copa copa;
      private Pais pais;
      private Tecnico tecnico;
-     private Jogador jogadorByJogador6;
-     private Jogador jogadorByJogador5;
-     private Copa copa;
-     private Jogador jogadorByJogador4;
-     private Jogador jogadorByJogador3;
-     private Jogador jogadorByJogador2;
-     private Jogador jogadorByJogador18;
-     private Jogador jogadorByJogador1;
-     private Jogador jogadorByJogador19;
-     private Jogador jogadorByJogador14;
-     private Jogador jogadorByJogador15;
-     private Jogador jogadorByJogador16;
-     private Jogador jogadorByJogador17;
-     private Jogador jogadorByJogador23;
-     private Jogador jogadorByJogador10;
-     private Jogador jogadorByJogador9;
-     private Jogador jogadorByJogador11;
-     private Jogador jogadorByJogador21;
-     private Jogador jogadorByJogador8;
-     private Jogador jogadorByJogador12;
-     private Jogador jogadorByJogador22;
-     private Jogador jogadorByJogador13;
-     private Jogador jogadorByJogador7;
      private String grupo;
      private Date ano;
      private int posicao;
      private String nome;
+     private Set jogadors = new HashSet(0);
      private Set jogosForSelecaoB = new HashSet(0);
      private Set gols = new HashSet(0);
      private Set jogosForSelecaoA = new HashSet(0);
-     private Set copas = new HashSet(0);
      private Set substituicaos = new HashSet(0);
      private Set escalacaos = new HashSet(0);
 
@@ -60,41 +37,18 @@ public class Selecao  implements java.io.Serializable {
         this.ano = ano;
         this.posicao = posicao;
     }
-    public Selecao(Jogador jogadorByJogador20, Pais pais, Tecnico tecnico, Jogador jogadorByJogador6, Jogador jogadorByJogador5, Copa copa, Jogador jogadorByJogador4, Jogador jogadorByJogador3, Jogador jogadorByJogador2, Jogador jogadorByJogador18, Jogador jogadorByJogador1, Jogador jogadorByJogador19, Jogador jogadorByJogador14, Jogador jogadorByJogador15, Jogador jogadorByJogador16, Jogador jogadorByJogador17, Jogador jogadorByJogador23, Jogador jogadorByJogador10, Jogador jogadorByJogador9, Jogador jogadorByJogador11, Jogador jogadorByJogador21, Jogador jogadorByJogador8, Jogador jogadorByJogador12, Jogador jogadorByJogador22, Jogador jogadorByJogador13, Jogador jogadorByJogador7, String grupo, Date ano, int posicao, String nome, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set copas, Set substituicaos, Set escalacaos) {
-       this.jogadorByJogador20 = jogadorByJogador20;
+    public Selecao(Copa copa, Pais pais, Tecnico tecnico, String grupo, Date ano, int posicao, String nome, Set jogadors, Set jogosForSelecaoB, Set gols, Set jogosForSelecaoA, Set substituicaos, Set escalacaos) {
+       this.copa = copa;
        this.pais = pais;
        this.tecnico = tecnico;
-       this.jogadorByJogador6 = jogadorByJogador6;
-       this.jogadorByJogador5 = jogadorByJogador5;
-       this.copa = copa;
-       this.jogadorByJogador4 = jogadorByJogador4;
-       this.jogadorByJogador3 = jogadorByJogador3;
-       this.jogadorByJogador2 = jogadorByJogador2;
-       this.jogadorByJogador18 = jogadorByJogador18;
-       this.jogadorByJogador1 = jogadorByJogador1;
-       this.jogadorByJogador19 = jogadorByJogador19;
-       this.jogadorByJogador14 = jogadorByJogador14;
-       this.jogadorByJogador15 = jogadorByJogador15;
-       this.jogadorByJogador16 = jogadorByJogador16;
-       this.jogadorByJogador17 = jogadorByJogador17;
-       this.jogadorByJogador23 = jogadorByJogador23;
-       this.jogadorByJogador10 = jogadorByJogador10;
-       this.jogadorByJogador9 = jogadorByJogador9;
-       this.jogadorByJogador11 = jogadorByJogador11;
-       this.jogadorByJogador21 = jogadorByJogador21;
-       this.jogadorByJogador8 = jogadorByJogador8;
-       this.jogadorByJogador12 = jogadorByJogador12;
-       this.jogadorByJogador22 = jogadorByJogador22;
-       this.jogadorByJogador13 = jogadorByJogador13;
-       this.jogadorByJogador7 = jogadorByJogador7;
        this.grupo = grupo;
        this.ano = ano;
        this.posicao = posicao;
        this.nome = nome;
+       this.jogadors = jogadors;
        this.jogosForSelecaoB = jogosForSelecaoB;
        this.gols = gols;
        this.jogosForSelecaoA = jogosForSelecaoA;
-       this.copas = copas;
        this.substituicaos = substituicaos;
        this.escalacaos = escalacaos;
     }
@@ -106,12 +60,12 @@ public class Selecao  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Jogador getJogadorByJogador20() {
-        return this.jogadorByJogador20;
+    public Copa getCopa() {
+        return this.copa;
     }
     
-    public void setJogadorByJogador20(Jogador jogadorByJogador20) {
-        this.jogadorByJogador20 = jogadorByJogador20;
+    public void setCopa(Copa copa) {
+        this.copa = copa;
     }
     public Pais getPais() {
         return this.pais;
@@ -126,167 +80,6 @@ public class Selecao  implements java.io.Serializable {
     
     public void setTecnico(Tecnico tecnico) {
         this.tecnico = tecnico;
-    }
-    public Jogador getJogadorByJogador6() {
-        return this.jogadorByJogador6;
-    }
-    
-    public void setJogadorByJogador6(Jogador jogadorByJogador6) {
-        this.jogadorByJogador6 = jogadorByJogador6;
-    }
-    public Jogador getJogadorByJogador5() {
-        return this.jogadorByJogador5;
-    }
-    
-    public void setJogadorByJogador5(Jogador jogadorByJogador5) {
-        this.jogadorByJogador5 = jogadorByJogador5;
-    }
-    public Copa getCopa() {
-        return this.copa;
-    }
-    
-    public void setCopa(Copa copa) {
-        this.copa = copa;
-    }
-    public Jogador getJogadorByJogador4() {
-        return this.jogadorByJogador4;
-    }
-    
-    public void setJogadorByJogador4(Jogador jogadorByJogador4) {
-        this.jogadorByJogador4 = jogadorByJogador4;
-    }
-    public Jogador getJogadorByJogador3() {
-        return this.jogadorByJogador3;
-    }
-    
-    public void setJogadorByJogador3(Jogador jogadorByJogador3) {
-        this.jogadorByJogador3 = jogadorByJogador3;
-    }
-    public Jogador getJogadorByJogador2() {
-        return this.jogadorByJogador2;
-    }
-    
-    public void setJogadorByJogador2(Jogador jogadorByJogador2) {
-        this.jogadorByJogador2 = jogadorByJogador2;
-    }
-    public Jogador getJogadorByJogador18() {
-        return this.jogadorByJogador18;
-    }
-    
-    public void setJogadorByJogador18(Jogador jogadorByJogador18) {
-        this.jogadorByJogador18 = jogadorByJogador18;
-    }
-    public Jogador getJogadorByJogador1() {
-        return this.jogadorByJogador1;
-    }
-    
-    public void setJogadorByJogador1(Jogador jogadorByJogador1) {
-        this.jogadorByJogador1 = jogadorByJogador1;
-    }
-    public Jogador getJogadorByJogador19() {
-        return this.jogadorByJogador19;
-    }
-    
-    public void setJogadorByJogador19(Jogador jogadorByJogador19) {
-        this.jogadorByJogador19 = jogadorByJogador19;
-    }
-    public Jogador getJogadorByJogador14() {
-        return this.jogadorByJogador14;
-    }
-    
-    public void setJogadorByJogador14(Jogador jogadorByJogador14) {
-        this.jogadorByJogador14 = jogadorByJogador14;
-    }
-    public Jogador getJogadorByJogador15() {
-        return this.jogadorByJogador15;
-    }
-    
-    public void setJogadorByJogador15(Jogador jogadorByJogador15) {
-        this.jogadorByJogador15 = jogadorByJogador15;
-    }
-    public Jogador getJogadorByJogador16() {
-        return this.jogadorByJogador16;
-    }
-    
-    public void setJogadorByJogador16(Jogador jogadorByJogador16) {
-        this.jogadorByJogador16 = jogadorByJogador16;
-    }
-    public Jogador getJogadorByJogador17() {
-        return this.jogadorByJogador17;
-    }
-    
-    public void setJogadorByJogador17(Jogador jogadorByJogador17) {
-        this.jogadorByJogador17 = jogadorByJogador17;
-    }
-    public Jogador getJogadorByJogador23() {
-        return this.jogadorByJogador23;
-    }
-    
-    public void setJogadorByJogador23(Jogador jogadorByJogador23) {
-        this.jogadorByJogador23 = jogadorByJogador23;
-    }
-    public Jogador getJogadorByJogador10() {
-        return this.jogadorByJogador10;
-    }
-    
-    public void setJogadorByJogador10(Jogador jogadorByJogador10) {
-        this.jogadorByJogador10 = jogadorByJogador10;
-    }
-    public Jogador getJogadorByJogador9() {
-        return this.jogadorByJogador9;
-    }
-    
-    public void setJogadorByJogador9(Jogador jogadorByJogador9) {
-        this.jogadorByJogador9 = jogadorByJogador9;
-    }
-    public Jogador getJogadorByJogador11() {
-        return this.jogadorByJogador11;
-    }
-    
-    public void setJogadorByJogador11(Jogador jogadorByJogador11) {
-        this.jogadorByJogador11 = jogadorByJogador11;
-    }
-    public Jogador getJogadorByJogador21() {
-        return this.jogadorByJogador21;
-    }
-    
-    public void setJogadorByJogador21(Jogador jogadorByJogador21) {
-        this.jogadorByJogador21 = jogadorByJogador21;
-    }
-    public Jogador getJogadorByJogador8() {
-        return this.jogadorByJogador8;
-    }
-    
-    public void setJogadorByJogador8(Jogador jogadorByJogador8) {
-        this.jogadorByJogador8 = jogadorByJogador8;
-    }
-    public Jogador getJogadorByJogador12() {
-        return this.jogadorByJogador12;
-    }
-    
-    public void setJogadorByJogador12(Jogador jogadorByJogador12) {
-        this.jogadorByJogador12 = jogadorByJogador12;
-    }
-    public Jogador getJogadorByJogador22() {
-        return this.jogadorByJogador22;
-    }
-    
-    public void setJogadorByJogador22(Jogador jogadorByJogador22) {
-        this.jogadorByJogador22 = jogadorByJogador22;
-    }
-    public Jogador getJogadorByJogador13() {
-        return this.jogadorByJogador13;
-    }
-    
-    public void setJogadorByJogador13(Jogador jogadorByJogador13) {
-        this.jogadorByJogador13 = jogadorByJogador13;
-    }
-    public Jogador getJogadorByJogador7() {
-        return this.jogadorByJogador7;
-    }
-    
-    public void setJogadorByJogador7(Jogador jogadorByJogador7) {
-        this.jogadorByJogador7 = jogadorByJogador7;
     }
     public String getGrupo() {
         return this.grupo;
@@ -316,6 +109,13 @@ public class Selecao  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public Set getJogadors() {
+        return this.jogadors;
+    }
+    
+    public void setJogadors(Set jogadors) {
+        this.jogadors = jogadors;
+    }
     public Set getJogosForSelecaoB() {
         return this.jogosForSelecaoB;
     }
@@ -337,13 +137,6 @@ public class Selecao  implements java.io.Serializable {
     public void setJogosForSelecaoA(Set jogosForSelecaoA) {
         this.jogosForSelecaoA = jogosForSelecaoA;
     }
-    public Set getCopas() {
-        return this.copas;
-    }
-    
-    public void setCopas(Set copas) {
-        this.copas = copas;
-    }
     public Set getSubstituicaos() {
         return this.substituicaos;
     }
@@ -361,11 +154,10 @@ public class Selecao  implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.grupo);
-        hash = 59 * hash + Objects.hashCode(this.ano);
-        hash = 59 * hash + Objects.hashCode(this.nome);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.ano);
+        hash = 97 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -379,9 +171,6 @@ public class Selecao  implements java.io.Serializable {
         }
         final Selecao other = (Selecao) obj;
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.grupo, other.grupo)) {
             return false;
         }
         if (!Objects.equals(this.ano, other.ano)) {

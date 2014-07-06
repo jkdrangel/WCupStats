@@ -68,6 +68,7 @@ public class SistemaTest {
         africa = new Pais("Africa", "africa");
         coreia = new Pais("coreia", "asia");
         
+        
         copa.setPais(brasil);
         copa.setPais(africa);
         copa.setPais(coreia);
@@ -141,8 +142,7 @@ public class SistemaTest {
     @Test
     public void testCadastrarCopa() {
         paisDao.adicionar(brasil);
-        selecaoDao.adicionar(selecaoB1);
-        copa1 = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecaoB1);
+        copa1 = sistema.cadastrarCopa(new Date(114, 1, 1), brasil);
         assertNotNull(copa1);
         List<Copa> copas = sistema.listarCopas();
         assertEquals(copa1, copas.get(0));
@@ -163,15 +163,12 @@ public class SistemaTest {
 
     @Test
     public void testListarCopas() {
-        selecaoDao.adicionar(selecaoB1);
-        selecaoDao.adicionar(selecaoA2);
-        selecaoDao.adicionar(selecaoC3);
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-        copa = sistema.cadastrarCopa(new Date(114, 1, 1), brasil, selecaoB1);
-        copa1 = sistema.cadastrarCopa(new Date(110, 1, 1), africa, selecaoA2);
-        copa2 = sistema.cadastrarCopa(new Date(106, 1, 1), coreia, selecaoC3);
+        copa = sistema.cadastrarCopa(new Date(114, 1, 1), brasil);
+        copa1 = sistema.cadastrarCopa(new Date(110, 1, 1), africa);
+        copa2 = sistema.cadastrarCopa(new Date(106, 1, 1), coreia);
         List<Copa> copas = sistema.listarCopas();
         assertFalse(copas.isEmpty());
         assertEquals(copa, copas.get(0));
@@ -243,7 +240,9 @@ public class SistemaTest {
     public void testCadastrarEscalacao() {
         selecaoDao.adicionar(selecaoB1);
         jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB1);
         Escalacao escalacao = sistema.cadastrarEscalacao(jogo1, selecaoB1);
+        escalacao.setJogador(jogB1);
         List<Escalacao> lista = sistema.listarEscalacoes();
         assertEquals(escalacao, lista.get(0));
     }
@@ -269,7 +268,9 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB1);
         jogadorDao.adicionar(jogB11);
         jogoDao.adicionar(jogo1);
+        selecaoDao.adicionar(selecaoB1);
         Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1,30,1), jogB1, jogB11, jogo1);
+        substituicao.setSelecao(selecaoB1);
         List<Substituicao> lista = sistema.listarSubstituicoes();
         assertEquals(substituicao, lista.get(0));
     }
@@ -328,9 +329,6 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresDaSelecao() {
-        selecaoB1.setJogadorByJogador1(jogB1);
-        selecaoB1.setJogadorByJogador10(jogB10);
-        selecaoB1.setJogadorByJogador11(jogB11);
         
         jogadorDao.adicionar(jogB1);
         jogadorDao.adicionar(jogB10);
@@ -623,6 +621,7 @@ public class SistemaTest {
     public void testCadastrarJogo() {
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
+        copaDao.adicionar(copa);
         Jogo jogo = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase());
         List<Jogo> lista = sistema.listarJogos();
         assertEquals(jogo, lista.get(0));
@@ -639,9 +638,15 @@ public class SistemaTest {
         jogoDao.adicionar(jogo1);
         jogoDao.adicionar(jogo2);
         jogoDao.adicionar(jogo3);
+        jogadorDao.adicionar(jogB1);
+        jogadorDao.adicionar(jogB2);
+        jogadorDao.adicionar(jogB3);
         escA1 = sistema.cadastrarEscalacao(jogo1, selecaoB1);
+        escA1.setJogador(jogB1);
         escA2 = sistema.cadastrarEscalacao(jogo2, selecaoA2);
+        escA2.setJogador(jogB2);
         escA3 = sistema.cadastrarEscalacao(jogo3, selecaoC3);
+        escA3.setJogador(jogB3);
         List<Escalacao> escalacoes = sistema.listarEscalacoes();
         assertFalse(escalacoes.isEmpty());
         assertEquals(escA1, escalacoes.get(0));
@@ -683,8 +688,11 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB11);
         
         substituicao1 = sistema.cadastrarSubstituicao(new Time(1,1,1), jogB5, jogB10, jogo1);
+        substituicao1.setSelecao(selecaoB1);
         substituicao2 = sistema.cadastrarSubstituicao(new Time(0,40,1), jogB2, jogB11, jogo1);
+        substituicao2.setSelecao(selecaoB1);
         substituicao3 = sistema.cadastrarSubstituicao(new Time(1,15,1), jogB3, jogB4, jogo1);
+        substituicao3.setSelecao(selecaoB1);
         List<Substituicao> substituicoes = sistema.listarSubstituicoes();
         assertFalse(substituicoes.isEmpty());
         assertEquals(substituicao1, substituicoes.get(0));

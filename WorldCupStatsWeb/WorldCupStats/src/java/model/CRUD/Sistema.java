@@ -65,14 +65,12 @@ public class Sistema {
      *
      * @param ano
      * @param sede
-     * @param selecao
      * @return
      */
-    public Copa cadastrarCopa(Date ano, Pais sede, Selecao selecao) {
+    public Copa cadastrarCopa(Date ano, Pais sede) {
         Copa c = new Copa();
         c.setAno(ano);
         c.setPais(sede);
-        c.setSelecao(selecao);
         copa.adicionar(c);
         return c;
     }
@@ -300,7 +298,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Jogador from Selecao join Jogador where selecao=:parametro");
+            Query consulta = sessao.createQuery("select Jogador from Jogador where selecao=:parametro");
             consulta.setEntity("parametro", selecao);
             transacao = sessao.beginTransaction();
             resultado = (List<Jogador>) consulta.list();

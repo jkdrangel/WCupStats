@@ -48,11 +48,7 @@ public class GolDAOTest {
         jogador3 = new Jogador(new Date(500, 1, 1), "Veinho", 00, FuncaoJogador.ATACANTE.getFuncao());
         
         selecao1 = new Selecao("A", new Date(100, 1, 1), 5);
-        selecao1.setJogadorByJogador1(jogador1);
-        selecao1.setJogadorByJogador2(jogador2);
-        
         selecao2 = new Selecao("H", new Date(50, 1, 1), 1);
-        selecao2.setJogadorByJogador1(jogador3);
         
         jogo = new Jogo(new Date(50, 1, 1), "Fonte Nova", FaseCopa.FINAL.getFase());
         jogo.setSelecaoBySelecaoA(selecao1);
