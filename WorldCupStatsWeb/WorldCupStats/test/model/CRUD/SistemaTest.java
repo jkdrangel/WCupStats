@@ -79,15 +79,21 @@ public class SistemaTest {
         copa2.setPais(africa);
         copa2.setPais(coreia);
         
-        selecaoB1 = new Selecao("brasil", new Date(114), 1);
-        selecaoA1 = new Selecao("africa", new Date(114), 2);
-        selecaoC1 = new Selecao("coreia", new Date(114), 3);
-        selecaoB2 = new Selecao("brasil", new Date(110), 1);
-        selecaoA2 = new Selecao("africa", new Date(110), 3);
-        selecaoC2 = new Selecao("coreia", new Date(110), 2);
-        selecaoB3 = new Selecao("brasil", new Date(106), 2);
-        selecaoA3 = new Selecao("africa", new Date(106), 1);
-        selecaoC3 = new Selecao("coreia", new Date(106), 3);
+        selecaoB1 = new Selecao("A", new Date(114), 1);
+        selecaoB1.setPais(brasil);
+        selecaoB1.setNome("Brasil");
+        selecaoA1 = new Selecao("A", new Date(114), 2);
+        selecaoC1 = new Selecao("A", new Date(114), 3);
+        selecaoB2 = new Selecao("A", new Date(110), 1);
+        selecaoB2.setPais(brasil);
+        selecaoB2.setNome("Brasil");
+        selecaoA2 = new Selecao("A", new Date(110), 3);
+        selecaoC2 = new Selecao("A", new Date(110), 2);
+        selecaoB3 = new Selecao("A", new Date(106), 2);
+        selecaoB3.setPais(brasil);
+        selecaoB3.setNome("Brasil");
+        selecaoA3 = new Selecao("A", new Date(106), 1);
+        selecaoC3 = new Selecao("A", new Date(106), 3);
         
         escA1 = new Escalacao();
         escB1 = new Escalacao();
@@ -184,8 +190,20 @@ public class SistemaTest {
      * Test of listarPaisesCopa method, of class Sistema.
      */
     @Test
-    public void testListarPaisesCopa() {
-        fail("The test case is a prototype.");
+    public void testListarPaisesCopa(){
+        paisDao.adicionar(brasil);
+        copaDao.adicionar(copa);
+        selecaoB1.setCopa(copa);
+        selecaoB3.setCopa(copa);
+        selecaoB2.setCopa(copa);
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoB2);
+        selecaoDao.adicionar(selecaoB3);
+        List<Selecao> lista =sistema.listarPaisesCopa(copa);
+        assertFalse(lista.isEmpty());
+        assertEquals(selecaoB1, lista.get(0));
+        assertEquals(selecaoB3, lista.get(1));
+        assertEquals(selecaoB2, lista.get(2));
     }
 
     /**

@@ -96,15 +96,15 @@ public class Sistema {
      * @param copa
      * @return
      */
-    public List<Pais> listarPaisesCopa(Copa copa) {
-        List<Pais> resultado = null;
+    public List<Selecao> listarPaisesCopa(Copa copa) {
+        List<Selecao> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Pais from Selecao join Copa where ano=:parametro");
-            consulta.setDate("parametro", copa.getAno());
+            Query consulta = sessao.createQuery("from Selecao where copa=:parametro");
+            consulta.setEntity("parametro", copa);
             transacao = sessao.beginTransaction();
-            resultado = (List<Pais>) consulta.list();
+            resultado = (List<Selecao>) consulta.list();
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {

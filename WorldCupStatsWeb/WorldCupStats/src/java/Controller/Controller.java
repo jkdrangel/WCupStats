@@ -180,11 +180,11 @@ public class Controller {
         return sistema.listarCopas();
     }
     /**
-     * 
+     * Listar selecoes participantes de uma copa
      * @param copa
      * @return 
      */
-    public List<Pais> listarPaisesCopa(Copa copa) {
+    public List<Selecao> listarPaisesCopa(Copa copa) {
         return sistema.listarPaisesCopa(copa);
     }
     /**
