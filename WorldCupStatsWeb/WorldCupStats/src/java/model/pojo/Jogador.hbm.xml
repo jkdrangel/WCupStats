@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 6, 2014 10:58:32 AM by Hibernate Tools 3.6.0 -->
+<!-- Generated 06/07/2014 15:27:35 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="model.pojo.Jogador" table="Jogador" catalog="wcupstats">
+    <class name="model.pojo.Jogador" table="jogador" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
@@ -23,25 +23,25 @@
         <property name="posicao" type="string">
             <column name="posicao" length="13" not-null="true" />
         </property>
-        <set name="gols" table="Gol" inverse="true" lazy="true" fetch="select">
+        <set name="gols" table="gol" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_JOGADOR" />
             </key>
             <one-to-many class="model.pojo.Gol" />
         </set>
-        <set name="escalacaos" table="Escalacao" inverse="true" lazy="true" fetch="select">
+        <set name="escalacaos" table="escalacao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Jogador" />
             </key>
             <one-to-many class="model.pojo.Escalacao" />
         </set>
-        <set name="substituicaosForJogadorEntra" table="Substituicao" inverse="true" lazy="true" fetch="select">
+        <set name="substituicaosForJogadorEntra" table="substituicao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="JogadorEntra" />
             </key>
             <one-to-many class="model.pojo.Substituicao" />
         </set>
-        <set name="substituicaosForJogadorSai" table="Substituicao" inverse="true" lazy="true" fetch="select">
+        <set name="substituicaosForJogadorSai" table="substituicao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="JogadorSai" />
             </key>

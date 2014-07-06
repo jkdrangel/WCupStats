@@ -1,6 +1,5 @@
 package model.pojo;
-// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
-
+// Generated 06/07/2014 15:27:33 by Hibernate Tools 3.6.0
 
 import java.sql.Time;
 import java.util.Objects;
@@ -76,15 +75,15 @@ public class Substituicao  implements java.io.Serializable {
         this.tempo = tempo;
     }
 
-    @Override
+  @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.id);
-        hash = 73 * hash + Objects.hashCode(this.jogadorByJogadorSai.getId());
-        hash = 73 * hash + Objects.hashCode(this.selecao.getId());
-        hash = 73 * hash + Objects.hashCode(this.jogo.getId());
-        hash = 73 * hash + Objects.hashCode(this.jogadorByJogadorEntra.getId());
-        hash = 73 * hash + Objects.hashCode(this.tempo);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.jogadorByJogadorSai.getId());
+        hash = 79 * hash + Objects.hashCode(this.selecao.getId());
+        hash = 79 * hash + Objects.hashCode(this.jogo.getId());
+        hash = 79 * hash + Objects.hashCode(this.jogadorByJogadorEntra.getId());
+        hash = 79 * hash + Objects.hashCode(this.tempo);
         return hash;
     }
 
@@ -100,16 +99,16 @@ public class Substituicao  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.jogadorByJogadorSai.getId(), other.jogadorByJogadorSai.getId())) {
-            return false;
-        }
         if (!Objects.equals(this.selecao.getId(), other.selecao.getId())) {
             return false;
         }
-        if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {
+        if (!Objects.equals(this.jogadorByJogadorSai.getId(), other.jogadorByJogadorSai.getId())) {
             return false;
         }
         if (!Objects.equals(this.jogadorByJogadorEntra.getId(), other.jogadorByJogadorEntra.getId())) {
+            return false;
+        }
+        if (!Objects.equals(this.jogo.getId(), other.jogo.getId())) {
             return false;
         }
         if (!Objects.equals(this.tempo, other.tempo)) {
@@ -117,9 +116,6 @@ public class Substituicao  implements java.io.Serializable {
         }
         return true;
     }
-
-
-
 
 }
 

@@ -378,7 +378,8 @@ public class SistemaTest {
      */
     @Test
     public void testListaGolsDaPartida() {
-        fail("The test case is a prototype.");
+        
+        
     }
 
     /**

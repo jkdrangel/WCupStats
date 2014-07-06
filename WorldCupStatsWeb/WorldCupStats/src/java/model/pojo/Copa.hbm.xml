@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 6, 2014 10:58:32 AM by Hibernate Tools 3.6.0 -->
+<!-- Generated 06/07/2014 15:27:35 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="model.pojo.Copa" table="Copa" catalog="wcupstats">
+    <class name="model.pojo.Copa" table="copa" catalog="wcupstats">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
@@ -14,13 +14,13 @@
         <property name="ano" type="date">
             <column name="ano" length="10" not-null="true" />
         </property>
-        <set name="selecaos" table="Selecao" inverse="true" lazy="true" fetch="select">
+        <set name="selecaos" table="selecao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_COPA" />
             </key>
             <one-to-many class="model.pojo.Selecao" />
         </set>
-        <set name="jogos" table="Jogo" inverse="true" lazy="true" fetch="select">
+        <set name="jogos" table="jogo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_COPA" />
             </key>

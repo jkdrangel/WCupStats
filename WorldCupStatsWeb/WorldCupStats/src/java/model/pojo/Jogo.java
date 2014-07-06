@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
+// Generated 06/07/2014 15:27:33 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -134,13 +134,11 @@ public class Jogo  implements java.io.Serializable {
         this.gols = gols;
     }
 
-    @Override
+
+  @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.copa.getId());
-        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoB.getId());
-        hash = 89 * hash + Objects.hashCode(this.selecaoBySelecaoA.getId());
         hash = 89 * hash + Objects.hashCode(this.data);
         hash = 89 * hash + Objects.hashCode(this.local);
         hash = 89 * hash + Objects.hashCode(this.fase);
@@ -159,15 +157,7 @@ public class Jogo  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.copa.getId(), other.copa.getId())) {
-            return false;
-        }
-        if (!Objects.equals(this.selecaoBySelecaoB.getId(), other.selecaoBySelecaoB.getId())) {
-            return false;
-        }
-        if (!Objects.equals(this.selecaoBySelecaoA.getId(), other.selecaoBySelecaoA.getId())) {
-            return false;
-        }
+        
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
@@ -179,10 +169,6 @@ public class Jogo  implements java.io.Serializable {
         }
         return true;
     }
-
-
-
-
 }
 
 

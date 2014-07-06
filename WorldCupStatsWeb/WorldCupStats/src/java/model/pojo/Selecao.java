@@ -1,5 +1,5 @@
 package model.pojo;
-// Generated Jul 6, 2014 10:58:31 AM by Hibernate Tools 3.6.0
+// Generated 06/07/2014 15:27:33 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -152,15 +152,20 @@ public class Selecao  implements java.io.Serializable {
         this.escalacaos = escalacaos;
     }
 
-    @Override
+
+@Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.ano);
-        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 37 * hash + (this.grupo != null ? this.grupo.hashCode() : 0);
+        hash = 37 * hash + (this.ano != null ? this.ano.hashCode() : 0);
+        hash = 37 * hash + this.posicao;
+        hash = 37 * hash + (this.nome != null ? this.nome.hashCode() : 0);
         return hash;
     }
 
+
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -173,17 +178,25 @@ public class Selecao  implements java.io.Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.grupo, other.grupo)) {
+            return false;
+        }
         if (!Objects.equals(this.ano, other.ano)) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
+        if (this.posicao != other.posicao) {
+            return false;
+        }
         return true;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Selecao do(a) " + this.getNome() + " de " + this.getAno();
+    }
 
 }
 
