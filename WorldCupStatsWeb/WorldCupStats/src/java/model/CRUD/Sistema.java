@@ -470,8 +470,6 @@ public class Sistema {
                 transacao = sessao.beginTransaction();
                 joga = (Jogador) consulta.uniqueResult();
                 goll.setJogador(joga);
-
-                System.out.println(joga.getNome());
             }
             
             transacao.commit();
