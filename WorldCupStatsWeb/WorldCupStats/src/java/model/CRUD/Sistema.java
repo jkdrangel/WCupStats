@@ -9,6 +9,7 @@ package model.CRUD;
 
 import Util.HibernateUtil;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import model.pojo.Copa;
@@ -329,8 +330,8 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Tecnico from Tecnico inner join Selecao where selecao=:parametro");
-            consulta.setEntity("parametro", s);
+            Query consulta = sessao.createQuery("from Tecnico where id=:parametro");
+            consulta.setInteger("parametro", s.getTecnico().getId());
             transacao = sessao.beginTransaction();
             resultado = (Tecnico) consulta.uniqueResult();
             transacao.commit();
@@ -568,7 +569,35 @@ public class Sistema {
      * @return
      */
     public List<Jogo> listarJogosEmpatados(Copa c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+         List<Jogo> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            
+            Query consulta = sessao.createQuery("from Jogo where copa =:parametro");
+            consulta.setEntity("parametro", c);
+            transacao = sessao.beginTransaction();
+            resultado = (List<Jogo>) consulta.list();
+            
+            List<Jogo> jogosEmpatados = new ArrayList<Jogo>();
+            for (Jogo jogo1 : resultado) {
+                if(jogo1.getGolA() == jogo1.getGolB()) {
+                    jogosEmpatados.add(jogo1);
+                }
+            }
+            
+            transacao.commit();
+            return jogosEmpatados;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -759,11 +788,13 @@ public class Sistema {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Jogo cadastrarJogo(Date data, String local, Copa copa, Selecao primeira, Selecao segunda, String fase) {
+    public Jogo cadastrarJogo(Date data, String local, Copa copa, Selecao primeira, Selecao segunda, String fase, Integer golA, Integer golB) {
         Jogo j = new Jogo(data, local, fase);
         j.setCopa(copa);
         j.setSelecaoBySelecaoA(primeira);
         j.setSelecaoBySelecaoB(segunda);
+        j.setGolA(golA);
+        j.setGolB(golB);
         jogo.adicionar(j);
         return j;
     }

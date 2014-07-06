@@ -96,10 +96,12 @@ public class Controller {
      * @param primeira
      * @param segunda
      * @param fase
+     * @param golA
+     * @param golB
      * @return 
      */
-    public Jogo cadastrarJogo(Date d, String local,Copa  copa, Selecao primeira, Selecao segunda, String fase){
-        return sistema.cadastrarJogo(d,local,copa, primeira, segunda, fase);
+    public Jogo cadastrarJogo(Date d, String local,Copa  copa, Selecao primeira, Selecao segunda, String fase, Integer golA, Integer golB){
+        return sistema.cadastrarJogo(d,local,copa, primeira, segunda, fase, golA, golB);
     }
     
     /**

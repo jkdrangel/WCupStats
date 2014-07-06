@@ -79,21 +79,21 @@ public class SistemaTest {
         copa2.setPais(africa);
         copa2.setPais(coreia);
         
-        selecaoB1 = new Selecao("A", new Date(114), 1);
+        selecaoB1 = new Selecao("A", new Date(50, 1, 1), 1);
         selecaoB1.setPais(brasil);
         selecaoB1.setNome("Brasil");
-        selecaoA1 = new Selecao("A", new Date(114), 2);
-        selecaoC1 = new Selecao("A", new Date(114), 3);
-        selecaoB2 = new Selecao("A", new Date(110), 1);
+        selecaoA1 = new Selecao("A", new Date(109, 1, 1), 2);
+        selecaoC1 = new Selecao("A", new Date(108, 1, 1), 3);
+        selecaoB2 = new Selecao("A", new Date(110, 1, 1), 1);
         selecaoB2.setPais(brasil);
         selecaoB2.setNome("Brasil");
-        selecaoA2 = new Selecao("A", new Date(110), 3);
-        selecaoC2 = new Selecao("A", new Date(110), 2);
-        selecaoB3 = new Selecao("A", new Date(106), 2);
+        selecaoA2 = new Selecao("A", new Date(110, 1, 1), 3);
+        selecaoC2 = new Selecao("A", new Date(110, 1, 1), 2);
+        selecaoB3 = new Selecao("A", new Date(106, 1, 1), 2);
         selecaoB3.setPais(brasil);
         selecaoB3.setNome("Brasil");
-        selecaoA3 = new Selecao("A", new Date(106), 1);
-        selecaoC3 = new Selecao("A", new Date(106), 3);
+        selecaoA3 = new Selecao("A", new Date(106, 1, 1), 1);
+        selecaoC3 = new Selecao("A", new Date(106, 1, 1), 3);
         
         escA1 = new Escalacao();
         escB1 = new Escalacao();
@@ -199,11 +199,13 @@ public class SistemaTest {
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoB2);
         selecaoDao.adicionar(selecaoB3);
+        
         List<Selecao> lista =sistema.listarPaisesCopa(copa);
         assertFalse(lista.isEmpty());
+
         assertEquals(selecaoB1, lista.get(0));
-        assertEquals(selecaoB3, lista.get(1));
-        assertEquals(selecaoB2, lista.get(2));
+        assertEquals(selecaoB2, lista.get(1));
+        assertEquals(selecaoB3, lista.get(2));
     }
 
     /**
@@ -467,7 +469,23 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogosEmpatados() {
-        fail("The test case is a prototype.");
+        
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA1);
+        copaDao.adicionar(copa);
+        
+        Jogo jogo1 = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
+        Jogo jogo2 = sistema.cadastrarJogo(new Date(114, 7, 2), "puli", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 2, 2);
+        Jogo jogo3 = sistema.cadastrarJogo(new Date(114, 7, 5), "pelourinho", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
+        Jogo jogo4 = sistema.cadastrarJogo(new Date(114, 7, 10), "nao sei", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 0, 0);
+        Jogo jogo5 = sistema.cadastrarJogo(new Date(114, 7, 19), "cabando", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 3, 3);
+        Jogo jogo6 = sistema.cadastrarJogo(new Date(114, 7, 20), "fim", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
+        
+        List<Jogo> lista = sistema.listarJogosEmpatados(copa);
+        assertEquals(jogo2, lista.get(0));
+        assertEquals(jogo4, lista.get(1));
+        assertEquals(jogo5, lista.get(2));
+        
     }
 
     /**
@@ -608,7 +626,9 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarGolMaisRapidoNasCopas() {
-        fail("The test case is a prototype.");
+        
+        sistema.consultarGolMaisRapidoNasCopas();
+        assertTrue(false);
     }
 
     /**
@@ -670,10 +690,10 @@ public class SistemaTest {
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
-        Jogo jogo = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase());
+        Jogo jogo = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 5);
         List<Jogo> lista = sistema.listarJogos();
         assertEquals(jogo, lista.get(0));
-        }
+    }
 
     /**
      * Test of listarEscalacoes method, of class Sistema.
