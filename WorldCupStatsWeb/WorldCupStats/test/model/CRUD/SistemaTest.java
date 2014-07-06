@@ -403,7 +403,30 @@ public class SistemaTest {
     @Test
     public void testListaGolsDaPartida() {
         
+        selecaoA1 = new Selecao("H", new Date(100, 1, 1), 1);
+        selecaoA1.setNome("Brasil");
+        jogo1 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
+        Jogador jogador = new Jogador(new Date(60, 1, 1), "Kishin", 1, FuncaoJogador.ATACANTE.getFuncao());
         
+        selecaoDao.adicionar(selecaoA1);
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogador);
+        
+        gol1 = sistema.cadastrarGol(jogo1, new Time(0,10,0), true, jogador, selecaoA1);
+        gol2 = sistema.cadastrarGol(jogo1, new Time(1,10,2), false, jogador, selecaoA1);
+        gol3 = sistema.cadastrarGol(jogo1, new Time(1,20,50), true, jogador, selecaoA1);
+       
+        List<Gol> gols = sistema.listaGols();
+        assertFalse(gols.isEmpty());
+        
+        gols = sistema.listaGolsDaPartida(jogo1);
+        String saiu1 = gols.get(0).toString(), 
+               saiu2 = gols.get(1).toString(), 
+               saiu3 = gols.get(2).toString();
+
+        assertEquals("Gol Brasil, 10:00, Kishin[Contra]", saiu1);
+        assertEquals("Gol Brasil, 70:02, Kishin[Normal]", saiu2);
+        assertEquals("Gol Brasil, 80:50, Kishin[Contra]", saiu3);
     }
 
     /**

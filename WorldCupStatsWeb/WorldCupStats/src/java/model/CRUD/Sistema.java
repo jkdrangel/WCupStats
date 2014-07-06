@@ -450,10 +450,28 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Gol where jogo=:parametro");
-            consulta.setEntity("parametro", j);
+            Query consulta = sessao.createQuery("from Gol where jogo = :j");
+            consulta.setEntity("j", j);
             transacao = sessao.beginTransaction();
             resultado = (List<Gol>) consulta.list();
+
+            Selecao sele;
+            Jogador joga;
+            for (Gol goll : resultado) {
+                consulta = sessao.createQuery("from Selecao where id = :parametro");
+                consulta.setInteger("parametro", goll.getSelecao().getId());
+                transacao = sessao.beginTransaction();
+                sele = (Selecao) consulta.uniqueResult();
+                goll.setSelecao(sele);
+            }
+            for (Gol goll : resultado) {
+                consulta = sessao.createQuery("from Jogador where id=:parametro");
+                consulta.setInteger("parametro", goll.getJogador().getId());
+                transacao = sessao.beginTransaction();
+                joga = (Jogador) consulta.uniqueResult();
+                goll.setJogador(joga);
+            }
+            
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
