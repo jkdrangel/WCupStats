@@ -18,6 +18,7 @@
     <mapping resource="model/pojo/Tecnico.hbm.xml"/>
     <mapping resource="model/pojo/Jogo.hbm.xml"/>
     <mapping resource="model/pojo/Gol.hbm.xml"/>
-    <mapping resource="model/pojo/Escalacao.hbm.xml"/>
+    <mapping resource="model/pojo/Escalacao.hbm.xml"/> 
+    
   </session-factory>
 </hibernate-configuration>

@@ -223,10 +223,11 @@ public class Sistema {
      * @param s
      * @return
      */
-    public Escalacao cadastrarEscalacao(Jogo j, Selecao s) {
+    public Escalacao cadastrarEscalacao(Jogo j, Selecao s, Jogador jo) {
         Escalacao e = new Escalacao();
         e.setJogo(j);
         e.setSelecao(s);
+        e.setJogador(jo);
         escalacao.adicionar(e);
         return e;
         
@@ -254,11 +255,12 @@ public class Sistema {
      * @param j
      * @return
      */
-    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu, Jogo j) {
+    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu, Jogo j, Selecao selecao) {
         Substituicao s = new Substituicao(t);
         s.setJogadorByJogadorEntra(entrou);
         s.setJogadorByJogadorSai(saiu);
         s.setJogo(j);
+        s.setSelecao(selecao);
         substituicao.adicionar(s);
         
         return s;
@@ -298,7 +300,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             
-            Query consulta = sessao.createQuery("select Jogador from Jogador where selecao=:parametro");
+            Query consulta = sessao.createQuery("from Jogador where selecao=:parametro");
             consulta.setEntity("parametro", selecao);
             transacao = sessao.beginTransaction();
             resultado = (List<Jogador>) consulta.list();

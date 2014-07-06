@@ -84,8 +84,8 @@ public class Controller {
      * @param s
      * @return 
      */
-    public Escalacao cadastrarEscalacao(Jogo j, Selecao s) {
-        return sistema.cadastrarEscalacao(j, s);
+    public Escalacao cadastrarEscalacao(Jogo j, Selecao s, Jogador jo) {
+        return sistema.cadastrarEscalacao(j, s, jo);
     }
     /**
      * Um novo jogo é inserido em uma copa do mundo,
@@ -125,8 +125,8 @@ public class Controller {
      * @param j
      * @return 
      */
-    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu, Jogo j) {
-        return sistema.cadastrarSubstituicao(t, entrou, saiu, j);
+    public Substituicao cadastrarSubstituicao(Time t, Jogador entrou, Jogador saiu, Jogo j, Selecao s) {
+        return sistema.cadastrarSubstituicao(t, entrou, saiu, j, s);
     }   
     /**
      * 
