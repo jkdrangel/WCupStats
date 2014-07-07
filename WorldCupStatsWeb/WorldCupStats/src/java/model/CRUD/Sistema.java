@@ -31,7 +31,7 @@ import org.hibernate.Transaction;
  * @author lsantana
  */
 public class Sistema {
-    
+
     PaisDAO pais = new PaisDAO();
     CopaDAO copa = new CopaDAO();
     TecnicoDAO tecnico = new TecnicoDAO();
@@ -101,7 +101,7 @@ public class Sistema {
         List<Selecao> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("from Selecao where copa=:parametro");
             consulta.setEntity("parametro", copa);
             transacao = sessao.beginTransaction();
@@ -129,7 +129,7 @@ public class Sistema {
         List<Jogo> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("select Jogo from Copa where ano=:parametro");
             consulta.setDate("parametro", copa.getAno());
             transacao = sessao.beginTransaction();
@@ -154,11 +154,11 @@ public class Sistema {
      * @return
      */
     public int qtdJogosPais(Pais pais) {
-        
+
         int resultado = 0;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("select count(id) from Jogo join Selecao where pais=:parametro");
             consulta.setEntity("parametro", pais);
             transacao = sessao.beginTransaction();
@@ -231,7 +231,7 @@ public class Sistema {
         e.setJogador(jo);
         escalacao.adicionar(e);
         return e;
-        
+
     }
 
     /**
@@ -263,7 +263,7 @@ public class Sistema {
         s.setJogo(j);
         s.setSelecao(selecao);
         substituicao.adicionar(s);
-        
+
         return s;
     }
 
@@ -300,7 +300,7 @@ public class Sistema {
         List<Jogador> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("from Jogador where selecao=:parametro");
             consulta.setEntity("parametro", selecao);
             transacao = sessao.beginTransaction();
@@ -317,7 +317,7 @@ public class Sistema {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
         }
-        
+
     }
 
     /**
@@ -329,7 +329,7 @@ public class Sistema {
         Tecnico resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("from Tecnico where id=:parametro");
             consulta.setInteger("parametro", s.getTecnico().getId());
             transacao = sessao.beginTransaction();
@@ -346,7 +346,7 @@ public class Sistema {
                 System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
             }
         }
-        
+
     }
 
     /**
@@ -355,10 +355,10 @@ public class Sistema {
      * @return
      */
     public String consultarPlacarJogo(Jogo j) {
-        
+
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             String r = "";
             Query consulta = sessao.createQuery("select count() from Gol where jogo=:parametro and selecao=:s");
             consulta.setEntity("parametro", j);
@@ -370,7 +370,7 @@ public class Sistema {
             r = r + "" + consulta.uniqueResult();
             transacao = sessao.beginTransaction();
             transacao.commit();
-            
+
             return r;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
@@ -382,7 +382,7 @@ public class Sistema {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
         }
-        
+
     }
 
     /**
@@ -394,7 +394,7 @@ public class Sistema {
         Escalacao resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("select Escalacao where selecao=:parametro");
             consulta.setEntity("parametro", s);
             transacao = sessao.beginTransaction();
@@ -422,7 +422,7 @@ public class Sistema {
         List<Substituicao> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("select Substituicao where jogo=:parametro");
             consulta.setEntity("parametro", j);
             transacao = sessao.beginTransaction();
@@ -450,7 +450,7 @@ public class Sistema {
         List<Gol> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("from Gol where jogo = :j");
             consulta.setEntity("j", j);
             transacao = sessao.beginTransaction();
@@ -461,18 +461,16 @@ public class Sistema {
             for (Gol goll : resultado) {
                 consulta = sessao.createQuery("from Selecao where id = :parametro");
                 consulta.setInteger("parametro", goll.getSelecao().getId());
-                transacao = sessao.beginTransaction();
                 sele = (Selecao) consulta.uniqueResult();
                 goll.setSelecao(sele);
             }
             for (Gol goll : resultado) {
                 consulta = sessao.createQuery("from Jogador where id=:parametro");
                 consulta.setInteger("parametro", goll.getJogador().getId());
-                transacao = sessao.beginTransaction();
                 joga = (Jogador) consulta.uniqueResult();
                 goll.setJogador(joga);
             }
-            
+
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
@@ -496,7 +494,7 @@ public class Sistema {
         int resultado = 0;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("select count(*) from Jogo inner join Selecao where Selecao.pais=:parametro");
             consulta.setEntity("parametro", p);
             transacao = sessao.beginTransaction();
@@ -525,13 +523,13 @@ public class Sistema {
         String resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("select Jogador from Copa join Selecao where copa=:parametro and jogador=:j");
             consulta.setEntity("parametro", c);
             consulta.setEntity("j", j);
             transacao = sessao.beginTransaction();
-            Jogador jogador =(Jogador)consulta.uniqueResult();
-            resultado = "Nome:" +jogador.getNome()+"Posicao:"+jogador.getPosicao()+"Data:"+jogador.getDataNascimento();
+            Jogador jogador = (Jogador) consulta.uniqueResult();
+            resultado = "Nome:" + jogador.getNome() + "Posicao:" + jogador.getPosicao() + "Data:" + jogador.getDataNascimento();
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
@@ -570,22 +568,22 @@ public class Sistema {
      */
     public List<Jogo> listarJogosEmpatados(Copa c) {
 
-         List<Jogo> resultado = null;
+        List<Jogo> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            
+
             Query consulta = sessao.createQuery("from Jogo where copa =:parametro");
             consulta.setEntity("parametro", c);
             transacao = sessao.beginTransaction();
             resultado = (List<Jogo>) consulta.list();
-            
+
             List<Jogo> jogosEmpatados = new ArrayList<Jogo>();
             for (Jogo jogo1 : resultado) {
-                if(jogo1.getGolA() == jogo1.getGolB()) {
+                if (jogo1.getGolA() == jogo1.getGolB()) {
                     jogosEmpatados.add(jogo1);
                 }
             }
-            
+
             transacao.commit();
             return jogosEmpatados;
         } catch (HibernateException e) {
@@ -787,7 +785,7 @@ public class Sistema {
     public List<Pais> listarPaisesQuePerderamPartidaEGanharamACopa() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public Jogo cadastrarJogo(Date data, String local, Copa copa, Selecao primeira, Selecao segunda, String fase, Integer golA, Integer golB) {
         Jogo j = new Jogo(data, local, fase);
         j.setCopa(copa);
@@ -798,21 +796,21 @@ public class Sistema {
         jogo.adicionar(j);
         return j;
     }
-    
+
     public List<Escalacao> listarEscalacoes() {
         return escalacao.listar();
     }
-    
+
     public List<Gol> listaGols() {
         return gol.listar();
     }
-    
+
     public List<Substituicao> listarSubstituicoes() {
         return substituicao.listar();
     }
 
     public List<Jogo> listarJogos() {
-    return jogo.listar();
+        return jogo.listar();
     }
-    
+
 }

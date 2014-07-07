@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `wcupstats` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `wcupstats`;
--- MySQL dump 10.13  Distrib 5.6.17, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (i686)
 --
 -- Host: 127.0.0.1    Database: wcupstats
 -- ------------------------------------------------------
--- Server version	5.6.19
+-- Server version	5.5.37-0+wheezy1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,71 +18,70 @@ USE `wcupstats`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Copa`
+-- Table structure for table `copa`
 --
 
-DROP TABLE IF EXISTS `Copa`;
+DROP TABLE IF EXISTS `copa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Copa` (
+CREATE TABLE `copa` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ano` date NOT NULL,
   `ID_SEDE` int(11) DEFAULT NULL,
+  `ano` date NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `ID_SEDE` (`ID_SEDE`),
-  KEY `FK_qjg6s7ruo90ku3gr4wnhlp2aw` (`ID_SEDE`),
-  CONSTRAINT `Copa_ibfk_2` FOREIGN KEY (`ID_SEDE`) REFERENCES `Pais` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  KEY `FK_7us0yfr5h78wmtkp6px1e3icc` (`ID_SEDE`),
+  CONSTRAINT `FK_7us0yfr5h78wmtkp6px1e3icc` FOREIGN KEY (`ID_SEDE`) REFERENCES `pais` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Copa`
+-- Dumping data for table `copa`
 --
 
-LOCK TABLES `Copa` WRITE;
-/*!40000 ALTER TABLE `Copa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Copa` ENABLE KEYS */;
+LOCK TABLES `copa` WRITE;
+/*!40000 ALTER TABLE `copa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `copa` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Escalacao`
+-- Table structure for table `escalacao`
 --
 
-DROP TABLE IF EXISTS `Escalacao`;
+DROP TABLE IF EXISTS `escalacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Escalacao` (
+CREATE TABLE `escalacao` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Selecao` int(11) DEFAULT NULL,
   `Jogador` int(11) DEFAULT NULL,
   `Jogo` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_forjmpxm0hb834u33uu4le7v1` (`Selecao`),
-  KEY `FK_gfb1gjaqoxv64vrtq4rstjnfq` (`Jogador`),
-  KEY `FK_lbv7ihfcp23wur4v0jjgx05ak` (`Jogo`),
-  CONSTRAINT `FK_forjmpxm0hb834u33uu4le7v1` FOREIGN KEY (`Selecao`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_gfb1gjaqoxv64vrtq4rstjnfq` FOREIGN KEY (`Jogador`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_lbv7ihfcp23wur4v0jjgx05ak` FOREIGN KEY (`Jogo`) REFERENCES `Jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  KEY `FK_ox2i60ek781t5ba270s0bxjrx` (`Selecao`),
+  KEY `FK_flj19ajw87jnm4pdvo21agvga` (`Jogador`),
+  KEY `FK_i6vicdabn76eclsqqjksvt107` (`Jogo`),
+  CONSTRAINT `FK_i6vicdabn76eclsqqjksvt107` FOREIGN KEY (`Jogo`) REFERENCES `jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_flj19ajw87jnm4pdvo21agvga` FOREIGN KEY (`Jogador`) REFERENCES `jogador` (`ID`),
+  CONSTRAINT `FK_ox2i60ek781t5ba270s0bxjrx` FOREIGN KEY (`Selecao`) REFERENCES `selecao` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Escalacao`
+-- Dumping data for table `escalacao`
 --
 
-LOCK TABLES `Escalacao` WRITE;
-/*!40000 ALTER TABLE `Escalacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Escalacao` ENABLE KEYS */;
+LOCK TABLES `escalacao` WRITE;
+/*!40000 ALTER TABLE `escalacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `escalacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Gol`
+-- Table structure for table `gol`
 --
 
-DROP TABLE IF EXISTS `Gol`;
+DROP TABLE IF EXISTS `gol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Gol` (
+CREATE TABLE `gol` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ID_JOGADOR` int(11) DEFAULT NULL,
   `ID_SELECAO` int(11) DEFAULT NULL,
@@ -90,61 +89,61 @@ CREATE TABLE `Gol` (
   `tempo` time NOT NULL,
   `foiContra` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_jxn1iwy5gk1ljngufdab0s87l` (`ID_JOGADOR`),
-  KEY `FK_dy5t574jj3r0cas0436rmsw4t` (`ID_SELECAO`),
-  KEY `FK_i0ofbqls399gh6emlo72nxl9p` (`ID_JOGO`),
-  CONSTRAINT `FK_dy5t574jj3r0cas0436rmsw4t` FOREIGN KEY (`ID_SELECAO`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_i0ofbqls399gh6emlo72nxl9p` FOREIGN KEY (`ID_JOGO`) REFERENCES `Jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_jxn1iwy5gk1ljngufdab0s87l` FOREIGN KEY (`ID_JOGADOR`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  KEY `FK_pa2bxjpa76qtsuxmaijdoaojq` (`ID_JOGADOR`),
+  KEY `FK_2akdl0ay2gt3hsc6gulioqtyo` (`ID_SELECAO`),
+  KEY `FK_e6u6sltajs1nki2ki4ogdd3ws` (`ID_JOGO`),
+  CONSTRAINT `FK_e6u6sltajs1nki2ki4ogdd3ws` FOREIGN KEY (`ID_JOGO`) REFERENCES `jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_2akdl0ay2gt3hsc6gulioqtyo` FOREIGN KEY (`ID_SELECAO`) REFERENCES `selecao` (`ID`),
+  CONSTRAINT `FK_pa2bxjpa76qtsuxmaijdoaojq` FOREIGN KEY (`ID_JOGADOR`) REFERENCES `jogador` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Gol`
+-- Dumping data for table `gol`
 --
 
-LOCK TABLES `Gol` WRITE;
-/*!40000 ALTER TABLE `Gol` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Gol` ENABLE KEYS */;
+LOCK TABLES `gol` WRITE;
+/*!40000 ALTER TABLE `gol` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gol` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Jogador`
+-- Table structure for table `jogador`
 --
 
-DROP TABLE IF EXISTS `Jogador`;
+DROP TABLE IF EXISTS `jogador`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Jogador` (
+CREATE TABLE `jogador` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Selecao` int(11) DEFAULT NULL,
   `data_nascimento` date NOT NULL,
   `nome` varchar(50) NOT NULL,
   `numero` int(11) NOT NULL,
   `posicao` varchar(13) NOT NULL,
-  `Selecao` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `fk_Jogador_1_idx` (`Selecao`),
-  CONSTRAINT `fk_Jogador_1` FOREIGN KEY (`Selecao`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  KEY `FK_6rt03f3oihv63jfc3suvkbls7` (`Selecao`),
+  CONSTRAINT `FK_6rt03f3oihv63jfc3suvkbls7` FOREIGN KEY (`Selecao`) REFERENCES `selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=927 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Jogador`
+-- Dumping data for table `jogador`
 --
 
-LOCK TABLES `Jogador` WRITE;
-/*!40000 ALTER TABLE `Jogador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Jogador` ENABLE KEYS */;
+LOCK TABLES `jogador` WRITE;
+/*!40000 ALTER TABLE `jogador` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jogador` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Jogo`
+-- Table structure for table `jogo`
 --
 
-DROP TABLE IF EXISTS `Jogo`;
+DROP TABLE IF EXISTS `jogo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Jogo` (
+CREATE TABLE `jogo` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ID_COPA` int(11) DEFAULT NULL,
   `SelecaoB` int(11) DEFAULT NULL,
@@ -155,95 +154,92 @@ CREATE TABLE `Jogo` (
   `GolA` int(11) DEFAULT NULL,
   `GolB` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_tc7gt20drtr0gj0om4wweu29b` (`ID_COPA`),
-  KEY `FK_10ebi8emygefnkbtgnindonx2` (`SelecaoB`),
-  KEY `FK_pofmnrxros002j18bv4sa0bob` (`SelecaoA`),
-  CONSTRAINT `FK_10ebi8emygefnkbtgnindonx2` FOREIGN KEY (`SelecaoB`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_pofmnrxros002j18bv4sa0bob` FOREIGN KEY (`SelecaoA`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_tc7gt20drtr0gj0om4wweu29b` FOREIGN KEY (`ID_COPA`) REFERENCES `Copa` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  KEY `FK_1d6a6w4fp98akvk3t2p6ljx09` (`ID_COPA`),
+  KEY `FK_sempip5ppll9r2fy99q0ntd9s` (`SelecaoB`),
+  KEY `FK_h9s0jj2hkr1dll9juuuq56fng` (`SelecaoA`),
+  CONSTRAINT `FK_h9s0jj2hkr1dll9juuuq56fng` FOREIGN KEY (`SelecaoA`) REFERENCES `selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_1d6a6w4fp98akvk3t2p6ljx09` FOREIGN KEY (`ID_COPA`) REFERENCES `copa` (`ID`),
+  CONSTRAINT `FK_sempip5ppll9r2fy99q0ntd9s` FOREIGN KEY (`SelecaoB`) REFERENCES `selecao` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Jogo`
+-- Dumping data for table `jogo`
 --
 
-LOCK TABLES `Jogo` WRITE;
-/*!40000 ALTER TABLE `Jogo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Jogo` ENABLE KEYS */;
+LOCK TABLES `jogo` WRITE;
+/*!40000 ALTER TABLE `jogo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jogo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Pais`
+-- Table structure for table `pais`
 --
 
-DROP TABLE IF EXISTS `Pais`;
+DROP TABLE IF EXISTS `pais`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Pais` (
+CREATE TABLE `pais` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(20) NOT NULL,
   `continente` varchar(20) NOT NULL,
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Pais`
+-- Dumping data for table `pais`
 --
 
-LOCK TABLES `Pais` WRITE;
-/*!40000 ALTER TABLE `Pais` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Pais` ENABLE KEYS */;
+LOCK TABLES `pais` WRITE;
+/*!40000 ALTER TABLE `pais` DISABLE KEYS */;
+INSERT INTO `pais` VALUES (231,'Pais','Mundo'),(232,'Country','World'),(233,'Pais','Mundo'),(234,'Country','World');
+/*!40000 ALTER TABLE `pais` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Selecao`
+-- Table structure for table `selecao`
 --
 
-DROP TABLE IF EXISTS `Selecao`;
+DROP TABLE IF EXISTS `selecao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Selecao` (
+CREATE TABLE `selecao` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `grupo` varchar(20) NOT NULL,
-  `ano` date NOT NULL,
-  `posicao` int(11) NOT NULL,
   `ID_COPA` int(11) DEFAULT NULL,
   `ID_PAIS` int(11) DEFAULT NULL,
   `Tecnico` int(11) DEFAULT NULL,
+  `grupo` varchar(20) NOT NULL,
+  `ano` date NOT NULL,
+  `posicao` int(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `grupo` (`grupo`),
-  KEY `ID_COPA` (`ID_COPA`),
-  KEY `ID_PAIS` (`ID_PAIS`),
-  KEY `FK_mlrgqhubj4vh2qgyiyfi4kro2` (`ID_COPA`),
-  KEY `FK_o7gtr1yf1274ugdvl3rx41sah` (`ID_PAIS`),
-  KEY `Tecnico` (`Tecnico`),
-  KEY `FK_kebaqynihk41ibm69lwxm0cjx` (`Tecnico`),
-  CONSTRAINT `Selecao_ibfk_1` FOREIGN KEY (`ID_COPA`) REFERENCES `Copa` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `Selecao_ibfk_2` FOREIGN KEY (`ID_PAIS`) REFERENCES `Pais` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `Selecao_ibfk_3` FOREIGN KEY (`Tecnico`) REFERENCES `Tecnico` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  KEY `FK_1o63bym3r1v16c50dk63rf569` (`ID_COPA`),
+  KEY `FK_oxviobyjdxwn58dqj95d19tv7` (`ID_PAIS`),
+  KEY `FK_diheysvp1aciryotutg7iep9r` (`Tecnico`),
+  CONSTRAINT `FK_diheysvp1aciryotutg7iep9r` FOREIGN KEY (`Tecnico`) REFERENCES `tecnico` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_1o63bym3r1v16c50dk63rf569` FOREIGN KEY (`ID_COPA`) REFERENCES `copa` (`ID`),
+  CONSTRAINT `FK_oxviobyjdxwn58dqj95d19tv7` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Selecao`
+-- Dumping data for table `selecao`
 --
 
-LOCK TABLES `Selecao` WRITE;
-/*!40000 ALTER TABLE `Selecao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Selecao` ENABLE KEYS */;
+LOCK TABLES `selecao` WRITE;
+/*!40000 ALTER TABLE `selecao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `selecao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Substituicao`
+-- Table structure for table `substituicao`
 --
 
-DROP TABLE IF EXISTS `Substituicao`;
+DROP TABLE IF EXISTS `substituicao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Substituicao` (
+CREATE TABLE `substituicao` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `JogadorSai` int(11) DEFAULT NULL,
   `ID_SELECAO` int(11) DEFAULT NULL,
@@ -251,48 +247,48 @@ CREATE TABLE `Substituicao` (
   `JogadorEntra` int(11) DEFAULT NULL,
   `tempo` time NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_hwrhqfa1v9dnb9afekp7t90xn` (`JogadorSai`),
-  KEY `FK_dk2tvg7gq07k8a3kw4maevu9f` (`ID_SELECAO`),
-  KEY `FK_g873mceb22x4uv45fh4m1ijtc` (`ID_JOGO`),
-  KEY `FK_exot7nm0x8o0unbp09kb5or5r` (`JogadorEntra`),
-  CONSTRAINT `FK_dk2tvg7gq07k8a3kw4maevu9f` FOREIGN KEY (`ID_SELECAO`) REFERENCES `Selecao` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_exot7nm0x8o0unbp09kb5or5r` FOREIGN KEY (`JogadorEntra`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_g873mceb22x4uv45fh4m1ijtc` FOREIGN KEY (`ID_JOGO`) REFERENCES `Jogo` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_hwrhqfa1v9dnb9afekp7t90xn` FOREIGN KEY (`JogadorSai`) REFERENCES `Jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  KEY `FK_g81iew0oyrf7i5rane5ib3smq` (`JogadorSai`),
+  KEY `FK_27hwnwrj8h9in6971ia0i48io` (`ID_SELECAO`),
+  KEY `FK_96i7w3syb7ipybu5ysiqoh9mu` (`ID_JOGO`),
+  KEY `FK_7h9ype3jjahmd3242q4fbarrk` (`JogadorEntra`),
+  CONSTRAINT `FK_7h9ype3jjahmd3242q4fbarrk` FOREIGN KEY (`JogadorEntra`) REFERENCES `jogador` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_27hwnwrj8h9in6971ia0i48io` FOREIGN KEY (`ID_SELECAO`) REFERENCES `selecao` (`ID`),
+  CONSTRAINT `FK_96i7w3syb7ipybu5ysiqoh9mu` FOREIGN KEY (`ID_JOGO`) REFERENCES `jogo` (`ID`),
+  CONSTRAINT `FK_g81iew0oyrf7i5rane5ib3smq` FOREIGN KEY (`JogadorSai`) REFERENCES `jogador` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Substituicao`
+-- Dumping data for table `substituicao`
 --
 
-LOCK TABLES `Substituicao` WRITE;
-/*!40000 ALTER TABLE `Substituicao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Substituicao` ENABLE KEYS */;
+LOCK TABLES `substituicao` WRITE;
+/*!40000 ALTER TABLE `substituicao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `substituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Tecnico`
+-- Table structure for table `tecnico`
 --
 
-DROP TABLE IF EXISTS `Tecnico`;
+DROP TABLE IF EXISTS `tecnico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Tecnico` (
+CREATE TABLE `tecnico` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
   `data_nascimento` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Tecnico`
+-- Dumping data for table `tecnico`
 --
 
-LOCK TABLES `Tecnico` WRITE;
-/*!40000 ALTER TABLE `Tecnico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Tecnico` ENABLE KEYS */;
+LOCK TABLES `tecnico` WRITE;
+/*!40000 ALTER TABLE `tecnico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tecnico` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -304,4 +300,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-06 14:05:31
+-- Dump completed on 2014-07-07 13:07:50
