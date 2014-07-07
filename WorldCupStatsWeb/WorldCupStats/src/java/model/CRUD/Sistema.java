@@ -735,7 +735,38 @@ public class Sistema {
      * @return
      */
     public Gol consultarGolMaisRapidoNasCopas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Gol resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Gol order by Gol.tempo desc");
+            transacao = sessao.beginTransaction();
+            resultado = ((List<Gol>) consulta.list()).get(0);
+
+            Selecao sele;
+            Jogador joga;
+            consulta = sessao.createQuery("from Selecao where id = :parametro");
+            consulta.setInteger("parametro", resultado.getSelecao().getId());
+            sele = (Selecao) consulta.uniqueResult();
+            resultado.setSelecao(sele);
+
+            consulta = sessao.createQuery("from Jogador where id=:parametro");
+            consulta.setInteger("parametro", resultado.getJogador().getId());
+            joga = (Jogador) consulta.uniqueResult();
+            resultado.setJogador(joga);
+
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
