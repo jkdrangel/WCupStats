@@ -642,9 +642,9 @@ public class Sistema {
      *
      * @return
      */
-    public List<String> listaTodasFinais() {
+    public List<Jogo> listaTodasFinais() {
 
-        List<String> resultado = new ArrayList<>();
+        List<Jogo> resultado = new ArrayList<>();
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
@@ -667,7 +667,7 @@ public class Sistema {
             }
 
             for (Jogo jg : jogos) {
-                resultado.add(jg.toString());
+                resultado.add(jg);
             }
             
             transacao.commit();

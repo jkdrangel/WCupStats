@@ -550,7 +550,7 @@ public class SistemaTest {
     @Test
     public void testListaTodasFinais() {
 
-        copa1 = new Copa(new Date(500, 1, 1));
+       copa1 = new Copa(new Date(500, 1, 1));
         
         Selecao sele1 = new Selecao("A", new Date(50, 1, 1), 1);
                 sele1.setNome("Brasil");
@@ -559,12 +559,17 @@ public class SistemaTest {
         Selecao sele3 = new Selecao("A", new Date(20, 1, 1), 1);
                 sele3.setNome("Alemanha");
         
+        copaDao.adicionar(copa1);
+        selecaoDao.adicionar(sele1);
+        selecaoDao.adicionar(sele2);
+        selecaoDao.adicionar(sele3);
+                
         Jogo jo1 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele2,
                                          FaseCopa.FINAL.getFase(), 5, 1);
         Jogo jo2 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele3, sele2,
                                          FaseCopa.FINAL.getFase(), 7, 12);
         Jogo jo3 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele2, sele1,
-                                         FaseCopa.FINAL.getFase(), 5, 5);        
+                                         FaseCopa.SEMI.getFase(), 5, 5);        
         Jogo jo4 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele3,
                                          FaseCopa.OITAVAS.getFase(), 2, 1);        
         Jogo jo5 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele3,
@@ -578,14 +583,13 @@ public class SistemaTest {
         Jogo jo9 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele2,
                                          FaseCopa.FINAL.getFase(), 5, 7);
 
-        selecaoDao.adicionar(sele1);
-        selecaoDao.adicionar(sele2);
-        selecaoDao.adicionar(sele3);
+        List<Jogo> finais = sistema.listaTodasFinais();
         
-        copaDao.adicionar(copa);
-
-        List<String> finais = sistema.listaTodasFinais();
-        assertTrue(false);
+        assertEquals("Brasil 5x1 Argentina", finais.get(0).toString());
+        assertEquals("Alemanha 7x12 Argentina", finais.get(1).toString());
+        assertEquals("Brasil 1x1 Alemanha", finais.get(2).toString());
+        assertEquals("Argentina 2x0 Brasil", finais.get(3).toString());
+        assertEquals("Brasil 5x7 Argentina", finais.get(4).toString());
     }
 
     /**

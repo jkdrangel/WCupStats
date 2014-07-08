@@ -169,6 +169,12 @@ public class Jogo  implements java.io.Serializable {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return selecaoBySelecaoA.getNome() +" "+ golA +"x"+ golB +" "+ selecaoBySelecaoB.getNome();
+    }
+    
 }
 
 
