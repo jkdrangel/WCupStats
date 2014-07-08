@@ -304,7 +304,7 @@ public class Controller {
      * 
      * @return 
      */
-    public List<String> listaTodasFinais(){
+    public List<Jogo> listaTodasFinais(){
         return sistema.listaTodasFinais();
     }
     /**
