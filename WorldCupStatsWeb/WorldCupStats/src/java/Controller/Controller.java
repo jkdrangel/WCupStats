@@ -318,7 +318,7 @@ public class Controller {
      * 
      * @return 
      */
-    public List<String> listaGolsContra(){
+    public List<Gol> listaGolsContra(){
         return sistema.listaGolsContra();
     }
     /**
