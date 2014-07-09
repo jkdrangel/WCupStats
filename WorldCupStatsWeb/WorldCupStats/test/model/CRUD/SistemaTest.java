@@ -218,21 +218,42 @@ public class SistemaTest {
         selecaoA1.setCopa(copa);
         selecaoB1.setCopa(copa);
         selecaoC1.setCopa(copa);
+        
+        selecaoA1.setNome("France");
+        selecaoC1.setNome("Japan");
+        
         selecaoDao.adicionar(selecaoA1);
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoC1);
+        
         jogo1.setSelecaoBySelecaoA(selecaoB1);
         jogo1.setSelecaoBySelecaoB(selecaoA1);
+        jogo1.setGolA(2);
+        jogo1.setGolB(3);
+        
         jogo2.setSelecaoBySelecaoA(selecaoB1);
         jogo2.setSelecaoBySelecaoB(selecaoC1);
+        jogo2.setGolA(1);
+        jogo2.setGolB(1);
+        
         jogo3.setSelecaoBySelecaoA(selecaoC1);
         jogo3.setSelecaoBySelecaoB(selecaoA1);
+        jogo3.setGolA(0);
+        jogo3.setGolB(3);
+        
+        Jogo jogo4 = sistema.cadastrarJogo(new Date(90, 1, 1), "Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 7, 5);        
         jogoDao.adicionar(jogo1);
         jogoDao.adicionar(jogo2);
         jogoDao.adicionar(jogo3);
         
-        List<Jogo> lista=sistema.listarJogosCopa(copa);
+        List<Jogo> lista = sistema.listarJogosCopa(copa);
         assertFalse(lista.isEmpty());
+        
+        assertEquals("Brasil 2x3 France", lista.get(0).toString()); // Ajeita o sistema que ta errado
+        assertEquals("Brasil 1x1 Japan", lista.get(1).toString());
+        assertEquals("Japan 3x0 France", lista.get(2).toString());
+        assertEquals("Brasil 7x5 France", lista.get(3).toString());
+        
     }
 
     /**
