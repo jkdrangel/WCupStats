@@ -737,7 +737,18 @@ public class SistemaTest {
      */
     @Test
     public void testListaGolsContra() {
-        fail("The test case is a prototype.");
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB1);
+        selecaoDao.adicionar(selecaoA1);
+        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, jogB1, selecaoA1);
+        
+        jogoDao.adicionar(jogo2);
+        jogadorDao.adicionar(jogB2);
+        selecaoDao.adicionar(selecaoA2);
+        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0,0,1), true, jogB1, selecaoA1);
+        
+        List<Gol> lista = sistema.listaGolsContra();
+        assertEquals(gol2, lista.get(0));
     }
 
     /**

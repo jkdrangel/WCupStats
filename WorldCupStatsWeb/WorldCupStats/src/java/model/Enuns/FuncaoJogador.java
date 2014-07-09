@@ -69,7 +69,9 @@ public enum FuncaoJogador {
     /**
      *
      */
-    CENTRO_AVANTE("Centro Avante");
+    CENTRO_AVANTE("Centro Avante"),
+    
+    RESERVA("Reserva");
 
     /**
      * Funcao do jogador.
