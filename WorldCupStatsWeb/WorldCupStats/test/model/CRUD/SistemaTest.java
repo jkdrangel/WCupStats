@@ -984,21 +984,21 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresReservaQueFizeramGols() {
-        jogB1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.RESERVA.getFuncao());
-        jogB2=new Jogador(new Date(80, 5, 15), "Cezar", 1, FuncaoJogador.MEIO_ATACANTE.getFuncao());
-        jogB1=new Jogador(new Date(80, 5, 15), "Camilo", 1, FuncaoJogador.LATERAL.getFuncao());
+        Jogador b1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.RESERVA.getFuncao());
+        Jogador b2=new Jogador(new Date(80, 5, 15), "Cezar", 2, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        Jogador b3=new Jogador(new Date(80, 5, 15), "Camilo", 3, FuncaoJogador.LATERAL.getFuncao());
         jogoDao.adicionar(jogo1);
-        jogadorDao.adicionar(jogB1);
-        jogadorDao.adicionar(jogB2);
-        jogadorDao.adicionar(jogB3);
+        jogadorDao.adicionar(b1);
+        jogadorDao.adicionar(b2);
+        jogadorDao.adicionar(b3);
         selecaoDao.adicionar(selecaoA1);
         selecaoDao.adicionar(selecaoA2);
-        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, jogB1, selecaoA1);
-        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, jogB2, selecaoA1);
-        Gol gol3 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, jogB3, selecaoA2);
+        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b1, selecaoA1);
+        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, b2, selecaoA1);
+        Gol gol3 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, b3, selecaoA2);
         
         List<Jogador> lista = sistema.listarJogadoresReservaQueFizeramGols();
-        assertEquals(jogB1, lista.get(0));
+        assertEquals(b1, lista.get(0));
     }
 
     /**

@@ -946,18 +946,15 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Jogadores jog inner join Gol gol where jog.posicao = :pos");
+            Query consulta = sessao.createQuery("from Gol gol where gol.jogador.posicao = :pos");
             consulta.setString("pos", "Reserva");
             transacao = sessao.beginTransaction();
             
-            List<Jogador> jogadores = (List<Jogador>) consulta.list();
+            List<Gol> gols = (List<Gol>) consulta.list();
             resultado = new ArrayList<>();
-            //for (Jogador jogador : jogadores) {
-              //  if(!resultado.contains(jogador)){
-                //    resultado.add(jogador);
-                //}
-                
-             //}
+            for (Gol gol : gols) {
+                resultado.add(gol.getJogador());                
+            }
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
