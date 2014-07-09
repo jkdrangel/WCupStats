@@ -587,7 +587,36 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarMaioresGoleadas() {
-        fail("The test case is a prototype.");
+        
+        selecaoDao.adicionar(selecaoA1);
+        selecaoDao.adicionar(selecaoA2);
+        
+        jogo1 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
+        jogo1.setGolA(7);
+        jogo1.setGolB(1);
+        jogo1.setSelecaoBySelecaoA(selecaoA1);
+        jogo1.setSelecaoBySelecaoA(selecaoA2);
+        jogoDao.adicionar(jogo1);
+        
+        jogo2 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
+        jogo2.setGolA(1);
+        jogo2.setGolB(1);
+        jogo2.setSelecaoBySelecaoA(selecaoA1);
+        jogo2.setSelecaoBySelecaoA(selecaoA2);
+        jogoDao.adicionar(jogo2);
+        
+        jogo3 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
+        jogo3.setGolA(8);
+        jogo3.setGolB(2);
+        jogo3.setSelecaoBySelecaoA(selecaoA1);
+        jogo3.setSelecaoBySelecaoA(selecaoA2);
+        jogoDao.adicionar(jogo3);
+        
+        
+        List<Jogo> jogos = sistema.consultarMaioresGoleadas();
+        assertEquals(jogos.get(0), jogo1);
+        assertEquals(jogos.get(1), jogo3);
+        
     }
 
     /**
@@ -1128,3 +1157,4 @@ public class SistemaTest {
         assertEquals(substituicao3, substituicoes.get(2));
     }
 }
+

@@ -576,7 +576,40 @@ public class Sistema {
      * @return
      */
     public List<Jogo> consultarMaioresGoleadas() {//Esse
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Jogo> resultado = new ArrayList<>();
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogo");
+            transacao = sessao.beginTransaction();
+            
+            List<Jogo> jogos = (List<Jogo>) consulta.list();
+            int goleada = 0, temp = 0;
+            
+            for(Jogo j: jogos){
+                temp = Math.abs(j.getGolA() - j.getGolB());
+                if(temp > goleada) {
+                   goleada = temp;
+                }
+            }
+            for(Jogo j: jogos){
+                if(Math.abs(j.getGolA() - j.getGolB()) == goleada){
+                    resultado.add(j);
+                }
+                
+            }
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
