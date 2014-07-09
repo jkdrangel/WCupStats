@@ -166,11 +166,11 @@ public class Sistema {
         int resultado = 0;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-
-            Query consulta = sessao.createQuery("select count(ID_PAIS) from Jogo join Selecao where (selecaoBySelecaoA = Selecao or selecaoBySelecaoB = Selecao) and ID_PAIS = :p");
+            String hql = "select count(s.pais) from Selecao s, Jogo j where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) and s.pais = :p";
+            Query consulta = sessao.createQuery(hql);
             consulta.setEntity("p", pais);
             transacao = sessao.beginTransaction();
-            resultado = (int) consulta.uniqueResult();
+            resultado = Integer.parseInt(""+consulta.uniqueResult());
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
