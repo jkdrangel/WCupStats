@@ -697,7 +697,27 @@ public class Sistema {
      * @return
      */
     public List<Gol> listaGolsContra() {//Esse
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Gol> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Gol gol where gol.foiContra = :parametro");
+            consulta.setBoolean("parametro", true);
+            transacao = sessao.beginTransaction();
+
+            resultado = (List<Gol>) consulta.list();
+            return resultado;
+            
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
