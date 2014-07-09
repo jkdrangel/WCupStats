@@ -70,13 +70,7 @@ public class SistemaTest {
         
         
         copa.setPais(brasil);
-        copa.setPais(africa);
-        copa.setPais(coreia);
-        copa1.setPais(brasil);
         copa1.setPais(africa);
-        copa1.setPais(coreia);
-        copa2.setPais(brasil);
-        copa2.setPais(africa);
         copa2.setPais(coreia);
         
         selecaoB1 = new Selecao("A", new Date(50, 1, 1), 1);
@@ -266,14 +260,14 @@ public class SistemaTest {
         africa = new Pais("egito", "africa");
         coreia = new Pais("coreia", "asia");
         
-        copaDao.adicionar(copa);
-        copaDao.adicionar(copa2);
-        copaDao.adicionar(copa1);
-        
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-
+        /*
+        copaDao.adicionar(copa);
+        copaDao.adicionar(copa2);
+        copaDao.adicionar(copa1);
+*/
         selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
         selecaoA2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", brasil);
 
@@ -283,11 +277,11 @@ public class SistemaTest {
         selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
         selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
         
-        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
-        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa1, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
-        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
-        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa1, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
-        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa2, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
+        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", null, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
+        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", null, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
+        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", null, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
+        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", null, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", null, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
         
         int br = sistema.qtdJogosPais(brasil);
         int af = sistema.qtdJogosPais(africa);
