@@ -133,14 +133,14 @@ public class Sistema {
             Query consulta = sessao.createQuery("from Selecao where copa=:parametro");
             consulta.setEntity("parametro", copa);
             transacao = sessao.beginTransaction();
-            List<Selecao> s= (List<Selecao>)consulta.list();
+            List<Selecao> s = (List<Selecao>) consulta.list();
             transacao.commit();
-            for(Selecao se: s){
-            consulta = sessao.createQuery("from Jogo where selecaoBySelecaoA=:parametro OR selecaoBySelecaoB=:parametro");
-            consulta.setEntity("parametro", se);
-            transacao = sessao.beginTransaction();
-            resultado.addAll((List<Jogo>)consulta.list());
-            transacao.commit();
+            for (Selecao se : s) {
+                consulta = sessao.createQuery("from Jogo where selecaoBySelecaoA=:parametro OR selecaoBySelecaoB=:parametro");
+                consulta.setEntity("parametro", se);
+                transacao = sessao.beginTransaction();
+                resultado.addAll((List<Jogo>) consulta.list());
+                transacao.commit();
             }
             return resultado;
         } catch (HibernateException e) {
@@ -563,8 +563,8 @@ public class Sistema {
      * @return
      */
     public List<Jogo> consultarMaioresGoleadas() {//Esse
-         throw new UnsupportedOperationException("Not supported yet.");
-         
+        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     /**
@@ -669,7 +669,7 @@ public class Sistema {
             for (Jogo jg : jogos) {
                 resultado.add(jg);
             }
-            
+
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
@@ -713,7 +713,36 @@ public class Sistema {
      * @return
      */
     public List<Pais> listaDecrescenteDePaisesComMaisTitulos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Pais> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Selecao where posicao = 1 group by pais order by count(pais) desc");
+            transacao = sessao.beginTransaction();
+
+            List<Selecao> selecoes = (List<Selecao>) consulta.list();
+            resultado = new ArrayList<>();
+            Pais pis;
+            for (Selecao sele : selecoes) {
+                consulta = sessao.createQuery("from Pais where id = :p");
+                consulta.setInteger("p", sele.getPais().getId());
+                pis = (Pais) consulta.uniqueResult(); // model.pojo.Pais_$$_javassist_5
+                resultado.add(pis);
+             }
+
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
