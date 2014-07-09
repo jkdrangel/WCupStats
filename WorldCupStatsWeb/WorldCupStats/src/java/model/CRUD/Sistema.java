@@ -706,6 +706,7 @@ public class Sistema {
             transacao = sessao.beginTransaction();
 
             resultado = (List<Gol>) consulta.list();
+            transacao.commit();
             return resultado;
             
         } catch (HibernateException e) {
@@ -866,7 +867,7 @@ public class Sistema {
      *
      * @return
      */
-    public List<Jogador> listarJogadoresComMaiorNumeroDeJogosComoReserva() {//esse
+    public List<Jogador> listarJogadoresComMaiorNumeroDeJogosComoReserva() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -874,8 +875,35 @@ public class Sistema {
      *
      * @return
      */
-    public List<Jogador> listarJogadoresReservaQueFizeramGols() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Jogador> listarJogadoresReservaQueFizeramGols() {//esse
+        List<Jogador> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogadores jog inner join Gol gol where jog.posicao = :pos");
+            consulta.setString("pos", "Reserva");
+            transacao = sessao.beginTransaction();
+            
+            List<Jogador> jogadores = (List<Jogador>) consulta.list();
+            resultado = new ArrayList<>();
+            //for (Jogador jogador : jogadores) {
+              //  if(!resultado.contains(jogador)){
+                //    resultado.add(jogador);
+                //}
+                
+             //}
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**

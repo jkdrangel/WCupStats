@@ -638,6 +638,7 @@ public class SistemaTest {
         
         List<Gol> lista = sistema.listaGolsContra();
         assertEquals(gol2, lista.get(0));
+        assertEquals(1, lista.size());
     }
 
     /**
@@ -872,7 +873,21 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresReservaQueFizeramGols() {
-        fail("The test case is a prototype.");
+        jogB1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.RESERVA.getFuncao());
+        jogB2=new Jogador(new Date(80, 5, 15), "Cezar", 1, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        jogB1=new Jogador(new Date(80, 5, 15), "Camilo", 1, FuncaoJogador.LATERAL.getFuncao());
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB1);
+        jogadorDao.adicionar(jogB2);
+        jogadorDao.adicionar(jogB3);
+        selecaoDao.adicionar(selecaoA1);
+        selecaoDao.adicionar(selecaoA2);
+        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, jogB1, selecaoA1);
+        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, jogB2, selecaoA1);
+        Gol gol3 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, jogB3, selecaoA2);
+        
+        List<Jogador> lista = sistema.listarJogadoresReservaQueFizeramGols();
+        assertEquals(jogB1, lista.get(0));
     }
 
     /**
