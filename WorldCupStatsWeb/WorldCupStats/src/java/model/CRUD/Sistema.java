@@ -576,8 +576,7 @@ public class Sistema {
      * @return
      */
     public List<Jogo> consultarMaioresGoleadas() {//Esse
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -946,15 +945,13 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Gol gol where gol.jogador.posicao = :pos");
-            consulta.setString("pos", "Reserva");
+            Query consulta = sessao.createQuery("select gol.jogador from Gol gol, Substituicao sub"
+                    + " where gol.jogador = sub.jogadorByJogadorEntra");
+            
             transacao = sessao.beginTransaction();
             
-            List<Gol> gols = (List<Gol>) consulta.list();
-            resultado = new ArrayList<>();
-            for (Gol gol : gols) {
-                resultado.add(gol.getJogador());                
-            }
+            resultado = (List<Jogador>) consulta.list();
+            
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {

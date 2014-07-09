@@ -241,10 +241,10 @@ public class SistemaTest {
         jogo3.setGolA(0);
         jogo3.setGolB(3);
         
-        Jogo jogo4 = sistema.cadastrarJogo(new Date(90, 1, 1), "Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 7, 5);        
         jogoDao.adicionar(jogo1);
         jogoDao.adicionar(jogo2);
         jogoDao.adicionar(jogo3);
+         Jogo jogo4 = sistema.cadastrarJogo(new Date(90, 1, 1), "Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 7, 5);        
         
         List<Jogo> lista = sistema.listarJogosCopa(copa);
         assertFalse(lista.isEmpty());
@@ -984,21 +984,41 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresReservaQueFizeramGols() {
-        Jogador b1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.RESERVA.getFuncao());
+        
+        selecaoDao.adicionar(selecaoA1);
+        selecaoDao.adicionar(selecaoA2);
+        Jogador b1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.LATERAL_DIREITO.getFuncao());
+        b1.setSelecao(selecaoA1);
         Jogador b2=new Jogador(new Date(80, 5, 15), "Cezar", 2, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        b2.setSelecao(selecaoA1);
         Jogador b3=new Jogador(new Date(80, 5, 15), "Camilo", 3, FuncaoJogador.LATERAL.getFuncao());
+        b3.setSelecao(selecaoA2);
+        
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(b1);
         jogadorDao.adicionar(b2);
         jogadorDao.adicionar(b3);
-        selecaoDao.adicionar(selecaoA1);
-        selecaoDao.adicionar(selecaoA2);
-        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b1, selecaoA1);
-        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, b2, selecaoA1);
-        Gol gol3 = sistema.cadastrarGol(jogo2, new Time(0,0,1), false, b3, selecaoA2);
         
+        Escalacao esc1 = new Escalacao();
+        Escalacao esc2 = new Escalacao();
+        esc1.setJogador(b1);
+        esc2.setJogador(b2);
+        
+        escalacaoDao.adicionar(esc1);
+        escalacaoDao.adicionar(esc2);
+        
+        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b1, selecaoA1);
+        Gol gol2 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b2, selecaoA1);
+        Gol gol3 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b3, selecaoA2);
+        
+        golDao.adicionar(gol1);
+        golDao.adicionar(gol2);
+        golDao.adicionar(gol3);
+        substituicao1 = new Substituicao(b1, selecaoA2, jogo1, b3, new Time(1));
+        substituicaoDao.adicionar(substituicao1);
         List<Jogador> lista = sistema.listarJogadoresReservaQueFizeramGols();
-        assertEquals(b1, lista.get(0));
+ 
+        assertEquals(b3, lista.get(0));
     }
 
     /**
