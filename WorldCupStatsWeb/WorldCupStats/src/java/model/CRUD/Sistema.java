@@ -8,6 +8,7 @@
 package model.CRUD;
 
 import Util.HibernateUtil;
+import static java.lang.Math.abs;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
@@ -166,8 +167,8 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select count(id) from Jogo join Selecao where pais=:parametro");
-            consulta.setEntity("parametro", pais);
+            Query consulta = sessao.createQuery("select count(ID_PAIS) from Jogo join Selecao where (selecaoBySelecaoA = Selecao or selecaoBySelecaoB = Selecao) and ID_PAIS = :p");
+            consulta.setEntity("p", pais);
             transacao = sessao.beginTransaction();
             resultado = (int) consulta.uniqueResult();
             transacao.commit();
@@ -398,15 +399,27 @@ public class Sistema {
      * @param s
      * @return
      */
-    public Escalacao consultarEscalacaoSelecao(Selecao s) {
-        Escalacao resultado = null;
+    public List<Jogador> consultarEscalacaoSelecao(Selecao s, Jogo j) {
+        List<Escalacao> resulParcial = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select Escalacao where selecao=:parametro");
-            consulta.setEntity("parametro", s);
+            Query consulta = sessao.createQuery("from Escalacao where selecao = :p1 and jogo = :p2");
+            consulta.setEntity("p1", s);
+            consulta.setEntity("p2", j);
             transacao = sessao.beginTransaction();
-            resultado = (Escalacao) consulta.uniqueResult();
+            resulParcial = (List<Escalacao>) consulta.list();
+            
+            List<Jogador> resultado = new ArrayList<>();
+            Jogador jog;
+            for (Escalacao esc : resulParcial) {
+
+                consulta = sessao.createQuery("from Jogador where id = :p");
+                consulta.setInteger("p", esc.getJogador().getId());
+                jog = (Jogador) consulta.uniqueResult(); 
+                resultado.add(jog);
+             }
+
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
@@ -589,6 +602,19 @@ public class Sistema {
                     jogosEmpatados.add(jogo1);
                 }
             }
+            Selecao sele;
+            for (Jogo j : jogosEmpatados) {
+                consulta = sessao.createQuery("from Selecao where id = :p");
+                consulta.setInteger("p", j.getSelecaoBySelecaoA().getId());
+                sele = (Selecao) consulta.uniqueResult();
+                j.setSelecaoBySelecaoA(sele);
+            }
+            for (Jogo j : jogosEmpatados) {
+                consulta = sessao.createQuery("from Selecao where id = :p");
+                consulta.setInteger("p", j.getSelecaoBySelecaoB().getId());
+                sele = (Selecao) consulta.uniqueResult();
+                j.setSelecaoBySelecaoB(sele);
+            }
 
             transacao.commit();
             return jogosEmpatados;
@@ -608,8 +634,48 @@ public class Sistema {
      *
      * @return
      */
-    public List<String> listarVitoriasIncontestaveis() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Jogo> listarVitoriasIncontestaveis() {
+         List<Jogo> resParcial = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogo");
+            transacao = sessao.beginTransaction();
+            resParcial = (List<Jogo>) consulta.list();
+
+            List<Jogo> lavada = new ArrayList<>();
+            for (Jogo jogo1 : resParcial) {
+                if (abs(jogo1.getGolA() - jogo1.getGolB()) >= 3) {
+                    lavada.add(jogo1);
+                }
+            }
+            Selecao sele;
+            for (Jogo j : lavada) {
+                consulta = sessao.createQuery("from Selecao where id = :p");
+                consulta.setInteger("p", j.getSelecaoBySelecaoA().getId());
+                sele = (Selecao) consulta.uniqueResult();
+                j.setSelecaoBySelecaoA(sele);
+            }
+            for (Jogo j : lavada) {
+                consulta = sessao.createQuery("from Selecao where id = :p");
+                consulta.setInteger("p", j.getSelecaoBySelecaoB().getId());
+                sele = (Selecao) consulta.uniqueResult();
+                j.setSelecaoBySelecaoB(sele);
+            }
+
+            transacao.commit();
+            return lavada;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
+        
     }
 
     /**

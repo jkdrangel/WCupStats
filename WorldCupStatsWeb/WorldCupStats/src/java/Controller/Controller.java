@@ -208,10 +208,11 @@ public class Controller {
     /**
      * 
      * @param s
+     * @param j
      * @return 
      */
-    public Escalacao consultarEscalacaoSelecao(Selecao s) {
-        return sistema.consultarEscalacaoSelecao(s);
+    public List<Jogador> consultarEscalacaoSelecao(Selecao s, Jogo j) {
+        return sistema.consultarEscalacaoSelecao(s, j);
     }
     /**
      * 
@@ -274,7 +275,7 @@ public class Controller {
      * 
      * @return 
      */
-    public List<String> listarVitoriasIncontestaveis(){
+    public List<Jogo> listarVitoriasIncontestaveis(){
         return sistema.listarVitoriasIncontestaveis();
     }
     /**

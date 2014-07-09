@@ -261,7 +261,41 @@ public class SistemaTest {
      */
     @Test
     public void testQtdJogosPais() {
-        fail("The test case is a prototype.");
+
+        brasil = new Pais("brasil", "america");
+        africa = new Pais("egito", "africa");
+        coreia = new Pais("coreia", "asia");
+        
+        copaDao.adicionar(copa);
+        copaDao.adicionar(copa2);
+        copaDao.adicionar(copa1);
+        
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(africa);
+        paisDao.adicionar(coreia);
+
+        selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
+        selecaoA2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", brasil);
+
+        selecaoB1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", africa);
+        selecaoB2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", africa);
+
+        selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
+        selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
+        
+        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
+        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa1, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
+        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
+        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa1, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa2, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
+        
+        int br = sistema.qtdJogosPais(brasil);
+        int af = sistema.qtdJogosPais(africa);
+        int ko = sistema.qtdJogosPais(coreia);
+        
+        assertEquals(5, br);
+        assertEquals(1, af);
+        assertEquals(4, ko);
     }
 
     /**
@@ -428,7 +462,60 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarEscalacaoSelecao() {
-        fail("The test case is a prototype.");
+
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA1);
+        copaDao.adicionar(copa);
+        
+        Jogo jogo = sistema.cadastrarJogo(new Date(50, 1, 1), "Pelourinho", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 5, 3);
+        
+        jogA1 = new Jogador(new Date(200, 1, 1), "Clediosmar", 2, FuncaoJogador.ATACANTE.getFuncao());
+        jogA2 = new Jogador(new Date(200, 1, 1), "Niu", 10, FuncaoJogador.ATACANTE.getFuncao());
+        jogA3 = new Jogador(new Date(200, 1, 1), "Nii", 5, FuncaoJogador.ATACANTE.getFuncao());
+        jogA4 = new Jogador(new Date(200, 1, 1), "Onee", 7, FuncaoJogador.ATACANTE.getFuncao());
+        jogA5 = new Jogador(new Date(200, 1, 1), "Vish", 8, FuncaoJogador.ATACANTE.getFuncao());
+        jogA6 = new Jogador(new Date(200, 1, 1), "Tá", 11, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        jogA7 = new Jogador(new Date(200, 1, 1), "tapioca", 9, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        jogA8 = new Jogador(new Date(200, 1, 1), "caudio", 17, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        jogA9 = new Jogador(new Date(200, 1, 1), "claudio", 13, FuncaoJogador.ZAGUEIRO.getFuncao());
+        jogA10 = new Jogador(new Date(200, 1, 1), "coragi", 35, FuncaoJogador.ZAGUEIRO.getFuncao());
+        jogA11 = new Jogador(new Date(200, 1, 1), "bom", 6, FuncaoJogador.GOLEIRO.getFuncao());
+        
+        jogadorDao.adicionar(jogA1);
+        jogadorDao.adicionar(jogA2);
+        jogadorDao.adicionar(jogA3);
+        jogadorDao.adicionar(jogA4);
+        jogadorDao.adicionar(jogA5);
+        jogadorDao.adicionar(jogA6);
+        jogadorDao.adicionar(jogA7);
+        jogadorDao.adicionar(jogA8);
+        jogadorDao.adicionar(jogA9);
+        jogadorDao.adicionar(jogA10);
+        jogadorDao.adicionar(jogA11);
+        
+        jogoDao.adicionar(jogo);
+        
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA1);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA2);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA3);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA4);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA5);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA6);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA7);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA8);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA9);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA10);
+        sistema.cadastrarEscalacao(jogo, selecaoB1, jogA11);
+        
+        List<Jogador> escalacao = sistema.consultarEscalacaoSelecao(selecaoB1, jogo);
+        assertFalse(escalacao.isEmpty());
+        
+        assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Clediosmar", escalacao.get(0).toString());
+        assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Niu", escalacao.get(1).toString());
+        assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Onee", escalacao.get(3).toString());
+        assertEquals(FuncaoJogador.MEIO_ATACANTE.getFuncao() + " - tapioca", escalacao.get(6).toString());
+        assertEquals(FuncaoJogador.ZAGUEIRO.getFuncao() + " - coragi", escalacao.get(9).toString());
+        assertEquals(FuncaoJogador.GOLEIRO.getFuncao() + " - bom", escalacao.get(10).toString());
     }
 
     /**
@@ -515,6 +602,9 @@ public class SistemaTest {
     @Test
     public void testListarJogosEmpatados() {  //M
         
+        selecaoA1.setNome("Brasil");
+        selecaoB1.setNome("Uruguai");
+        
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
@@ -527,9 +617,9 @@ public class SistemaTest {
         Jogo jogo6 = sistema.cadastrarJogo(new Date(114, 7, 20), "fim", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
         
         List<Jogo> lista = sistema.listarJogosEmpatados(copa);
-        assertEquals(jogo2, lista.get(0));
-        assertEquals(jogo4, lista.get(1));
-        assertEquals(jogo5, lista.get(2));
+        assertEquals("Brasil 2x2 Uruguai", lista.get(0).toString());
+        assertEquals("Brasil 0x0 Uruguai", lista.get(1).toString());
+        assertEquals("Brasil 3x3 Uruguai", lista.get(2).toString());
         
     }
 
@@ -538,7 +628,28 @@ public class SistemaTest {
      */
     @Test
     public void testListarVitoriasIncontestaveis() {
-        fail("The test case is a prototype.");
+        
+        selecaoA1.setNome("Brasil");
+        selecaoB1.setNome("Uruguai");
+        
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA1);
+        copaDao.adicionar(copa);
+        
+        sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 6, 2);
+        sistema.cadastrarJogo(new Date(114, 7, 2), "puli", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 2, 2);
+        sistema.cadastrarJogo(new Date(114, 7, 5), "pelourinho", copa, selecaoB1, selecaoA1, FaseCopa.GRUPOS.getFase(), 7, 2);
+        sistema.cadastrarJogo(new Date(114, 7, 10), "nao sei", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 3, 0);
+        sistema.cadastrarJogo(new Date(114, 7, 19), "cabando", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 0, 3);
+        sistema.cadastrarJogo(new Date(114, 7, 20), "fim", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 3, 2);
+        
+        List<Jogo> lista = sistema.listarVitoriasIncontestaveis();
+        assertFalse(lista.isEmpty());
+        
+        assertEquals("Brasil 6x2 Uruguai", lista.get(0).toString());
+        assertEquals("Uruguai 7x2 Brasil", lista.get(1).toString());
+        assertEquals("Brasil 3x0 Uruguai", lista.get(2).toString());
+        assertEquals("Brasil 0x3 Uruguai", lista.get(3).toString());
     }
 
     /**

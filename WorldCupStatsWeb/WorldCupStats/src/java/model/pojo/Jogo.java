@@ -35,7 +35,7 @@ public class Jogo  implements java.io.Serializable {
         this.local = local;
         this.fase = fase;
     }
-    public Jogo(Copa copa, Selecao selecaoBySelecaoB, Selecao selecaoBySelecaoA, Date data, String local, String fase, Integer golA, Integer golB, Set escalacaos, Set substituicaos, Set gols) {
+    public Jogo(Copa copa, Selecao selecaoBySelecaoA, Selecao selecaoBySelecaoB, Date data, String local, String fase, Integer golA, Integer golB, Set escalacaos, Set substituicaos, Set gols) {
        this.copa = copa;
        this.selecaoBySelecaoB = selecaoBySelecaoB;
        this.selecaoBySelecaoA = selecaoBySelecaoA;
