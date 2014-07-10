@@ -720,7 +720,33 @@ public class SistemaTest {
      */
     @Test
     public void testConsutarOrdemClassificacao() {
-        fail("The test case is a prototype.");
+        selecaoA1.setNome("Brasil");
+        selecaoB1.setNome("Uruguai");
+        selecaoC1.setNome("Alemanha");
+     
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(africa);
+        paisDao.adicionar(coreia);
+
+        copaDao.adicionar(copa);
+           
+        selecaoA1.setCopa(copa);
+        selecaoB1.setCopa(copa);
+        selecaoC1.setCopa(copa);
+        
+        selecaoA1.setPosicao(1);
+        selecaoC1.setPosicao(2);
+        selecaoB1.setPosicao(3);
+        
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA1);
+        selecaoDao.adicionar(selecaoC1);
+
+        List<Selecao> lista = sistema.consutarOrdemClassificacao(copa);
+        
+        assertEquals("Brasil", lista.get(0).getNome());
+        assertEquals("Alemanha", lista.get(1).getNome());
+        assertEquals("Uruguai", lista.get(2).getNome());
     }
 
     /**
