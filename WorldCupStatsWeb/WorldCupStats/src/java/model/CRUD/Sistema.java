@@ -1244,7 +1244,34 @@ public class Sistema {
      * @return
      */
     public List<Pais> listarPaisesQuePerderamPartidaEGanharamACopa() {//esse
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "select s.pais from Jogo j, "
+                    + "Selecao s where ((j.selecaoBySelecaoA = s and s.golA < golB) or"
+                    + " (j.selecaoBySelecaoB = s and s.golB < golA)) and "
+                    + " s.posicao = 1 and group by s.pais";
+            Query consulta = sessao.createQuery(hql);
+            transacao = sessao.beginTransaction();
+
+            List<Pais> paises = (List<Pais>) consulta.list();
+            consulta = sessao.createQuery(hql);
+            
+            
+
+            transacao.commit();
+            return paises;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
+
     }
 
     public Jogo cadastrarJogo(Date data, String local, Copa copa, Selecao primeira, Selecao segunda, String fase, Integer golA, Integer golB) {
