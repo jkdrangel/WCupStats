@@ -572,41 +572,36 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarQuantidadeEMediaDeGols() {
-        selecaoDao.adicionar(selecaoA1);
-        selecaoDao.adicionar(selecaoA2);
-        int gols=0, jogos=0;
+        brasil = new Pais("brasil", "america");
+        africa = new Pais("egito", "africa");
+        coreia = new Pais("coreia", "asia");
         
-        jogo1 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
-        jogos++;
-        jogo1.setGolA(7);
-        jogo1.setGolB(1);
-        gols = gols + jogo1.getGolA() + jogo1.getGolB();
-        jogo1.setSelecaoBySelecaoA(selecaoA1);
-        jogo1.setSelecaoBySelecaoA(selecaoA2);
-        jogoDao.adicionar(jogo1);
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(africa);
+        paisDao.adicionar(coreia);
         
-        jogo2 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
-        jogos++;
-        jogo2.setGolA(1);
-        jogo2.setGolB(1);
-        gols = gols + jogo2.getGolA() + jogo2.getGolB();
-        jogo2.setSelecaoBySelecaoA(selecaoA1);
-        jogo2.setSelecaoBySelecaoA(selecaoA2);
-        jogoDao.adicionar(jogo2);
+        copaDao.adicionar(copa);
+
+        selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
+        selecaoA2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", brasil);
+
+        selecaoB1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", africa);
+        selecaoB2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", africa);
+
+        selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
+        selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
         
-        jogo3 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
-        jogos++;
-        jogo3.setGolA(8);
-        jogo3.setGolB(2);
-        gols = gols + jogo3.getGolA() + jogo3.getGolB();
-        jogo3.setSelecaoBySelecaoA(selecaoA1);
-        jogo3.setSelecaoBySelecaoA(selecaoA2);
-        jogoDao.adicionar(jogo3);
+        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
+        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
+        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
+        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 96, 56);
         
+        double result[] = sistema.consultarQuantidadeEMediaDeGols(copa);
         
-        double result[] = sistema.consultarQuantidadeEMediaDeGols();
-        assertEquals(gols, (int)result[0]);
-        assertEquals(Double.doubleToLongBits(gols/jogos), Double.doubleToLongBits(result[1]));
+        assertEquals(170, (int)result[0]);
+        assertEquals(Double.doubleToLongBits(34), Double.doubleToLongBits(result[1]));
+        
     }
 
     /**

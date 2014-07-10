@@ -256,8 +256,8 @@ public class Controller {
      * @param c
      * @return 
      */
-    public double[] consultarQuantidadeEMediaDeGols(){
-        return sistema.consultarQuantidadeEMediaDeGols();
+    public double[] consultarQuantidadeEMediaDeGols(Copa c){
+        return sistema.consultarQuantidadeEMediaDeGols(c);
     }
     
     /**

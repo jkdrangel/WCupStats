@@ -565,11 +565,12 @@ public class Sistema {
      * @param c
      * @return
      */
-    public double[] consultarQuantidadeEMediaDeGols() {
+    public double[] consultarQuantidadeEMediaDeGols(Copa c) {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Jogo");
+            Query consulta = sessao.createQuery("from Jogo where copa =:parametro");
+            consulta.setEntity("parametro", c);
             transacao = sessao.beginTransaction();
             
             List<Jogo> jogos = (List<Jogo>) consulta.list();
