@@ -1037,19 +1037,9 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Selecao where posicao = 2 group by pais order by count(pais) desc");
+            Query consulta = sessao.createQuery("select s.pais from Selecao s where s.posicao = 2 group by s.pais order by count(s.pais) desc");
             transacao = sessao.beginTransaction();
-
-            List<Selecao> selecoes = (List<Selecao>) consulta.list();
-            resultado = new ArrayList<>();
-            Pais pis;
-            for (Selecao sele : selecoes) {
-                consulta = sessao.createQuery("from Pais where id = :p");
-                consulta.setInteger("p", sele.getPais().getId());
-                pis = (Pais) consulta.uniqueResult(); // model.pojo.Pais_$$_javassist_5
-                resultado.add(pis);
-             }
-
+            resultado = (List<Pais>) consulta.list();
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
