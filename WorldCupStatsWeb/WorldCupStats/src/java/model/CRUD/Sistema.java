@@ -127,22 +127,31 @@ public class Sistema {
      * @return
      */
     public List<Jogo> listarJogosCopa(Copa copa) {
-        List<Jogo> resultado = new ArrayList<>();
+      
+       List<Jogo> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Selecao where copa=:parametro");
+            Query consulta = sessao.createQuery("from Jogo where copa =:parametro");
             consulta.setEntity("parametro", copa);
             transacao = sessao.beginTransaction();
-            List<Selecao> s = (List<Selecao>) consulta.list();
-            transacao.commit();
-            for (Selecao se : s) {
-                consulta = sessao.createQuery("from Jogo where selecaoBySelecaoA=:parametro OR selecaoBySelecaoB=:parametro");
-                consulta.setEntity("parametro", se);
-                transacao = sessao.beginTransaction();
-                resultado.addAll((List<Jogo>) consulta.list());
-                transacao.commit();
+            resultado = (List<Jogo>) consulta.list();
+            
+            Selecao sele;
+            for (Jogo j : resultado) {
+                consulta = sessao.createQuery("from Selecao where id = :p");
+                consulta.setInteger("p", j.getSelecaoBySelecaoA().getId());
+                sele = (Selecao) consulta.uniqueResult();
+                j.setSelecaoBySelecaoA(sele);
             }
+            for (Jogo j : resultado) {
+                consulta = sessao.createQuery("from Selecao where id = :p");
+                consulta.setInteger("p", j.getSelecaoBySelecaoB().getId());
+                sele = (Selecao) consulta.uniqueResult();
+                j.setSelecaoBySelecaoB(sele);
+            }
+
+            transacao.commit();
             return resultado;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
