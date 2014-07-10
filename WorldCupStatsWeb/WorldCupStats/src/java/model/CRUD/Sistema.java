@@ -1248,17 +1248,14 @@ public class Sistema {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             String hql = "select s.pais from Jogo j, "
-                    + "Selecao s where ((j.selecaoBySelecaoA = s and s.golA < golB) or"
-                    + " (j.selecaoBySelecaoB = s and s.golB < golA)) and "
-                    + " s.posicao = 1 and group by s.pais";
+                    + "Selecao s where ((j.selecaoBySelecaoA = s and j.golA < j.golB) or"
+                    + " (j.selecaoBySelecaoB = s and j.golB < j.golA)) and "
+                    + " s.posicao = 1 group by s.pais";
             Query consulta = sessao.createQuery(hql);
             transacao = sessao.beginTransaction();
 
             List<Pais> paises = (List<Pais>) consulta.list();
-            consulta = sessao.createQuery(hql);
-            
-            
-
+                        
             transacao.commit();
             return paises;
         } catch (HibernateException e) {
