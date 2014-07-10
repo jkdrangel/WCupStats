@@ -565,8 +565,32 @@ public class Sistema {
      * @param c
      * @return
      */
-    public String consultarQuantidadeEMediaDeGols(Copa c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double[] consultarQuantidadeEMediaDeGols() {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Jogo");
+            transacao = sessao.beginTransaction();
+            
+            List<Jogo> jogos = (List<Jogo>) consulta.list();
+            int gols = 0, nJogos = jogos.size();
+            
+            for(Jogo j: jogos){
+                gols = gols + j.getGolA() + j.getGolB();
+            }
+            
+            transacao.commit();
+            return new double[] {gols, gols/nJogos};  
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
