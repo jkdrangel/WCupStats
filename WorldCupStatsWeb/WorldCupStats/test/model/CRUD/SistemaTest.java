@@ -1234,7 +1234,47 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesQueMaisParticiparamDeFinais() {
-        sistema.listarPaisesQueMaisParticiparamDeFinais();
+        
+        Pais p1, p2, p3;
+        p1 = new Pais("p1", "c1");
+        p2 = new Pais("p2", "c2");
+        p3 = new Pais("p3", "c3");
+        paisDao.adicionar(p1);
+        paisDao.adicionar(p2);
+        paisDao.adicionar(p3);
+        
+        Selecao s1, s2, s3, s4, s5;
+        tecnicoDao.adicionar(felipao);
+        //copaDao.adicionar(copa);
+        s1 = new Selecao(null, p1, felipao, "A", new Date(80, 5, 15), 1, "s1", null, null, null, null, null, null);
+        s2 = new Selecao(null, p2, felipao, "B", new Date(80, 5, 15), 1, "s2", null, null, null, null, null, null);
+        s3 = new Selecao(null, p3, felipao, "C", new Date(80, 5, 15), 1, "s3", null, null, null, null, null, null);
+        s4 = new Selecao(null, p1, felipao, "C", new Date(80, 5, 15), 1, "s4", null, null, null, null, null, null);
+        s5 = new Selecao(null, p2, felipao, "C", new Date(80, 5, 15), 1, "s5", null, null, null, null, null, null);
+        selecaoDao.adicionar(s1);
+        selecaoDao.adicionar(s2);
+        selecaoDao.adicionar(s3);
+        selecaoDao.adicionar(s4);
+        selecaoDao.adicionar(s5);
+               
+        Jogo j1, j2, j3, j4;
+        j1 = new Jogo(null, s1, s2, new Date(80, 5, 15), "Maracana",
+                FaseCopa.FINAL.getFase(), 2, 2, null, null, null);
+        j2 = new Jogo(null, s4, s5, new Date(80, 5, 15), "Maracana",
+                FaseCopa.FINAL.getFase(), 2, 2, null, null, null);
+        j3 = new Jogo(null, s1, s3, new Date(80, 5, 15), "Maracana", 
+                FaseCopa.FINAL.getFase(), 2, 2, null, null, null);
+        j4 = new Jogo(null, s3, s2, new Date(80, 5, 15), "Maracana", 
+                FaseCopa.OITAVAS.getFase(), 2, 2, null, null, null);
+        jogoDao.adicionar(j1);
+        jogoDao.adicionar(j2);
+        jogoDao.adicionar(j3);
+        jogoDao.adicionar(j4);
+        List<Pais> pais = sistema.listarPaisesQueMaisParticiparamDeFinais();
+        assertEquals(pais.get(0), p1);
+        assertEquals(pais.get(1), p2);
+        assertEquals(pais.get(2), p3);
+        
     }
 
     /**
