@@ -6,7 +6,7 @@
 package Controller;
 
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import model.CRUD.Sistema;
 import model.pojo.Copa;
@@ -191,10 +191,13 @@ public class Controller {
     }
     /**
      * 
+     * @param data
+     * @param local
      * @param j
      * @return 
      */
-    public String consultarPlacarJogo(Jogo j) {
+    public String consultarPlacarJogo(Date data, String local) {
+        Jogo j = sistema.getJogoDao().buscar(data, local);
         return sistema.consultarPlacarJogo(j);
     }
     /**
@@ -238,16 +241,16 @@ public class Controller {
     public String consultarCaracteristicasJogador(Jogador j, Copa c){
         return sistema.consultarCaracteristicasJogador(j,c);
     }
-    
-    /**
-     * 
-     * @param p
-     * @return 
-     */
 
-    public int consultarQuatidadeDeJogoPais(Pais p){
-        return sistema.consultarQuatidadeDeJogoPais(p);
+    /**
+     *
+     * @param pais
+     * @return
+     */
+    public int qtdJogosPais(Pais pais) {
+        return sistema.qtdJogosPais(pais);
     }
+    
     /**
      * 
      * @param c
@@ -256,6 +259,7 @@ public class Controller {
     public String consultarQuantidadeEMediaDeGols(Copa c){
         return sistema.consultarQuantidadeEMediaDeGols(c);
     }
+    
     /**
      * 
      * @return 
@@ -444,12 +448,4 @@ public class Controller {
         return sistema.listarPaisesQuePerderamPartidaEGanharamACopa();
     }
     
-    /**
-     *
-     * @param pais
-     * @return
-     */
-    public int qtdJogosPais(Pais pais) {
-        return sistema.qtdJogosPais(pais);
-    }
 }

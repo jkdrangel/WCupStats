@@ -33,15 +33,16 @@ import org.hibernate.Transaction;
  */
 public class Sistema {
 
-    PaisDAO pais = new PaisDAO();
-    CopaDAO copa = new CopaDAO();
-    TecnicoDAO tecnico = new TecnicoDAO();
-    EscalacaoDAO escalacao = new EscalacaoDAO();
-    GolDAO gol = new GolDAO();
-    JogadorDAO jogador = new JogadorDAO();
-    JogoDAO jogo = new JogoDAO();
-    SelecaoDAO selecao = new SelecaoDAO();
-    SubstituicaoDAO substituicao = new SubstituicaoDAO();
+    private PaisDAO paisDao;
+    private CopaDAO copaDao;
+    private TecnicoDAO tecnicoDao;
+    private EscalacaoDAO escalacaoDao;
+    private GolDAO golDao;
+    private JogadorDAO jogadorDao;
+    private JogoDAO jogoDao;
+    private SelecaoDAO selecaoDao;
+    private SubstituicaoDAO substituicaoDao;
+    
     Session sessao = null;
     Transaction transacao = null;
 
@@ -49,6 +50,15 @@ public class Sistema {
      *
      */
     public Sistema() {
+        paisDao = new PaisDAO();
+        copaDao = new CopaDAO();
+        tecnicoDao = new TecnicoDAO();
+        escalacaoDao = new EscalacaoDAO();
+        golDao = new GolDAO();
+        jogadorDao = new JogadorDAO();
+        jogoDao = new JogoDAO();
+        selecaoDao = new SelecaoDAO();
+        substituicaoDao = new SubstituicaoDAO();
     }
 
     /**
@@ -59,7 +69,7 @@ public class Sistema {
      */
     public Pais cadastrarPais(String nome, String continente) {
         Pais p = new Pais(nome, continente);
-        pais.adicionar(p);
+        paisDao.adicionar(p);
         return p;
     }
 
@@ -73,7 +83,7 @@ public class Sistema {
         Copa c = new Copa();
         c.setAno(ano);
         c.setPais(sede);
-        copa.adicionar(c);
+        copaDao.adicionar(c);
         return c;
     }
 
@@ -82,7 +92,7 @@ public class Sistema {
      * @return
      */
     public List<Pais> listarPaises() {
-        return pais.listar();
+        return paisDao.listar();
     }
 
     /**
@@ -90,7 +100,7 @@ public class Sistema {
      * @return
      */
     public List<Copa> listarCopas() {
-        return copa.listar();
+        return copaDao.listar();
     }
 
     /**
@@ -204,7 +214,7 @@ public class Sistema {
      */
     public Jogador cadastrarJogador(Date dataNascimento, String nome, int numero, String posicao) {
         Jogador j = new Jogador(dataNascimento, nome, numero, posicao);
-        jogador.adicionar(j);
+        jogadorDao.adicionar(j);
         return j;
     }
 
@@ -216,7 +226,7 @@ public class Sistema {
      */
     public Tecnico cadastrarTecnico(String nome, Date dataNascimento) {
         Tecnico t = new Tecnico(nome, dataNascimento);
-        tecnico.adicionar(t);
+        tecnicoDao.adicionar(t);
         return t;
     }
 
@@ -231,7 +241,7 @@ public class Sistema {
     public Selecao cadastrarSelecao(int posicao, Date ano, String grupo, Pais pais) {
         Selecao s = new Selecao(grupo, ano, posicao);
         s.setPais(pais);
-        selecao.adicionar(s);
+        selecaoDao.adicionar(s);
         return s;
     }
 
@@ -246,7 +256,7 @@ public class Sistema {
         e.setJogo(j);
         e.setSelecao(s);
         e.setJogador(jo);
-        escalacao.adicionar(e);
+        escalacaoDao.adicionar(e);
         return e;
 
     }
@@ -262,7 +272,7 @@ public class Sistema {
      */
     public Gol cadastrarGol(Jogo j, Time tempo, boolean foiContra, Jogador jogador, Selecao s) {
         Gol g = new Gol(jogador, s, j, tempo, foiContra);
-        gol.adicionar(g);
+        golDao.adicionar(g);
         return g;
     }
 
@@ -280,7 +290,7 @@ public class Sistema {
         s.setJogadorByJogadorSai(saiu);
         s.setJogo(j);
         s.setSelecao(selecao);
-        substituicao.adicionar(s);
+        substituicaoDao.adicionar(s);
 
         return s;
     }
@@ -290,7 +300,7 @@ public class Sistema {
      * @return
      */
     public List<Jogador> listarJogadores() {
-        return jogador.listar();
+        return jogadorDao.listar();
     }
 
     /**
@@ -298,7 +308,7 @@ public class Sistema {
      * @return
      */
     public List<Tecnico> listarTecnicos() {
-        return tecnico.listar();
+        return tecnicoDao.listar();
     }
 
     /**
@@ -306,7 +316,7 @@ public class Sistema {
      * @return
      */
     public List<Selecao> listarSelecoes() {
-        return selecao.listar();
+        return selecaoDao.listar();
     }
 
     /**
@@ -501,34 +511,6 @@ public class Sistema {
                 goll.setJogador(joga);
             }
 
-            transacao.commit();
-            return resultado;
-        } catch (HibernateException e) {
-            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
-            throw new HibernateException(e);
-        } finally {
-            try {
-                sessao.close();
-            } catch (HibernateException e) {
-                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
-            }
-        }
-    }
-
-    /**
-     *
-     * @param p
-     * @return
-     */
-    public int consultarQuatidadeDeJogoPais(Pais p) {
-        int resultado = 0;
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
-
-            Query consulta = sessao.createQuery("select count(*) from Jogo inner join Selecao where Selecao.pais=:parametro");
-            consulta.setEntity("parametro", p);
-            transacao = sessao.beginTransaction();
-            resultado = (int) consulta.uniqueResult();
             transacao.commit();
             return resultado;
         } catch (HibernateException e) {
@@ -1127,11 +1109,11 @@ public class Sistema {
         j.setSelecaoBySelecaoB(segunda);
         j.setGolA(golA);
         j.setGolB(golB);
-        jogo.adicionar(j);
+        jogoDao.adicionar(j);
         return j;
     }
 
-    public List<Escalacao> listarEscalacoes() {
+   /* public List<Escalacao> listarEscalacoes() {
         return escalacao.listar();
     }
 
@@ -1145,6 +1127,81 @@ public class Sistema {
 
     public List<Jogo> listarJogos() {
         return jogo.listar();
+    }*/
+
+    
+    // GETTERS E SETTERS
+    public PaisDAO getPaisDao() {
+        return paisDao;
     }
 
+    public void setPaisDao(PaisDAO paisDao) {
+        this.paisDao = paisDao;
+    }
+
+    public CopaDAO getCopaDao() {
+        return copaDao;
+    }
+
+    public void setCopaDao(CopaDAO copaDao) {
+        this.copaDao = copaDao;
+    }
+
+    public TecnicoDAO getTecnicoDao() {
+        return tecnicoDao;
+    }
+
+    public void setTecnicoDao(TecnicoDAO tecnicoDao) {
+        this.tecnicoDao = tecnicoDao;
+    }
+
+    public EscalacaoDAO getEscalacaoDao() {
+        return escalacaoDao;
+    }
+
+    public void setEscalacaoDao(EscalacaoDAO escalacao) {
+        this.escalacaoDao = escalacao;
+    }
+
+    public GolDAO getGolDao() {
+        return golDao;
+    }
+
+    public void setGolDao(GolDAO gol) {
+        this.golDao = gol;
+    }
+
+    public JogadorDAO getJogadorDao() {
+        return jogadorDao;
+    }
+
+    public void setJogadorDao(JogadorDAO jogadorDao) {
+        this.jogadorDao = jogadorDao;
+    }
+
+    public JogoDAO getJogoDao() {
+        return jogoDao;
+    }
+
+    public void setJogoDao(JogoDAO jogoDao) {
+        this.jogoDao = jogoDao;
+    }
+
+    public SelecaoDAO getSelecaoDao() {
+        return selecaoDao;
+    }
+
+    public void setSelecaoDao(SelecaoDAO selecaoDao) {
+        this.selecaoDao = selecaoDao;
+    }
+
+    public SubstituicaoDAO getSubstituicaoDao() {
+        return substituicaoDao;
+    }
+
+    public void setSubstituicaoDao(SubstituicaoDAO substituicaoDao) {
+        this.substituicaoDao = substituicaoDao;
+    }
+
+    
 }

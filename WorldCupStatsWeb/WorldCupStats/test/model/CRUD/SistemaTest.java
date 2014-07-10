@@ -31,15 +31,15 @@ import org.junit.Test;
 public class SistemaTest {
 
     Sistema sistema = new Sistema();
-    PaisDAO paisDao = sistema.pais;
-    CopaDAO copaDao = sistema.copa;
-    TecnicoDAO tecnicoDao = sistema.tecnico;
-    EscalacaoDAO escalacaoDao = sistema.escalacao;
-    GolDAO golDao = sistema.gol;
-    JogadorDAO jogadorDao = sistema.jogador;
-    JogoDAO jogoDao = sistema.jogo;
-    SelecaoDAO selecaoDao = sistema.selecao;
-    SubstituicaoDAO substituicaoDao = sistema.substituicao;
+    PaisDAO paisDao = sistema.getPaisDao();
+    CopaDAO copaDao = sistema.getCopaDao();
+    TecnicoDAO tecnicoDao = sistema.getTecnicoDao();
+    EscalacaoDAO escalacaoDao = sistema.getEscalacaoDao();
+    GolDAO golDao = sistema.getGolDao();
+    JogadorDAO jogadorDao = sistema.getJogadorDao();
+    JogoDAO jogoDao = sistema.getJogoDao();
+    SelecaoDAO selecaoDao = sistema.getSelecaoDao();
+    SubstituicaoDAO substituicaoDao = sistema.getSubstituicaoDao();
 
     Pais brasil, africa, coreia;
     Selecao selecaoB1, selecaoA1, selecaoC1,selecaoB2, selecaoA2, selecaoC2,
@@ -315,7 +315,7 @@ public class SistemaTest {
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(jogB1);
         Escalacao escalacao = sistema.cadastrarEscalacao(jogo1, selecaoB1, jogB1);
-        List<Escalacao> lista = sistema.listarEscalacoes();
+        List<Escalacao> lista = sistema.getEscalacaoDao().listar();
         assertEquals(escalacao, lista.get(0));
     }
 
@@ -328,7 +328,7 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB1);
         selecaoDao.adicionar(selecaoA1);
         Gol gol = sistema.cadastrarGol(jogo1, new Time(0,0,1), true, jogB1, selecaoA1);
-        List<Gol> lista = sistema.listaGols();
+        List<Gol> lista = sistema.getGolDao().listar();
         assertEquals(gol, lista.get(0));
     }
 
@@ -342,7 +342,7 @@ public class SistemaTest {
         jogoDao.adicionar(jogo1);
         selecaoDao.adicionar(selecaoB1);
         Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1,30,1), jogB1, jogB11, jogo1,selecaoB1);
-        List<Substituicao> lista = sistema.listarSubstituicoes();
+        List<Substituicao> lista = sistema.getSubstituicaoDao().listar();
         assertEquals(substituicao, lista.get(0));
     }
 
@@ -522,7 +522,7 @@ public class SistemaTest {
         gol2 = sistema.cadastrarGol(jogo1, new Time(1,10,2), false, jogador, selecaoA1);
         gol3 = sistema.cadastrarGol(jogo1, new Time(1,20,50), true, jogador, selecaoA1);
        
-        List<Gol> gols = sistema.listaGols();
+        List<Gol> gols = sistema.getGolDao().listar();
         assertFalse(gols.isEmpty());
         
         gols = sistema.listaGolsDaPartida(jogo1);
@@ -533,14 +533,6 @@ public class SistemaTest {
         assertEquals("Gol Brasil, 10:00, Kishin[Contra]", saiu1);
         assertEquals("Gol Brasil, 70:02, Kishin[Normal]", saiu2);
         assertEquals("Gol Brasil, 80:50, Kishin[Contra]", saiu3);
-    }
-
-    /**
-     * Test of consultarQuatidadeDeJogoPais method, of class Sistema.
-     */
-    @Test
-    public void testConsultarQuatidadeDeJogoPais() {
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -1293,7 +1285,7 @@ public class SistemaTest {
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
         Jogo jogo = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 5);
-        List<Jogo> lista = sistema.listarJogos();
+        List<Jogo> lista = sistema.getJogoDao().listar();
         assertEquals(jogo, lista.get(0));
     }
 
@@ -1314,7 +1306,7 @@ public class SistemaTest {
         escA1 = sistema.cadastrarEscalacao(jogo1, selecaoB1, jogB1);
         escA2 = sistema.cadastrarEscalacao(jogo2, selecaoA2, jogB2);
         escA3 = sistema.cadastrarEscalacao(jogo3, selecaoC3, jogB3);
-        List<Escalacao> escalacoes = sistema.listarEscalacoes();
+        List<Escalacao> escalacoes = sistema.getEscalacaoDao().listar();
         assertFalse(escalacoes.isEmpty());
         assertEquals(escA1, escalacoes.get(0));
         assertEquals(escA2, escalacoes.get(1));
@@ -1332,7 +1324,7 @@ public class SistemaTest {
         gol1 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
         gol2 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
         gol3 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
-        List<Gol> gols = sistema.listaGols();
+        List<Gol> gols = sistema.getGolDao().listar();
         assertFalse(gols.isEmpty());
         assertEquals(gol1, gols.get(0));
         assertEquals(gol2, gols.get(1));
@@ -1356,7 +1348,7 @@ public class SistemaTest {
         substituicao1 = sistema.cadastrarSubstituicao(new Time(1,1,1), jogB5, jogB10, jogo1,selecaoB1);
         substituicao2 = sistema.cadastrarSubstituicao(new Time(0,40,1), jogB2, jogB11, jogo1,selecaoB1);
         substituicao3 = sistema.cadastrarSubstituicao(new Time(1,15,1), jogB3, jogB4, jogo1, selecaoB1);
-        List<Substituicao> substituicoes = sistema.listarSubstituicoes();
+        List<Substituicao> substituicoes = sistema.getSubstituicaoDao().listar();
         assertFalse(substituicoes.isEmpty());
         assertEquals(substituicao1, substituicoes.get(0));
         assertEquals(substituicao2, substituicoes.get(1));
