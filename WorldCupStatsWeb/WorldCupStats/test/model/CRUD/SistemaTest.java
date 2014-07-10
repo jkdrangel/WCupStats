@@ -43,9 +43,9 @@ public class SistemaTest {
     SubstituicaoDAO substituicaoDao = sistema.getSubstituicaoDao();
 
     Pais brasil, africa, coreia;
-    Selecao selecaoB1, selecaoA1, selecaoC1,selecaoB2, selecaoA2, selecaoC2,
+    Selecao selecaoB1, selecaoA1, selecaoC1, selecaoB2, selecaoA2, selecaoC2,
             selecaoB3, selecaoA3, selecaoC3;
-    Escalacao escA1, escB1, escC1,escA2, escB2, escC2,escA3, escB3, escC3;
+    Escalacao escA1, escB1, escC1, escA2, escB2, escC2, escA3, escB3, escC3;
     Jogador jogA1, jogA2, jogA3, jogA4, jogA5, jogA6, jogA7,
             jogA8, jogA9, jogA10, jogA11, jogB1, jogB2, jogB3,
             jogB4, jogB5, jogB6, jogB7, jogB8, jogB9, jogB10, jogB11;
@@ -60,36 +60,41 @@ public class SistemaTest {
 
     @Before
     public void setUp() {
-        
-        copa =new Copa(new Date(114, 1, 1));
-        copa1 =new Copa(new Date(110, 1, 1));
-        copa2 =new Copa(new Date(106, 1, 1));
-        
+
+        copa = new Copa(new Date(114, 1, 1));
+        copa1 = new Copa(new Date(110, 1, 1));
+        copa2 = new Copa(new Date(106, 1, 1));
+
         brasil = new Pais("brasil", "america");
         africa = new Pais("Africa", "africa");
         coreia = new Pais("coreia", "asia");
-        
-        
+
         copa.setPais(brasil);
         copa1.setPais(africa);
         copa2.setPais(coreia);
-        
+
         selecaoB1 = new Selecao("A", new Date(50, 1, 1), 1);
         selecaoB1.setPais(brasil);
         selecaoB1.setNome("Brasil");
         selecaoA1 = new Selecao("A", new Date(109, 1, 1), 2);
-        selecaoC1 = new Selecao("A", new Date(108, 1, 1), 3);
+        selecaoA1.setPais(africa);
+        selecaoC1 = new Selecao("A", new Date(108, 1, 1), 3);        
+        selecaoC1.setPais(coreia);
         selecaoB2 = new Selecao("A", new Date(110, 1, 1), 1);
         selecaoB2.setPais(brasil);
         selecaoB2.setNome("Brasil");
         selecaoA2 = new Selecao("A", new Date(110, 1, 1), 3);
+        selecaoA2.setPais(africa);
         selecaoC2 = new Selecao("A", new Date(110, 1, 1), 2);
+        selecaoC2.setPais(coreia);
         selecaoB3 = new Selecao("A", new Date(106, 1, 1), 2);
         selecaoB3.setPais(brasil);
         selecaoB3.setNome("Brasil");
         selecaoA3 = new Selecao("A", new Date(106, 1, 1), 1);
+        selecaoA3.setPais(africa);
         selecaoC3 = new Selecao("A", new Date(106, 1, 1), 3);
-        
+        selecaoC3.setPais(coreia);
+
         escA1 = new Escalacao();
         escB1 = new Escalacao();
         escC1 = new Escalacao();
@@ -99,27 +104,27 @@ public class SistemaTest {
         escA3 = new Escalacao();
         escB3 = new Escalacao();
         escC3 = new Escalacao();
-        
+
         escA1.setSelecao(selecaoA1);
-        
-        jogB1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.GOLEIRO.getFuncao());
+
+        jogB1 = new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.GOLEIRO.getFuncao());
         jogB1.setSelecao(selecaoB1);
-        jogB2=new Jogador(new Date(83, 3, 20), "daniel", 2, FuncaoJogador.LATERAL.getFuncao()); 
-        jogB3=new Jogador(new Date(90, 11, 2), "tiago", 3, FuncaoJogador.LATERAL.getFuncao()); 
-        jogB4=new Jogador(new Date(81, 3, 5), "david", 4, FuncaoJogador.ZAGUEIRO.getFuncao()); 
-        jogB5=new Jogador(new Date(89, 8, 21), "fernandinho", 5, FuncaoJogador.VOLANTE.getFuncao()); 
-        jogB6=new Jogador(new Date(97, 6, 13), "marcelo", 6, FuncaoJogador.LATERAL.getFuncao()); 
-        jogB7=new Jogador(new Date(95, 1, 11), "hulk", 7, FuncaoJogador.ATACANTE.getFuncao()); 
-        jogB8=new Jogador(new Date(82, 6, 8), "paulinho", 8, FuncaoJogador.VOLANTE.getFuncao()); 
-        jogB9=new Jogador(new Date(84, 2, 27), "fred", 9, FuncaoJogador.ATACANTE.getFuncao()); 
-        jogB10=new Jogador(new Date(79, 8, 12), "neymar", 10, FuncaoJogador.ATACANTE.getFuncao()); 
-        jogB11=new Jogador(new Date(91, 7, 30), "oscar", 11, FuncaoJogador.MEIO_DE_CAMPO.getFuncao()); 
-     
-        jogo1= new Jogo(new Date(114, 6, 20), "Maracana", FaseCopa.GRUPOS.getFase());
-        jogo2= new Jogo(new Date(114, 6, 21), "dunas", FaseCopa.GRUPOS.getFase());
-        jogo3= new Jogo(new Date(114, 6, 22), "fonte nova", FaseCopa.GRUPOS.getFase());
-        
-        felipao= new Tecnico("felipao", new Date(84, 6, 22));
+        jogB2 = new Jogador(new Date(83, 3, 20), "daniel", 2, FuncaoJogador.LATERAL.getFuncao());
+        jogB3 = new Jogador(new Date(90, 11, 2), "tiago", 3, FuncaoJogador.LATERAL.getFuncao());
+        jogB4 = new Jogador(new Date(81, 3, 5), "david", 4, FuncaoJogador.ZAGUEIRO.getFuncao());
+        jogB5 = new Jogador(new Date(89, 8, 21), "fernandinho", 5, FuncaoJogador.VOLANTE.getFuncao());
+        jogB6 = new Jogador(new Date(97, 6, 13), "marcelo", 6, FuncaoJogador.LATERAL.getFuncao());
+        jogB7 = new Jogador(new Date(95, 1, 11), "hulk", 7, FuncaoJogador.ATACANTE.getFuncao());
+        jogB8 = new Jogador(new Date(82, 6, 8), "paulinho", 8, FuncaoJogador.VOLANTE.getFuncao());
+        jogB9 = new Jogador(new Date(84, 2, 27), "fred", 9, FuncaoJogador.ATACANTE.getFuncao());
+        jogB10 = new Jogador(new Date(79, 8, 12), "neymar", 10, FuncaoJogador.ATACANTE.getFuncao());
+        jogB11 = new Jogador(new Date(91, 7, 30), "oscar", 11, FuncaoJogador.MEIO_DE_CAMPO.getFuncao());
+
+        jogo1 = new Jogo(new Date(114, 6, 20), "Maracana", FaseCopa.GRUPOS.getFase());
+        jogo2 = new Jogo(new Date(114, 6, 21), "dunas", FaseCopa.GRUPOS.getFase());
+        jogo3 = new Jogo(new Date(114, 6, 22), "fonte nova", FaseCopa.GRUPOS.getFase());
+
+        felipao = new Tecnico("felipao", new Date(84, 6, 22));
     }
 
     @After
@@ -181,12 +186,11 @@ public class SistemaTest {
 
     }
 
-   
     /**
      * Test of listarPaisesCopa method, of class Sistema.
      */
     @Test
-    public void testListarPaisesCopa(){
+    public void testListarPaisesCopa() {
         paisDao.adicionar(brasil);
         copaDao.adicionar(copa);
         selecaoB1.setCopa(copa);
@@ -195,8 +199,8 @@ public class SistemaTest {
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoB2);
         selecaoDao.adicionar(selecaoB3);
-        
-        List<Selecao> lista =sistema.listarPaisesCopa(copa);
+
+        List<Selecao> lista = sistema.listarPaisesCopa(copa);
         assertFalse(lista.isEmpty());
 
         assertEquals(selecaoB1, lista.get(0));
@@ -213,19 +217,19 @@ public class SistemaTest {
         selecaoA1.setCopa(copa);
         selecaoB1.setCopa(copa);
         selecaoC1.setCopa(copa);
-        
+
         selecaoA1.setNome("France");
         selecaoC1.setNome("Japan");
-        
+
         selecaoDao.adicionar(selecaoA1);
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoC1);
-               
-        jogo1 = sistema.cadastrarJogo(new Date(90, 1, 1), "Anti-Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 2, 3);        
-        jogo2 = sistema.cadastrarJogo(new Date(150, 1, 1), "Kamikaze", copa, selecaoB1, selecaoC1, FaseCopa.GRUPOS.getFase(), 1, 1);        
-        jogo3 = sistema.cadastrarJogo(new Date(50, 1, 1), "Outro", copa, selecaoC1, selecaoA1, FaseCopa.FINAL.getFase(), 3, 0);        
-        Jogo jogo4 = sistema.cadastrarJogo(new Date(90, 1, 1), "Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 7, 5);        
-        
+
+        jogo1 = sistema.cadastrarJogo(new Date(90, 1, 1), "Anti-Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 2, 3);
+        jogo2 = sistema.cadastrarJogo(new Date(150, 1, 1), "Kamikaze", copa, selecaoB1, selecaoC1, FaseCopa.GRUPOS.getFase(), 1, 1);
+        jogo3 = sistema.cadastrarJogo(new Date(50, 1, 1), "Outro", copa, selecaoC1, selecaoA1, FaseCopa.FINAL.getFase(), 3, 0);
+        Jogo jogo4 = sistema.cadastrarJogo(new Date(90, 1, 1), "Local", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 7, 5);
+
         List<Jogo> lista = sistema.listarJogosCopa(copa);
         assertFalse(lista.isEmpty());
 
@@ -233,7 +237,7 @@ public class SistemaTest {
         assertEquals("Brasil 1x1 Japan", lista.get(1).toString());
         assertEquals("Japan 3x0 France", lista.get(2).toString());
         assertEquals("Brasil 7x5 France", lista.get(3).toString());
-        
+
     }
 
     /**
@@ -245,11 +249,11 @@ public class SistemaTest {
         brasil = new Pais("brasil", "america");
         africa = new Pais("egito", "africa");
         coreia = new Pais("coreia", "asia");
-        
+
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-        
+
         copaDao.adicionar(copa);
 
         selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
@@ -260,17 +264,17 @@ public class SistemaTest {
 
         selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
         selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
-        
+
         sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
         sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
         sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
         sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
         sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
-        
+
         int br = sistema.qtdJogosPais(brasil);
         int af = sistema.qtdJogosPais(africa);
         int ko = sistema.qtdJogosPais(coreia);
-        
+
         assertEquals(5, br);
         assertEquals(1, af);
         assertEquals(4, ko);
@@ -302,7 +306,7 @@ public class SistemaTest {
     @Test
     public void testCadastrarSelecao() {
         paisDao.adicionar(brasil);
-        selecaoB1 = sistema.cadastrarSelecao(1, new Date(114,1,1), "A", brasil);
+        selecaoB1 = sistema.cadastrarSelecao(1, new Date(114, 1, 1), "A", brasil);
         List<Selecao> lista = sistema.listarSelecoes();
         assertEquals(selecaoB1, lista.get(0));
     }
@@ -328,7 +332,7 @@ public class SistemaTest {
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(jogB1);
         selecaoDao.adicionar(selecaoA1);
-        Gol gol = sistema.cadastrarGol(jogo1, new Time(0,0,1), true, jogB1, selecaoA1);
+        Gol gol = sistema.cadastrarGol(jogo1, new Time(0, 0, 1), true, jogB1, selecaoA1);
         List<Gol> lista = sistema.getGolDao().listar();
         assertEquals(gol, lista.get(0));
     }
@@ -342,7 +346,7 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB11);
         jogoDao.adicionar(jogo1);
         selecaoDao.adicionar(selecaoB1);
-        Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1,30,1), jogB1, jogB11, jogo1,selecaoB1);
+        Substituicao substituicao = sistema.cadastrarSubstituicao(new Time(1, 30, 1), jogB1, jogB11, jogo1, selecaoB1);
         List<Substituicao> lista = sistema.getSubstituicaoDao().listar();
         assertEquals(substituicao, lista.get(0));
     }
@@ -352,9 +356,9 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadores() {
-        Jogador jogador = sistema.cadastrarJogador(new Date(90,1,1), "neimar", 1, FuncaoJogador.ATACANTE.getFuncao());
-        Jogador jogador1 = sistema.cadastrarJogador(new Date(80,1,1), "fred", 2,FuncaoJogador.ATACANTE.getFuncao());
-        Jogador jogador2 = sistema.cadastrarJogador(new Date(85,1,1), "david", 3, FuncaoJogador.ZAGUEIRO.getFuncao());
+        Jogador jogador = sistema.cadastrarJogador(new Date(90, 1, 1), "neimar", 1, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador1 = sistema.cadastrarJogador(new Date(80, 1, 1), "fred", 2, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador2 = sistema.cadastrarJogador(new Date(85, 1, 1), "david", 3, FuncaoJogador.ZAGUEIRO.getFuncao());
         List<Jogador> jogadores = sistema.listarJogadores();
         assertFalse(jogadores.isEmpty());
         assertEquals(jogador, jogadores.get(0));
@@ -385,10 +389,10 @@ public class SistemaTest {
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-        
-        selecaoB1 = sistema.cadastrarSelecao(1, new Date(110,1,1), "A", brasil);
-        Selecao selecao1 = sistema.cadastrarSelecao(2, new Date(110,1,1), "B", africa);
-        Selecao selecao2 = sistema.cadastrarSelecao(3, new Date(110,1,1), "C", coreia);
+
+        selecaoB1 = sistema.cadastrarSelecao(1, new Date(110, 1, 1), "A", brasil);
+        Selecao selecao1 = sistema.cadastrarSelecao(2, new Date(110, 1, 1), "B", africa);
+        Selecao selecao2 = sistema.cadastrarSelecao(3, new Date(110, 1, 1), "C", coreia);
         List<Selecao> selecoes = sistema.listarSelecoes();
         assertFalse(selecoes.isEmpty());
         assertEquals(selecaoB1, selecoes.get(0));
@@ -401,7 +405,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresDaSelecao() {
-        
+
         selecaoDao.adicionar(selecaoB1);
         jogB1.setSelecao(selecaoB1);
         jogB10.setSelecao(selecaoB1);
@@ -409,10 +413,10 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB1);
         jogadorDao.adicionar(jogB10);
         jogadorDao.adicionar(jogB11);
-        
+
         List<Jogador> result = sistema.listarJogadoresDaSelecao(selecaoB1);
         assertFalse(result.isEmpty());
-        assertEquals(jogB1,result.get(0));
+        assertEquals(jogB1, result.get(0));
     }
 
     /**
@@ -432,22 +436,22 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarPlacarJogo() {
-        
+
         selecaoA1.setNome("Brasil");
         selecaoB1.setNome("Uruguai");
-        
+
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
-        
+
         jogo1 = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
         jogo2 = sistema.cadastrarJogo(new Date(114, 7, 2), "puli", copa, selecaoB1, selecaoA1, FaseCopa.GRUPOS.getFase(), 2, 2);
         jogo3 = sistema.cadastrarJogo(new Date(114, 7, 5), "pelourinho", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 9, 1);
-        
+
         Jogo jogo1meio = sistema.consultarPlacarJogo(jogo1);
         Jogo jogo2meio = sistema.consultarPlacarJogo(jogo2);
         Jogo jogo3meio = sistema.consultarPlacarJogo(jogo3);
-        
+
         assertEquals("Brasil 5x2 Uruguai", jogo1meio.toString());
         assertEquals("Uruguai 2x2 Brasil", jogo2meio.toString());
         assertEquals("Brasil 9x1 Uruguai", jogo3meio.toString());
@@ -462,9 +466,9 @@ public class SistemaTest {
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
-        
+
         Jogo jogo = sistema.cadastrarJogo(new Date(50, 1, 1), "Pelourinho", copa, selecaoB1, selecaoA1, FaseCopa.FINAL.getFase(), 5, 3);
-        
+
         jogA1 = new Jogador(new Date(200, 1, 1), "Clediosmar", 2, FuncaoJogador.ATACANTE.getFuncao());
         jogA2 = new Jogador(new Date(200, 1, 1), "Niu", 10, FuncaoJogador.ATACANTE.getFuncao());
         jogA3 = new Jogador(new Date(200, 1, 1), "Nii", 5, FuncaoJogador.ATACANTE.getFuncao());
@@ -476,7 +480,7 @@ public class SistemaTest {
         jogA9 = new Jogador(new Date(200, 1, 1), "claudio", 13, FuncaoJogador.ZAGUEIRO.getFuncao());
         jogA10 = new Jogador(new Date(200, 1, 1), "coragi", 35, FuncaoJogador.ZAGUEIRO.getFuncao());
         jogA11 = new Jogador(new Date(200, 1, 1), "bom", 6, FuncaoJogador.GOLEIRO.getFuncao());
-        
+
         jogadorDao.adicionar(jogA1);
         jogadorDao.adicionar(jogA2);
         jogadorDao.adicionar(jogA3);
@@ -488,9 +492,9 @@ public class SistemaTest {
         jogadorDao.adicionar(jogA9);
         jogadorDao.adicionar(jogA10);
         jogadorDao.adicionar(jogA11);
-        
+
         jogoDao.adicionar(jogo);
-        
+
         sistema.cadastrarEscalacao(jogo, selecaoB1, jogA1);
         sistema.cadastrarEscalacao(jogo, selecaoB1, jogA2);
         sistema.cadastrarEscalacao(jogo, selecaoB1, jogA3);
@@ -502,10 +506,10 @@ public class SistemaTest {
         sistema.cadastrarEscalacao(jogo, selecaoB1, jogA9);
         sistema.cadastrarEscalacao(jogo, selecaoB1, jogA10);
         sistema.cadastrarEscalacao(jogo, selecaoB1, jogA11);
-        
+
         List<Jogador> escalacao = sistema.consultarEscalacaoSelecao(selecaoB1, jogo);
         assertFalse(escalacao.isEmpty());
-        
+
         assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Clediosmar", escalacao.get(0).toString());
         assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Niu", escalacao.get(1).toString());
         assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Onee", escalacao.get(3).toString());
@@ -527,9 +531,9 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB5);
         jogadorDao.adicionar(jogB10);
         jogadorDao.adicionar(jogB11);
-        substituicao1 = sistema.cadastrarSubstituicao(new Time(1,1,1), jogB5, jogB10, jogo1,selecaoB1);
-        substituicao2 = sistema.cadastrarSubstituicao(new Time(0,40,1), jogB2, jogB11, jogo1,selecaoB1);
-        substituicao3 = sistema.cadastrarSubstituicao(new Time(1,15,1), jogB3, jogB4, jogo1, selecaoB1);
+        substituicao1 = sistema.cadastrarSubstituicao(new Time(1, 1, 1), jogB5, jogB10, jogo1, selecaoB1);
+        substituicao2 = sistema.cadastrarSubstituicao(new Time(0, 40, 1), jogB2, jogB11, jogo1, selecaoB1);
+        substituicao3 = sistema.cadastrarSubstituicao(new Time(1, 15, 1), jogB3, jogB4, jogo1, selecaoB1);
         List<Substituicao> substituicoes = sistema.listarSubstituicoes(jogo1);
         assertFalse(substituicoes.isEmpty());
         assertEquals(substituicao1, substituicoes.get(0));
@@ -542,27 +546,27 @@ public class SistemaTest {
      */
     @Test
     public void testListaGolsDaPartida() {
-        
+
         selecaoA1 = new Selecao("H", new Date(100, 1, 1), 1);
         selecaoA1.setNome("Brasil");
         jogo1 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
         Jogador jogador = new Jogador(new Date(60, 1, 1), "Kishin", 1, FuncaoJogador.ATACANTE.getFuncao());
-        
+
         selecaoDao.adicionar(selecaoA1);
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(jogador);
-        
-        gol1 = sistema.cadastrarGol(jogo1, new Time(0,10,0), true, jogador, selecaoA1);
-        gol2 = sistema.cadastrarGol(jogo1, new Time(1,10,2), false, jogador, selecaoA1);
-        gol3 = sistema.cadastrarGol(jogo1, new Time(1,20,50), true, jogador, selecaoA1);
-       
+
+        gol1 = sistema.cadastrarGol(jogo1, new Time(0, 10, 0), true, jogador, selecaoA1);
+        gol2 = sistema.cadastrarGol(jogo1, new Time(1, 10, 2), false, jogador, selecaoA1);
+        gol3 = sistema.cadastrarGol(jogo1, new Time(1, 20, 50), true, jogador, selecaoA1);
+
         List<Gol> gols = sistema.getGolDao().listar();
         assertFalse(gols.isEmpty());
-        
+
         gols = sistema.listaGolsDaPartida(jogo1);
-        String saiu1 = gols.get(0).toString(), 
-               saiu2 = gols.get(1).toString(), 
-               saiu3 = gols.get(2).toString();
+        String saiu1 = gols.get(0).toString(),
+                saiu2 = gols.get(1).toString(),
+                saiu3 = gols.get(2).toString();
 
         assertEquals("Gol Brasil, 10:00, Kishin[Contra]", saiu1);
         assertEquals("Gol Brasil, 70:02, Kishin[Normal]", saiu2);
@@ -578,9 +582,8 @@ public class SistemaTest {
         copaDao.adicionar(copa);
         selecaoDao.adicionar(selecaoB1);
         jogadorDao.adicionar(jogB1);
-        assertEquals(sistema.consultarCaracteristicasJogador(jogB1, copa),jogB1.toString());
-        
-        
+        assertEquals(sistema.consultarCaracteristicasJogador(jogB1, copa), jogB1.toString());
+
     }
 
     /**
@@ -591,11 +594,11 @@ public class SistemaTest {
         brasil = new Pais("brasil", "america");
         africa = new Pais("egito", "africa");
         coreia = new Pais("coreia", "asia");
-        
+
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-        
+
         copaDao.adicionar(copa);
 
         selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
@@ -606,18 +609,18 @@ public class SistemaTest {
 
         selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
         selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
-        
+
         sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
         sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
         sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
         sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
         sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 96, 56);
-        
+
         double result[] = sistema.consultarQuantidadeEMediaDeGols(copa);
-        
-        assertEquals(170, (int)result[0]);
+
+        assertEquals(170, (int) result[0]);
         assertEquals(Double.doubleToLongBits(34), Double.doubleToLongBits(result[1]));
-        
+
     }
 
     /**
@@ -625,36 +628,35 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarMaioresGoleadas() {
-        
+
         selecaoDao.adicionar(selecaoA1);
         selecaoDao.adicionar(selecaoA2);
-        
+
         jogo1 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
         jogo1.setGolA(7);
         jogo1.setGolB(1);
         jogo1.setSelecaoBySelecaoA(selecaoA1);
         jogo1.setSelecaoBySelecaoA(selecaoA2);
         jogoDao.adicionar(jogo1);
-        
+
         jogo2 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
         jogo2.setGolA(1);
         jogo2.setGolB(1);
         jogo2.setSelecaoBySelecaoA(selecaoA1);
         jogo2.setSelecaoBySelecaoA(selecaoA2);
         jogoDao.adicionar(jogo2);
-        
+
         jogo3 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
         jogo3.setGolA(8);
         jogo3.setGolB(2);
         jogo3.setSelecaoBySelecaoA(selecaoA1);
         jogo3.setSelecaoBySelecaoA(selecaoA2);
         jogoDao.adicionar(jogo3);
-        
-        
+
         List<Jogo> jogos = sistema.consultarMaioresGoleadas();
         assertEquals(jogos.get(0), jogo1);
         assertEquals(jogos.get(1), jogo3);
-        
+
     }
 
     /**
@@ -662,26 +664,26 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogosEmpatados() {  //M
-        
+
         selecaoA1.setNome("Brasil");
         selecaoB1.setNome("Uruguai");
-        
+
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
-        
+
         Jogo jogo1 = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
         Jogo jogo2 = sistema.cadastrarJogo(new Date(114, 7, 2), "puli", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 2, 2);
         Jogo jogo3 = sistema.cadastrarJogo(new Date(114, 7, 5), "pelourinho", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
         Jogo jogo4 = sistema.cadastrarJogo(new Date(114, 7, 10), "nao sei", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 0, 0);
         Jogo jogo5 = sistema.cadastrarJogo(new Date(114, 7, 19), "cabando", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 3, 3);
         Jogo jogo6 = sistema.cadastrarJogo(new Date(114, 7, 20), "fim", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
-        
+
         List<Jogo> lista = sistema.listarJogosEmpatados(copa);
         assertEquals("Brasil 2x2 Uruguai", lista.get(0).toString());
         assertEquals("Brasil 0x0 Uruguai", lista.get(1).toString());
         assertEquals("Brasil 3x3 Uruguai", lista.get(2).toString());
-        
+
     }
 
     /**
@@ -689,24 +691,24 @@ public class SistemaTest {
      */
     @Test
     public void testListarVitoriasIncontestaveis() {
-        
+
         selecaoA1.setNome("Brasil");
         selecaoB1.setNome("Uruguai");
-        
+
         selecaoDao.adicionar(selecaoB1);
         selecaoDao.adicionar(selecaoA1);
         copaDao.adicionar(copa);
-        
+
         sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 6, 2);
         sistema.cadastrarJogo(new Date(114, 7, 2), "puli", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 2, 2);
         sistema.cadastrarJogo(new Date(114, 7, 5), "pelourinho", copa, selecaoB1, selecaoA1, FaseCopa.GRUPOS.getFase(), 7, 2);
         sistema.cadastrarJogo(new Date(114, 7, 10), "nao sei", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 3, 0);
         sistema.cadastrarJogo(new Date(114, 7, 19), "cabando", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 0, 3);
         sistema.cadastrarJogo(new Date(114, 7, 20), "fim", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 3, 2);
-        
+
         List<Jogo> lista = sistema.listarVitoriasIncontestaveis();
         assertFalse(lista.isEmpty());
-        
+
         assertEquals("Brasil 6x2 Uruguai", lista.get(0).toString());
         assertEquals("Uruguai 7x2 Brasil", lista.get(1).toString());
         assertEquals("Brasil 3x0 Uruguai", lista.get(2).toString());
@@ -743,41 +745,41 @@ public class SistemaTest {
     @Test
     public void testListaTodasFinais() {
 
-       copa1 = new Copa(new Date(500, 1, 1));
-        
+        copa1 = new Copa(new Date(500, 1, 1));
+
         Selecao sele1 = new Selecao("A", new Date(50, 1, 1), 1);
-                sele1.setNome("Brasil");
+        sele1.setNome("Brasil");
         Selecao sele2 = new Selecao("A", new Date(64, 1, 1), 1);
-                sele2.setNome("Argentina");                 
+        sele2.setNome("Argentina");
         Selecao sele3 = new Selecao("A", new Date(20, 1, 1), 1);
-                sele3.setNome("Alemanha");
-        
+        sele3.setNome("Alemanha");
+
         copaDao.adicionar(copa1);
         selecaoDao.adicionar(sele1);
         selecaoDao.adicionar(sele2);
         selecaoDao.adicionar(sele3);
-                
+
         Jogo jo1 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele2,
-                                         FaseCopa.FINAL.getFase(), 5, 1);
+                FaseCopa.FINAL.getFase(), 5, 1);
         Jogo jo2 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele3, sele2,
-                                         FaseCopa.FINAL.getFase(), 7, 12);
+                FaseCopa.FINAL.getFase(), 7, 12);
         Jogo jo3 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele2, sele1,
-                                         FaseCopa.SEMI.getFase(), 5, 5);        
+                FaseCopa.SEMI.getFase(), 5, 5);
         Jogo jo4 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele3,
-                                         FaseCopa.OITAVAS.getFase(), 2, 1);        
+                FaseCopa.OITAVAS.getFase(), 2, 1);
         Jogo jo5 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele3,
-                                         FaseCopa.FINAL.getFase(), 1, 1);        
+                FaseCopa.FINAL.getFase(), 1, 1);
         Jogo jo6 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele3, sele2,
-                                         FaseCopa.SEMI.getFase(), 4, 0);        
+                FaseCopa.SEMI.getFase(), 4, 0);
         Jogo jo7 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele2, sele1,
-                                         FaseCopa.FINAL.getFase(), 2, 0);        
+                FaseCopa.FINAL.getFase(), 2, 0);
         Jogo jo8 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele3, sele2,
-                                         FaseCopa.QUARTAS.getFase(), 1, 2);        
+                FaseCopa.QUARTAS.getFase(), 1, 2);
         Jogo jo9 = sistema.cadastrarJogo(new Date(150, 1, 1), "Fonte Nova", copa1, sele1, sele2,
-                                         FaseCopa.FINAL.getFase(), 5, 7);
+                FaseCopa.FINAL.getFase(), 5, 7);
 
         List<Jogo> finais = sistema.listaTodasFinais();
-        
+
         assertEquals("Brasil 5x1 Argentina", finais.get(0).toString());
         assertEquals("Alemanha 7x12 Argentina", finais.get(1).toString());
         assertEquals("Brasil 1x1 Alemanha", finais.get(2).toString());
@@ -801,13 +803,13 @@ public class SistemaTest {
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(jogB1);
         selecaoDao.adicionar(selecaoA1);
-        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, jogB1, selecaoA1);
-        
+        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0, 0, 1), false, jogB1, selecaoA1);
+
         jogoDao.adicionar(jogo2);
         jogadorDao.adicionar(jogB2);
         selecaoDao.adicionar(selecaoA2);
-        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0,0,1), true, jogB1, selecaoA1);
-        
+        Gol gol2 = sistema.cadastrarGol(jogo2, new Time(0, 0, 1), true, jogB1, selecaoA1);
+
         List<Gol> lista = sistema.listaGolsContra();
         assertEquals(gol2, lista.get(0));
         assertEquals(1, lista.size());
@@ -826,7 +828,7 @@ public class SistemaTest {
      */
     @Test
     public void testListaDecrescenteDePaisesComMaisTitulos() {
-         
+
         Pais pais1 = new Pais("Brasil", "continente");
         Pais pais2 = new Pais("Argentina", "continente");
         Pais pais3 = new Pais("Alemanha", "continente");
@@ -834,7 +836,7 @@ public class SistemaTest {
         Pais pais5 = new Pais("Colombia", "continente");
         Pais pais6 = new Pais("França", "continente");
         Pais pais7 = new Pais("Argelia", "continente");
-        
+
         paisDao.adicionar(pais1);
         paisDao.adicionar(pais2);
         paisDao.adicionar(pais3);
@@ -842,64 +844,64 @@ public class SistemaTest {
         paisDao.adicionar(pais5);
         paisDao.adicionar(pais6);
         paisDao.adicionar(pais7);
-        
+
         Selecao sele1 = new Selecao("A", new Date(50, 1, 1), 1);
-                sele1.setPais(pais1);
-                sele1.setNome("Brasil");
+        sele1.setPais(pais1);
+        sele1.setNome("Brasil");
         Selecao sele2 = new Selecao("A", new Date(194, 1, 1), 1);
-                sele2.setPais(pais1);
-                sele2.setNome("Brasil");
+        sele2.setPais(pais1);
+        sele2.setNome("Brasil");
         Selecao sele3 = new Selecao("A", new Date(202, 1, 1), 1);
-                sele3.setPais(pais1);
-                sele3.setNome("Brasil");
+        sele3.setPais(pais1);
+        sele3.setNome("Brasil");
         Selecao sele8 = new Selecao("A", new Date(50, 1, 1), 1);
-                sele8.setPais(pais1);
-                sele8.setNome("Brasil");
+        sele8.setPais(pais1);
+        sele8.setNome("Brasil");
         Selecao sele10 = new Selecao("A", new Date(250, 1, 1), 1);
-                sele10.setPais(pais1);
-                sele10.setNome("Brasil");
+        sele10.setPais(pais1);
+        sele10.setNome("Brasil");
 
         Selecao sele4 = new Selecao("A", new Date(64, 1, 1), 1);
-                sele4.setPais(pais2);
-                sele4.setNome("Argentina");
+        sele4.setPais(pais2);
+        sele4.setNome("Argentina");
         Selecao sele5 = new Selecao("A", new Date(69, 1, 1), 1);
-                sele5.setPais(pais2);
-                sele5.setNome("Argentina");
+        sele5.setPais(pais2);
+        sele5.setNome("Argentina");
         Selecao sele7 = new Selecao("A", new Date(150, 1, 1), 1);
-                sele7.setPais(pais2);
-                sele7.setNome("Argentina");
+        sele7.setPais(pais2);
+        sele7.setNome("Argentina");
         Selecao sele11 = new Selecao("A", new Date(70, 1, 1), 1);
-                sele11.setPais(pais2);
-                sele11.setNome("Argentina");
-                
+        sele11.setPais(pais2);
+        sele11.setNome("Argentina");
+
         Selecao sele6 = new Selecao("A", new Date(10, 1, 1), 1);
-                sele6.setPais(pais3);
-                sele6.setNome("Alemanha");
+        sele6.setPais(pais3);
+        sele6.setNome("Alemanha");
         Selecao sele9 = new Selecao("A", new Date(200, 1, 1), 1);
-                sele9.setPais(pais3);
-                sele9.setNome("Alemanha");
+        sele9.setPais(pais3);
+        sele9.setNome("Alemanha");
         Selecao sele12 = new Selecao("A", new Date(20, 1, 1), 1);
-                sele12.setPais(pais3);
-                sele12.setNome("Alemanha");
+        sele12.setPais(pais3);
+        sele12.setNome("Alemanha");
 
         Selecao sele13 = new Selecao("A", new Date(15, 1, 1), 1);
-                sele13.setPais(pais4);
-                sele13.setNome("Holanda");
+        sele13.setPais(pais4);
+        sele13.setNome("Holanda");
         Selecao sele14 = new Selecao("A", new Date(19, 1, 1), 1);
-                sele14.setPais(pais4);
-                sele14.setNome("Holanda");
-            
+        sele14.setPais(pais4);
+        sele14.setNome("Holanda");
+
         Selecao sele15 = new Selecao("A", new Date(25, 1, 1), 1);
-                sele15.setPais(pais5);
-                sele15.setNome("Colombia");
-    ///////////////////////////////(13~5)
+        sele15.setPais(pais5);
+        sele15.setNome("Colombia");
+        ///////////////////////////////(13~5)
         Selecao sele16 = new Selecao("A", new Date(8, 1, 1), 13);
-                sele16.setPais(pais6);
-                sele16.setNome("França");
+        sele16.setPais(pais6);
+        sele16.setNome("França");
         Selecao sele17 = new Selecao("A", new Date(4, 1, 1), 5);
-                sele17.setPais(pais7);
-                sele17.setNome("Argelia");
-                
+        sele17.setPais(pais7);
+        sele17.setNome("Argelia");
+
         selecaoDao.adicionar(sele1);
         selecaoDao.adicionar(sele2);
         selecaoDao.adicionar(sele3);
@@ -917,8 +919,7 @@ public class SistemaTest {
         selecaoDao.adicionar(sele15);
         selecaoDao.adicionar(sele16);
         selecaoDao.adicionar(sele17);
-        
-                
+
         List<Pais> campeoes = sistema.listaDecrescenteDePaisesComMaisTitulos();
 
         assertEquals("Brasil", campeoes.get(0).getNome()); // funciona
@@ -926,11 +927,11 @@ public class SistemaTest {
         assertEquals("Alemanha", campeoes.get(2).getNome());
         assertEquals("Holanda", campeoes.get(3).getNome());
         assertEquals("Colombia", campeoes.get(4).getNome());
-       /* assertEquals(pais1, campeoes.get(0));
-        assertEquals(pais2, campeoes.get(1));
-        assertEquals(pais3, campeoes.get(2));
-        assertEquals(pais4, campeoes.get(3));
-        assertEquals(pais5, campeoes.get(4));*/ // Assim nao, por que vem _$$_Javaassist
+        /* assertEquals(pais1, campeoes.get(0));
+         assertEquals(pais2, campeoes.get(1));
+         assertEquals(pais3, campeoes.get(2));
+         assertEquals(pais4, campeoes.get(3));
+         assertEquals(pais5, campeoes.get(4));*/ // Assim nao, por que vem _$$_Javaassist
     }
 
     /**
@@ -946,33 +947,33 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaisParticipacoes() {  //M
-        
+
         ArrayList<Pais> p = new ArrayList<>(10);
-        
-        for(int i=0; i<10; i++){
-            p.add(new Pais("p"+i, "c"+i));
+
+        for (int i = 0; i < 10; i++) {
+            p.add(new Pais("p" + i, "c" + i));
             paisDao.adicionar(p.get(i));
         }
-        
-        Selecao s3, s4, s5, s6, s7, s8, s9, s0; 
+
+        Selecao s3, s4, s5, s6, s7, s8, s9, s0;
         ArrayList<Selecao> s1 = new ArrayList<>(3);
         ArrayList<Selecao> s2 = new ArrayList<>(2);
-        
+
         tecnicoDao.adicionar(felipao);
-        
+
         s1.add(new Selecao(null, p.get(0), felipao, "A", new Date(15, 1, 1), 1, "s1", null, null, null, null, null, null));
         selecaoDao.adicionar(s1.get(0));
         s1.add(new Selecao(null, p.get(0), felipao, "B", new Date(16, 1, 1), 1, "s1", null, null, null, null, null, null));
         selecaoDao.adicionar(s1.get(1));
         s1.add(new Selecao(null, p.get(0), felipao, "C", new Date(17, 1, 1), 1, "s1", null, null, null, null, null, null));
         selecaoDao.adicionar(s1.get(2));
-        
+
         s2.add(new Selecao(null, p.get(1), felipao, "A", new Date(15, 1, 1), 1, "s2", null, null, null, null, null, null));
         selecaoDao.adicionar(s2.get(0));
-        
+
         s2.add(new Selecao(null, p.get(1), felipao, "A", new Date(16, 1, 1), 1, "s2", null, null, null, null, null, null));
         selecaoDao.adicionar(s2.get(1));
-        
+
         s3 = new Selecao(null, p.get(2), felipao, "A", new Date(15, 1, 1), 1, "s3", null, null, null, null, null, null);
         selecaoDao.adicionar(s3);
         s4 = new Selecao(null, p.get(3), felipao, "A", new Date(15, 1, 1), 1, "s4", null, null, null, null, null, null);
@@ -989,7 +990,7 @@ public class SistemaTest {
         selecaoDao.adicionar(s9);
         s0 = new Selecao(null, p.get(9), felipao, "A", new Date(15, 1, 1), 1, "s0", null, null, null, null, null, null);
         selecaoDao.adicionar(s0);
-        
+
         List<Pais> lista = sistema.listarPaisesComMaisParticipacoes();
         assertEquals(lista.get(0).toString(), p.get(0).toString());
         assertEquals(lista.get(1), p.get(1));
@@ -1009,7 +1010,30 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaiorNumeroDeViceCampeonatos() {  //M
-        fail("The test case is a prototype.");
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(coreia);
+        paisDao.adicionar(africa);
+        selecaoA1.setPosicao(2);
+        selecaoB1.setPosicao(1);
+        selecaoC1.setPosicao(3);
+        selecaoA2.setPosicao(2);
+        selecaoB2.setPosicao(3);
+        selecaoC2.setPosicao(1);
+        selecaoA3.setPosicao(1);
+        selecaoB3.setPosicao(2);
+        selecaoC3.setPosicao(3);
+        selecaoDao.adicionar(selecaoA1);
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoC1);
+        selecaoDao.adicionar(selecaoA2);
+        selecaoDao.adicionar(selecaoB2);
+        selecaoDao.adicionar(selecaoC2);
+        selecaoDao.adicionar(selecaoA3);
+        selecaoDao.adicionar(selecaoB3);
+        selecaoDao.adicionar(selecaoC3);
+        List<Pais> lista = sistema.listarPaisesComMaiorNumeroDeViceCampeonatos();
+        assertEquals(africa, lista.get(0));
+        assertEquals(brasil, lista.get(1));
     }
 
     /**
@@ -1023,12 +1047,12 @@ public class SistemaTest {
         africa = new Pais("egito", "africa");
         coreia = new Pais("coreia", "asia");
         Pais nippon = new Pais("nippon", "asia");
-        
+
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
         paisDao.adicionar(nippon);
-        
+
         copaDao.adicionar(copa);
 
         selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
@@ -1039,10 +1063,10 @@ public class SistemaTest {
 
         selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
         selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
-        
+
         Selecao selecaoD1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "F", nippon);
         Selecao selecaoD2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "F", nippon);
-        
+
         sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
         sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa, selecaoA2, selecaoB1, FaseCopa.OITAVAS.getFase(), 7, 1);
         sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoB2, FaseCopa.OITAVAS.getFase(), 2, 1);
@@ -1052,13 +1076,13 @@ public class SistemaTest {
         sistema.cadastrarJogo(new Date(20, 1, 1), "illumi?", copa, selecaoA1, selecaoD2, FaseCopa.FINAL.getFase(), 1, 0);
         sistema.cadastrarJogo(new Date(20, 1, 1), "ou Ilumi?", copa, selecaoA2, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
         sistema.cadastrarJogo(new Date(20, 1, 1), "ou Ilumi?", copa, selecaoA2, selecaoC1, FaseCopa.FINAL.getFase(), 200, 5);
-        
-        List <Pais> pis = sistema.listarPaisesComMaiorPercentualDeDerrotas();
+
+        List<Pais> pis = sistema.listarPaisesComMaiorPercentualDeDerrotas();
         System.out.println(pis.get(0));
         System.out.println(pis.get(1));
         System.out.println(pis.get(2));
         System.out.println(pis.get(3));
-        
+
         assertEquals(coreia, pis.get(0));
         assertEquals(africa, pis.get(1));
         assertEquals(nippon, pis.get(2));
@@ -1097,35 +1121,34 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarGolMaisRapidoNasCopas() {
-        
+
         selecaoA1 = new Selecao("H", new Date(100, 1, 1), 1);
         selecaoA1.setNome("Brasil");
         selecaoB1 = new Selecao("H", new Date(100, 1, 1), 1);
         selecaoB1.setNome("Nippon");
-        
+
         jogo1 = new Jogo(new Date(102, 5, 2), "Campo Minado", FaseCopa.SEMI.getFase());
-        
+
         Jogador jogador1 = new Jogador(new Date(60, 1, 1), "Kishin", 1, FuncaoJogador.ATACANTE.getFuncao());
         Jogador jogador2 = new Jogador(new Date(50, 1, 1), "Kulilin", 2, FuncaoJogador.ATACANTE.getFuncao());
-        
+
         selecaoDao.adicionar(selecaoA1);
         selecaoDao.adicionar(selecaoB1);
-        
+
         jogoDao.adicionar(jogo1);
-        
+
         jogadorDao.adicionar(jogador1);
         jogadorDao.adicionar(jogador2);
-        
-        gol1 = sistema.cadastrarGol(jogo1, new Time(0,10,0), true, jogador1, selecaoA1);
-        gol2 = sistema.cadastrarGol(jogo1, new Time(1,10,2), false, jogador1, selecaoA1);
-        gol3 = sistema.cadastrarGol(jogo1, new Time(1,20,50), true, jogador1, selecaoA1);
-        gol3 = sistema.cadastrarGol(jogo1, new Time(0,1,2), false, jogador2, selecaoB1);
 
-        
+        gol1 = sistema.cadastrarGol(jogo1, new Time(0, 10, 0), true, jogador1, selecaoA1);
+        gol2 = sistema.cadastrarGol(jogo1, new Time(1, 10, 2), false, jogador1, selecaoA1);
+        gol3 = sistema.cadastrarGol(jogo1, new Time(1, 20, 50), true, jogador1, selecaoA1);
+        gol3 = sistema.cadastrarGol(jogo1, new Time(0, 1, 2), false, jogador2, selecaoB1);
+
         Gol gols = sistema.consultarGolMaisRapidoNasCopas();
         String saiu = gols.toString();
         assertEquals("Gol Nippon, 1:02, Kulilin[Normal]", saiu);
-        
+
         sistema.consultarGolMaisRapidoNasCopas();
     }
 
@@ -1143,40 +1166,40 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresReservaQueFizeramGols() {
-        
+
         selecaoDao.adicionar(selecaoA1);
         selecaoDao.adicionar(selecaoA2);
-        Jogador b1=new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.LATERAL_DIREITO.getFuncao());
+        Jogador b1 = new Jogador(new Date(80, 5, 15), "julio", 1, FuncaoJogador.LATERAL_DIREITO.getFuncao());
         b1.setSelecao(selecaoA1);
-        Jogador b2=new Jogador(new Date(80, 5, 15), "Cezar", 2, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        Jogador b2 = new Jogador(new Date(80, 5, 15), "Cezar", 2, FuncaoJogador.MEIO_ATACANTE.getFuncao());
         b2.setSelecao(selecaoA1);
-        Jogador b3=new Jogador(new Date(80, 5, 15), "Camilo", 3, FuncaoJogador.LATERAL.getFuncao());
+        Jogador b3 = new Jogador(new Date(80, 5, 15), "Camilo", 3, FuncaoJogador.LATERAL.getFuncao());
         b3.setSelecao(selecaoA2);
-        
+
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(b1);
         jogadorDao.adicionar(b2);
         jogadorDao.adicionar(b3);
-        
+
         Escalacao esc1 = new Escalacao();
         Escalacao esc2 = new Escalacao();
         esc1.setJogador(b1);
         esc2.setJogador(b2);
-        
+
         escalacaoDao.adicionar(esc1);
         escalacaoDao.adicionar(esc2);
-        
-        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b1, selecaoA1);
-        Gol gol2 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b2, selecaoA1);
-        Gol gol3 = sistema.cadastrarGol(jogo1, new Time(0,0,1), false, b3, selecaoA2);
-        
+
+        Gol gol1 = sistema.cadastrarGol(jogo1, new Time(0, 0, 1), false, b1, selecaoA1);
+        Gol gol2 = sistema.cadastrarGol(jogo1, new Time(0, 0, 1), false, b2, selecaoA1);
+        Gol gol3 = sistema.cadastrarGol(jogo1, new Time(0, 0, 1), false, b3, selecaoA2);
+
         golDao.adicionar(gol1);
         golDao.adicionar(gol2);
         golDao.adicionar(gol3);
         substituicao1 = new Substituicao(b1, selecaoA2, jogo1, b3, new Time(1));
         substituicaoDao.adicionar(substituicao1);
         List<Jogador> lista = sistema.listarJogadoresReservaQueFizeramGols();
- 
+
         assertEquals(b3, lista.get(0));
     }
 
@@ -1202,7 +1225,7 @@ public class SistemaTest {
         Pais pais5 = new Pais("Colombia", "continente");
         Pais pais6 = new Pais("França", "continente");
         Pais pais7 = new Pais("Argelia", "continente");
-        
+
         paisDao.adicionar(pais1);
         paisDao.adicionar(pais2);
         paisDao.adicionar(pais3);
@@ -1210,64 +1233,64 @@ public class SistemaTest {
         paisDao.adicionar(pais5);
         paisDao.adicionar(pais6);
         paisDao.adicionar(pais7);
-        
+
         Selecao sele1 = new Selecao("A", new Date(50, 1, 1), 32);
-                sele1.setPais(pais1);
-                sele1.setNome("Brasil");
+        sele1.setPais(pais1);
+        sele1.setNome("Brasil");
         Selecao sele2 = new Selecao("A", new Date(194, 1, 1), 16);
-                sele2.setPais(pais1);
-                sele2.setNome("Brasil");
+        sele2.setPais(pais1);
+        sele2.setNome("Brasil");
         Selecao sele3 = new Selecao("A", new Date(202, 1, 1), 30);
-                sele3.setPais(pais1);
-                sele3.setNome("Brasil");
+        sele3.setPais(pais1);
+        sele3.setNome("Brasil");
         Selecao sele8 = new Selecao("A", new Date(50, 1, 1), 1);
-                sele8.setPais(pais1);
-                sele8.setNome("Brasil");
+        sele8.setPais(pais1);
+        sele8.setNome("Brasil");
         Selecao sele10 = new Selecao("A", new Date(250, 1, 1), 18);
-                sele10.setPais(pais1);
-                sele10.setNome("Brasil");
+        sele10.setPais(pais1);
+        sele10.setNome("Brasil");
 
         Selecao sele4 = new Selecao("A", new Date(64, 1, 1), 32);
-                sele4.setPais(pais2);
-                sele4.setNome("Argentina");
+        sele4.setPais(pais2);
+        sele4.setNome("Argentina");
         Selecao sele5 = new Selecao("A", new Date(69, 1, 1), 16);
-                sele5.setPais(pais2);
-                sele5.setNome("Argentina");
+        sele5.setPais(pais2);
+        sele5.setNome("Argentina");
         Selecao sele7 = new Selecao("A", new Date(150, 1, 1), 19);
-                sele7.setPais(pais2);
-                sele7.setNome("Argentina");
+        sele7.setPais(pais2);
+        sele7.setNome("Argentina");
         Selecao sele11 = new Selecao("A", new Date(70, 1, 1), 1);
-                sele11.setPais(pais2);
-                sele11.setNome("Argentina");
-                
+        sele11.setPais(pais2);
+        sele11.setNome("Argentina");
+
         Selecao sele6 = new Selecao("A", new Date(10, 1, 1), 19);
-                sele6.setPais(pais3);
-                sele6.setNome("Alemanha");
+        sele6.setPais(pais3);
+        sele6.setNome("Alemanha");
         Selecao sele9 = new Selecao("A", new Date(200, 1, 1), 19);
-                sele9.setPais(pais3);
-                sele9.setNome("Alemanha");
+        sele9.setPais(pais3);
+        sele9.setNome("Alemanha");
         Selecao sele12 = new Selecao("A", new Date(20, 1, 1), 1);
-                sele12.setPais(pais3);
-                sele12.setNome("Alemanha");
+        sele12.setPais(pais3);
+        sele12.setNome("Alemanha");
 
         Selecao sele13 = new Selecao("A", new Date(15, 1, 1), 25);
-                sele13.setPais(pais4);
-                sele13.setNome("Holanda");
+        sele13.setPais(pais4);
+        sele13.setNome("Holanda");
         Selecao sele14 = new Selecao("A", new Date(19, 1, 1), 1);
-                sele14.setPais(pais4);
-                sele14.setNome("Holanda");
-            
-    ///////////////////////////////(15~13~5)
+        sele14.setPais(pais4);
+        sele14.setNome("Holanda");
+
+        ///////////////////////////////(15~13~5)
         Selecao sele15 = new Selecao("A", new Date(25, 1, 1), 15);
-                sele15.setPais(pais5);
-                sele15.setNome("Colombia");
+        sele15.setPais(pais5);
+        sele15.setNome("Colombia");
         Selecao sele16 = new Selecao("A", new Date(8, 1, 1), 13);
-                sele16.setPais(pais6);
-                sele16.setNome("França");
+        sele16.setPais(pais6);
+        sele16.setNome("França");
         Selecao sele17 = new Selecao("A", new Date(4, 1, 1), 5);
-                sele17.setPais(pais7);
-                sele17.setNome("Argelia");
-                
+        sele17.setPais(pais7);
+        sele17.setNome("Argelia");
+
         selecaoDao.adicionar(sele1);
         selecaoDao.adicionar(sele2);
         selecaoDao.adicionar(sele3);
@@ -1285,18 +1308,18 @@ public class SistemaTest {
         selecaoDao.adicionar(sele15);
         selecaoDao.adicionar(sele16);
         selecaoDao.adicionar(sele17);
-        
+
         List<Pais> perdeu = sistema.listarPaisesComMaisEliminacoesPrimeiraFase();
 
         assertEquals("Brasil", perdeu.get(0).getNome()); // [...]
         assertEquals("Argentina", perdeu.get(1).getNome());
         assertEquals("Alemanha", perdeu.get(2).getNome());
         assertEquals("Holanda", perdeu.get(3).getNome());
-        
-       /* assertEquals(pais1, campeoes.get(0));
-        assertEquals(pais2, campeoes.get(1));
-        assertEquals(pais3, campeoes.get(2));
-        assertEquals(pais4, campeoes.get(3)); */ // Assim nao, [...]
+
+        /* assertEquals(pais1, campeoes.get(0));
+         assertEquals(pais2, campeoes.get(1));
+         assertEquals(pais3, campeoes.get(2));
+         assertEquals(pais4, campeoes.get(3)); */ // Assim nao, [...]
     }
 
     /**
@@ -1361,15 +1384,15 @@ public class SistemaTest {
         selecaoDao.adicionar(selecaoB1);
         jogoDao.adicionar(jogo1);
         jogadorDao.adicionar(jogB1);
-        gol1 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
-        gol2 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
-        gol3 = sistema.cadastrarGol(jogo1, new Time(1,1,1), true, jogB1, selecaoB1);
+        gol1 = sistema.cadastrarGol(jogo1, new Time(1, 1, 1), true, jogB1, selecaoB1);
+        gol2 = sistema.cadastrarGol(jogo1, new Time(1, 1, 1), true, jogB1, selecaoB1);
+        gol3 = sistema.cadastrarGol(jogo1, new Time(1, 1, 1), true, jogB1, selecaoB1);
         List<Gol> gols = sistema.getGolDao().listar();
         assertFalse(gols.isEmpty());
         assertEquals(gol1, gols.get(0));
         assertEquals(gol2, gols.get(1));
         assertEquals(gol3, gols.get(2));
-    
+
     }
 
     /**
@@ -1385,9 +1408,9 @@ public class SistemaTest {
         jogadorDao.adicionar(jogB5);
         jogadorDao.adicionar(jogB10);
         jogadorDao.adicionar(jogB11);
-        substituicao1 = sistema.cadastrarSubstituicao(new Time(1,1,1), jogB5, jogB10, jogo1,selecaoB1);
-        substituicao2 = sistema.cadastrarSubstituicao(new Time(0,40,1), jogB2, jogB11, jogo1,selecaoB1);
-        substituicao3 = sistema.cadastrarSubstituicao(new Time(1,15,1), jogB3, jogB4, jogo1, selecaoB1);
+        substituicao1 = sistema.cadastrarSubstituicao(new Time(1, 1, 1), jogB5, jogB10, jogo1, selecaoB1);
+        substituicao2 = sistema.cadastrarSubstituicao(new Time(0, 40, 1), jogB2, jogB11, jogo1, selecaoB1);
+        substituicao3 = sistema.cadastrarSubstituicao(new Time(1, 15, 1), jogB3, jogB4, jogo1, selecaoB1);
         List<Substituicao> substituicoes = sistema.getSubstituicaoDao().listar();
         assertFalse(substituicoes.isEmpty());
         assertEquals(substituicao1, substituicoes.get(0));
@@ -1395,4 +1418,3 @@ public class SistemaTest {
         assertEquals(substituicao3, substituicoes.get(2));
     }
 }
-
