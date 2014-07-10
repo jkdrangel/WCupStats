@@ -890,7 +890,7 @@ public class SistemaTest {
         assertEquals(pais2, campeoes.get(1));
         assertEquals(pais3, campeoes.get(2));
         assertEquals(pais4, campeoes.get(3));
-        assertEquals(pais5, campeoes.get(4));*/ // Assim nao, não sei pq !!!
+        assertEquals(pais5, campeoes.get(4));*/ // Assim nao, por que vem _$$_Javaassist
     }
 
     /**
@@ -1037,6 +1037,11 @@ public class SistemaTest {
         sistema.cadastrarJogo(new Date(20, 1, 1), "ou Ilumi?", copa, selecaoA2, selecaoC1, FaseCopa.FINAL.getFase(), 200, 5);
         
         List <Pais> pis = sistema.listarPaisesComMaiorPercentualDeDerrotas();
+        System.out.println(pis.get(0));
+        System.out.println(pis.get(1));
+        System.out.println(pis.get(2));
+        System.out.println(pis.get(3));
+        
         assertEquals(coreia, pis.get(0));
         assertEquals(africa, pis.get(1));
         assertEquals(nippon, pis.get(2));
@@ -1172,7 +1177,109 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaisEliminacoesPrimeiraFase() {
-        fail("The test case is a prototype.");
+
+        Pais pais1 = new Pais("Brasil", "continente");
+        Pais pais2 = new Pais("Argentina", "continente");
+        Pais pais3 = new Pais("Alemanha", "continente");
+        Pais pais4 = new Pais("Holanda", "continente");
+        Pais pais5 = new Pais("Colombia", "continente");
+        Pais pais6 = new Pais("França", "continente");
+        Pais pais7 = new Pais("Argelia", "continente");
+        
+        paisDao.adicionar(pais1);
+        paisDao.adicionar(pais2);
+        paisDao.adicionar(pais3);
+        paisDao.adicionar(pais4);
+        paisDao.adicionar(pais5);
+        paisDao.adicionar(pais6);
+        paisDao.adicionar(pais7);
+        
+        Selecao sele1 = new Selecao("A", new Date(50, 1, 1), 32);
+                sele1.setPais(pais1);
+                sele1.setNome("Brasil");
+        Selecao sele2 = new Selecao("A", new Date(194, 1, 1), 16);
+                sele2.setPais(pais1);
+                sele2.setNome("Brasil");
+        Selecao sele3 = new Selecao("A", new Date(202, 1, 1), 30);
+                sele3.setPais(pais1);
+                sele3.setNome("Brasil");
+        Selecao sele8 = new Selecao("A", new Date(50, 1, 1), 1);
+                sele8.setPais(pais1);
+                sele8.setNome("Brasil");
+        Selecao sele10 = new Selecao("A", new Date(250, 1, 1), 18);
+                sele10.setPais(pais1);
+                sele10.setNome("Brasil");
+
+        Selecao sele4 = new Selecao("A", new Date(64, 1, 1), 32);
+                sele4.setPais(pais2);
+                sele4.setNome("Argentina");
+        Selecao sele5 = new Selecao("A", new Date(69, 1, 1), 16);
+                sele5.setPais(pais2);
+                sele5.setNome("Argentina");
+        Selecao sele7 = new Selecao("A", new Date(150, 1, 1), 19);
+                sele7.setPais(pais2);
+                sele7.setNome("Argentina");
+        Selecao sele11 = new Selecao("A", new Date(70, 1, 1), 1);
+                sele11.setPais(pais2);
+                sele11.setNome("Argentina");
+                
+        Selecao sele6 = new Selecao("A", new Date(10, 1, 1), 19);
+                sele6.setPais(pais3);
+                sele6.setNome("Alemanha");
+        Selecao sele9 = new Selecao("A", new Date(200, 1, 1), 19);
+                sele9.setPais(pais3);
+                sele9.setNome("Alemanha");
+        Selecao sele12 = new Selecao("A", new Date(20, 1, 1), 1);
+                sele12.setPais(pais3);
+                sele12.setNome("Alemanha");
+
+        Selecao sele13 = new Selecao("A", new Date(15, 1, 1), 25);
+                sele13.setPais(pais4);
+                sele13.setNome("Holanda");
+        Selecao sele14 = new Selecao("A", new Date(19, 1, 1), 1);
+                sele14.setPais(pais4);
+                sele14.setNome("Holanda");
+            
+    ///////////////////////////////(15~13~5)
+        Selecao sele15 = new Selecao("A", new Date(25, 1, 1), 15);
+                sele15.setPais(pais5);
+                sele15.setNome("Colombia");
+        Selecao sele16 = new Selecao("A", new Date(8, 1, 1), 13);
+                sele16.setPais(pais6);
+                sele16.setNome("França");
+        Selecao sele17 = new Selecao("A", new Date(4, 1, 1), 5);
+                sele17.setPais(pais7);
+                sele17.setNome("Argelia");
+                
+        selecaoDao.adicionar(sele1);
+        selecaoDao.adicionar(sele2);
+        selecaoDao.adicionar(sele3);
+        selecaoDao.adicionar(sele4);
+        selecaoDao.adicionar(sele5);
+        selecaoDao.adicionar(sele6);
+        selecaoDao.adicionar(sele7);
+        selecaoDao.adicionar(sele8);
+        selecaoDao.adicionar(sele9);
+        selecaoDao.adicionar(sele10);
+        selecaoDao.adicionar(sele11);
+        selecaoDao.adicionar(sele12);
+        selecaoDao.adicionar(sele13);
+        selecaoDao.adicionar(sele14);
+        selecaoDao.adicionar(sele15);
+        selecaoDao.adicionar(sele16);
+        selecaoDao.adicionar(sele17);
+        
+        List<Pais> perdeu = sistema.listarPaisesComMaisEliminacoesPrimeiraFase();
+
+        assertEquals("Brasil", perdeu.get(0).getNome()); // [...]
+        assertEquals("Argentina", perdeu.get(1).getNome());
+        assertEquals("Alemanha", perdeu.get(2).getNome());
+        assertEquals("Holanda", perdeu.get(3).getNome());
+        
+       /* assertEquals(pais1, campeoes.get(0));
+        assertEquals(pais2, campeoes.get(1));
+        assertEquals(pais3, campeoes.get(2));
+        assertEquals(pais4, campeoes.get(3)); */ // Assim nao, [...]
     }
 
     /**

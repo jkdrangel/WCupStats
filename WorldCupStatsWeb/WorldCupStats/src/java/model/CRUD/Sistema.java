@@ -927,8 +927,8 @@ public class Sistema {
         List<Pais> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-
-            String hql = "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( if(j.golA > j.golB and j.selecaoBySelecaoB = s, s.pais, if(j.golA < j.golB and j.selecaoBySelecaoA = s, s.pais, null)) ) desc";
+// "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( case when (j.golA > j.golB and j.selecaoBySelecaoB = s) or (j.golA < j.golB and j.selecaoBySelecaoA = s) then s.pais else NULL end)) ) desc";
+            String hql = "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( case when (j.golA > j.golB and j.selecaoBySelecaoB = s) or (j.golA < j.golB and j.selecaoBySelecaoA = s) then s.pais else NULL end)) ) desc";
             Query consulta = sessao.createQuery(hql);
             transacao = sessao.beginTransaction();
             resultado = (List<Pais>) consulta.list();
@@ -1062,7 +1062,37 @@ public class Sistema {
      * @return
      */
     public List<Pais> listarPaisesComMaisEliminacoesPrimeiraFase() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<Pais> resultado;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "from Selecao where posicao between 16 and 32 group by pais order by count(pais) desc";
+            Query consulta = sessao.createQuery(hql);
+            transacao = sessao.beginTransaction();
+
+            List<Selecao> selecoes = (List<Selecao>) consulta.list();
+            resultado = new ArrayList<>();
+            Pais pis;
+            for (Selecao sele : selecoes) {
+                consulta = sessao.createQuery("from Pais where id = :p");
+                consulta.setInteger("p", sele.getPais().getId());
+                pis = (Pais) consulta.uniqueResult(); 
+                resultado.add(pis);
+             }
+
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
