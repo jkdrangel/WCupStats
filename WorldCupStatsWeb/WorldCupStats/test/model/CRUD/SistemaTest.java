@@ -990,18 +990,18 @@ public class SistemaTest {
         selecaoDao.adicionar(s9);
         s0 = new Selecao(null, p.get(9), felipao, "A", new Date(15, 1, 1), 1, "s0", null, null, null, null, null, null);
         selecaoDao.adicionar(s0);
-        
+        //Se os resultados sao iguais nao temos  um criterio desempate
         List<Pais> lista = sistema.listarPaisesComMaisParticipacoes();
         assertEquals(lista.get(0).toString(), p.get(0).toString());
         assertEquals(lista.get(1), p.get(1));
-        assertEquals(lista.get(2), p.get(2));
-        assertEquals(lista.get(3), p.get(3));
-        assertEquals(lista.get(4), p.get(4));
-        assertEquals(lista.get(5), p.get(5));
-        assertEquals(lista.get(6), p.get(6));
-        assertEquals(lista.get(7), p.get(7));
-        assertEquals(lista.get(8), p.get(8));
-        assertEquals(lista.get(9), p.get(9));
+        assertTrue(lista.contains(p.get(2)));
+        assertTrue(lista.contains(p.get(3)));
+        assertTrue(lista.contains(p.get(4)));
+        assertTrue(lista.contains(p.get(5)));
+        assertTrue(lista.contains(p.get(6)));
+        assertTrue(lista.contains(p.get(7)));
+        assertTrue(lista.contains(p.get(8)));
+        assertTrue(lista.contains(p.get(9)));
     }
 
     /**

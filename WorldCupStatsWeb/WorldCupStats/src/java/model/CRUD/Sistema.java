@@ -1003,19 +1003,20 @@ public class Sistema {
         List<Pais> resultado = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-
-            Query consulta = sessao.createQuery("select pais from Pais pais, Selecao sel"
-                                            + " where pais.id = sel.pais"
-                                            + " group by (pais)"
+            
+            
+            Query consulta = sessao.createQuery("select sel.pais from Selecao sel"
+                                            + " group by sel.pais"
+                                            + " order by count(sel.pais) desc AND"
             );
             transacao = sessao.beginTransaction();
-            List<Pais> paises = (List<Pais>) consulta.list();
-            for(Pais p: paises){
-                System.out.println(p.getNome());
+             List<Pais> paises = (List<Pais>) consulta.list();
+             resultado = new ArrayList<>();
+            for(int i = 0; i < 10 && i < paises.size(); i++){
+                resultado.add(paises.get(i));
             }
             
-            
-            return paises;
+            return resultado;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
             throw new HibernateException(e);
