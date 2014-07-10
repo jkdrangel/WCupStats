@@ -1276,8 +1276,28 @@ public class Sistema {
         return golDao.listar();
     }
 
-    public List<Substituicao> listarSubstituicoes() {
-        return substituicaoDao.listar();
+    public List<Substituicao> listarSubstituicoes(Jogo j) {
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("from Substituicao where jogo =:parametro");
+            consulta.setEntity("parametro", j);
+            transacao = sessao.beginTransaction();
+            
+            List<Substituicao> subs = (List<Substituicao>) consulta.list();
+            
+            transacao.commit();
+            return subs;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     public List<Jogo> listarJogos() {

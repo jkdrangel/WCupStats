@@ -519,7 +519,22 @@ public class SistemaTest {
      */
     @Test
     public void testListaSubstituicoesJogo() {
-        fail("The test case is a prototype.");
+        selecaoDao.adicionar(selecaoB1);
+        jogoDao.adicionar(jogo1);
+        jogadorDao.adicionar(jogB2);
+        jogadorDao.adicionar(jogB3);
+        jogadorDao.adicionar(jogB4);
+        jogadorDao.adicionar(jogB5);
+        jogadorDao.adicionar(jogB10);
+        jogadorDao.adicionar(jogB11);
+        substituicao1 = sistema.cadastrarSubstituicao(new Time(1,1,1), jogB5, jogB10, jogo1,selecaoB1);
+        substituicao2 = sistema.cadastrarSubstituicao(new Time(0,40,1), jogB2, jogB11, jogo1,selecaoB1);
+        substituicao3 = sistema.cadastrarSubstituicao(new Time(1,15,1), jogB3, jogB4, jogo1, selecaoB1);
+        List<Substituicao> substituicoes = sistema.listarSubstituicoes(jogo1);
+        assertFalse(substituicoes.isEmpty());
+        assertEquals(substituicao1, substituicoes.get(0));
+        assertEquals(substituicao2, substituicoes.get(1));
+        assertEquals(substituicao3, substituicoes.get(2));
     }
 
     /**
