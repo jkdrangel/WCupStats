@@ -431,7 +431,25 @@ public class SistemaTest {
      */
     @Test
     public void testConsultarPlacarJogo() {
-        fail("The test case is a prototype.");
+        
+        selecaoA1.setNome("Brasil");
+        selecaoB1.setNome("Uruguai");
+        
+        selecaoDao.adicionar(selecaoB1);
+        selecaoDao.adicionar(selecaoA1);
+        copaDao.adicionar(copa);
+        
+        jogo1 = sistema.cadastrarJogo(new Date(114, 7, 1), "maracana", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 5, 2);
+        jogo2 = sistema.cadastrarJogo(new Date(114, 7, 2), "puli", copa, selecaoB1, selecaoA1, FaseCopa.GRUPOS.getFase(), 2, 2);
+        jogo3 = sistema.cadastrarJogo(new Date(114, 7, 5), "pelourinho", copa, selecaoA1, selecaoB1, FaseCopa.GRUPOS.getFase(), 9, 1);
+        
+        Jogo jogo1meio = sistema.consultarPlacarJogo(jogo1);
+        Jogo jogo2meio = sistema.consultarPlacarJogo(jogo2);
+        Jogo jogo3meio = sistema.consultarPlacarJogo(jogo3);
+        
+        assertEquals("Brasil 5x2 Uruguai", jogo1meio.toString());
+        assertEquals("Uruguai 2x2 Brasil", jogo2meio.toString());
+        assertEquals("Brasil 9x1 Uruguai", jogo3meio.toString());
     }
 
     /**

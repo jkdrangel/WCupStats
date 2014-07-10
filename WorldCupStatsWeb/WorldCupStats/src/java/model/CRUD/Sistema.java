@@ -382,24 +382,32 @@ public class Sistema {
      * @param j
      * @return
      */
-    public String consultarPlacarJogo(Jogo j) {//Esse
-
+    public Jogo consultarPlacarJogo(Jogo j) {//Esse
+    
+        Jogo resultado;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            String r = "";
-            Query consulta = sessao.createQuery("select count() from Gol where jogo=:parametro and selecao=:s");
-            consulta.setEntity("parametro", j);
-            consulta.setEntity("s", j.getSelecaoBySelecaoA());
-            r = " " + consulta.uniqueResult() + " X ";
-            consulta = sessao.createQuery("select count() from Gol where jogo=:parametro and selecao=:s");
-            consulta.setEntity("parametro", j);
-            consulta.setEntity("s", j.getSelecaoBySelecaoB());
-            r = r + "" + consulta.uniqueResult();
+            Query consulta = sessao.createQuery("from Jogo where id = :p");
+            consulta.setEntity("p", j);
             transacao = sessao.beginTransaction();
-            transacao.commit();
+            resultado = (Jogo) consulta.uniqueResult();
 
-            return r;
+            Selecao sele;
+            
+            consulta = sessao.createQuery("from Selecao where id = :p");
+            consulta.setInteger("p", j.getSelecaoBySelecaoA().getId());
+            sele = (Selecao) consulta.uniqueResult();
+            j.setSelecaoBySelecaoA(sele);
+
+            consulta = sessao.createQuery("from Selecao where id = :p");
+            consulta.setInteger("p", j.getSelecaoBySelecaoB().getId());
+            sele = (Selecao) consulta.uniqueResult();
+            j.setSelecaoBySelecaoB(sele);
+            
+
+            transacao.commit();
+            return resultado;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
             throw new HibernateException(e);
@@ -410,7 +418,6 @@ public class Sistema {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
         }
-
     }
 
     /**
@@ -610,7 +617,7 @@ public class Sistema {
      */
     public List<Jogo> listarJogosEmpatados(Copa c) {
 
-        List<Jogo> resultado = null;
+        List<Jogo> resultado;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 

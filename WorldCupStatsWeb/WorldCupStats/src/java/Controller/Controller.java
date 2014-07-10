@@ -196,7 +196,7 @@ public class Controller {
      * @param j
      * @return 
      */
-    public String consultarPlacarJogo(Date data, String local) {
+    public Jogo consultarPlacarJogo(Date data, String local) {
         Jogo j = sistema.getJogoDao().buscar(data, local);
         return sistema.consultarPlacarJogo(j);
     }
