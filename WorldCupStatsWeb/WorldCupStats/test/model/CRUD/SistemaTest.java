@@ -7,6 +7,7 @@ package model.CRUD;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 import model.Enuns.FaseCopa;
 import model.Enuns.FuncaoJogador;
@@ -902,83 +903,60 @@ public class SistemaTest {
     @Test
     public void testListarPaisesComMaisParticipacoes() {  //M
         
-        Pais p[] = new Pais[10];
-        int i = 0;
+        ArrayList<Pais> p = new ArrayList<>(10);
         
-        for(Pais pais: p){
-            pais = new Pais("p"+i, "c"+i);
-            i++;
-            paisDao.adicionar(pais);
+        for(int i=0; i<10; i++){
+            p.add(new Pais("p"+i, "c"+i));
+            paisDao.adicionar(p.get(i));
         }
         
-        Selecao s1[], s2[], s3, s4, s5, s6, s7, s8, s9, s0; 
-        s1 = new Selecao[3];
-        s2 = new Selecao[2];
+        Selecao s3, s4, s5, s6, s7, s8, s9, s0; 
+        ArrayList<Selecao> s1 = new ArrayList<>(3);
+        ArrayList<Selecao> s2 = new ArrayList<>(2);
         
-        s1[0] = new Selecao("A", new Date(15, 1, 1), 1);
-        s1[0].setPais(p[1]);
-        s1[0].setNome("s1");
-        selecaoDao.adicionar(s1[0]);
-        s1[1] = new Selecao("B", new Date(16, 1, 1), 1);
-        s1[1].setPais(p[1]);
-        s1[1].setNome("s1");
-        selecaoDao.adicionar(s1[1]);
-        s1[2] = new Selecao("C", new Date(17, 1, 1), 1);
-        s1[2].setPais(p[1]);
-        s1[2].setNome("s1");
-        selecaoDao.adicionar(s1[2]);
-        s2[0] = new Selecao("A", new Date(15, 1, 1), 1);
-        s2[0].setPais(p[2]);
-        s2[0].setNome("s2");
-        selecaoDao.adicionar(s2[0]);
-        s2[1] = new Selecao("B", new Date(16, 1, 1), 1);
-        s2[1].setPais(p[2]);
-        s2[1].setNome("s2");
-        selecaoDao.adicionar(s2[1]);
-        s3 = new Selecao("A", new Date(15, 1, 1), 1);
-        s3.setPais(p[3]);
-        s3.setNome("s3");
+        tecnicoDao.adicionar(felipao);
+        
+        s1.add(new Selecao(null, p.get(0), felipao, "A", new Date(15, 1, 1), 1, "s1", null, null, null, null, null, null));
+        selecaoDao.adicionar(s1.get(0));
+        s1.add(new Selecao(null, p.get(0), felipao, "B", new Date(16, 1, 1), 1, "s1", null, null, null, null, null, null));
+        selecaoDao.adicionar(s1.get(1));
+        s1.add(new Selecao(null, p.get(0), felipao, "C", new Date(17, 1, 1), 1, "s1", null, null, null, null, null, null));
+        selecaoDao.adicionar(s1.get(2));
+        
+        s2.add(new Selecao(null, p.get(1), felipao, "A", new Date(15, 1, 1), 1, "s2", null, null, null, null, null, null));
+        selecaoDao.adicionar(s2.get(0));
+        
+        s2.add(new Selecao(null, p.get(1), felipao, "A", new Date(16, 1, 1), 1, "s2", null, null, null, null, null, null));
+        selecaoDao.adicionar(s2.get(1));
+        
+        s3 = new Selecao(null, p.get(2), felipao, "A", new Date(15, 1, 1), 1, "s3", null, null, null, null, null, null);
         selecaoDao.adicionar(s3);
-        s4 = new Selecao("A", new Date(15, 1, 1), 1);
-        s4.setPais(p[4]);
-        s4.setNome("s4");
+        s4 = new Selecao(null, p.get(3), felipao, "A", new Date(15, 1, 1), 1, "s4", null, null, null, null, null, null);
         selecaoDao.adicionar(s4);
-        s5 = new Selecao("A", new Date(15, 1, 1), 1);
-        s5.setPais(p[5]);
-        s5.setNome("s5");
+        s5 = new Selecao(null, p.get(4), felipao, "A", new Date(15, 1, 1), 1, "s5", null, null, null, null, null, null);
         selecaoDao.adicionar(s5);
-        s6 = new Selecao("A", new Date(15, 1, 1), 1);
-        s6.setPais(p[6]);
-        s6.setNome("s6");
+        s6 = new Selecao(null, p.get(5), felipao, "A", new Date(15, 1, 1), 1, "s6", null, null, null, null, null, null);
         selecaoDao.adicionar(s6);
-        s7 = new Selecao("A", new Date(15, 1, 1), 1);
-        s7.setPais(p[7]);
-        s7.setNome("s7");
+        s7 = new Selecao(null, p.get(6), felipao, "A", new Date(15, 1, 1), 1, "s7", null, null, null, null, null, null);
         selecaoDao.adicionar(s7);
-        s8 = new Selecao("A", new Date(15, 1, 1), 1);
-        s8.setPais(p[8]);
-        s8.setNome("s8");
+        s8 = new Selecao(null, p.get(7), felipao, "A", new Date(15, 1, 1), 1, "s8", null, null, null, null, null, null);
         selecaoDao.adicionar(s8);
-        s9 = new Selecao("A", new Date(15, 1, 1), 1);
-        s9.setPais(p[9]);
-        s9.setNome("s9");
+        s9 = new Selecao(null, p.get(8), felipao, "A", new Date(15, 1, 1), 1, "s9", null, null, null, null, null, null);
         selecaoDao.adicionar(s9);
-        s0 = new Selecao("A", new Date(15, 1, 1), 1);
-        s0.setPais(p[0]);
-        s0.setNome("s0");
+        s0 = new Selecao(null, p.get(9), felipao, "A", new Date(15, 1, 1), 1, "s0", null, null, null, null, null, null);
         selecaoDao.adicionar(s0);
         
         List<Pais> lista = sistema.listarPaisesComMaisParticipacoes();
-        assertEquals(lista.get(0), p[0]);
-        assertEquals(lista.get(1), p[1]);
-        assertEquals(lista.get(2), p[2]);
-        assertEquals(lista.get(3), p[3]);
-        assertEquals(lista.get(4), p[4]);
-        assertEquals(lista.get(5), p[5]);
-        assertEquals(lista.get(6), p[6]);
-        assertEquals(lista.get(7), p[7]);
-        assertEquals(lista.get(8), p[8]);
-        assertEquals(lista.get(9), p[9]);
+        assertEquals(lista.get(0).toString(), p.get(0).toString());
+        assertEquals(lista.get(1), p.get(1));
+        assertEquals(lista.get(2), p.get(2));
+        assertEquals(lista.get(3), p.get(3));
+        assertEquals(lista.get(4), p.get(4));
+        assertEquals(lista.get(5), p.get(5));
+        assertEquals(lista.get(6), p.get(6));
+        assertEquals(lista.get(7), p.get(7));
+        assertEquals(lista.get(8), p.get(8));
+        assertEquals(lista.get(9), p.get(9));
     }
 
     /**
