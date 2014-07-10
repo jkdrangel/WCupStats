@@ -744,7 +744,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("from Selecao s where s.copa:=p order by s.posicao desc");
+            Query consulta = sessao.createQuery("from Selecao s where s.copa=:p order by s.posicao asc");
             consulta.setEntity("p", c);
             transacao = sessao.beginTransaction();
             res = (List<Selecao>) consulta.list();
