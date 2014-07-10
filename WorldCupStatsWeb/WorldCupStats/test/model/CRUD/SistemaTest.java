@@ -1104,15 +1104,10 @@ public class SistemaTest {
         sistema.cadastrarJogo(new Date(20, 1, 1), "ou Ilumi?", copa, selecaoA2, selecaoC1, FaseCopa.FINAL.getFase(), 200, 5);
         
         List<Pais> pis = sistema.listarPaisesComMaiorPercentualDeDerrotas();
-        System.out.println(pis.get(0));
-        System.out.println(pis.get(1));
-        System.out.println(pis.get(2));
-        System.out.println(pis.get(3));
         
         assertEquals(coreia, pis.get(0));
         assertEquals(africa, pis.get(1));
         assertEquals(nippon, pis.get(2));
-        assertEquals(brasil, pis.get(3));
     }
 
     /**
