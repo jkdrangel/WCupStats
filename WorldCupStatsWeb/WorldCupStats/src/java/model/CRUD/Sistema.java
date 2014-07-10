@@ -1267,21 +1267,21 @@ public class Sistema {
         return j;
     }
 
-   /* public List<Escalacao> listarEscalacoes() {
-        return escalacao.listar();
+   public List<Escalacao> listarEscalacoes() {
+        return escalacaoDao.listar();
     }
 
     public List<Gol> listaGols() {
-        return gol.listar();
+        return golDao.listar();
     }
 
     public List<Substituicao> listarSubstituicoes() {
-        return substituicao.listar();
+        return substituicaoDao.listar();
     }
 
     public List<Jogo> listarJogos() {
-        return jogo.listar();
-    }*/
+        return jogoDao.listar();
+    }
 
     
     // GETTERS E SETTERS
