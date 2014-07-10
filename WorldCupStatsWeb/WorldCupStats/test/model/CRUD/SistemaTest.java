@@ -939,7 +939,7 @@ public class SistemaTest {
      */
     @Test
     public void testQuatidadeDeParticipacoesEmCopas() {
-        fail("The test case is a prototype.");
+     sistema.quatidadeDeParticipacoesEmCopas(brasil);
     }
 
     /**
@@ -1052,7 +1052,7 @@ public class SistemaTest {
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
         paisDao.adicionar(nippon);
-
+        copa.setPais(brasil);
         copaDao.adicionar(copa);
 
         selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
@@ -1095,7 +1095,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeGolPorPartida() {
-        fail("The test case is a prototype.");
+    sistema.listarJogadoresComMaiorNumeroDeGolPorPartida(jogo1);
     }
 
     /**
@@ -1104,7 +1104,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadorComMaiorMediaDeGolPorPartidaNasCopas() {
-        fail("The test case is a prototype.");
+    sistema.listarJogadorComMaiorMediaDeGolPorPartidaNasCopas();
     }
 
     /**
@@ -1113,7 +1113,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadorComMaiorQuantidadeDeJogosEmCopas() { //M
-        fail("The test case is a prototype.");
+    sistema.listarJogadorComMaiorQuantidadeDeJogosEmCopas();
     }
 
     /**
@@ -1158,7 +1158,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeJogosComoReserva() {
-        fail("The test case is a prototype.");
+    sistema.listarJogadoresComMaiorNumeroDeJogosComoReserva();
     }
 
     /**
@@ -1208,7 +1208,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesQueMaisParticiparamDeFinais() {
-        fail("The test case is a prototype.");
+      sistema.listarPaisesQueMaisParticiparamDeFinais();
     }
 
     /**
@@ -1327,7 +1327,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComTotalDeVitoriasNaCopa() {
-        fail("The test case is a prototype.");
+     sistema.listarPaisesComTotalDeVitoriasNaCopa();
     }
 
     /**
@@ -1336,7 +1336,7 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesQuePerderamPartidaEGanharamACopa() {
-        fail("The test case is a prototype.");
+     sistema.listarPaisesQuePerderamPartidaEGanharamACopa();
     }
 
     /**

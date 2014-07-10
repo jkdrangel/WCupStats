@@ -1064,7 +1064,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 // "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( case when (j.golA > j.golB and j.selecaoBySelecaoB = s) or (j.golA < j.golB and j.selecaoBySelecaoA = s) then s.pais else NULL end)) ) desc";
-            String hql = "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( case when (j.golA > j.golB and j.selecaoBySelecaoB = s) or (j.golA < j.golB and j.selecaoBySelecaoA = s) then s.pais else NULL end)) ) desc";
+            String hql = "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( case when (j.golA > j.golB and j.selecaoBySelecaoB = s) or (j.golA < j.golB and j.selecaoBySelecaoA = s) then s.pais else NULL end) desc";
             Query consulta = sessao.createQuery(hql);
             transacao = sessao.beginTransaction();
             resultado = (List<Pais>) consulta.list();
