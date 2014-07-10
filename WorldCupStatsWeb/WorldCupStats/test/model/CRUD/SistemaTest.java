@@ -263,11 +263,9 @@ public class SistemaTest {
         paisDao.adicionar(brasil);
         paisDao.adicionar(africa);
         paisDao.adicionar(coreia);
-        /*
+        
         copaDao.adicionar(copa);
-        copaDao.adicionar(copa2);
-        copaDao.adicionar(copa1);
-*/
+
         selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
         selecaoA2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", brasil);
 
@@ -277,11 +275,11 @@ public class SistemaTest {
         selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
         selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
         
-        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", null, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
-        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", null, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
-        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", null, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
-        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", null, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
-        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", null, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
+        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
+        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 7, 1);
+        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoC1, FaseCopa.OITAVAS.getFase(), 0, 1);
+        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
         
         int br = sistema.qtdJogosPais(brasil);
         int af = sistema.qtdJogosPais(africa);
@@ -926,7 +924,46 @@ public class SistemaTest {
      */
     @Test
     public void testListarPaisesComMaiorPercentualDeDerrotas() {
-        fail("The test case is a prototype.");
+
+        brasil = new Pais("brasil", "america");
+        africa = new Pais("egito", "africa");
+        coreia = new Pais("coreia", "asia");
+        Pais nippon = new Pais("nippon", "asia");
+        
+        paisDao.adicionar(brasil);
+        paisDao.adicionar(africa);
+        paisDao.adicionar(coreia);
+        paisDao.adicionar(nippon);
+        
+        copaDao.adicionar(copa);
+
+        selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", brasil);
+        selecaoA2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", brasil);
+
+        selecaoB1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", africa);
+        selecaoB2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", africa);
+
+        selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", coreia);
+        selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", coreia);
+        
+        Selecao selecaoD1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "F", nippon);
+        Selecao selecaoD2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "F", nippon);
+        
+        sistema.cadastrarJogo(new Date(150, 1, 1), "nenhum", copa, selecaoA1, selecaoB1, FaseCopa.OITAVAS.getFase(), 5, 1);
+        sistema.cadastrarJogo(new Date(190, 1, 1), "Killarea", copa, selecaoA2, selecaoB1, FaseCopa.OITAVAS.getFase(), 7, 1);
+        sistema.cadastrarJogo(new Date(110, 1, 1), "Tamu", copa, selecaoA1, selecaoB2, FaseCopa.OITAVAS.getFase(), 2, 1);
+        sistema.cadastrarJogo(new Date(160, 1, 1), "Aqui", copa, selecaoA2, selecaoC1, FaseCopa.OITAVAS.getFase(), 2, 1);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "Acchou?", copa, selecaoA1, selecaoC2, FaseCopa.FINAL.getFase(), 56, 0);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "lgum?", copa, selecaoA1, selecaoD1, FaseCopa.FINAL.getFase(), 5, 2);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "illumi?", copa, selecaoA1, selecaoD2, FaseCopa.FINAL.getFase(), 1, 0);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "ou Ilumi?", copa, selecaoA2, selecaoC2, FaseCopa.FINAL.getFase(), 99, 56);
+        sistema.cadastrarJogo(new Date(20, 1, 1), "ou Ilumi?", copa, selecaoA2, selecaoC1, FaseCopa.FINAL.getFase(), 200, 5);
+        
+        List <Pais> pis = sistema.listarPaisesComMaiorPercentualDeDerrotas();
+        assertEquals(coreia, pis.get(0));
+        assertEquals(africa, pis.get(1));
+        assertEquals(nippon, pis.get(2));
+        assertEquals(brasil, pis.get(3));
     }
 
     /**

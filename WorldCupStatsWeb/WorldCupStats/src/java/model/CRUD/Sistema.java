@@ -894,7 +894,28 @@ public class Sistema {
      * @return
      */
     public List<Pais> listarPaisesComMaiorPercentualDeDerrotas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Pais> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "select s.pais from Jogo j, Selecao s where (j.selecaoBySelecaoA = s or j.selecaoBySelecaoB = s) group by s.pais order by count( if(j.golA > j.golB and j.selecaoBySelecaoB = s, s.pais, if(j.golA < j.golB and j.selecaoBySelecaoA = s, s.pais, null)) ) desc";
+            Query consulta = sessao.createQuery(hql);
+            transacao = sessao.beginTransaction();
+            resultado = (List<Pais>) consulta.list();
+            
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
