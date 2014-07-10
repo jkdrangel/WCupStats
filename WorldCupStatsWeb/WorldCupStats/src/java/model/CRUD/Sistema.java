@@ -878,7 +878,36 @@ public class Sistema {
      * @return
      */
     public List<Pais> listarPaisesComMaisParticipacoes() {//Esse
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Pais> resultado = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            Query consulta = sessao.createQuery("select pais from Pais, Selecao sel"
+                                            + " where pais.id = sel.pais "
+                                    //        + " order by count (pais) desc"
+            );
+            
+            transacao = sessao.beginTransaction();
+            
+            List paises = (List<Pais>) consulta.list();
+            resultado = new ArrayList<>();
+            for(int i = 0; (i < paises.size() || i < 10); i++){
+                resultado.add((Pais) paises.get(i));
+            }
+            
+            
+            transacao.commit();
+            return resultado;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel consultar o objeto. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de consulta. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
