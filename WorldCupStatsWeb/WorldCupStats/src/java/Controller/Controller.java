@@ -437,13 +437,6 @@ public class Controller {
      * 
      * @return 
      */
-    public List<Pais> listarPaisesComTotalDeVitoriasNaCopa(){
-        return sistema.listarPaisesComTotalDeVitoriasNaCopa();
-    }
-    /**
-     * 
-     * @return 
-     */
     public List<Pais> listarPaisesQuePerderamPartidaEGanharamACopa(){
         return sistema.listarPaisesQuePerderamPartidaEGanharamACopa();
     }

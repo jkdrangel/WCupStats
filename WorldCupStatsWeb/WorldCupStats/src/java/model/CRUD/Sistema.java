@@ -1283,14 +1283,6 @@ public class Sistema {
      *
      * @return
      */
-    public List<Pais> listarPaisesComTotalDeVitoriasNaCopa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @return
-     */
     public List<Pais> listarPaisesQuePerderamPartidaEGanharamACopa() {//esse
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
