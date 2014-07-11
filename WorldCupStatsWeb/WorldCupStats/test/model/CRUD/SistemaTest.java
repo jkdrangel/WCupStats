@@ -1253,17 +1253,28 @@ public class SistemaTest {
         jogadorDao.adicionar(jogador3);
         jogadorDao.adicionar(jogador4);
         
-        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);//
         sistema.cadastrarGol(jogo1, new Time(0, 0, 12), false, jogador3, null);
         sistema.cadastrarGol(jogo1, new Time(0, 0, 1), false, jogador3, null); 
         sistema.cadastrarGol(jogo1, new Time(0, 0, 5), false, jogador1, null); //
         sistema.cadastrarGol(jogo1, new Time(0, 0, 11), false, jogador1, null);
-        sistema.cadastrarGol(jogo1, new Time(0, 0, 19), true, jogador4, null); //
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 19), true, jogador4, null); // 
         
-        sistema.cadastrarGol(jogo1, new Time(0, 0, 50), false, jogador3, null);
+        sistema.cadastrarGol(jogo2, new Time(0, 0, 50), false, jogador4, null);//
+        sistema.cadastrarGol(jogo2, new Time(0, 50, 50), false, jogador4, null);
+        sistema.cadastrarGol(jogo2, new Time(1, 40, 50), false, jogador2, null);//
         
+        List<Jogador> jogadoresP1 = sistema.listarJogadoresComMaiorNumeroDeGolPorPartida(jogo1);
+        assertFalse(jogadoresP1.contains(jogador2));
+        assertEquals(FuncaoJogador.LATERAL_DIREITO.getFuncao() + " - Goku", jogadoresP1.get(0).toString());
+        assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Kishin", jogadoresP1.get(1).toString());
+        assertEquals(FuncaoJogador.MEIO_ATACANTE.getFuncao() + " - Light", jogadoresP1.get(2).toString());
         
-        sistema.listarJogadoresComMaiorNumeroDeGolPorPartida(jogo1);
+        List<Jogador> jogadoresP2 = sistema.listarJogadoresComMaiorNumeroDeGolPorPartida(jogo2);
+        assertFalse(jogadoresP2.contains(jogador1));
+        assertFalse(jogadoresP2.contains(jogador3));
+        assertEquals(FuncaoJogador.MEIO_ATACANTE.getFuncao() + " - Light", jogadoresP2.get(0).toString());
+        assertEquals(FuncaoJogador.ATACANTE.getFuncao() + " - Kulilin", jogadoresP2.get(1).toString());
     }
 
     /**
