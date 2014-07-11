@@ -1236,6 +1236,33 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadoresComMaiorNumeroDeGolPorPartida() {
+        
+        Jogo jogo1 = new Jogo(new Date(100, 1, 1), "Muruin", FaseCopa.QUARTAS.getFase());
+        Jogo jogo2 = new Jogo(new Date(90, 1, 1), "Konoha", FaseCopa.FINAL.getFase());
+        
+        jogoDao.adicionar(jogo1);
+        jogoDao.adicionar(jogo2);
+        
+        Jogador jogador1 = new Jogador(new Date(60, 1, 1), "Kishin", 1, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador2 = new Jogador(new Date(50, 1, 1), "Kulilin", 2, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador3 = new Jogador(new Date(80, 5, 15), "Goku", 1, FuncaoJogador.LATERAL_DIREITO.getFuncao());
+        Jogador jogador4 = new Jogador(new Date(80, 5, 15), "Light", 2, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        
+        jogadorDao.adicionar(jogador1);
+        jogadorDao.adicionar(jogador2);
+        jogadorDao.adicionar(jogador3);
+        jogadorDao.adicionar(jogador4);
+        
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 12), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 1), false, jogador3, null); 
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 5), false, jogador1, null); //
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 11), false, jogador1, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 19), true, jogador4, null); //
+        
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 50), false, jogador3, null);
+        
+        
         sistema.listarJogadoresComMaiorNumeroDeGolPorPartida(jogo1);
     }
 
@@ -1245,6 +1272,33 @@ public class SistemaTest {
      */
     @Test
     public void testListarJogadorComMaiorMediaDeGolPorPartidaNasCopas() {
+        
+        Jogo jogo1 = new Jogo(new Date(100, 1, 1), "Muruin", FaseCopa.QUARTAS.getFase());
+        Jogo jogo2 = new Jogo(new Date(90, 1, 1), "Konoha", FaseCopa.FINAL.getFase());
+        
+        jogoDao.adicionar(jogo1);
+        jogoDao.adicionar(jogo2);
+        
+        Jogador jogador1 = new Jogador(new Date(60, 1, 1), "Kishin", 1, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador2 = new Jogador(new Date(50, 1, 1), "Kulilin", 2, FuncaoJogador.ATACANTE.getFuncao());
+        Jogador jogador3 = new Jogador(new Date(80, 5, 15), "Goku", 1, FuncaoJogador.LATERAL_DIREITO.getFuncao());
+        Jogador jogador4 = new Jogador(new Date(80, 5, 15), "Light", 2, FuncaoJogador.MEIO_ATACANTE.getFuncao());
+        
+        jogadorDao.adicionar(jogador1);
+        jogadorDao.adicionar(jogador2);
+        jogadorDao.adicionar(jogador3);
+        jogadorDao.adicionar(jogador4);
+        
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);//
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        
+        sistema.cadastrarGol(jogo1, new Time(0, 0, 10), false, jogador3, null);
+        
+        
         sistema.listarJogadorComMaiorMediaDeGolPorPartidaNasCopas();
     }
 
