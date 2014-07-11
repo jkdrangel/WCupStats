@@ -346,7 +346,7 @@ public class Controller {
      * @param p
      * @return
      */
-    public int quatidadeDeParticipacoesEmCopas(Pais p){
+    public long quatidadeDeParticipacoesEmCopas(Pais p){
          return sistema.quatidadeDeParticipacoesEmCopas(p);
     }
     

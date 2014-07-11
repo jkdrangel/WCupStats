@@ -1027,20 +1027,14 @@ public class SistemaTest {
         Pais p2 = new Pais("p2", "c2");
         paisDao.adicionar(p1);
         paisDao.adicionar(p2);
-        selecaoA1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", p1);
-        selecaoA2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", p1);
-        selecaoB1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", p1);
+        selecaoA1 = sistema.cadastrarSelecao(5, new Date(40, 1, 1), "D", p1);
+        selecaoA2 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", p1);
+        selecaoB1 = sistema.cadastrarSelecao(5, new Date(60, 1, 1), "D", p1);
         selecaoB2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", p1);
-        selecaoC1 = sistema.cadastrarSelecao(5, new Date(50, 1, 1), "D", p2);
-        selecaoC2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", p2);
-        selecaoDao.adicionar(selecaoA1);
-        selecaoDao.adicionar(selecaoA2);
-        selecaoDao.adicionar(selecaoB1);
-        selecaoDao.adicionar(selecaoB2);
-        selecaoDao.adicionar(selecaoC1);
-        selecaoDao.adicionar(selecaoC2);
-        int i = sistema.quatidadeDeParticipacoesEmCopas(p1);
-        int j = sistema.quatidadeDeParticipacoesEmCopas(p2);
+        selecaoC1 = sistema.cadastrarSelecao(5, new Date(90, 1, 1), "D", p2);
+        selecaoC2 = sistema.cadastrarSelecao(5, new Date(100, 1, 1), "D", p2);
+        long i = sistema.quatidadeDeParticipacoesEmCopas(p1);
+        long j = sistema.quatidadeDeParticipacoesEmCopas(p2);
         
         assertEquals(4, i);
         assertEquals(2, j);
