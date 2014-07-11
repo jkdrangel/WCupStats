@@ -19,3 +19,4 @@ Relatórios de mesa:
 Esquema do banco de dados:
 =========
 
+![](http://i.imgur.com/Eb3KZYd.png)
