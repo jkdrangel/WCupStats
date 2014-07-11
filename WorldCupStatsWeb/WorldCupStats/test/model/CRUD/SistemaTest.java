@@ -1384,14 +1384,6 @@ public class SistemaTest {
     }
 
     /**
-     * Test of listarPaisesComTotalDeVitoriasNaCopa method, of class Sistema.
-     */
-    @Test
-    public void testListarPaisesComTotalDeVitoriasNaCopa() {
-        sistema.listarPaisesComTotalDeVitoriasNaCopa();
-    }
-
-    /**
      * Test of listarPaisesQuePerderamPartidaEGanharamACopa method, of class
      * Sistema.
      */
