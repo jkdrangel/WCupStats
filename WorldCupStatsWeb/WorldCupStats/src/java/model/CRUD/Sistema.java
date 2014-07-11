@@ -767,8 +767,29 @@ public class Sistema {
      *
      * @return
      */
-    public List<String> consultaArtilheiros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Jogador> consultaArtilheiros() {
+        
+        List<Jogador> res = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "select g.jogador from Gol g group by g.jogador order by count(g.jogador) desc"; 
+            Query consulta = sessao.createQuery(hql);
+            
+            transacao = sessao.beginTransaction();
+            
+            res = (List<Jogador>) consulta.list();
+            return res;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -1127,7 +1148,30 @@ public class Sistema {
      * @return
      */
     public List<Jogador> listarJogadorComMaiorMediaDeGolPorPartidaNasCopas() {//esse
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<Jogador> res = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "select g.jogador from Gol g group by g.jogador order by count(g.jogador) desc"; 
+            Query consulta = sessao.createQuery(hql);
+            
+            
+            
+            transacao = sessao.beginTransaction();
+            
+            res = (List<Jogador>) consulta.list();
+            return res;
+        } catch (HibernateException e) {
+            System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
+            throw new HibernateException(e);
+        } finally {
+            try {
+                sessao.close();
+            } catch (HibernateException e) {
+                System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -1136,7 +1180,8 @@ public class Sistema {
      */
     public List<Jogador> listarJogadorComMaiorQuantidadeDeJogosEmCopas() {
    
-         List<Jogador> res = null;
+        // Ajeitar isso pra unir com COPA
+        List<Jogador> res = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 

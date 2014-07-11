@@ -294,7 +294,7 @@ public class Controller {
      * 
      * @return 
      */
-    public List<String> consultaArtilheiros(){
+    public List<Jogador> consultaArtilheiros(){
         return sistema.consultaArtilheiros();
     }
     /**
