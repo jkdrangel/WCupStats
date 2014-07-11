@@ -864,7 +864,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select t from Selecao s, Tecnico t where s.tecnico=t AND s.posicao = 1");
+            Query consulta = sessao.createQuery("select t from Selecao  s, Tecnico t where s.tecnico=t AND s.posicao = 1");
             transacao = sessao.beginTransaction();
             res = (List<Tecnico>) consulta.list();
             transacao.commit();
@@ -979,15 +979,16 @@ public class Sistema {
      * @param p
      * @return
      */
-    public int quatidadeDeParticipacoesEmCopas(Pais p) {
-    int res = 0;
+    public long quatidadeDeParticipacoesEmCopas(Pais p) {
+    long res = 0;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
             Query consulta = sessao.createQuery("select count(pais) from Selecao s, Pais pais where s.pais = pais AND pais=:parametro");
             consulta.setEntity("parametro", p);
             transacao = sessao.beginTransaction();
-            res = (int) consulta.uniqueResult();
+            res = (long) consulta.uniqueResult();
+            System.out.println(res);
             return res;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
