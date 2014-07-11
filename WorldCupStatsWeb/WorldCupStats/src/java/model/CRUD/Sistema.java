@@ -915,11 +915,13 @@ public class Sistema {
      * @return
      */
     public List<Copa> listaCopasComPaisSedeCampeao() {
-     List<Copa> res = null;
+     
+         List<Copa> res = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select c from Selecao s, Copa c where c.sede = s.pais AND s.posicao = 1");
+            String hql = "select s.copa from Selecao s, Copa c where (c.pais = s.pais AND s.posicao = 1)";
+            Query consulta = sessao.createQuery(hql);
             transacao = sessao.beginTransaction();
             res = (List<Copa>) consulta.list();
             return res;
