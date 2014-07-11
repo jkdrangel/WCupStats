@@ -1135,18 +1135,17 @@ public class Sistema {
      * @return
      */
     public List<Jogador> listarJogadorComMaiorQuantidadeDeJogosEmCopas() {
-   /*     List<Jogador> res = null;
+   
+         List<Jogador> res = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select j from Jogador j, Escalacao e"
-                                              + " where j = e.jogador"
-                                              + " group by j order by (count(j))");
-            consulta.setEntity("p", c);
+            String hql = "select g.jogador from Gol g group by g.jogador order by count(g.jogador) desc"; 
+            Query consulta = sessao.createQuery(hql);
+            
             transacao = sessao.beginTransaction();
-            res = (List<Selecao>) consulta.list();
-
-            transacao.commit();
+            
+            res = (List<Jogador>) consulta.list();
             return res;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
@@ -1157,8 +1156,7 @@ public class Sistema {
             } catch (HibernateException e) {
                 System.err.println("Erro ao fechar operacao de listagem. Mensagem: " + e.getMessage());
             }
-        }*/
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
     /**
