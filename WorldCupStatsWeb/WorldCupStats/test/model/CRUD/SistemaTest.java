@@ -904,7 +904,49 @@ public class SistemaTest {
      */
     @Test
     public void testListaCopasComPaisSedeCampeao() {  //M
-        fail("The test case is a prototype.");
+        
+         Pais pais1 = new Pais("Brasil", "continente");
+        Pais pais2 = new Pais("Argentina", "continente");
+        Pais pais3 = new Pais("Alemanha", "continente");
+        Pais pais4 = new Pais("Holanda", "continente");
+        
+        paisDao.adicionar(pais1);
+        paisDao.adicionar(pais2);
+        paisDao.adicionar(pais3);
+        paisDao.adicionar(pais4);
+        
+        Copa copa1 = sistema.cadastrarCopa(new Date(20, 1, 1), pais1);
+        Copa copa2 = sistema.cadastrarCopa(new Date(20, 1, 1), pais2);
+        Copa copa3 = sistema.cadastrarCopa(new Date(20, 1, 1), pais3);
+        
+        selecaoA1 = sistema.cadastrarSelecao(1, new Date(50, 1, 1), "D", pais1);
+        selecaoA2 = sistema.cadastrarSelecao(2, new Date(70, 1, 1), "D", pais2);
+        selecaoB1 = sistema.cadastrarSelecao(1, new Date(50, 1, 1), "D", pais3);
+        selecaoB2 = sistema.cadastrarSelecao(5, new Date(70, 1, 1), "D", pais4);
+        selecaoC1 = sistema.cadastrarSelecao(1, new Date(50, 1, 1), "D", pais4);
+        selecaoC2 = sistema.cadastrarSelecao(2, new Date(70, 1, 1), "D", pais4);
+        
+        selecaoA1.setCopa(copa1);
+        selecaoB2.setCopa(copa1);
+        
+        selecaoA2.setCopa(copa2);
+        selecaoC1.setCopa(copa2);
+        
+        selecaoB1.setCopa(copa3);
+        selecaoC2.setCopa(copa3);
+        
+        selecaoDao.atualizar(selecaoA1);
+        selecaoDao.atualizar(selecaoA2);
+        selecaoDao.atualizar(selecaoB1);
+        selecaoDao.atualizar(selecaoB2);
+        selecaoDao.atualizar(selecaoC1);
+        selecaoDao.atualizar(selecaoC2);
+        
+        List<Copa> copas = sistema.listaCopasComPaisSedeCampeao();
+        
+        assertFalse(copas.contains(copa2));
+        assertEquals(copa1, copas.get(0));
+        assertEquals(copa3, copas.get(1));
     }
 
     /**
