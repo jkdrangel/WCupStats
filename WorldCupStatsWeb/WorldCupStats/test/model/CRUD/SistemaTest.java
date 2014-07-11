@@ -762,7 +762,44 @@ public class SistemaTest {
      */
     @Test
     public void testConsultaMediaIdadeSelecoes() { //M
-        fail("The test case is a prototype.");
+        
+        copa1 = new Copa(new Date(500, 1, 1));
+
+        Selecao sele2 = new Selecao("A", new Date(100, 1, 1), 1);
+        sele2.setCopa(copa1);
+        sele2.setNome("Brasil");
+        Selecao sele11 = new Selecao("A", new Date(75, 1, 1), 1);
+        sele11.setCopa(copa1);
+        sele11.setNome("Argentina");
+        Selecao sele12 = new Selecao("A", new Date(50, 1, 1), 1);
+        sele12.setCopa(copa1);
+        sele12.setNome("Alemanha");
+        Selecao sele13 = new Selecao("A", new Date(25, 1, 1), 1);
+        sele13.setCopa(copa1);
+        sele13.setNome("Holanda");
+        Selecao sele15 = new Selecao("A", new Date(22, 1, 1), 1);
+        sele15.setCopa(copa1);
+        sele15.setNome("Colombia");
+        Selecao sele16 = new Selecao("A", new Date(4, 1, 1), 13);
+        sele16.setCopa(copa1);
+        sele16.setNome("França");
+        Selecao sele17 = new Selecao("A", new Date(4, 1, 1), 5);
+        sele17.setCopa(copa1);
+        sele17.setNome("Argelia");
+        
+        copaDao.adicionar(copa1);
+        
+        selecaoDao.adicionar(sele2);
+        selecaoDao.adicionar(sele11);
+        selecaoDao.adicionar(sele12);
+        selecaoDao.adicionar(sele13);
+        selecaoDao.adicionar(sele15);
+        selecaoDao.adicionar(sele16);
+        selecaoDao.adicionar(sele17);
+        
+        double media = sistema.consultaMediaIdadeSelecoes(copa1);
+        
+        assertTrue(40.0 == media);
     }
 
     /**

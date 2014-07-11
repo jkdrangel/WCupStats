@@ -777,21 +777,25 @@ public class Sistema {
      * @return
      */
     public double consultaMediaIdadeSelecoes(Copa c) {
-     double res = 0;
+      
+        double res = 0;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select j.dataNascimento from Selecao s, Jogador j where s.copa:=p AND j.selecao = s");
+            Query consulta = sessao.createQuery("select s.ano from Selecao s, Copa c where s.copa = c and c = :p");
             consulta.setEntity("p", c);
             transacao = sessao.beginTransaction();
             List<Date> data = (List<Date>) consulta.list();
             transacao.commit();
-            Date aux=Calendar.getInstance().getTime();
+            
+            Date auxD = Calendar.getInstance().getTime();
+            int auxAno = auxD.getYear(); // -1900
             for(Date d : data){
-            aux.setTime((aux.getTime()-d.getTime()));
-            res+=(aux.getYear()-1900);
+                res += d.getYear();
             }
-            res=res/data.size();
+            
+            res = res / data.size();
+           
             return res;
         } catch (HibernateException e) {
             System.err.println("Nao foi possivel listar os objetos. Erro: " + e.getMessage());
