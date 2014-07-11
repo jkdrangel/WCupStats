@@ -818,7 +818,28 @@ public class SistemaTest {
      */
     @Test
     public void testListaTecnicosCampeoes() {
-        fail("The test case is a prototype.");
+        Tecnico t1, t2, t3;
+        t1 = new Tecnico("Felipao", new Date(150, 1, 1));
+        t2 = new Tecnico("Joao", new Date(150, 1, 1));
+        t3 = new Tecnico("Roberto", new Date(150, 1, 1));
+        tecnicoDao.adicionar(t1);
+        tecnicoDao.adicionar(t2);
+        tecnicoDao.adicionar(t3);
+        
+        Selecao sele1 = new Selecao("A", new Date(20, 1, 1), 1);
+        sele1.setTecnico(t1);
+        Selecao sele2 = new Selecao("A", new Date(50, 1, 1), 1);
+        sele2.setTecnico(t2);
+        Selecao sele3 = new Selecao("A", new Date(30, 1, 1), 1);
+        sele3.setTecnico(t3);
+        selecaoDao.adicionar(sele1);
+        selecaoDao.adicionar(sele2);
+        selecaoDao.adicionar(sele3);
+        
+        List<Tecnico> tec = sistema.listaTecnicosCampeoes();
+        assertEquals(tec.get(0), t1);
+        assertEquals(tec.get(1), t2);
+        assertEquals(tec.get(2), t3);
     }
 
     /**
