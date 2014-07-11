@@ -978,7 +978,7 @@ public class Sistema {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
 
-            Query consulta = sessao.createQuery("select count(p) from Selecao s, Pais p where s.pais = p AND p=:parametro");
+            Query consulta = sessao.createQuery("select count(pais) from Selecao s, Pais pais where s.pais = pais AND pais=:parametro");
             consulta.setEntity("parametro", p);
             transacao = sessao.beginTransaction();
             res = (int) consulta.uniqueResult();
@@ -1439,6 +1439,4 @@ public class Sistema {
     public void setSubstituicaoDao(SubstituicaoDAO substituicaoDao) {
         this.substituicaoDao = substituicaoDao;
     }
-
-    
 }
